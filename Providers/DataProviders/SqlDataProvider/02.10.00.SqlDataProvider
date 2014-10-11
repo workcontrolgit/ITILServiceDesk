@@ -1,0 +1,28 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[ServiceDesk_RIAUsers]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+CREATE TABLE [dbo].[ServiceDesk_RIAUsers](
+	[UserID] [int] NOT NULL,
+	[RIAPassword] [nvarchar](50) NOT NULL,
+	[IPAddress] [nvarchar](50) NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_ServiceDesk_RIAUsers] PRIMARY KEY CLUSTERED 
+(
+	[UserID] ASC
+) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

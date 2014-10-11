@@ -1,0 +1,62 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
+
+
+
+
+/****** Object:  StoredProcedure {databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]    Script Date: 01/23/2014 10:50:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]
+GO
+
+
+
+/****** Object:  StoredProcedure {databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]    Script Date: 01/23/2014 10:50:31 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]
+	@PortalID int=null
+AS
+
+
+SET NOCOUNT ON
+CREATE TABLE [#TempUsers] (
+    [UserID] [varchar] (10)  NOT NULL ,
+    [DisplayName] [varchar] (255)  NOT NULL
+) ON [PRIMARY]
+
+INSERT INTO [#TempUsers] ([UserID], [DisplayName])
+	SELECT U.UserID, U.DisplayName + ' (' + U.Email + ') : ' + CONVERT(varchar(10),U.Username)    
+	FROM {databaseOwner}{objectQualifier}Users U
+		LEFT JOIN {databaseOwner}{objectQualifier}UserPortals UP on U.UserId = UP.UserId
+	WHERE ( UP.PortalId = @PortalID or @PortalID is null )
+	ORDER BY U.FirstName + ' ' + U.LastName
+	
+INSERT INTO [#TempUsers] ([UserID], [DisplayName])
+VALUES( '', '')
+
+
+SELECT [UserID], [DisplayName] FROM [#TempUsers] ORDER BY [DisplayName]	
+
+
+
+GO
+
+

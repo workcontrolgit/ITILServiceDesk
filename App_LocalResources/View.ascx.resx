@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdminUserSelectionGrouping.Text" xml:space="preserve">
+    <value>Select User</value>
+  </data>
+  <data name="ANewHelpDeskTicket.Text" xml:space="preserve">
+    <value>A new help desk ticket #{0} has been created.</value>
+  </data>
+  <data name="ANewHelpDeskTicketCreated.Text" xml:space="preserve">
+    <value>A new help desk ticket #{0} has been created '{1}'.</value>
+  </data>
+  <data name="ANewHelpDeskTicketHasBeenAssigned.Text" xml:space="preserve">
+    <value>&lt;strong&gt;Hello {0} -  &lt;/strong&gt;&lt;p&gt;A new service desk ticket #{1} has been assigned to you. Please review the details below:&lt;/p&gt;</value>
+  </data>
+  <data name="AssignedTicketTo.Text" xml:space="preserve">
+    <value>{0} assigned ticket to {1}.</value>
+  </data>
+  <data name="btnSearch.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="btnSearchUser.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="btnSubmit.Text" xml:space="preserve">
+    <value>Submit Ticket</value>
+  </data>
+  <data name="ddlPriorityHigh.Text" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="ddlPriorityLow.Text" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="ddlPriorityNormal.Text" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="ddlSearchForUserTypeEmail.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ddlSearchForUserTypeFirstName.Text" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="ddlSearchForUserTypeLastName.Text" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="ddlStatusAdminActive.Text" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="ddlStatusAdminAll.Text" xml:space="preserve">
+    <value>*All*</value>
+  </data>
+  <data name="ddlStatusAdminCancelled.Text" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="ddlStatusAdminNew.Text" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="ddlStatusAdminOnHold.Text" xml:space="preserve">
+    <value>On Hold</value>
+  </data>
+  <data name="ddlStatusAdminResolved.Text" xml:space="preserve">
+    <value>Resolved</value>
+  </data>
+  <data name="DeletedRole.Text" xml:space="preserve">
+    <value>[Deleted Role]</value>
+  </data>
+  <data name="DescriptionIsRequired.Text" xml:space="preserve">
+    <value>Description is required</value>
+  </data>
+  <data name="EmailIsRequired.Text" xml:space="preserve">
+    <value>Email is required</value>
+  </data>
+  <data name="HasCreatedANewHelpDeskTicket.Text" xml:space="preserve">
+    <value>{0} has created a new help desk ticket #{1} for you at http://{2}</value>
+  </data>
+  <data name="HelpDeskTicketAtHasBeenAssigned.Text" xml:space="preserve">
+    <value>A Help Desk Ticket #{0} at http://{1} has been assigned to {2}</value>
+  </data>
+  <data name="lblAssigned.Text" xml:space="preserve">
+    <value>Assigned:</value>
+  </data>
+  <data name="lblAttachFile.Text" xml:space="preserve">
+    <value>Attach File:</value>
+  </data>
+  <data name="lblCheckTags.Text" xml:space="preserve">
+    <value>Check all Tags that apply:</value>
+  </data>
+  <data name="lblRequiredfield.Text" xml:space="preserve">
+    <value>(*) Required Field</value>
+  </data>
+  <data name="lblSearchTags.Text" xml:space="preserve">
+    <value>Search Tags:</value>
+  </data>
+  <data name="lblSearchText.Text1" xml:space="preserve">
+    <value>Ticket # or Search Text:</value>
+  </data>
+  <data name="lblSearchText2.Text" xml:space="preserve">
+    <value>Ticket # or Search Text:</value>
+  </data>
+  <data name="lblStatus.Text" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="lblTicketHasBeenSubmitted.Text" xml:space="preserve">
+    <value>Your Ticket has been submitted.</value>
+  </data>
+  <data name="lbltxtDescription.Text" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="lbltxtDetail.Text" xml:space="preserve">
+    <value>Detail:</value>
+  </data>
+  <data name="lbltxtDueDate.Text" xml:space="preserve">
+    <value>Due Date:</value>
+  </data>
+  <data name="lbltxtEmail.Text" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="lbltxtName.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="lbltxtPhone.Text" xml:space="preserve">
+    <value>Phone:</value>
+  </data>
+  <data name="lbltxtPriority.Text" xml:space="preserve">
+    <value>Priority:</value>
+  </data>
+  <data name="lnkAdministratorSettings.Text" xml:space="preserve">
+    <value>Administrator Settings</value>
+  </data>
+  <data name="lnkAssigned.Text" xml:space="preserve">
+    <value>Assigned</value>
+  </data>
+  <data name="lnkCreatedDate.Text" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="lnkDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lnkDueDate.Text" xml:space="preserve">
+    <value>Due</value>
+  </data>
+  <data name="lnkExistingTickets.Text" xml:space="preserve">
+    <value>Existing Tickets</value>
+  </data>
+  <data name="lnkNewTicket.Text" xml:space="preserve">
+    <value>New Ticket</value>
+  </data>
+  <data name="lnkPriority.Text" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="lnkRequester.Text" xml:space="preserve">
+    <value>Requestor</value>
+  </data>
+  <data name="lnkResetSearch.Text" xml:space="preserve">
+    <value>Reset Search</value>
+  </data>
+  <data name="lnkStatus.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lnkTaskID.Text" xml:space="preserve">
+    <value>TaskID</value>
+  </data>
+  <data name="lnlAnonymousContinue.Text" xml:space="preserve">
+    <value>Click here to continue</value>
+  </data>
+  <data name="MustUseAValidDate.Text" xml:space="preserve">
+    <value>Must use a valid date</value>
+  </data>
+  <data name="NameIsRequired.Text" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="NewHelpDeskTicketCreated.Text" xml:space="preserve">
+    <value>New Help Desk Ticket Created #{0}</value>
+  </data>
+  <data name="NewHelpDeskTicketCreatedAt.Text" xml:space="preserve">
+    <value>New Help Desk Ticket Created #{0} at http://{1}</value>
+  </data>
+  <data name="Unassigned.Text" xml:space="preserve">
+    <value>Unassigned</value>
+  </data>
+  <data name="UserIsNotFound.Text" xml:space="preserve">
+    <value>User is not found</value>
+  </data>
+  <data name="YouMaySeeStatusHere.Text" xml:space="preserve">
+    <value>You may see the status here: {0}</value>
+  </data>
+  <data name="YourTicketNumber.Text" xml:space="preserve">
+    <value>Your ticket number is # {0}</value>
+  </data>
+  <data name="ddlAssignedAll.Text" xml:space="preserve">
+    <value>*All*</value>
+  </data>
+  <data name="lblNoRecords.Text" xml:space="preserve">
+    <value>No Records Returned</value>
+  </data>
+  <data name="HTMLTicketEmailAdmin.Text" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;Attention IT Service Desk Admin,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A new service desk ticket [TaskID] was created. Please assess the details below and be prepared         to provide assistance to the Requester if you should get assigned to this ticket         number.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TICKET SUMMARY:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Ticket: &lt;/strong&gt;&lt;a href="[PasswordLinkUrl]"&gt;[TaskID]&lt;/a&gt;&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Created Date: &lt;/strong&gt;[CreatedDate]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Requester: &lt;/strong&gt;[Requestor]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Email: &lt;/strong&gt;[Email]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Phone: &lt;/strong&gt;[Phone]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Due Date: &lt;/strong&gt;[DueDate]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Priority: &lt;/strong&gt;[PriorityName]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Description: &lt;/strong&gt;[Description]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Details: &lt;/strong&gt;[Details]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;strong&gt;ITIL IT Service Desk&lt;/strong&gt;         &lt;br /&gt;
+&lt;em&gt;Phone:&lt;/em&gt; (703) 903-6927&lt;br /&gt;
+&lt;em&gt;Email:&lt;/em&gt; itservicedesk@ITILinc.com         &lt;br /&gt;
+&lt;em&gt;Web:&lt;/em&gt; https://intranet.ITILinc.com&lt;/strong&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="HTMLTicketEmailAssignee.Text" xml:space="preserve">
+    <value>    &lt;p&gt;
+        &lt;strong&gt;Attention IT Service Desk Admin,&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;
+        Service desk ticket [TaskID] has been assigned to you. Please provide assistance to the
+        Requester.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TICKET SUMMARY:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Ticket: &lt;/strong&gt;&lt;a href="[PasswordLinkUrl]"&gt;[TaskID]&lt;/a&gt;&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Created Date: &lt;/strong&gt;[CreatedDate]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Requester: &lt;/strong&gt;[Requestor]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Email: &lt;/strong&gt;[Email]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Phone: &lt;/strong&gt;[Phone]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Due Date: &lt;/strong&gt;[DueDate]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Priority: &lt;/strong&gt;[PriorityName]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Description: &lt;/strong&gt;[Description]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Details: &lt;/strong&gt;[Details]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;strong&gt;ITIL IT Service Desk&lt;/strong&gt;         &lt;br /&gt;
+&lt;em&gt;Phone:&lt;/em&gt; (703) 903-6927&lt;br /&gt;
+&lt;em&gt;Email:&lt;/em&gt; itservicedesk@ITILinc.com         &lt;br /&gt;
+&lt;em&gt;Web:&lt;/em&gt; https://intranet.ITILinc.com&lt;/strong&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="HTMLTicketEmailRequester.Text" xml:space="preserve">
+    <value>&lt;p&gt;&lt;strong&gt;Thank you for using the Service Desk!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Your request has been received and is being reviewed by our service desk support team.&lt;/p&gt;
+&lt;p&gt;You can review the status of your request and add additional comments by clicking on the ticket number below.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TICKET SUMMARY:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Ticket: &lt;/strong&gt;&lt;a href="[PasswordLinkUrl]"&gt;[TaskID]&lt;/a&gt;&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Created Date: &lt;/strong&gt;[CreatedDate]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Requester: &lt;/strong&gt;[Requestor]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Email: &lt;/strong&gt;[Email]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Phone: &lt;/strong&gt;[Phone]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Due Date: &lt;/strong&gt;[DueDate]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Priority: &lt;/strong&gt;[PriorityName]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Description: &lt;/strong&gt;[Description]&lt;br /&gt;
+&lt;strong&gt;&amp;#160;&amp;#160;&amp;#160;Details: &lt;/strong&gt;[Details]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;strong&gt;ITIL IT Service Desk&lt;/strong&gt;         &lt;br /&gt;
+&lt;em&gt;Phone:&lt;/em&gt; (703) 903-6927&lt;br /&gt;
+&lt;em&gt;Email:&lt;/em&gt; itservicedesk@ITILinc.com         &lt;br /&gt;
+&lt;em&gt;Web:&lt;/em&gt; https://intranet.ITILinc.com&lt;/strong&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="InvalidFileExtension.Text" xml:space="preserve">
+    <value>Only {0} files may be uploaded.  File with extension {1} is not allowed.</value>
+  </data>
+  <data name="EmailFormatInvalid.Text" xml:space="preserve">
+    <value>Email format is invalid</value>
+  </data>
+</root>

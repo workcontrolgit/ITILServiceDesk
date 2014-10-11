@@ -1,0 +1,19 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ServiceDesk_LastSearch' 
+AND COLUMN_NAME = 'CurrentPage')
+BEGIN
+   ALTER TABLE ServiceDesk_LastSearch ADD [CurrentPage] [int] NULL
+END
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

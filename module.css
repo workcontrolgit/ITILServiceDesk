@@ -1,0 +1,79 @@
+﻿/* table level rules */
+.yui-grid
+{
+    font-family: arial;
+    font-size: x-small;
+    border: solid 1px #7f7f7f;
+    border-collapse: collapse;
+}
+
+
+/* header column rules */
+.yui-grid th
+{
+    background: url(img/sprite.png) repeat-x 0px 0px;
+    border-color: #989898;
+    border-style: solid;
+    border-width: 1px;
+    color: #000;
+    padding: 2px 2px 2px 5px;
+    text-align: center;
+    vertical-align: bottom;
+}  
+
+.yui-grid th a
+{
+    font-weight: normal;
+	text-decoration: none;
+	text-align: center;
+    color: #000;
+	display: block;
+    padding-right: 5px;
+}
+
+/* change the background image when the column is being sorted by */
+.yui-grid th.sortasc, .yui-grid th.sortdesc
+{
+    background: url(img/sprite.png) repeat-x 0px -100px;
+}  
+
+/* change image if it is an asc sort */
+.yui-grid th.sortasc a
+{
+    background: url(img/dt-arrow-up.png) no-repeat right 50%;
+}  
+
+/* change image if it is a desc sort */
+.yui-grid th.sortdesc a
+{
+    background: url(img/dt-arrow-dn.png) no-repeat right 50%;
+}  
+
+
+/* data cell and data row rules */
+.yui-grid td
+{
+    padding: 2px 5px 2px 5px;
+    border-right: solid 1px #cbcbcb;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-color: #cbcbcb;
+    border-left-color: #cbcbcb;
+}
+
+.yui-grid .altrow, .yui-grid .row .sort
+{
+    background-color: #edf5ff;
+} 
+
+.yui-grid .altrow .sort
+{
+    background-color: #dbeaff;
+} 
+
+.yui-grid .row
+{
+    background-color: #fff;
+}  
