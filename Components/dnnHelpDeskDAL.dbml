@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ADefHelpDesk" EntityNamespace="ADefWebserver.Modules.ADefHelpDesk" ContextNamespace="ADefWebserver.Modules.ADefHelpDesk" Class="ADefHelpDeskDALDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=DNN625;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SiteSqlServer" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ADefHelpDesk_Log" Member="ADefHelpDesk_Logs">
+    <Type Name="ADefHelpDesk_Log">
+      <Column Name="LogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LogDescription" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ADefHelpDesk_Task_ADefHelpDesk_Log" Member="ADefHelpDesk_Task" ThisKey="TaskID" OtherKey="TaskID" Type="ADefHelpDesk_Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_Settings" Member="ADefHelpDesk_Settings">
+    <Type Name="ADefHelpDesk_Setting">
+      <Column Name="SettingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SettingName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="SettingValue" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_TaskAssociations" Member="ADefHelpDesk_TaskAssociations">
+    <Type Name="ADefHelpDesk_TaskAssociation">
+      <Column Name="TaskRelationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssociatedID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ADefHelpDesk_Task_ADefHelpDesk_TaskAssociation" Member="ADefHelpDesk_Task" ThisKey="TaskID" OtherKey="TaskID" Type="ADefHelpDesk_Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_TaskCategories" Member="ADefHelpDesk_TaskCategories">
+    <Type Name="ADefHelpDesk_TaskCategory">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ADefHelpDesk_Category_ADefHelpDesk_TaskCategory" Member="ADefHelpDesk_Category" ThisKey="CategoryID" OtherKey="CategoryID" Type="ADefHelpDesk_Category" IsForeignKey="true" />
+      <Association Name="ADefHelpDesk_Task_ADefHelpDesk_TaskCategory" Member="ADefHelpDesk_Task" ThisKey="TaskID" OtherKey="TaskID" Type="ADefHelpDesk_Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_TaskDetails" Member="ADefHelpDesk_TaskDetails">
+    <Type Name="ADefHelpDesk_TaskDetail">
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DetailType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StopTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ADefHelpDesk_TaskDetail_ADefHelpDesk_Attachment" Member="ADefHelpDesk_Attachments" ThisKey="DetailID" OtherKey="DetailID" Type="ADefHelpDesk_Attachment" />
+      <Association Name="ADefHelpDesk_Task_ADefHelpDesk_TaskDetail" Member="ADefHelpDesk_Task" ThisKey="TaskID" OtherKey="TaskID" Type="ADefHelpDesk_Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_Categories" Member="ADefHelpDesk_Categories">
+    <Type Name="ADefHelpDesk_Category">
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequestorVisible" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Selectable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ADefHelpDesk_Category_ADefHelpDesk_TaskCategory" Member="ADefHelpDesk_TaskCategories" ThisKey="CategoryID" OtherKey="CategoryID" Type="ADefHelpDesk_TaskCategory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_Attachments" Member="ADefHelpDesk_Attachments">
+    <Type Name="ADefHelpDesk_Attachment">
+      <Column Name="AttachmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DetailID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AttachmentPath" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalFileName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ADefHelpDesk_TaskDetail_ADefHelpDesk_Attachment" Member="ADefHelpDesk_TaskDetail" ThisKey="DetailID" OtherKey="DetailID" Type="ADefHelpDesk_TaskDetail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_Tasks" Member="ADefHelpDesk_Tasks">
+    <Type Name="ADefHelpDesk_Task">
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Priority" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EstimatedStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EstimatedCompletion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AssignedRoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TicketPassword" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RequesterUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RequesterName" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="RequesterEmail" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="RequesterPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EstimatedHours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ADefHelpDesk_Task_ADefHelpDesk_Log" Member="ADefHelpDesk_Logs" ThisKey="TaskID" OtherKey="TaskID" Type="ADefHelpDesk_Log" />
+      <Association Name="ADefHelpDesk_Task_ADefHelpDesk_TaskAssociation" Member="ADefHelpDesk_TaskAssociations" ThisKey="TaskID" OtherKey="TaskID" Type="ADefHelpDesk_TaskAssociation" />
+      <Association Name="ADefHelpDesk_Task_ADefHelpDesk_TaskCategory" Member="ADefHelpDesk_TaskCategories" ThisKey="TaskID" OtherKey="TaskID" Type="ADefHelpDesk_TaskCategory" />
+      <Association Name="ADefHelpDesk_Task_ADefHelpDesk_TaskDetail" Member="ADefHelpDesk_TaskDetails" ThisKey="TaskID" OtherKey="TaskID" Type="ADefHelpDesk_TaskDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_Roles" Member="ADefHelpDesk_Roles">
+    <Type Name="ADefHelpDesk_Role">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADefHelpDesk_LastSearch" Member="ADefHelpDesk_LastSearches">
+    <Type Name="ADefHelpDesk_LastSearch">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SearchText" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Priority" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AssignedRoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Categories" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="CurrentPage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
