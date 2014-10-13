@@ -1,10 +1,4 @@
 ﻿<h3>ServiceDesk</h3>
-<p class="Contributor">
-	Aspose.com <br />
-	<a href="mailto:zaheer.tariq@aspose.com">zaheer.tariq@aspose.com</a><br />
-	<a href=http://www.aspose.com>http://www.aspose.com</a><br />
-</p>
-<hr/>
 <div class="License">
 	<h3>About the ServiceDesk</h3>
 	<p class="Owner">
