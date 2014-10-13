@@ -523,7 +523,7 @@ namespace ITIL.Modules.ServiceDesk
 
                 objServiceDesk_Setting2.PortalID = PortalId;
                 objServiceDesk_Setting2.SettingName = "UploadefFilesPath";
-                objServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
+                objServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ITILServiceDesk/Upload");
 
                 objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting2);
                 objServiceDeskDALDataContext.SubmitChanges();
@@ -1695,9 +1695,9 @@ namespace ITIL.Modules.ServiceDesk
             // Check the sort direction to set the image URL accordingly.
             string imgUrl;
             if (SortDirection == "ASC")
-                imgUrl = "~/DesktopModules/ServiceDesk/images/dt-arrow-up.png";
+                imgUrl = "~/DesktopModules/ITILServiceDesk/images/dt-arrow-up.png";
             else
-                imgUrl = "~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png";
+                imgUrl = "~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png";
 
             // Check which field is being sorted
             // to set the visibility of the image controls.

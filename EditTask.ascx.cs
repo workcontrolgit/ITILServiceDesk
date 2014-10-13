@@ -355,7 +355,7 @@ namespace ITIL.Modules.ServiceDesk
 
                 objServiceDesk_Setting2.PortalID = PortalId;
                 objServiceDesk_Setting2.SettingName = "UploadefFilesPath";
-                objServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
+                objServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ITILServiceDesk/Upload");
 
                 objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting2);
                 objServiceDeskDALDataContext.SubmitChanges();

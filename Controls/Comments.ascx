@@ -102,17 +102,17 @@
         <tr>
             <td valign="top" nowrap="nowrap">
                 <asp:Image ID="Image3" runat="server" 
-                    ImageUrl="~/DesktopModules/ServiceDesk/images/application_side_contract.png" />
+                    ImageUrl="~/DesktopModules/ITILServiceDesk/images/application_side_contract.png" />
                 <asp:LinkButton ID="lnkBack" runat="server" Font-Underline="True" 
                     onclick="lnkBack_Click" Text="Back" resourcekey="lnkBack" />&nbsp;<asp:Image ID="Image4" 
-                    runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/page_add.png" />
+                    runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/page_add.png" />
                 <asp:LinkButton ID="lnkUpdate" runat="server" Text="Update" 
                     Font-Underline="True" onclick="lnkUpdate_Click" resourcekey="lnkUpdate" />
-                <asp:Image ID="ImgEmailUser" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/user_suit.png" /><asp:LinkButton 
+                <asp:Image ID="ImgEmailUser" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/user_suit.png" /><asp:LinkButton 
                     ID="lnkUpdateRequestor" runat="server" Font-Underline="True" 
                     onclick="lnkUpdateRequestor_Click" Text="Update and Email Requestor" resourcekey="lnkUpdateAndEmail" />
 &nbsp;<asp:Image ID="Image5" runat="server" 
-                    ImageUrl="~/DesktopModules/ServiceDesk/images/page_delete.png" />
+                    ImageUrl="~/DesktopModules/ITILServiceDesk/images/page_delete.png" />
                 <asp:LinkButton ID="lnkDelete" runat="server" 
                     OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}' 
                     Text="Delete" Font-Underline="True" onclick="lnkDelete_Click" resourcekey="lnkDelete" />
@@ -143,7 +143,7 @@
                       <asp:Label ID="lblAttachment" resourcekey="lblAttachment" runat="server" Font-Bold="True" 
                           Text="Attachment:" />
                       &nbsp;<asp:ImageButton ID="imgDelete" runat="server" 
-                          ImageUrl="~/DesktopModules/ServiceDesk/images/cancel.png" 
+                          ImageUrl="~/DesktopModules/ITILServiceDesk/images/cancel.png" 
                           ToolTip="Delete Attachment" 
                           OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}' 
                           onclick="imgDelete_Click" />
