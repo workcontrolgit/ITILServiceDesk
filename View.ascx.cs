@@ -1,5 +1,5 @@
 ﻿//
-// http://ServiceDesk.com
+// http://www.adefhelpdesk.com
 // Copyright (c) 2009
 // by Michael Washington
 //
