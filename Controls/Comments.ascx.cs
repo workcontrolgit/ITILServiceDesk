@@ -174,7 +174,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
             if (TicketFileUpload.HasFile)
             {
 
-                // ITIL Customization - use DNN host setting for file extension
+                // Customization - use DNN host setting for file extension
                 string fileName = TicketFileUpload.PostedFile.FileName;
 
                 string extension = Path.GetExtension(fileName);

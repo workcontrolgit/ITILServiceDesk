@@ -49,28 +49,6 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
 
-        // ITIL Customization - adding png/zip
-        //#region ValidFileExtensions
-        //public static List<string> ValidFileExtensions = new List<string> { "gif", "jpg", "jpeg", "doc", "docx", "xls", "xlsx", "pdf", "png", "zip", "ppt", "pptx", "vsd", "vsdx", "cfm", "rar", "mpp", "mppx", "txt" };
-        //#endregion
-
-        // ITIL Customization - validate extension
-        //#region IsValidExtension
-        //public static bool IsValidExtension(string fileExtension, List<string> validFileExtensions)
-        //{
-        //    // default flag to true 
-        //    bool flag = true;
-        //    // find match using List.Find  method
-        //    string result = validFileExtensions.Find(delegate(string Ext) { return Ext == fileExtension; });
-
-        //    if (result == null) //extension not in allowable list
-        //    {
-        //        flag = false; //file upload extension validation fail
-        //    }
-
-        //    return flag;
-        //}
-        //#endregion
 
         public static bool IsAllowedExtension(string fileName, string extension)
         {
@@ -94,7 +72,7 @@ namespace ITIL.Modules.ServiceDesk
         }
         #endregion
 
-            // ITIL Customization - token replacement
+            // Customization - token replacement
         #region ReplaceTicketToken
         public static string ReplaceTicketToken(string strBody, string strPasswordLinkUrl, ServiceDesk_Task objServiceDesk_Tasks)
         {
@@ -222,7 +200,7 @@ namespace ITIL.Modules.ServiceDesk
 
         #endregion
 
-        // ITIL Customization - get detail
+        // Customization - get detail
         #region GetDetailsOfTicket
 
         static string GetDetailsOfTicket(int TaskId)

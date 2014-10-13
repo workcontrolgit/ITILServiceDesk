@@ -19,7 +19,7 @@ namespace ITIL.Modules.ServiceDesk
 {
     public partial class EditTask : DotNetNuke.Entities.Modules.PortalModuleBase
     {
-        //ITIL Customization - create viewstate variable for saving original status
+        //Customization - create viewstate variable for saving original status
         public string Status
         {
             get
@@ -36,7 +36,7 @@ namespace ITIL.Modules.ServiceDesk
             set { ViewState["Status"] = value; }
         }
 
-        //ITIL Customization - create viewstate variable for saving requestor's email
+        //Customization - create viewstate variable for saving requestor's email
         public string RequesterEmail
         {
             get
@@ -53,7 +53,7 @@ namespace ITIL.Modules.ServiceDesk
             set { ViewState["RequesterEmail"] = value; }
         }
 
-        //ITIL Customization - create viewstate variable for saving requestor's name
+        //Customization - create viewstate variable for saving requestor's name
         public string RequesterName
         {
             get
@@ -460,7 +460,7 @@ namespace ITIL.Modules.ServiceDesk
                 txtEmail.Text = objServiceDesk_Tasks.RequesterEmail;
                 txtName.Text = objServiceDesk_Tasks.RequesterName;
 
-                //ITIL Customization - assigning (txtEmail.Text to RequesterEmail) and (txtName.Text to RequesterName) in case user is anonymous
+                //Customization - assigning (txtEmail.Text to RequesterEmail) and (txtName.Text to RequesterName) in case user is anonymous
                 RequesterEmail = txtEmail.Text;
                 RequesterName = txtName.Text;
             }
@@ -478,7 +478,7 @@ namespace ITIL.Modules.ServiceDesk
                     lblEmail.Text = UserController.GetUser(PortalId, objServiceDesk_Tasks.RequesterUserID, false).Email;
                     lblName.Text = UserController.GetUser(PortalId, objServiceDesk_Tasks.RequesterUserID, false).DisplayName;
 
-                    //ITIL Customization - assigning (lblEmail.Text to RequesterEmail) and (lblName.Text to RequesterName) in case user is anonymous
+                    //Customization - assigning (lblEmail.Text to RequesterEmail) and (lblName.Text to RequesterName) in case user is anonymous
                     RequesterEmail = lblEmail.Text;
                     RequesterName = lblName.Text;
                 }
@@ -492,7 +492,7 @@ namespace ITIL.Modules.ServiceDesk
             lblCreatedData.Text = String.Format(objServiceDesk_Tasks.CreatedDate.ToShortDateString(), objServiceDesk_Tasks.CreatedDate.ToShortTimeString());
             ddlStatus.SelectedValue = objServiceDesk_Tasks.Status;
 
-            //ITIL Customization - assign objServiceDesk_Tasks.Status to Status for the purpose of preventing multiple email notifications
+            //Customization - assign objServiceDesk_Tasks.Status to Status for the purpose of preventing multiple email notifications
             Status = objServiceDesk_Tasks.Status;
  
             ddlPriority.SelectedValue = objServiceDesk_Tasks.Priority;
@@ -708,7 +708,7 @@ namespace ITIL.Modules.ServiceDesk
 
             objServiceDeskDALDataContext.SubmitChanges();
 
-            //ITIL Customization - notify requester when ticket is resolved
+            //Customization - notify requester when ticket is resolved
             if (ddlStatus.SelectedValue == "Resolved")
             {
                 if (Status != "Resolved")
@@ -857,7 +857,7 @@ namespace ITIL.Modules.ServiceDesk
         // Emails
 
 
-        //ITIL Customization - send email requester when ticket is resolved
+        //Customization - send email requester when ticket is resolved
         #region NotifyRequesterTicketResolved
         private void NotifyRequesterTicketResolved(string TaskID)
         {
@@ -868,7 +868,7 @@ namespace ITIL.Modules.ServiceDesk
                                                        where ServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
                                                        select ServiceDesk_Tasks).FirstOrDefault();
 
-            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
+            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // Customization - get DomainServerUrl for use in Utility.FixURLLink
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
 
             string strSubject = String.Format(Localization.GetString("TicketIsResolved.Text", LocalResourceFile), TaskID);
@@ -892,14 +892,14 @@ namespace ITIL.Modules.ServiceDesk
         #region NotifyAssignedGroupOfAssignment
         private void NotifyAssignedGroupOfAssignment(string TaskID)
         {
-            // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
+            // Customization - email notifies the Admins of a new ticket and also includes the ticket details
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
             ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
                                                        where ServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
                                                        select ServiceDesk_Tasks).FirstOrDefault();
 
-            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl); // ITIL Customization 
+            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // Customization - get DomainServerUrl for use in Utility.FixURLLink
+            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl); // Customization 
 
             RoleController objRoleController = new RoleController();
             string strAssignedRole = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
@@ -923,13 +923,13 @@ namespace ITIL.Modules.ServiceDesk
 
         private void NotifyGroupAssignTicket(string TaskID)
         {
-            // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
+            // Customization - email notifies the Admins of a new ticket and also includes the ticket details
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
             ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
                                                        where ServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
                                                        select ServiceDesk_Tasks).FirstOrDefault();
 
-            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
+            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // Customization - get DomainServerUrl for use in Utility.FixURLLink
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
             
             RoleController objRoleController = new RoleController();

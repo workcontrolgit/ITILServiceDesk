@@ -229,7 +229,6 @@
     <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <Content Include="ITIL_ITILServiceDesk.dnn" />
     <Content Include="Packages\ITIL_ITILServiceDesk_14.04.01_Install.zip" />
-    <None Include="ServiceDesk.dnn" />
     <None Include="Providers\DataProviders\SqlDataProvider\00.10.00.SqlDataProvider" />
     <None Include="Providers\DataProviders\SqlDataProvider\01.50.00.SqlDataProvider" />
     <None Include="Providers\DataProviders\SqlDataProvider\02.00.00.SqlDataProvider" />
@@ -247,7 +246,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>64036</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

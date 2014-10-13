@@ -164,7 +164,7 @@ namespace ITIL.Modules.ServiceDesk
         {
             try
             {
-                // ITIL customization 
+                // Customization 
 
                 cmdStartCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtDueDate);
                 if (!Page.IsPostBack)
@@ -183,7 +183,7 @@ namespace ITIL.Modules.ServiceDesk
 
                         }
                     }
-                    // ITIL customization 
+                    // Customization 
                     //SearchList(int.Parse(Session["portalId"].ToString()));
                     // the end
                 }
@@ -796,7 +796,7 @@ namespace ITIL.Modules.ServiceDesk
             if (TicketFileUpload.HasFile)
             {
 
-                // ITIL Customization - use DNN host setting for file extension
+                // Customization - use DNN host setting for file extension
                 string fileName = TicketFileUpload.PostedFile.FileName;
 
                 string extension = Path.GetExtension(fileName);
@@ -1138,7 +1138,7 @@ namespace ITIL.Modules.ServiceDesk
                 if (Convert.ToInt32(txtUserID.Text) != UserId || UserId == -1)
                 {
                     //Anonymous or login user submit ticket for another user
-                    NotifyRequesterSubmitTicket(TaskID.ToString(), objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                    NotifyRequesterSubmitTicket(TaskID.ToString(), objServiceDesk_Tasks); //Customization - removed strPasswordLinkURL
 
                     // Get Admin Role
                     string strAdminRoleID = GetAdminRole();
@@ -1148,24 +1148,24 @@ namespace ITIL.Modules.ServiceDesk
                         // If Ticket is assigned to any group other than unassigned notify them
                         if (Convert.ToInt32(ddlAssignedAdmin.SelectedValue) > -1)
                         {
-                            NotifyGroupAssignTicket(TaskID, objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                            NotifyGroupAssignTicket(TaskID, objServiceDesk_Tasks); //Customization - removed strPasswordLinkURL
                         }
                     }
                     else
                     {
                         // This is not an Admin so Notify the Admins
-                        // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details 
-                        NotifyAdminSubmitTicket(TaskID, objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                        // Customization - email notifies the Admins of a new ticket and also includes the ticket details 
+                        NotifyAdminSubmitTicket(TaskID, objServiceDesk_Tasks); //Customization - removed strPasswordLinkURL
                     }
                 }
                 else
                 {
                     // A normal ticket has been created
 
-                    // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
-                    NotifyAdminSubmitTicket(TaskID, objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
-                    // ITIL Customization - email notify login user who entered ticket.  The email contains password protected link
-                    NotifyRequesterSubmitTicket(TaskID.ToString(), objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                    // Customization - email notifies the Admins of a new ticket and also includes the ticket details
+                    NotifyAdminSubmitTicket(TaskID, objServiceDesk_Tasks); //Customization - removed strPasswordLinkURL
+                    // Customization - email notify login user who entered ticket.  The email contains password protected link
+                    NotifyRequesterSubmitTicket(TaskID.ToString(), objServiceDesk_Tasks); //Customization - removed strPasswordLinkURL
                 }
             }
             catch (Exception ex)
@@ -1178,12 +1178,12 @@ namespace ITIL.Modules.ServiceDesk
         }
         #endregion
 
-        // ITIL Customization - email notifies (logged in) requester of the new submitted ticket.  The email contains password protected link
+        // Customization - email notifies (logged in) requester of the new submitted ticket.  The email contains password protected link
 
         #region NotifyRequesterSubmitTicket
-        private void NotifyRequesterSubmitTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
+        private void NotifyRequesterSubmitTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //Customization - removed strPasswordLinkURL
         {
-            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
+            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // Customization - get DomainServerUrl for use in Utility.FixURLLink
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
             string strSubject = String.Format(Localization.GetString("NewHelpDeskTicketCreated.Text", LocalResourceFile), TaskID);
             string strBody = Localization.GetString("HTMLTicketEmailRequester.Text", LocalResourceFile);
@@ -1203,15 +1203,15 @@ namespace ITIL.Modules.ServiceDesk
         }
         #endregion
 
-        // ITIL Customization - email notifies services desk admins of the new submitted ticket.  The email contains password protected link
+        // Customization - email notifies services desk admins of the new submitted ticket.  The email contains password protected link
 
         #region NotifyAdminSubmitTicket
-        private void NotifyAdminSubmitTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
+        private void NotifyAdminSubmitTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //Customization - removed strPasswordLinkURL
         {
             // This is not an Admin so Notify the Admins
 
-            // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details 
-            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
+            // Customization - email notifies the Admins of a new ticket and also includes the ticket details 
+            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // Customization - get DomainServerUrl for use in Utility.FixURLLink
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
 
             string strSubject = String.Format(Localization.GetString("NewHelpDeskTicketCreatedAt.Text", LocalResourceFile), TaskID, strDomainServerUrl);
@@ -1229,18 +1229,18 @@ namespace ITIL.Modules.ServiceDesk
         }
         #endregion
 
-        // ITIL Customization - added email to notify (logged in) requester who submitted the ticket.  The email contains password protected link
+        // Customization - added email to notify (logged in) requester who submitted the ticket.  The email contains password protected link
 
         #region NotifyGroupAssignTicket
-        private void NotifyGroupAssignTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
+        private void NotifyGroupAssignTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //Customization - removed strPasswordLinkURL
         {
             try
             {
-                // ITIL Customization - email notifies the Admins of the new ticket and also includes the ticket details
+                // Customization - email notifies the Admins of the new ticket and also includes the ticket details
                 RoleController objRoleController = new RoleController();
                 string strAssignedRole = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(ddlAssignedAdmin.SelectedValue), PortalId).RoleName);
 
-                string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
+                string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // Customization - get DomainServerUrl for use in Utility.FixURLLink
                 string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
 
                 string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);
@@ -2233,7 +2233,7 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
 
-        // ITIL customization new user search for new ticket section
+        // Customization new user search for new ticket section
         #region PagingDataList_ItemDataBound
 
 
