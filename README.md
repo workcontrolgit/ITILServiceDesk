@@ -16,6 +16,6 @@ This is not an upgrade to the original adelhelddesk module.  The installation do
 
 - the user controls (ascx), resource files, images, etc. are added to <DNNRoot>\desktopmodules\ITILServiceDesk folder
 - the dll file ITIL.Modules.ServiceDesk.dll is added to <DNNRoot>\bin folder
-- tables/stored procedures prefixed with ITILServiceDesk are added to the DNN database
+- database objects (procedures, etc.) prefixed with ITILServiceDesk are added to the DNN database
 
 
