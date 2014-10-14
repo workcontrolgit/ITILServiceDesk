@@ -1,6 +1,6 @@
 ITILServiceDesk
 ===========
-This set of program is a fork from www.adefhelpdesk.com.  
+This program is a fork from www.adefhelpdesk.com.  
 
 SUMMARY OF CHANGES - 
 
