@@ -1,13 +1,19 @@
-ServiceDesk
+ITLServiceDesk
 ===========
-This is a fork from www.adefhelpdesk.com.
+This set of program is a fork from www.adefhelpdesk.com.  
 
-Summary of changes
+SUMMARY OF CHANGES
 
-The project was converted from WSP to WAP model for easy check in/out
+The project format was converted from WSP to WAP model.  The user interface (UI) is styled with Bootstrap 3.0 to achieve Responsive design.  
 
-The UI is styled with Bootstrap 3.0 to explore Responsive design.  Why not have one set of code to display content on on desktop, tablet and phone?
+REQUIREMENTS  
+DotNetNuke 7+, DotNetNuke skin with Bootstrap 3.0 support.  
 
-It will require DotNetNuke skin compatible with Bootstrap 3.0 to work.  One such skin can be found at  http://www.christoc.com/Products/HammerFlex.
+WARNING 
+This is not an upgrade to the original adelhelddesk module.  The installation does not make any change to the orginal adelhelpdesk module.  The installation will set up a new module ITILServiceDesk.  The program is organized as following
 
-WARNING - This is not an upgrade to adelhelddesk module.  This is an experiment of using Bootstrap in DotNetNuke custom module and it should not be used in produciton at this time.
+- the user controls (ascx), resource files, images, etc. are added to <DNNRoot>\desktopmodules\ITILServiceDesk folder
+- the dll file ITIL.Modules.ServiceDesk.dll is added to <DNNRoot>\bin folder
+- tables/stored procedures prefixed with ITILServiceDesk are added to the DNN database
+
+
