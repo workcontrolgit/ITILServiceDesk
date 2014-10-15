@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace ITIL.Modules.ServiceDesk.Controls
 {
-    public partial class Tags : DotNetNuke.Entities.Modules.PortalModuleBase
+    public partial class Tags : ITILServiceDeskModuleBase
     {
         #region Properties
         private string _DisplayType;

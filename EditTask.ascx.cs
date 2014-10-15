@@ -17,7 +17,7 @@ using DotNetNuke.Services.Localization;
 
 namespace ITIL.Modules.ServiceDesk
 {
-    public partial class EditTask : DotNetNuke.Entities.Modules.PortalModuleBase
+    public partial class EditTask : ITILServiceDeskModuleBase
     {
         //ITIL Customization - create viewstate variable for saving original status
         public string Status

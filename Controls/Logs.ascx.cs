@@ -5,7 +5,7 @@ using ITIL.Modules.ServiceDesk;
 
 namespace ITIL.Modules.ServiceDesk.Controls
 {
-    public partial class Logs : DotNetNuke.Entities.Modules.PortalModuleBase
+    public partial class Logs : ITILServiceDeskModuleBase
     {
         #region Properties
         public int TaskID

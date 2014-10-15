@@ -33,7 +33,7 @@ using DotNetNuke.Services.Localization;
 
 namespace ITIL.Modules.ServiceDesk
 {
-    public partial class AdminSettings : DotNetNuke.Entities.Modules.PortalModuleBase
+    public partial class AdminSettings : ITILServiceDeskModuleBase
     {
         List<int> colProcessedCategoryIDs;
         protected void Page_Load(object sender, EventArgs e)

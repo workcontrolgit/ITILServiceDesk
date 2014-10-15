@@ -34,7 +34,7 @@ using Microsoft.VisualBasic;
 
 namespace ITIL.Modules.ServiceDesk.Controls
 {
-    public partial class Comments : DotNetNuke.Entities.Modules.PortalModuleBase
+    public partial class Comments : ITILServiceDeskModuleBase
     {
         #region Properties
         public int TaskID

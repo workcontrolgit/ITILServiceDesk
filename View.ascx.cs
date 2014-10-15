@@ -75,7 +75,7 @@ namespace ITIL.Modules.ServiceDesk
     }
     #endregion
 
-    public partial class View : DotNetNuke.Entities.Modules.PortalModuleBase
+    public partial class View : ITILServiceDeskModuleBase
     {
         #region SortExpression
         public string SortExpression

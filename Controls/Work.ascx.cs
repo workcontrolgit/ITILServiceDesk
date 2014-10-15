@@ -11,7 +11,7 @@ using Microsoft.VisualBasic;
 
 namespace ITIL.Modules.ServiceDesk.Controls
 {
-    public partial class Work : DotNetNuke.Entities.Modules.PortalModuleBase
+    public partial class Work : ITILServiceDeskModuleBase
     {
 
         #region Properties

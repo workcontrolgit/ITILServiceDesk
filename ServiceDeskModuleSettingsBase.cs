@@ -12,9 +12,9 @@
 
 using DotNetNuke.Entities.Modules;
 
-namespace ServiceDesk
+namespace ITIL.Modules.ServiceDesk
 {
-    public class ServiceDeskModuleSettingsBase : ModuleSettingsBase
+    public class ITILServiceDeskModuleSettingsBase : ModuleSettingsBase
     {
     }
 }
