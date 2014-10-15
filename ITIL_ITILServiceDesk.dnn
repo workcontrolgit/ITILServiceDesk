@@ -291,6 +291,16 @@ New version 14.03.01 - bootstrap</releaseNotes>
           <path>BuildScripts</path>
           <name>MSBuild.Community.Tasks.Targets</name>
         </file>
+        <file>
+          <name>ITIL_ITILServiceDesk.dnn</name>
+        </file>
+        <file>
+          <path>Packages</path>
+          <name>ITIL_ITILServiceDesk_14.04.01_Install.zip</name>
+        </file>
+        <file>
+          <name>packages.config</name>
+        </file>
       </files>
     </component>
   </components>
