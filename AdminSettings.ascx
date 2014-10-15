@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdminSettings.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.AdminSettings" %>
 <asp:Panel ID="pnlAdminSettings" runat="server" align="left">
-    <%--<asp:Image ID="Image3" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/application_side_contract.png" />--%>
+    <%--<asp:Image ID="Image3" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/application_side_contract.png" />--%>
     <style type="text/css">
         .style1
         {
@@ -15,24 +15,24 @@
         <tr>
             <td valign="top" align="left" nowrap="nowrap">
                 <p>
-                    <asp:Image ID="Image1" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/user_suit.png" />
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/user_suit.png" />
                     <asp:LinkButton ID="lnkAdminRole" runat="server" Font-Underline="True" OnClick="lnkAdminRole_Click"
                         resourcekey="lnkAdminRole" Text="Administrator Role" />
                 </p>
                 <p>
-                    <asp:Image ID="Image4" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/folder.png"
+                    <asp:Image ID="Image4" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/folder.png"
                         Height="16px" />
                     <asp:LinkButton ID="lnkUploadefFilesPath" runat="server" Font-Underline="True" OnClick="lnkUploadefFilesPath_Click"
                         resourcekey="lnkUploadefFilesPath" Text="File Upload Settings" />
                 </p>
                 <p>
-                    <asp:Image ID="Image5" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/group.png"
+                    <asp:Image ID="Image5" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/group.png"
                         Height="16px" />
                     <asp:LinkButton ID="lnkRoles" runat="server" Font-Underline="True" OnClick="lnkRoles_Click"
                         resourcekey="lnkRoles" Text="Assignment Roles" />
                 </p>
                 <p>
-                    <asp:Image ID="Image2" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/tag_blue.png" />
+                    <asp:Image ID="Image2" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/tag_blue.png" />
                     <asp:LinkButton ID="lnkTagsAdmin" runat="server" Font-Underline="True" OnClick="lnkTagsAdmin_Click"
                         resourcekey="lnkTagsAdmin" Text="Tags Administration" />
                 </p>

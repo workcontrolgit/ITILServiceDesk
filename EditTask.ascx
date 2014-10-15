@@ -76,7 +76,7 @@
                             <div class="input-group">
                                 <asp:TextBox ID="txtDueDate" runat="server" Columns="8" CssClass="form-control"></asp:TextBox>
                                 <span class="input-group-addon">
-                                     <asp:HyperLink ID="cmdtxtDueDateCalendar" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
+                                     <asp:HyperLink ID="cmdtxtDueDateCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                             <div class="input-group">
                         <asp:TextBox ID="txtStart" runat="server" Columns="8" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
                                 <span class="input-group-addon">
-                            <asp:HyperLink ID="cmdtxtStartCalendar" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
+                            <asp:HyperLink ID="cmdtxtStartCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
                                 </div>
                         </div>
                         <asp:Label ID="lbltxtComplete" runat="server" resourcekey="lbltxtComplete" Text="Complete:" CssClass="control-label col-xs-2" AssociatedControlID="txtComplete" />
@@ -126,7 +126,7 @@
                             <div class="input-group">
                             <asp:TextBox ID="txtComplete" runat="server" Columns="8" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
                                 <span class="input-group-addon">
-                            <asp:HyperLink ID="cmdtxtCompleteCalendar" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
+                            <asp:HyperLink ID="cmdtxtCompleteCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
                                 </div>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="col-md-3">
                     <p>
-                        <asp:Image ID="imgTags" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/tag_blue.png" /><b>
+                        <asp:Image ID="imgTags" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/tag_blue.png" /><b>
                             <asp:Label ID="lbltxtTags" runat="server" resourcekey="lbltxtTags" Text="Tags:" /></b>
                     </p>
                     <uc1:Tags ID="TagsTreeExistingTasks" runat="server" Visible="True" />

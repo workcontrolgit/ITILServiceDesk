@@ -161,7 +161,7 @@
                             <div class="input-group">
                                 <asp:TextBox ID="txtDueDate" runat="server" MaxLength="25" TabIndex="6" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
                                 <span class="input-group-addon">
-                                    <asp:HyperLink ID="cmdStartCalendar" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/calendar.png"></asp:HyperLink></span>
+                                    <asp:HyperLink ID="cmdStartCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png"></asp:HyperLink></span>
                             </div>
                         </div>
 
@@ -211,7 +211,7 @@
 
 
                 <div class="form-group">
-                    &nbsp;<asp:Image ID="imgTags" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/tag_blue.png" />
+                    &nbsp;<asp:Image ID="imgTags" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/tag_blue.png" />
                     &nbsp;
                             <asp:Label ID="lblCheckTags" runat="server" Font-Bold="True" Text="Check all Tags that apply:"
                                 resourcekey="lblCheckTags" AssociatedControlID="TagsTree" />
@@ -308,52 +308,52 @@
                                     <asp:LinkButton ID="lnkTaskID" runat="server" CommandName="Sort" CommandArgument="TaskID"
                                         Text="TaskID" Font-Underline="True" resourcekey="lnkTaskID" />
                                     <asp:ImageButton ID="TaskIDImage" CommandName="Sort" CommandArgument="TaskID" runat="server"
-                                        ImageUrl="~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png" Visible="false" />
+                                        ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkStatus" runat="server" CommandName="Sort" CommandArgument="Status"
                                         Text="Status" Font-Underline="True" resourcekey="lnkStatus" />
                                     <asp:ImageButton ID="StatusImage" CommandName="Sort" CommandArgument="Status" runat="server"
-                                        ImageUrl="~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png" Visible="false" />
+                                        ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkPriority" runat="server" CommandName="Sort" CommandArgument="Priority"
                                         Text="Priority" Font-Underline="True" resourcekey="lnkPriority" /><asp:ImageButton
                                             ID="PriorityImage" CommandName="Sort" CommandArgument="Priority" runat="server"
-                                            ImageUrl="~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png" Visible="false" />
+                                            ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkDueDate" runat="server" CommandName="Sort" CommandArgument="DueDate"
                                         Text="Due" Font-Underline="True" resourcekey="lnkDueDate" /><asp:ImageButton ID="DueDateImage"
-                                            CommandName="Sort" CommandArgument="DueDate" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png"
+                                            CommandName="Sort" CommandArgument="DueDate" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                             Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkCreatedDate" runat="server" CommandName="Sort" CommandArgument="CreatedDate"
                                         Text="Created" Font-Underline="True" resourcekey="lnkCreatedDate" />
                                     <asp:ImageButton ID="CreatedDateImage" CommandName="Sort" CommandArgument="CreatedDate"
-                                        runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png"
+                                        runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                         Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkAssigned" runat="server" CommandName="Sort" CommandArgument="Assigned"
                                         Text="Assigned" Font-Underline="True" resourcekey="lnkAssigned" />
                                     <asp:ImageButton ID="AssignedImage" CommandName="Sort" CommandArgument="Assigned"
-                                        runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png"
+                                        runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                         Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkDescription" runat="server" CommandName="Sort" CommandArgument="Description"
                                         Text="Description" Font-Underline="True" resourcekey="lnkDescription" />
                                     <asp:ImageButton ID="DescriptionImage" CommandName="Sort" CommandArgument="Description"
-                                        runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png"
+                                        runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                         Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkRequester" runat="server" CommandName="Sort" CommandArgument="Requester"
                                         Text="Requester" Font-Underline="True" resourcekey="lnkRequester" />
                                     <asp:ImageButton ID="RequesterImage" CommandName="Sort" CommandArgument="Requester"
-                                        runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png"
+                                        runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                         Visible="false" />
                                 </td>
                             </tr>
@@ -530,7 +530,7 @@
                 <br />
             </td>
             <td valign="top" nowrap="nowrap">
-                <asp:Image ID="img2Tags" runat="server" ImageUrl="~/DesktopModules/ServiceDesk/images/tag_blue.png" />
+                <asp:Image ID="img2Tags" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/tag_blue.png" />
                 &nbsp;<asp:Label ID="lblSearchTags" resourcekey="lblSearchTags" runat="server"
                     Text="Search Tags:" Font-Bold="true" /><uc1:Tags ID="TagsTreeExistingTasks" runat="server" Visible="False" />
 
