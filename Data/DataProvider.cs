@@ -88,7 +88,7 @@ namespace ServiceDesk.Data
 
         public static DataSet GetUsers(int portalId)
         {
-            return ((DataSet)(SqlHelper.ExecuteDataset(Config.GetConnectionString(), "GetUsers_ServiceDesk", portalId)));
+            return ((DataSet)(SqlHelper.ExecuteDataset(Config.GetConnectionString(), "ITILServiceDesk_GetUsers", portalId)));
         }
 
         #endregion

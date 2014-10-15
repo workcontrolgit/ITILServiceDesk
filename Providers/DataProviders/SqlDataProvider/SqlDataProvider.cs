@@ -148,7 +148,7 @@ namespace ServiceDesk.Data
 
         public  DataSet GetUsers(int portalId)
         {
-            return ((DataSet)(SqlHelper.ExecuteDataset(ConnectionString, "GetUsers_ServiceDesk", portalId)));
+            return ((DataSet)(SqlHelper.ExecuteDataset(ConnectionString, "ITILServiceDesk_GetUsers", portalId)));
         }
 
        

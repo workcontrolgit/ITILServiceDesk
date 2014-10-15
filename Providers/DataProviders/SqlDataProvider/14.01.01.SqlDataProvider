@@ -17,21 +17,21 @@
 
 
 
-/****** Object:  StoredProcedure {databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]    Script Date: 01/23/2014 10:50:31 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]') AND type in (N'P', N'PC'))
-DROP PROCEDURE {databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]
+/****** Object:  StoredProcedure {databaseOwner}{objectQualifier}[ITILServiceDesk_GetUsers]    Script Date: 01/23/2014 10:50:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}[ITILServiceDesk_GetUsers]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}{objectQualifier}[ITILServiceDesk_GetUsers]
 GO
 
 
 
-/****** Object:  StoredProcedure {databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]    Script Date: 01/23/2014 10:50:31 ******/
+/****** Object:  StoredProcedure {databaseOwner}{objectQualifier}[ITILServiceDesk_GetUsers]    Script Date: 01/23/2014 10:50:31 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE {databaseOwner}{objectQualifier}[GetUsers_ServiceDesk]
+CREATE PROCEDURE {databaseOwner}{objectQualifier}[ITILServiceDesk_GetUsers]
 	@PortalID int=null
 AS
 
