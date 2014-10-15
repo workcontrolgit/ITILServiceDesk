@@ -116,7 +116,7 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region SearchCriteria
-        public ServiceDesk_LastSearch SearchCriteria
+        public ITILServiceDesk_LastSearch SearchCriteria
         {
             get
             {
@@ -195,21 +195,21 @@ namespace ITIL.Modules.ServiceDesk
         }
 
         #region GetLastSearchCriteria
-        private ServiceDesk_LastSearch GetLastSearchCriteria()
+        private ITILServiceDesk_LastSearch GetLastSearchCriteria()
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = (from ServiceDesk_LastSearches in objServiceDeskDALDataContext.ServiceDesk_LastSearches
-                                                                  where ServiceDesk_LastSearches.PortalID == PortalId
-                                                                  where ServiceDesk_LastSearches.UserID == UserId
-                                                                  select ServiceDesk_LastSearches).FirstOrDefault();
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = (from ITILServiceDesk_LastSearches in objServiceDeskDALDataContext.ITILServiceDesk_LastSearches
+                                                                  where ITILServiceDesk_LastSearches.PortalID == PortalId
+                                                                  where ITILServiceDesk_LastSearches.UserID == UserId
+                                                                  select ITILServiceDesk_LastSearches).FirstOrDefault();
 
-            if (objServiceDesk_LastSearch == null)
+            if (objITILServiceDesk_LastSearch == null)
             {
-                ServiceDesk_LastSearch InsertServiceDesk_LastSearch = new ServiceDesk_LastSearch();
-                InsertServiceDesk_LastSearch.UserID = UserId;
-                InsertServiceDesk_LastSearch.PortalID = PortalId;
-                objServiceDeskDALDataContext.ServiceDesk_LastSearches.InsertOnSubmit(InsertServiceDesk_LastSearch);
+                ITILServiceDesk_LastSearch InsertITILServiceDesk_LastSearch = new ITILServiceDesk_LastSearch();
+                InsertITILServiceDesk_LastSearch.UserID = UserId;
+                InsertITILServiceDesk_LastSearch.PortalID = PortalId;
+                objServiceDeskDALDataContext.ITILServiceDesk_LastSearches.InsertOnSubmit(InsertITILServiceDesk_LastSearch);
 
                 // Only save is user is logged in
                 if (UserId > -1)
@@ -217,43 +217,43 @@ namespace ITIL.Modules.ServiceDesk
                     objServiceDeskDALDataContext.SubmitChanges();
                 }
 
-                return InsertServiceDesk_LastSearch;
+                return InsertITILServiceDesk_LastSearch;
             }
             else
             {
-                return objServiceDesk_LastSearch;
+                return objITILServiceDesk_LastSearch;
             }
         }
         #endregion
 
         #region SaveLastSearchCriteria
-        private void SaveLastSearchCriteria(ServiceDesk_LastSearch UpdateServiceDesk_LastSearch)
+        private void SaveLastSearchCriteria(ITILServiceDesk_LastSearch UpdateITILServiceDesk_LastSearch)
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = (from ServiceDesk_LastSearches in objServiceDeskDALDataContext.ServiceDesk_LastSearches
-                                                                  where ServiceDesk_LastSearches.PortalID == PortalId
-                                                                  where ServiceDesk_LastSearches.UserID == UserId
-                                                                  select ServiceDesk_LastSearches).FirstOrDefault();
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = (from ITILServiceDesk_LastSearches in objServiceDeskDALDataContext.ITILServiceDesk_LastSearches
+                                                                  where ITILServiceDesk_LastSearches.PortalID == PortalId
+                                                                  where ITILServiceDesk_LastSearches.UserID == UserId
+                                                                  select ITILServiceDesk_LastSearches).FirstOrDefault();
 
-            if (objServiceDesk_LastSearch == null)
+            if (objITILServiceDesk_LastSearch == null)
             {
-                objServiceDesk_LastSearch = new ServiceDesk_LastSearch();
-                objServiceDesk_LastSearch.UserID = UserId;
-                objServiceDesk_LastSearch.PortalID = PortalId;
-                objServiceDeskDALDataContext.ServiceDesk_LastSearches.InsertOnSubmit(objServiceDesk_LastSearch);
+                objITILServiceDesk_LastSearch = new ITILServiceDesk_LastSearch();
+                objITILServiceDesk_LastSearch.UserID = UserId;
+                objITILServiceDesk_LastSearch.PortalID = PortalId;
+                objServiceDeskDALDataContext.ITILServiceDesk_LastSearches.InsertOnSubmit(objITILServiceDesk_LastSearch);
                 objServiceDeskDALDataContext.SubmitChanges();
             }
 
-            objServiceDesk_LastSearch.AssignedRoleID = UpdateServiceDesk_LastSearch.AssignedRoleID;
-            objServiceDesk_LastSearch.Categories = UpdateServiceDesk_LastSearch.Categories;
-            objServiceDesk_LastSearch.CreatedDate = UpdateServiceDesk_LastSearch.CreatedDate;
-            objServiceDesk_LastSearch.SearchText = UpdateServiceDesk_LastSearch.SearchText;
-            objServiceDesk_LastSearch.DueDate = UpdateServiceDesk_LastSearch.DueDate;
-            objServiceDesk_LastSearch.Priority = UpdateServiceDesk_LastSearch.Priority;
-            objServiceDesk_LastSearch.Status = UpdateServiceDesk_LastSearch.Status;
-            objServiceDesk_LastSearch.CurrentPage = UpdateServiceDesk_LastSearch.CurrentPage;
-            objServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
+            objITILServiceDesk_LastSearch.AssignedRoleID = UpdateITILServiceDesk_LastSearch.AssignedRoleID;
+            objITILServiceDesk_LastSearch.Categories = UpdateITILServiceDesk_LastSearch.Categories;
+            objITILServiceDesk_LastSearch.CreatedDate = UpdateITILServiceDesk_LastSearch.CreatedDate;
+            objITILServiceDesk_LastSearch.SearchText = UpdateITILServiceDesk_LastSearch.SearchText;
+            objITILServiceDesk_LastSearch.DueDate = UpdateITILServiceDesk_LastSearch.DueDate;
+            objITILServiceDesk_LastSearch.Priority = UpdateITILServiceDesk_LastSearch.Priority;
+            objITILServiceDesk_LastSearch.Status = UpdateITILServiceDesk_LastSearch.Status;
+            objITILServiceDesk_LastSearch.CurrentPage = UpdateITILServiceDesk_LastSearch.CurrentPage;
+            objITILServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
 
             objServiceDeskDALDataContext.SubmitChanges();
         }
@@ -362,23 +362,23 @@ namespace ITIL.Modules.ServiceDesk
             RoleController objRoleController = new RoleController();
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            List<ServiceDesk_Role> colServiceDesk_Roles = (from ServiceDesk_Roles in objServiceDeskDALDataContext.ServiceDesk_Roles
-                                                             where ServiceDesk_Roles.PortalID == PortalId
-                                                             select ServiceDesk_Roles).ToList();
+            List<ITILServiceDesk_Role> colITILServiceDesk_Roles = (from ITILServiceDesk_Roles in objServiceDeskDALDataContext.ITILServiceDesk_Roles
+                                                             where ITILServiceDesk_Roles.PortalID == PortalId
+                                                             select ITILServiceDesk_Roles).ToList();
 
             // Create a ListItemCollection to hold the Roles 
             ListItemCollection colListItemCollection = new ListItemCollection();
 
             // Add the Roles to the List
-            foreach (ServiceDesk_Role objServiceDesk_Role in colServiceDesk_Roles)
+            foreach (ITILServiceDesk_Role objITILServiceDesk_Role in colITILServiceDesk_Roles)
             {
                 try
                 {
-                    RoleInfo objRoleInfo = objRoleController.GetRole(Convert.ToInt32(objServiceDesk_Role.RoleID), PortalId);
+                    RoleInfo objRoleInfo = objRoleController.GetRole(Convert.ToInt32(objITILServiceDesk_Role.RoleID), PortalId);
 
                     ListItem RoleListItem = new ListItem();
                     RoleListItem.Text = objRoleInfo.RoleName;
-                    RoleListItem.Value = objServiceDesk_Role.RoleID.ToString();
+                    RoleListItem.Value = objITILServiceDesk_Role.RoleID.ToString();
                     ddlAssignedAdmin.Items.Add(RoleListItem);
                 }
                 catch
@@ -386,7 +386,7 @@ namespace ITIL.Modules.ServiceDesk
                     // Role no longer exists in Portal
                     ListItem RoleListItem = new ListItem();
                     RoleListItem.Text = Localization.GetString("DeletedRole.Text", LocalResourceFile);
-                    RoleListItem.Value = objServiceDesk_Role.RoleID.ToString();
+                    RoleListItem.Value = objITILServiceDesk_Role.RoleID.ToString();
                     ddlAssignedAdmin.Items.Add(RoleListItem);
                 }
             }
@@ -460,13 +460,13 @@ namespace ITIL.Modules.ServiceDesk
         #region GetAdminRole
         private string GetAdminRole()
         {
-            List<ServiceDesk_Setting> objServiceDesk_Settings = GetSettings();
-            ServiceDesk_Setting objServiceDesk_Setting = objServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
+            List<ITILServiceDesk_Setting> objITILServiceDesk_Settings = GetSettings();
+            ITILServiceDesk_Setting objITILServiceDesk_Setting = objITILServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
 
             string strAdminRoleID = "Administrators";
-            if (objServiceDesk_Setting != null)
+            if (objITILServiceDesk_Setting != null)
             {
-                strAdminRoleID = objServiceDesk_Setting.SettingValue;
+                strAdminRoleID = objITILServiceDesk_Setting.SettingValue;
             }
 
             return strAdminRoleID;
@@ -476,13 +476,13 @@ namespace ITIL.Modules.ServiceDesk
         #region GetUploadPermission
         private string GetUploadPermission()
         {
-            List<ServiceDesk_Setting> objServiceDesk_Settings = GetSettings();
-            ServiceDesk_Setting objServiceDesk_Setting = objServiceDesk_Settings.Where(x => x.SettingName == "UploadPermission").FirstOrDefault();
+            List<ITILServiceDesk_Setting> objITILServiceDesk_Settings = GetSettings();
+            ITILServiceDesk_Setting objITILServiceDesk_Setting = objITILServiceDesk_Settings.Where(x => x.SettingName == "UploadPermission").FirstOrDefault();
 
             string strUploadPermission = "All";
-            if (objServiceDesk_Setting != null)
+            if (objITILServiceDesk_Setting != null)
             {
-                strUploadPermission = objServiceDesk_Setting.SettingValue;
+                strUploadPermission = objITILServiceDesk_Setting.SettingValue;
             }
 
             return strUploadPermission;
@@ -498,67 +498,67 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region GetSettings
-        private List<ServiceDesk_Setting> GetSettings()
+        private List<ITILServiceDesk_Setting> GetSettings()
         {
             // Get Settings
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            List<ServiceDesk_Setting> colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                  where ServiceDesk_Settings.PortalID == PortalId
-                                                                  select ServiceDesk_Settings).ToList();
+            List<ITILServiceDesk_Setting> colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                  where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                  select ITILServiceDesk_Settings).ToList();
 
-            if (colServiceDesk_Setting.Count == 0)
+            if (colITILServiceDesk_Setting.Count == 0)
             {
                 // Create Default vaules
-                ServiceDesk_Setting objServiceDesk_Setting1 = new ServiceDesk_Setting();
+                ITILServiceDesk_Setting objITILServiceDesk_Setting1 = new ITILServiceDesk_Setting();
 
-                objServiceDesk_Setting1.PortalID = PortalId;
-                objServiceDesk_Setting1.SettingName = "AdminRole";
-                objServiceDesk_Setting1.SettingValue = "Administrators";
+                objITILServiceDesk_Setting1.PortalID = PortalId;
+                objITILServiceDesk_Setting1.SettingName = "AdminRole";
+                objITILServiceDesk_Setting1.SettingValue = "Administrators";
 
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting1);
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting1);
                 objServiceDeskDALDataContext.SubmitChanges();
 
-                ServiceDesk_Setting objServiceDesk_Setting2 = new ServiceDesk_Setting();
+                ITILServiceDesk_Setting objITILServiceDesk_Setting2 = new ITILServiceDesk_Setting();
 
-                objServiceDesk_Setting2.PortalID = PortalId;
-                objServiceDesk_Setting2.SettingName = "UploadefFilesPath";
-                objServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
+                objITILServiceDesk_Setting2.PortalID = PortalId;
+                objITILServiceDesk_Setting2.SettingName = "UploadefFilesPath";
+                objITILServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
 
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting2);
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting2);
                 objServiceDeskDALDataContext.SubmitChanges();
 
-                colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                           where ServiceDesk_Settings.PortalID == PortalId
-                                           select ServiceDesk_Settings).ToList();
+                colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                           where ITILServiceDesk_Settings.PortalID == PortalId
+                                           select ITILServiceDesk_Settings).ToList();
             }
 
             // Upload Permission
-            ServiceDesk_Setting UploadPermissionServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                         where ServiceDesk_Settings.PortalID == PortalId
-                                                                         where ServiceDesk_Settings.SettingName == "UploadPermission"
-                                                                         select ServiceDesk_Settings).FirstOrDefault();
+            ITILServiceDesk_Setting UploadPermissionITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                         where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                         where ITILServiceDesk_Settings.SettingName == "UploadPermission"
+                                                                         select ITILServiceDesk_Settings).FirstOrDefault();
 
-            if (UploadPermissionServiceDesk_Setting != null)
+            if (UploadPermissionITILServiceDesk_Setting != null)
             {
                 // Add to collection
-                colServiceDesk_Setting.Add(UploadPermissionServiceDesk_Setting);
+                colITILServiceDesk_Setting.Add(UploadPermissionITILServiceDesk_Setting);
             }
             else
             {
                 // Add Default value
-                ServiceDesk_Setting objServiceDesk_Setting = new ServiceDesk_Setting();
-                objServiceDesk_Setting.SettingName = "UploadPermission";
-                objServiceDesk_Setting.SettingValue = "All";
-                objServiceDesk_Setting.PortalID = PortalId;
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting);
+                ITILServiceDesk_Setting objITILServiceDesk_Setting = new ITILServiceDesk_Setting();
+                objITILServiceDesk_Setting.SettingName = "UploadPermission";
+                objITILServiceDesk_Setting.SettingValue = "All";
+                objITILServiceDesk_Setting.PortalID = PortalId;
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting);
                 objServiceDeskDALDataContext.SubmitChanges();
 
                 // Add to collection
-                colServiceDesk_Setting.Add(objServiceDesk_Setting);
+                colITILServiceDesk_Setting.Add(objITILServiceDesk_Setting);
             }
 
-            return colServiceDesk_Setting;
+            return colITILServiceDesk_Setting;
         }
         #endregion
 
@@ -591,21 +591,21 @@ namespace ITIL.Modules.ServiceDesk
 
         private void ResetSearch()
         {
-            ServiceDesk_LastSearch ExistingServiceDesk_LastSearch = GetLastSearchCriteria();
-            ExistingServiceDesk_LastSearch.AssignedRoleID = null;
-            ExistingServiceDesk_LastSearch.Categories = null;
-            ExistingServiceDesk_LastSearch.CreatedDate = null;
-            ExistingServiceDesk_LastSearch.SearchText = null;
-            ExistingServiceDesk_LastSearch.DueDate = null;
-            ExistingServiceDesk_LastSearch.Priority = null;
-            ExistingServiceDesk_LastSearch.Status = null;
-            ExistingServiceDesk_LastSearch.CurrentPage = 1;
-            ExistingServiceDesk_LastSearch.PageSize = 25;
+            ITILServiceDesk_LastSearch ExistingITILServiceDesk_LastSearch = GetLastSearchCriteria();
+            ExistingITILServiceDesk_LastSearch.AssignedRoleID = null;
+            ExistingITILServiceDesk_LastSearch.Categories = null;
+            ExistingITILServiceDesk_LastSearch.CreatedDate = null;
+            ExistingITILServiceDesk_LastSearch.SearchText = null;
+            ExistingITILServiceDesk_LastSearch.DueDate = null;
+            ExistingITILServiceDesk_LastSearch.Priority = null;
+            ExistingITILServiceDesk_LastSearch.Status = null;
+            ExistingITILServiceDesk_LastSearch.CurrentPage = 1;
+            ExistingITILServiceDesk_LastSearch.PageSize = 25;
 
             ddlPageSize.SelectedValue = "25";
             CurrentPage = "1";
 
-            SaveLastSearchCriteria(ExistingServiceDesk_LastSearch);
+            SaveLastSearchCriteria(ExistingITILServiceDesk_LastSearch);
 
             Response.Redirect(DotNetNuke.Common.Globals.NavigateURL(), true);
         }
@@ -830,84 +830,84 @@ namespace ITIL.Modules.ServiceDesk
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
             // Save Task
-            ServiceDesk_Task objServiceDesk_Task = new ServiceDesk_Task();
+            ITILServiceDesk_Task objITILServiceDesk_Task = new ITILServiceDesk_Task();
 
-            objServiceDesk_Task.Status = "New";
-            objServiceDesk_Task.CreatedDate = DateTime.Now;
-            objServiceDesk_Task.Description = txtDescription.Text;
-            objServiceDesk_Task.PortalID = PortalId;
-            objServiceDesk_Task.Priority = ddlPriority.SelectedValue;
-            objServiceDesk_Task.RequesterPhone = txtPhone.Text;
-            objServiceDesk_Task.AssignedRoleID = -1;
-            objServiceDesk_Task.TicketPassword = GetRandomPassword();
+            objITILServiceDesk_Task.Status = "New";
+            objITILServiceDesk_Task.CreatedDate = DateTime.Now;
+            objITILServiceDesk_Task.Description = txtDescription.Text;
+            objITILServiceDesk_Task.PortalID = PortalId;
+            objITILServiceDesk_Task.Priority = ddlPriority.SelectedValue;
+            objITILServiceDesk_Task.RequesterPhone = txtPhone.Text;
+            objITILServiceDesk_Task.AssignedRoleID = -1;
+            objITILServiceDesk_Task.TicketPassword = GetRandomPassword();
 
             if (Convert.ToInt32(txtUserID.Text) == -1)
             {
                 // User not logged in
-                objServiceDesk_Task.RequesterEmail = txtEmail.Text;
-                objServiceDesk_Task.RequesterName = txtName.Text;
-                objServiceDesk_Task.RequesterUserID = -1;
+                objITILServiceDesk_Task.RequesterEmail = txtEmail.Text;
+                objITILServiceDesk_Task.RequesterName = txtName.Text;
+                objITILServiceDesk_Task.RequesterUserID = -1;
             }
             else
             {
                 // User logged in
-                objServiceDesk_Task.RequesterUserID = Convert.ToInt32(txtUserID.Text);
-                objServiceDesk_Task.RequesterName = UserController.GetUser(PortalId, Convert.ToInt32(txtUserID.Text), false).DisplayName;
+                objITILServiceDesk_Task.RequesterUserID = Convert.ToInt32(txtUserID.Text);
+                objITILServiceDesk_Task.RequesterName = UserController.GetUser(PortalId, Convert.ToInt32(txtUserID.Text), false).DisplayName;
             }
 
             if (txtDueDate.Text.Trim().Length > 1)
             {
-                objServiceDesk_Task.DueDate = Convert.ToDateTime(txtDueDate.Text.Trim());
+                objITILServiceDesk_Task.DueDate = Convert.ToDateTime(txtDueDate.Text.Trim());
             }
 
             // If Admin panel is visible this is an admin
             // Save the Status and Assignment
             if (pnlAdminTicketStatus.Visible == true)
             {
-                objServiceDesk_Task.AssignedRoleID = Convert.ToInt32(ddlAssignedAdmin.SelectedValue);
-                objServiceDesk_Task.Status = ddlStatusAdmin.SelectedValue;
+                objITILServiceDesk_Task.AssignedRoleID = Convert.ToInt32(ddlAssignedAdmin.SelectedValue);
+                objITILServiceDesk_Task.Status = ddlStatusAdmin.SelectedValue;
             }
 
-            objServiceDeskDALDataContext.ServiceDesk_Tasks.InsertOnSubmit(objServiceDesk_Task);
+            objServiceDeskDALDataContext.ITILServiceDesk_Tasks.InsertOnSubmit(objITILServiceDesk_Task);
             objServiceDeskDALDataContext.SubmitChanges();
 
             // Save Task Details
-            ServiceDesk_TaskDetail objServiceDesk_TaskDetail = new ServiceDesk_TaskDetail();
+            ITILServiceDesk_TaskDetail objITILServiceDesk_TaskDetail = new ITILServiceDesk_TaskDetail();
 
             if ((txtDetails.Text.Trim().Length > 0) || (TicketFileUpload.HasFile))
             {
-                objServiceDesk_TaskDetail.TaskID = objServiceDesk_Task.TaskID;
-                objServiceDesk_TaskDetail.Description = txtDetails.Text;
-                objServiceDesk_TaskDetail.DetailType = "Comment-Visible";
-                objServiceDesk_TaskDetail.InsertDate = DateTime.Now;
+                objITILServiceDesk_TaskDetail.TaskID = objITILServiceDesk_Task.TaskID;
+                objITILServiceDesk_TaskDetail.Description = txtDetails.Text;
+                objITILServiceDesk_TaskDetail.DetailType = "Comment-Visible";
+                objITILServiceDesk_TaskDetail.InsertDate = DateTime.Now;
 
                 if (Convert.ToInt32(txtUserID.Text) == -1)
                 {
                     // User not logged in
-                    objServiceDesk_TaskDetail.UserID = -1;
+                    objITILServiceDesk_TaskDetail.UserID = -1;
                 }
                 else
                 {
                     // User logged in
-                    objServiceDesk_TaskDetail.UserID = Convert.ToInt32(txtUserID.Text);
+                    objITILServiceDesk_TaskDetail.UserID = Convert.ToInt32(txtUserID.Text);
                 }
 
-                objServiceDeskDALDataContext.ServiceDesk_TaskDetails.InsertOnSubmit(objServiceDesk_TaskDetail);
+                objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails.InsertOnSubmit(objITILServiceDesk_TaskDetail);
                 objServiceDeskDALDataContext.SubmitChanges();
 
                 // Upload the File
                 if (TicketFileUpload.HasFile)
                 {
-                    UploadFile(objServiceDesk_TaskDetail.DetailID);
+                    UploadFile(objITILServiceDesk_TaskDetail.DetailID);
                     // Insert Log
-                    Log.InsertLog(objServiceDesk_Task.TaskID, UserId, String.Format("{0} uploaded file '{1}'.", GetUserName(), TicketFileUpload.FileName));
+                    Log.InsertLog(objITILServiceDesk_Task.TaskID, UserId, String.Format("{0} uploaded file '{1}'.", GetUserName(), TicketFileUpload.FileName));
                 }
             }
 
             // Insert Log
-            Log.InsertLog(objServiceDesk_Task.TaskID, UserId, String.Format("{0} created ticket.", GetUserName()));
+            Log.InsertLog(objITILServiceDesk_Task.TaskID, UserId, String.Format("{0} created ticket.", GetUserName()));
 
-            return objServiceDesk_Task.TaskID;
+            return objITILServiceDesk_Task.TaskID;
         }
         #endregion
 
@@ -922,12 +922,12 @@ namespace ITIL.Modules.ServiceDesk
                 // Iterate through the CheckedNodes collection 
                 foreach (TreeNode node in objTreeView.CheckedNodes)
                 {
-                    ServiceDesk_TaskCategory objServiceDesk_TaskCategory = new ServiceDesk_TaskCategory();
+                    ITILServiceDesk_TaskCategory objITILServiceDesk_TaskCategory = new ITILServiceDesk_TaskCategory();
 
-                    objServiceDesk_TaskCategory.TaskID = intTaskID;
-                    objServiceDesk_TaskCategory.CategoryID = Convert.ToInt32(node.Value);
+                    objITILServiceDesk_TaskCategory.TaskID = intTaskID;
+                    objITILServiceDesk_TaskCategory.CategoryID = Convert.ToInt32(node.Value);
 
-                    objServiceDeskDALDataContext.ServiceDesk_TaskCategories.InsertOnSubmit(objServiceDesk_TaskCategory);
+                    objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories.InsertOnSubmit(objITILServiceDesk_TaskCategory);
                     objServiceDeskDALDataContext.SubmitChanges();
                 }
             }
@@ -987,24 +987,24 @@ namespace ITIL.Modules.ServiceDesk
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            string strUploadefFilesPath = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                           where ServiceDesk_Settings.PortalID == PortalId
-                                           where ServiceDesk_Settings.SettingName == "UploadefFilesPath"
-                                           select ServiceDesk_Settings).FirstOrDefault().SettingValue;
+            string strUploadefFilesPath = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                           where ITILServiceDesk_Settings.PortalID == PortalId
+                                           where ITILServiceDesk_Settings.SettingName == "UploadefFilesPath"
+                                           select ITILServiceDesk_Settings).FirstOrDefault().SettingValue;
 
             EnsureDirectory(new System.IO.DirectoryInfo(strUploadefFilesPath));
             string strfilename = Convert.ToString(intDetailID) + "_" + GetRandomPassword() + Path.GetExtension(TicketFileUpload.FileName).ToLower();
             strUploadefFilesPath = strUploadefFilesPath + @"\" + strfilename;
             TicketFileUpload.SaveAs(strUploadefFilesPath);
 
-            ServiceDesk_Attachment objServiceDesk_Attachment = new ServiceDesk_Attachment();
-            objServiceDesk_Attachment.DetailID = intDetailID;
-            objServiceDesk_Attachment.FileName = strfilename;
-            objServiceDesk_Attachment.OriginalFileName = TicketFileUpload.FileName;
-            objServiceDesk_Attachment.AttachmentPath = strUploadefFilesPath;
-            objServiceDesk_Attachment.UserID = UserId;
+            ITILServiceDesk_Attachment objITILServiceDesk_Attachment = new ITILServiceDesk_Attachment();
+            objITILServiceDesk_Attachment.DetailID = intDetailID;
+            objITILServiceDesk_Attachment.FileName = strfilename;
+            objITILServiceDesk_Attachment.OriginalFileName = TicketFileUpload.FileName;
+            objITILServiceDesk_Attachment.AttachmentPath = strUploadefFilesPath;
+            objITILServiceDesk_Attachment.UserID = UserId;
 
-            objServiceDeskDALDataContext.ServiceDesk_Attachments.InsertOnSubmit(objServiceDesk_Attachment);
+            objServiceDeskDALDataContext.ITILServiceDesk_Attachments.InsertOnSubmit(objITILServiceDesk_Attachment);
             objServiceDeskDALDataContext.SubmitChanges();
         }
         #endregion
@@ -1126,11 +1126,11 @@ namespace ITIL.Modules.ServiceDesk
             {
                 ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-                ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                           where ServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
-                                                           select ServiceDesk_Tasks).FirstOrDefault();
+                ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                           where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
+                                                           select ITILServiceDesk_Tasks).FirstOrDefault();
 
-                string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), PortalSettings.PortalAlias.HTTPAlias);
+                string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), PortalSettings.PortalAlias.HTTPAlias);
                 string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
                 string strSubject = String.Format(Localization.GetString("NewHelpDeskTicketCreated.Text", LocalResourceFile), TaskID);
                 string strBody = "";
@@ -1138,7 +1138,7 @@ namespace ITIL.Modules.ServiceDesk
                 if (Convert.ToInt32(txtUserID.Text) != UserId || UserId == -1)
                 {
                     //Anonymous or login user submit ticket for another user
-                    NotifyRequesterSubmitTicket(TaskID.ToString(), objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                    NotifyRequesterSubmitTicket(TaskID.ToString(), objITILServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
 
                     // Get Admin Role
                     string strAdminRoleID = GetAdminRole();
@@ -1148,14 +1148,14 @@ namespace ITIL.Modules.ServiceDesk
                         // If Ticket is assigned to any group other than unassigned notify them
                         if (Convert.ToInt32(ddlAssignedAdmin.SelectedValue) > -1)
                         {
-                            NotifyGroupAssignTicket(TaskID, objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                            NotifyGroupAssignTicket(TaskID, objITILServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
                         }
                     }
                     else
                     {
                         // This is not an Admin so Notify the Admins
                         // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details 
-                        NotifyAdminSubmitTicket(TaskID, objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                        NotifyAdminSubmitTicket(TaskID, objITILServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
                     }
                 }
                 else
@@ -1163,9 +1163,9 @@ namespace ITIL.Modules.ServiceDesk
                     // A normal ticket has been created
 
                     // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
-                    NotifyAdminSubmitTicket(TaskID, objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                    NotifyAdminSubmitTicket(TaskID, objITILServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
                     // ITIL Customization - email notify login user who entered ticket.  The email contains password protected link
-                    NotifyRequesterSubmitTicket(TaskID.ToString(), objServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
+                    NotifyRequesterSubmitTicket(TaskID.ToString(), objITILServiceDesk_Tasks); //ITIL Customization - removed strPasswordLinkURL
                 }
             }
             catch (Exception ex)
@@ -1181,20 +1181,20 @@ namespace ITIL.Modules.ServiceDesk
         // ITIL Customization - email notifies (logged in) requester of the new submitted ticket.  The email contains password protected link
 
         #region NotifyRequesterSubmitTicket
-        private void NotifyRequesterSubmitTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
+        private void NotifyRequesterSubmitTicket(string TaskID, ITILServiceDesk_Task objITILServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
         {
             string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
+            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
             string strSubject = String.Format(Localization.GetString("NewHelpDeskTicketCreated.Text", LocalResourceFile), TaskID);
             string strBody = Localization.GetString("HTMLTicketEmailRequester.Text", LocalResourceFile);
-            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objServiceDesk_Tasks);
+            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
 
             string strEmail = txtEmail.Text;
 
             // If userId is not -1 then get the Email
-            if (objServiceDesk_Tasks.RequesterUserID > -1)
+            if (objITILServiceDesk_Tasks.RequesterUserID > -1)
             {
-                strEmail = UserController.GetUser(PortalId, objServiceDesk_Tasks.RequesterUserID, false).Email;
+                strEmail = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).Email;
             }
 
             DotNetNuke.Services.Mail.Mail.SendMail(PortalSettings.Email, strEmail, "", strSubject, strBody, "", "HTML", "", "", "", "");
@@ -1206,17 +1206,17 @@ namespace ITIL.Modules.ServiceDesk
         // ITIL Customization - email notifies services desk admins of the new submitted ticket.  The email contains password protected link
 
         #region NotifyAdminSubmitTicket
-        private void NotifyAdminSubmitTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
+        private void NotifyAdminSubmitTicket(string TaskID, ITILServiceDesk_Task objITILServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
         {
             // This is not an Admin so Notify the Admins
 
             // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details 
             string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
+            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
 
             string strSubject = String.Format(Localization.GetString("NewHelpDeskTicketCreatedAt.Text", LocalResourceFile), TaskID, strDomainServerUrl);
             string strBody = Localization.GetString("HTMLTicketEmailAdmin.Text", LocalResourceFile);
-            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objServiceDesk_Tasks);
+            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
 
             // Get all users in the Admin Role
             RoleController objRoleController = new RoleController();
@@ -1232,7 +1232,7 @@ namespace ITIL.Modules.ServiceDesk
         // ITIL Customization - added email to notify (logged in) requester who submitted the ticket.  The email contains password protected link
 
         #region NotifyGroupAssignTicket
-        private void NotifyGroupAssignTicket(string TaskID, ServiceDesk_Task objServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
+        private void NotifyGroupAssignTicket(string TaskID, ITILServiceDesk_Task objITILServiceDesk_Tasks)  //ITIL Customization - removed strPasswordLinkURL
         {
             try
             {
@@ -1241,11 +1241,11 @@ namespace ITIL.Modules.ServiceDesk
                 string strAssignedRole = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(ddlAssignedAdmin.SelectedValue), PortalId).RoleName);
 
                 string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-                string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
+                string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
 
                 string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);
                 string strBody = Localization.GetString("HTMLTicketEmailAssignee.Text", LocalResourceFile);
-                strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objServiceDesk_Tasks);
+                strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
 
                 // Get all users in the AssignedRole Role
                 ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
@@ -1291,7 +1291,7 @@ namespace ITIL.Modules.ServiceDesk
         // Existing Tickets
 
         #region DisplayExistingTickets
-        private void DisplayExistingTickets(ServiceDesk_LastSearch objLastSearch)
+        private void DisplayExistingTickets(ITILServiceDesk_LastSearch objLastSearch)
         {
             string[] UsersRoles = UserInfo.Roles;
             List<int> UsersRoleIDs = new List<int>();
@@ -1299,20 +1299,20 @@ namespace ITIL.Modules.ServiceDesk
 
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            IQueryable<ExistingTasks> result = from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                               where ServiceDesk_Tasks.PortalID == PortalId
-                                               orderby ServiceDesk_Tasks.CreatedDate descending
+            IQueryable<ExistingTasks> result = from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                               where ITILServiceDesk_Tasks.PortalID == PortalId
+                                               orderby ITILServiceDesk_Tasks.CreatedDate descending
                                                select new ExistingTasks
                                                {
-                                                   TaskID = ServiceDesk_Tasks.TaskID,
-                                                   Status = ServiceDesk_Tasks.Status,
-                                                   Priority = ServiceDesk_Tasks.Priority,
-                                                   DueDate = ServiceDesk_Tasks.DueDate,
-                                                   CreatedDate = ServiceDesk_Tasks.CreatedDate,
-                                                   Assigned = ServiceDesk_Tasks.AssignedRoleID.ToString(),
-                                                   Description = ServiceDesk_Tasks.Description,
-                                                   Requester = ServiceDesk_Tasks.RequesterUserID.ToString(),
-                                                   RequesterName = ServiceDesk_Tasks.RequesterName
+                                                   TaskID = ITILServiceDesk_Tasks.TaskID,
+                                                   Status = ITILServiceDesk_Tasks.Status,
+                                                   Priority = ITILServiceDesk_Tasks.Priority,
+                                                   DueDate = ITILServiceDesk_Tasks.DueDate,
+                                                   CreatedDate = ITILServiceDesk_Tasks.CreatedDate,
+                                                   Assigned = ITILServiceDesk_Tasks.AssignedRoleID.ToString(),
+                                                   Description = ITILServiceDesk_Tasks.Description,
+                                                   Requester = ITILServiceDesk_Tasks.RequesterUserID.ToString(),
+                                                   RequesterName = ITILServiceDesk_Tasks.RequesterName
                                                };
 
             #region Only show users the records they should see
@@ -1390,7 +1390,7 @@ namespace ITIL.Modules.ServiceDesk
             if (strSearchText.Trim().Length > 0)
             {
                 result = (from Search in result
-                          join details in objServiceDeskDALDataContext.ServiceDesk_TaskDetails
+                          join details in objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails
                           on Search.TaskID equals details.TaskID into joined
                           from leftjoin in joined.DefaultIfEmpty()
                           where Search.Description.Contains(strSearchText) ||
@@ -1417,9 +1417,9 @@ namespace ITIL.Modules.ServiceDesk
                 // Perform a query that does in intersect between all the Catagories selected and all the categories that each TaskID has
                 // The number of values that match must equal the number of values that were selected in the Tags tree
                 FinalResult = (from Categories in FinalResult.AsQueryable()
-                               where ((from ServiceDesk_TaskCategories in objServiceDeskDALDataContext.ServiceDesk_TaskCategories
-                                       where ServiceDesk_TaskCategories.TaskID == Categories.TaskID
-                                       select ServiceDesk_TaskCategories.CategoryID).ToArray<int>()).Intersect(ArrIntCatagories).Count() == ArrIntCatagories.Length
+                               where ((from ITILServiceDesk_TaskCategories in objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories
+                                       where ITILServiceDesk_TaskCategories.TaskID == Categories.TaskID
+                                       select ITILServiceDesk_TaskCategories.CategoryID).ToArray<int>()).Intersect(ArrIntCatagories).Count() == ArrIntCatagories.Length
                                select Categories).ToList();
             }
             #endregion
@@ -1507,9 +1507,9 @@ namespace ITIL.Modules.ServiceDesk
                 if (intCurrentPage == -1)
                 {
                     intCurrentPage = intTotalPages;
-                    ServiceDesk_LastSearch objServiceDesk_LastSearch = GetLastSearchCriteria();
-                    objServiceDesk_LastSearch.CurrentPage = intCurrentPage;
-                    SaveLastSearchCriteria(objServiceDesk_LastSearch);
+                    ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetLastSearchCriteria();
+                    objITILServiceDesk_LastSearch.CurrentPage = intCurrentPage;
+                    SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
                 }
 
                 // Show and hide buttons
@@ -1525,9 +1525,9 @@ namespace ITIL.Modules.ServiceDesk
             if (intCurrentPage > intTotalPages)
             {
                 intCurrentPage = 1;
-                ServiceDesk_LastSearch objServiceDesk_LastSearch = GetLastSearchCriteria();
-                objServiceDesk_LastSearch.CurrentPage = intCurrentPage;
-                SaveLastSearchCriteria(objServiceDesk_LastSearch);
+                ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetLastSearchCriteria();
+                objITILServiceDesk_LastSearch.CurrentPage = intCurrentPage;
+                SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
 
                 lnkPrevious.Visible = true;
             }
@@ -1758,9 +1758,9 @@ namespace ITIL.Modules.ServiceDesk
                     break;
             }
 
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = GetValuesFromSearchForm();
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetValuesFromSearchForm();
             // Save Search Criteria
-            SaveLastSearchCriteria(objServiceDesk_LastSearch);
+            SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
             // Execute Search
             DisplayExistingTickets(SearchCriteria);
         }
@@ -1773,9 +1773,9 @@ namespace ITIL.Modules.ServiceDesk
             // Search
             if (e.CommandName == "Search")
             {
-                ServiceDesk_LastSearch objServiceDesk_LastSearch = GetValuesFromSearchForm();
+                ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetValuesFromSearchForm();
                 // Save Search Criteria
-                SaveLastSearchCriteria(objServiceDesk_LastSearch);
+                SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
                 // Execute Search
                 DisplayExistingTickets(SearchCriteria);
             }
@@ -1793,11 +1793,11 @@ namespace ITIL.Modules.ServiceDesk
                 TextBox txtCreated = (TextBox)e.Item.FindControl("txtCreated");
 
                 // Use an ExistingTasks object to pass the values to the Search method
-                ServiceDesk_LastSearch objServiceDesk_LastSearch = new ServiceDesk_LastSearch();
-                objServiceDesk_LastSearch.SearchText = (txtSearch.Text.Trim().Length == 0) ? null : txtSearch.Text.Trim();
-                objServiceDesk_LastSearch.Status = (ddlStatus.SelectedValue == "*All*") ? null : ddlStatus.SelectedValue;
-                objServiceDesk_LastSearch.AssignedRoleID = (ddlAssigned.SelectedValue == "-2") ? null : (int?)Convert.ToInt32(ddlAssigned.SelectedValue);
-                objServiceDesk_LastSearch.Priority = (ddlPriority.SelectedValue == "*All*") ? null : ddlPriority.SelectedValue;
+                ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = new ITILServiceDesk_LastSearch();
+                objITILServiceDesk_LastSearch.SearchText = (txtSearch.Text.Trim().Length == 0) ? null : txtSearch.Text.Trim();
+                objITILServiceDesk_LastSearch.Status = (ddlStatus.SelectedValue == "*All*") ? null : ddlStatus.SelectedValue;
+                objITILServiceDesk_LastSearch.AssignedRoleID = (ddlAssigned.SelectedValue == "-2") ? null : (int?)Convert.ToInt32(ddlAssigned.SelectedValue);
+                objITILServiceDesk_LastSearch.Priority = (ddlPriority.SelectedValue == "*All*") ? null : ddlPriority.SelectedValue;
 
                 // Created Date
                 if (txtCreated.Text.Trim().Length > 4)
@@ -1805,7 +1805,7 @@ namespace ITIL.Modules.ServiceDesk
                     try
                     {
                         DateTime dtCreated = Convert.ToDateTime(txtCreated.Text.Trim());
-                        objServiceDesk_LastSearch.CreatedDate = dtCreated.AddDays(-1);
+                        objITILServiceDesk_LastSearch.CreatedDate = dtCreated.AddDays(-1);
                     }
                     catch
                     {
@@ -1823,7 +1823,7 @@ namespace ITIL.Modules.ServiceDesk
                     try
                     {
                         DateTime dtDue = Convert.ToDateTime(txtDue.Text.Trim());
-                        objServiceDesk_LastSearch.DueDate = dtDue.AddDays(-1);
+                        objITILServiceDesk_LastSearch.DueDate = dtDue.AddDays(-1);
                     }
                     catch
                     {
@@ -1839,17 +1839,17 @@ namespace ITIL.Modules.ServiceDesk
                 string strCategories = GetTagsTreeExistingTasks();
                 if (strCategories.Length > 1)
                 {
-                    objServiceDesk_LastSearch.Categories = strCategories;
+                    objITILServiceDesk_LastSearch.Categories = strCategories;
                 }
 
                 // Current Page
-                objServiceDesk_LastSearch.CurrentPage = GetCurrentPage();
+                objITILServiceDesk_LastSearch.CurrentPage = GetCurrentPage();
 
                 // Page Size
-                objServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
+                objITILServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
 
                 // Save Search Criteria
-                SaveLastSearchCriteria(objServiceDesk_LastSearch);
+                SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
                 // Execute Search
                 DisplayExistingTickets(SearchCriteria);
             }
@@ -1897,37 +1897,37 @@ namespace ITIL.Modules.ServiceDesk
                     ddlAssigned = (DropDownList)lvTasks.FindControl("ddlAssigned");
                 }
 
-                ServiceDesk_LastSearch objServiceDesk_LastSearch = (ServiceDesk_LastSearch)SearchCriteria;
+                ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = (ITILServiceDesk_LastSearch)SearchCriteria;
 
-                if (objServiceDesk_LastSearch.SearchText != null)
+                if (objITILServiceDesk_LastSearch.SearchText != null)
                 {
-                    txtSearch.Text = objServiceDesk_LastSearch.SearchText;
+                    txtSearch.Text = objITILServiceDesk_LastSearch.SearchText;
                 }
 
-                if (objServiceDesk_LastSearch.Status != null)
+                if (objITILServiceDesk_LastSearch.Status != null)
                 {
-                    ddlStatus.SelectedValue = objServiceDesk_LastSearch.Status;
+                    ddlStatus.SelectedValue = objITILServiceDesk_LastSearch.Status;
                 }
 
-                if (objServiceDesk_LastSearch.Priority != null)
+                if (objITILServiceDesk_LastSearch.Priority != null)
                 {
-                    ddlPriority.SelectedValue = objServiceDesk_LastSearch.Priority;
+                    ddlPriority.SelectedValue = objITILServiceDesk_LastSearch.Priority;
                 }
 
-                if (objServiceDesk_LastSearch.DueDate != null)
+                if (objITILServiceDesk_LastSearch.DueDate != null)
                 {
-                    txtDue.Text = objServiceDesk_LastSearch.DueDate.Value.AddDays(1).ToShortDateString();
+                    txtDue.Text = objITILServiceDesk_LastSearch.DueDate.Value.AddDays(1).ToShortDateString();
                 }
 
-                if (objServiceDesk_LastSearch.CreatedDate != null)
+                if (objITILServiceDesk_LastSearch.CreatedDate != null)
                 {
-                    txtCreated.Text = objServiceDesk_LastSearch.CreatedDate.Value.AddDays(1).ToShortDateString();
+                    txtCreated.Text = objITILServiceDesk_LastSearch.CreatedDate.Value.AddDays(1).ToShortDateString();
                 }
 
                 // Page Size
-                if (objServiceDesk_LastSearch.PageSize != null)
+                if (objITILServiceDesk_LastSearch.PageSize != null)
                 {
-                    ddlPageSize.SelectedValue = objServiceDesk_LastSearch.PageSize.ToString();
+                    ddlPageSize.SelectedValue = objITILServiceDesk_LastSearch.PageSize.ToString();
                 }
 
                 // Load Dropdown
@@ -1936,9 +1936,9 @@ namespace ITIL.Modules.ServiceDesk
                 RoleController objRoleController = new RoleController();
                 ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-                List<ServiceDesk_Role> colServiceDesk_Roles = (from ServiceDesk_Roles in objServiceDeskDALDataContext.ServiceDesk_Roles
-                                                                 where ServiceDesk_Roles.PortalID == PortalId
-                                                                 select ServiceDesk_Roles).ToList();
+                List<ITILServiceDesk_Role> colITILServiceDesk_Roles = (from ITILServiceDesk_Roles in objServiceDeskDALDataContext.ITILServiceDesk_Roles
+                                                                 where ITILServiceDesk_Roles.PortalID == PortalId
+                                                                 select ITILServiceDesk_Roles).ToList();
 
                 // Create a ListItemCollection to hold the Roles 
                 ListItemCollection colListItemCollection = new ListItemCollection();
@@ -1947,9 +1947,9 @@ namespace ITIL.Modules.ServiceDesk
                 ListItem AllRoleListItem = new ListItem();
                 AllRoleListItem.Text = Localization.GetString("ddlAssignedAll.Text", LocalResourceFile);
                 AllRoleListItem.Value = "-2";
-                if (objServiceDesk_LastSearch.AssignedRoleID != null)
+                if (objITILServiceDesk_LastSearch.AssignedRoleID != null)
                 {
-                    if (objServiceDesk_LastSearch.AssignedRoleID == -2)
+                    if (objITILServiceDesk_LastSearch.AssignedRoleID == -2)
                     {
                         AllRoleListItem.Selected = true;
                     }
@@ -1957,19 +1957,19 @@ namespace ITIL.Modules.ServiceDesk
                 ddlAssigned.Items.Add(AllRoleListItem);
 
                 // Add the Roles to the List
-                foreach (ServiceDesk_Role objServiceDesk_Role in colServiceDesk_Roles)
+                foreach (ITILServiceDesk_Role objITILServiceDesk_Role in colITILServiceDesk_Roles)
                 {
                     try
                     {
-                        RoleInfo objRoleInfo = objRoleController.GetRole(Convert.ToInt32(objServiceDesk_Role.RoleID), PortalId);
+                        RoleInfo objRoleInfo = objRoleController.GetRole(Convert.ToInt32(objITILServiceDesk_Role.RoleID), PortalId);
 
                         ListItem RoleListItem = new ListItem();
                         RoleListItem.Text = objRoleInfo.RoleName;
-                        RoleListItem.Value = objServiceDesk_Role.RoleID.ToString();
+                        RoleListItem.Value = objITILServiceDesk_Role.RoleID.ToString();
 
-                        if (objServiceDesk_LastSearch.AssignedRoleID != null)
+                        if (objITILServiceDesk_LastSearch.AssignedRoleID != null)
                         {
-                            if (objServiceDesk_Role.RoleID == objServiceDesk_LastSearch.AssignedRoleID)
+                            if (objITILServiceDesk_Role.RoleID == objITILServiceDesk_LastSearch.AssignedRoleID)
                             {
                                 RoleListItem.Selected = true;
                             }
@@ -1982,7 +1982,7 @@ namespace ITIL.Modules.ServiceDesk
                         // Role no longer exists in Portal
                         ListItem RoleListItem = new ListItem();
                         RoleListItem.Text = Localization.GetString("DeletedRole.Text", LocalResourceFile);
-                        RoleListItem.Value = objServiceDesk_Role.RoleID.ToString();
+                        RoleListItem.Value = objITILServiceDesk_Role.RoleID.ToString();
                         ddlAssigned.Items.Add(RoleListItem);
                     }
                 }
@@ -1991,9 +1991,9 @@ namespace ITIL.Modules.ServiceDesk
                 ListItem UnassignedRoleListItem = new ListItem();
                 UnassignedRoleListItem.Text = Localization.GetString("Unassigned.Text", LocalResourceFile);
                 UnassignedRoleListItem.Value = "-1";
-                if (objServiceDesk_LastSearch.AssignedRoleID != null)
+                if (objITILServiceDesk_LastSearch.AssignedRoleID != null)
                 {
-                    if (objServiceDesk_LastSearch.AssignedRoleID == -1)
+                    if (objITILServiceDesk_LastSearch.AssignedRoleID == -1)
                     {
                         UnassignedRoleListItem.Selected = true;
                     }
@@ -2004,7 +2004,7 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region GetValuesFromSearchForm
-        private ServiceDesk_LastSearch GetValuesFromSearchForm()
+        private ITILServiceDesk_LastSearch GetValuesFromSearchForm()
         {
             TextBox txtSearch = (TextBox)lvTasks.FindControl("txtSearch");
             DropDownList ddlStatus = (DropDownList)lvTasks.FindControl("ddlStatus");
@@ -2014,11 +2014,11 @@ namespace ITIL.Modules.ServiceDesk
             TextBox txtCreated = (TextBox)lvTasks.FindControl("txtCreated");
 
             // Use an ExistingTasks object to pass the values to the Search method
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = new ServiceDesk_LastSearch();
-            objServiceDesk_LastSearch.SearchText = (txtSearch.Text.Trim().Length == 0) ? null : txtSearch.Text.Trim();
-            objServiceDesk_LastSearch.Status = (ddlStatus.SelectedValue == "*All*") ? null : ddlStatus.SelectedValue;
-            objServiceDesk_LastSearch.AssignedRoleID = (ddlAssigned.SelectedValue == "-2") ? null : (int?)Convert.ToInt32(ddlAssigned.SelectedValue);
-            objServiceDesk_LastSearch.Priority = (ddlPriority.SelectedValue == "*All*") ? null : ddlPriority.SelectedValue;
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = new ITILServiceDesk_LastSearch();
+            objITILServiceDesk_LastSearch.SearchText = (txtSearch.Text.Trim().Length == 0) ? null : txtSearch.Text.Trim();
+            objITILServiceDesk_LastSearch.Status = (ddlStatus.SelectedValue == "*All*") ? null : ddlStatus.SelectedValue;
+            objITILServiceDesk_LastSearch.AssignedRoleID = (ddlAssigned.SelectedValue == "-2") ? null : (int?)Convert.ToInt32(ddlAssigned.SelectedValue);
+            objITILServiceDesk_LastSearch.Priority = (ddlPriority.SelectedValue == "*All*") ? null : ddlPriority.SelectedValue;
 
             // Created Date
             if (txtCreated.Text.Trim().Length > 4)
@@ -2026,7 +2026,7 @@ namespace ITIL.Modules.ServiceDesk
                 try
                 {
                     DateTime dtCreated = Convert.ToDateTime(txtCreated.Text.Trim());
-                    objServiceDesk_LastSearch.CreatedDate = dtCreated.AddDays(-1);
+                    objITILServiceDesk_LastSearch.CreatedDate = dtCreated.AddDays(-1);
                 }
                 catch
                 {
@@ -2044,7 +2044,7 @@ namespace ITIL.Modules.ServiceDesk
                 try
                 {
                     DateTime dtDue = Convert.ToDateTime(txtDue.Text.Trim());
-                    objServiceDesk_LastSearch.DueDate = dtDue.AddDays(-1);
+                    objITILServiceDesk_LastSearch.DueDate = dtDue.AddDays(-1);
                 }
                 catch
                 {
@@ -2060,16 +2060,16 @@ namespace ITIL.Modules.ServiceDesk
             string strCategories = GetTagsTreeExistingTasks();
             if (strCategories.Length > 0)
             {
-                objServiceDesk_LastSearch.Categories = strCategories;
+                objITILServiceDesk_LastSearch.Categories = strCategories;
             }
 
             // Current Page
-            objServiceDesk_LastSearch.CurrentPage = GetCurrentPage();
+            objITILServiceDesk_LastSearch.CurrentPage = GetCurrentPage();
 
             // Page Size
-            objServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
+            objITILServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
 
-            return objServiceDesk_LastSearch;
+            return objITILServiceDesk_LastSearch;
         }
         #endregion
 
@@ -2110,9 +2110,9 @@ namespace ITIL.Modules.ServiceDesk
             List<AssignedRoles> resultcolAssignedRoles = new List<AssignedRoles>();
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            List<AssignedRoles> colAssignedRoles = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                    where ServiceDesk_Tasks.AssignedRoleID > -1
-                                                    group ServiceDesk_Tasks by ServiceDesk_Tasks.AssignedRoleID into AssignedRole
+            List<AssignedRoles> colAssignedRoles = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                    where ITILServiceDesk_Tasks.AssignedRoleID > -1
+                                                    group ITILServiceDesk_Tasks by ITILServiceDesk_Tasks.AssignedRoleID into AssignedRole
                                                     select new AssignedRoles
                                                     {
                                                         AssignedRoleID = GetRolebyID(AssignedRole.Key),
@@ -2153,11 +2153,11 @@ namespace ITIL.Modules.ServiceDesk
         #region lnkNext_Click
         protected void lnkNext_Click(object sender, EventArgs e)
         {
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = GetLastSearchCriteria();
-            int intCurrentPage = Convert.ToInt32(objServiceDesk_LastSearch.CurrentPage ?? 1);
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetLastSearchCriteria();
+            int intCurrentPage = Convert.ToInt32(objITILServiceDesk_LastSearch.CurrentPage ?? 1);
             intCurrentPage++;
-            objServiceDesk_LastSearch.CurrentPage = intCurrentPage;
-            SaveLastSearchCriteria(objServiceDesk_LastSearch);
+            objITILServiceDesk_LastSearch.CurrentPage = intCurrentPage;
+            SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
             DisplayExistingTickets(SearchCriteria);
         }
         #endregion
@@ -2165,11 +2165,11 @@ namespace ITIL.Modules.ServiceDesk
         #region lnkPrevious_Click
         protected void lnkPrevious_Click(object sender, EventArgs e)
         {
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = GetLastSearchCriteria();
-            int intCurrentPage = Convert.ToInt32(objServiceDesk_LastSearch.CurrentPage ?? 2);
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetLastSearchCriteria();
+            int intCurrentPage = Convert.ToInt32(objITILServiceDesk_LastSearch.CurrentPage ?? 2);
             intCurrentPage--;
-            objServiceDesk_LastSearch.CurrentPage = intCurrentPage;
-            SaveLastSearchCriteria(objServiceDesk_LastSearch);
+            objITILServiceDesk_LastSearch.CurrentPage = intCurrentPage;
+            SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
             DisplayExistingTickets(SearchCriteria);
         }
         #endregion
@@ -2177,11 +2177,11 @@ namespace ITIL.Modules.ServiceDesk
         #region lnkFirst_Click
         protected void lnkFirst_Click(object sender, EventArgs e)
         {
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = GetLastSearchCriteria();
-            int intCurrentPage = Convert.ToInt32(objServiceDesk_LastSearch.CurrentPage ?? 2);
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetLastSearchCriteria();
+            int intCurrentPage = Convert.ToInt32(objITILServiceDesk_LastSearch.CurrentPage ?? 2);
             intCurrentPage = 1;
-            objServiceDesk_LastSearch.CurrentPage = intCurrentPage;
-            SaveLastSearchCriteria(objServiceDesk_LastSearch);
+            objITILServiceDesk_LastSearch.CurrentPage = intCurrentPage;
+            SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
             DisplayExistingTickets(SearchCriteria);
         }
         #endregion
@@ -2189,11 +2189,11 @@ namespace ITIL.Modules.ServiceDesk
         #region lnkLast_Click
         protected void lnkLast_Click(object sender, EventArgs e)
         {
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = GetLastSearchCriteria();
-            int intCurrentPage = Convert.ToInt32(objServiceDesk_LastSearch.CurrentPage ?? 1);
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetLastSearchCriteria();
+            int intCurrentPage = Convert.ToInt32(objITILServiceDesk_LastSearch.CurrentPage ?? 1);
             intCurrentPage = -1;
-            objServiceDesk_LastSearch.CurrentPage = intCurrentPage;
-            SaveLastSearchCriteria(objServiceDesk_LastSearch);
+            objITILServiceDesk_LastSearch.CurrentPage = intCurrentPage;
+            SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
             DisplayExistingTickets(SearchCriteria);
         }
         #endregion
@@ -2201,9 +2201,9 @@ namespace ITIL.Modules.ServiceDesk
         #region ddlPageSize_SelectedIndexChanged
         protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = GetLastSearchCriteria();
-            objServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
-            SaveLastSearchCriteria(objServiceDesk_LastSearch);
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetLastSearchCriteria();
+            objITILServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
+            SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
             DisplayExistingTickets(SearchCriteria);
         }
         #endregion
@@ -2214,9 +2214,9 @@ namespace ITIL.Modules.ServiceDesk
             LinkButton lnkButton = sender as LinkButton;
             CurrentPage = lnkButton.CommandArgument;
 
-            ServiceDesk_LastSearch objServiceDesk_LastSearch = GetLastSearchCriteria();
-            objServiceDesk_LastSearch.CurrentPage = Convert.ToInt32(lnkButton.CommandArgument);
-            SaveLastSearchCriteria(objServiceDesk_LastSearch);
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetLastSearchCriteria();
+            objITILServiceDesk_LastSearch.CurrentPage = Convert.ToInt32(lnkButton.CommandArgument);
+            SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
             DisplayExistingTickets(SearchCriteria);
         }
         #endregion

@@ -137,23 +137,23 @@ namespace ITIL.Modules.ServiceDesk
             RoleController objRoleController = new RoleController();
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            List<ServiceDesk_Role> colServiceDesk_Roles = (from ServiceDesk_Roles in objServiceDeskDALDataContext.ServiceDesk_Roles
-                                                             where ServiceDesk_Roles.PortalID == PortalId
-                                                             select ServiceDesk_Roles).ToList();
+            List<ITILServiceDesk_Role> colITILServiceDesk_Roles = (from ITILServiceDesk_Roles in objServiceDeskDALDataContext.ITILServiceDesk_Roles
+                                                             where ITILServiceDesk_Roles.PortalID == PortalId
+                                                             select ITILServiceDesk_Roles).ToList();
 
             // Create a ListItemCollection to hold the Roles 
             ListItemCollection colListItemCollection = new ListItemCollection();
 
             // Add the Roles to the List
-            foreach (ServiceDesk_Role objServiceDesk_Role in colServiceDesk_Roles)
+            foreach (ITILServiceDesk_Role objITILServiceDesk_Role in colITILServiceDesk_Roles)
             {
                 try
                 {
-                    RoleInfo objRoleInfo = objRoleController.GetRole(Convert.ToInt32(objServiceDesk_Role.RoleID), PortalId);
+                    RoleInfo objRoleInfo = objRoleController.GetRole(Convert.ToInt32(objITILServiceDesk_Role.RoleID), PortalId);
 
                     ListItem RoleListItem = new ListItem();
                     RoleListItem.Text = objRoleInfo.RoleName;
-                    RoleListItem.Value = objServiceDesk_Role.RoleID.ToString();
+                    RoleListItem.Value = objITILServiceDesk_Role.RoleID.ToString();
                     ddlAssigned.Items.Add(RoleListItem);
                 }
                 catch
@@ -161,7 +161,7 @@ namespace ITIL.Modules.ServiceDesk
                     // Role no longer exists in Portal
                     ListItem RoleListItem = new ListItem();
                     RoleListItem.Text = Localization.GetString("DeletedRole.Text", LocalResourceFile);
-                    RoleListItem.Value = objServiceDesk_Role.RoleID.ToString();
+                    RoleListItem.Value = objITILServiceDesk_Role.RoleID.ToString();
                     ddlAssigned.Items.Add(RoleListItem);
                 }
             }
@@ -181,10 +181,10 @@ namespace ITIL.Modules.ServiceDesk
             bool boolPassedSecurity = false;
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                       where ServiceDesk_Tasks.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
-                                                       select ServiceDesk_Tasks).FirstOrDefault();
-            if (objServiceDesk_Tasks == null)
+            ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                       where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
+                                                       select ITILServiceDesk_Tasks).FirstOrDefault();
+            if (objITILServiceDesk_Tasks == null)
             {
                 pnlEditTask.Visible = false;
                 Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
@@ -197,7 +197,7 @@ namespace ITIL.Modules.ServiceDesk
                 if (Request.QueryString["TP"] != null)
                 {
                     // Check the password for this Ticket
-                    if (objServiceDesk_Tasks.TicketPassword == Convert.ToString(Request.QueryString["TP"]))
+                    if (objITILServiceDesk_Tasks.TicketPassword == Convert.ToString(Request.QueryString["TP"]))
                     {
                         boolPassedSecurity = true;
                     }
@@ -220,14 +220,14 @@ namespace ITIL.Modules.ServiceDesk
                 }
 
                 // Is user the Requestor?
-                if (UserId == objServiceDesk_Tasks.RequesterUserID)
+                if (UserId == objITILServiceDesk_Tasks.RequesterUserID)
                 {
                     boolPassedSecurity = true;
                 }
 
                 //Is user in the Assigned Role?
                 RoleController objRoleController = new RoleController();
-                RoleInfo objRoleInfo = objRoleController.GetRole(objServiceDesk_Tasks.AssignedRoleID, PortalId);
+                RoleInfo objRoleInfo = objRoleController.GetRole(objITILServiceDesk_Tasks.AssignedRoleID, PortalId);
                 if (objRoleInfo != null)
                 {
                     if (UserInfo.IsInRole(objRoleInfo.RoleName))
@@ -241,7 +241,7 @@ namespace ITIL.Modules.ServiceDesk
                 if (Request.QueryString["TP"] != null)
                 {
                     // Check the password for this Ticket
-                    if (objServiceDesk_Tasks.TicketPassword == Convert.ToString(Request.QueryString["TP"]))
+                    if (objITILServiceDesk_Tasks.TicketPassword == Convert.ToString(Request.QueryString["TP"]))
                     {
                         boolPassedSecurity = true;
                     }
@@ -316,13 +316,13 @@ namespace ITIL.Modules.ServiceDesk
         #region GetAdminRole
         private string GetAdminRole()
         {
-            List<ServiceDesk_Setting> objServiceDesk_Settings = GetSettings();
-            ServiceDesk_Setting objServiceDesk_Setting = objServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
+            List<ITILServiceDesk_Setting> objITILServiceDesk_Settings = GetSettings();
+            ITILServiceDesk_Setting objITILServiceDesk_Setting = objITILServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
 
             string strAdminRoleID = "Administrators";
-            if (objServiceDesk_Setting != null)
+            if (objITILServiceDesk_Setting != null)
             {
-                strAdminRoleID = objServiceDesk_Setting.SettingValue;
+                strAdminRoleID = objITILServiceDesk_Setting.SettingValue;
             }
 
             return strAdminRoleID;
@@ -330,42 +330,42 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region GetSettings
-        private List<ServiceDesk_Setting> GetSettings()
+        private List<ITILServiceDesk_Setting> GetSettings()
         {
             // Get Settings
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            List<ServiceDesk_Setting> colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                  where ServiceDesk_Settings.PortalID == PortalId
-                                                                  select ServiceDesk_Settings).ToList();
+            List<ITILServiceDesk_Setting> colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                  where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                  select ITILServiceDesk_Settings).ToList();
 
-            if (colServiceDesk_Setting.Count == 0)
+            if (colITILServiceDesk_Setting.Count == 0)
             {
                 // Create Default vaules
-                ServiceDesk_Setting objServiceDesk_Setting1 = new ServiceDesk_Setting();
+                ITILServiceDesk_Setting objITILServiceDesk_Setting1 = new ITILServiceDesk_Setting();
 
-                objServiceDesk_Setting1.PortalID = PortalId;
-                objServiceDesk_Setting1.SettingName = "AdminRole";
-                objServiceDesk_Setting1.SettingValue = "Administrators";
+                objITILServiceDesk_Setting1.PortalID = PortalId;
+                objITILServiceDesk_Setting1.SettingName = "AdminRole";
+                objITILServiceDesk_Setting1.SettingValue = "Administrators";
 
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting1);
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting1);
                 objServiceDeskDALDataContext.SubmitChanges();
 
-                ServiceDesk_Setting objServiceDesk_Setting2 = new ServiceDesk_Setting();
+                ITILServiceDesk_Setting objITILServiceDesk_Setting2 = new ITILServiceDesk_Setting();
 
-                objServiceDesk_Setting2.PortalID = PortalId;
-                objServiceDesk_Setting2.SettingName = "UploadefFilesPath";
-                objServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
+                objITILServiceDesk_Setting2.PortalID = PortalId;
+                objITILServiceDesk_Setting2.SettingName = "UploadefFilesPath";
+                objITILServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
 
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting2);
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting2);
                 objServiceDeskDALDataContext.SubmitChanges();
 
-                colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                           where ServiceDesk_Settings.PortalID == PortalId
-                                           select ServiceDesk_Settings).ToList();
+                colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                           where ITILServiceDesk_Settings.PortalID == PortalId
+                                           select ITILServiceDesk_Settings).ToList();
             }
 
-            return colServiceDesk_Setting;
+            return colITILServiceDesk_Setting;
         }
         #endregion
 
@@ -377,13 +377,13 @@ namespace ITIL.Modules.ServiceDesk
             bool boolUserAssignedToTask = false;
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                       where ServiceDesk_Tasks.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
-                                                       select ServiceDesk_Tasks).FirstOrDefault();
+            ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                       where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
+                                                       select ITILServiceDesk_Tasks).FirstOrDefault();
 
             //Is user in the Assigned Role?
             RoleController objRoleController = new RoleController();
-            RoleInfo objRoleInfo = objRoleController.GetRole(objServiceDesk_Tasks.AssignedRoleID, PortalId);
+            RoleInfo objRoleInfo = objRoleController.GetRole(objITILServiceDesk_Tasks.AssignedRoleID, PortalId);
 
             if (objRoleInfo != null)
             {
@@ -411,9 +411,9 @@ namespace ITIL.Modules.ServiceDesk
             }
 
             // Select Existing values
-            if (objServiceDesk_Tasks.ServiceDesk_TaskCategories.Select(x => x.CategoryID).ToArray<int>().Count() > 0)
+            if (objITILServiceDesk_Tasks.ITILServiceDesk_TaskCategories.Select(x => x.CategoryID).ToArray<int>().Count() > 0)
             {
-                int[] ArrStrCategories = objServiceDesk_Tasks.ServiceDesk_TaskCategories.Select(x => x.CategoryID).ToArray<int>();
+                int[] ArrStrCategories = objITILServiceDesk_Tasks.ITILServiceDesk_TaskCategories.Select(x => x.CategoryID).ToArray<int>();
                 int?[] ArrIntCatagories = Array.ConvertAll<int, int?>(ArrStrCategories, new Converter<int, int?>(ConvertToNullableInt));
 
                 TagsTreeExistingTasks.SelectedCategories = ArrIntCatagories;
@@ -446,19 +446,19 @@ namespace ITIL.Modules.ServiceDesk
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                       where ServiceDesk_Tasks.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
-                                                       select ServiceDesk_Tasks).FirstOrDefault();
+            ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                       where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
+                                                       select ITILServiceDesk_Tasks).FirstOrDefault();
 
             // Name is editable only if user is Anonymous
-            if (objServiceDesk_Tasks.RequesterUserID == -1)
+            if (objITILServiceDesk_Tasks.RequesterUserID == -1)
             {
                 txtEmail.Visible = true;
                 txtName.Visible = true;
                 lblEmail.Visible = false;
                 lblName.Visible = false;
-                txtEmail.Text = objServiceDesk_Tasks.RequesterEmail;
-                txtName.Text = objServiceDesk_Tasks.RequesterName;
+                txtEmail.Text = objITILServiceDesk_Tasks.RequesterEmail;
+                txtName.Text = objITILServiceDesk_Tasks.RequesterName;
 
                 //ITIL Customization - assigning (txtEmail.Text to RequesterEmail) and (txtName.Text to RequesterName) in case user is anonymous
                 RequesterEmail = txtEmail.Text;
@@ -471,12 +471,12 @@ namespace ITIL.Modules.ServiceDesk
                 lblEmail.Visible = true;
                 lblName.Visible = true;
 
-                UserInfo objRequester = UserController.GetUser(PortalId, objServiceDesk_Tasks.RequesterUserID, false);
+                UserInfo objRequester = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false);
 
                 if (objRequester != null)
                 {
-                    lblEmail.Text = UserController.GetUser(PortalId, objServiceDesk_Tasks.RequesterUserID, false).Email;
-                    lblName.Text = UserController.GetUser(PortalId, objServiceDesk_Tasks.RequesterUserID, false).DisplayName;
+                    lblEmail.Text = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).Email;
+                    lblName.Text = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).DisplayName;
 
                     //ITIL Customization - assigning (lblEmail.Text to RequesterEmail) and (lblName.Text to RequesterName) in case user is anonymous
                     RequesterEmail = lblEmail.Text;
@@ -488,36 +488,36 @@ namespace ITIL.Modules.ServiceDesk
                 }
             }
 
-            lblTask.Text = objServiceDesk_Tasks.TaskID.ToString();
-            lblCreatedData.Text = String.Format(objServiceDesk_Tasks.CreatedDate.ToShortDateString(), objServiceDesk_Tasks.CreatedDate.ToShortTimeString());
-            ddlStatus.SelectedValue = objServiceDesk_Tasks.Status;
+            lblTask.Text = objITILServiceDesk_Tasks.TaskID.ToString();
+            lblCreatedData.Text = String.Format(objITILServiceDesk_Tasks.CreatedDate.ToShortDateString(), objITILServiceDesk_Tasks.CreatedDate.ToShortTimeString());
+            ddlStatus.SelectedValue = objITILServiceDesk_Tasks.Status;
 
-            //ITIL Customization - assign objServiceDesk_Tasks.Status to Status for the purpose of preventing multiple email notifications
-            Status = objServiceDesk_Tasks.Status;
+            //ITIL Customization - assign objITILServiceDesk_Tasks.Status to Status for the purpose of preventing multiple email notifications
+            Status = objITILServiceDesk_Tasks.Status;
  
-            ddlPriority.SelectedValue = objServiceDesk_Tasks.Priority;
-            txtDescription.Text = objServiceDesk_Tasks.Description;
-            txtPhone.Text = objServiceDesk_Tasks.RequesterPhone;
-            txtDueDate.Text = (objServiceDesk_Tasks.DueDate.HasValue) ? objServiceDesk_Tasks.DueDate.Value.ToShortDateString() : "";
-            txtStart.Text = (objServiceDesk_Tasks.EstimatedStart.HasValue) ? objServiceDesk_Tasks.EstimatedStart.Value.ToShortDateString() : "";
-            txtComplete.Text = (objServiceDesk_Tasks.EstimatedCompletion.HasValue) ? objServiceDesk_Tasks.EstimatedCompletion.Value.ToShortDateString() : "";
-            txtEstimate.Text = (objServiceDesk_Tasks.EstimatedHours.HasValue) ? objServiceDesk_Tasks.EstimatedHours.Value.ToString() : "";
+            ddlPriority.SelectedValue = objITILServiceDesk_Tasks.Priority;
+            txtDescription.Text = objITILServiceDesk_Tasks.Description;
+            txtPhone.Text = objITILServiceDesk_Tasks.RequesterPhone;
+            txtDueDate.Text = (objITILServiceDesk_Tasks.DueDate.HasValue) ? objITILServiceDesk_Tasks.DueDate.Value.ToShortDateString() : "";
+            txtStart.Text = (objITILServiceDesk_Tasks.EstimatedStart.HasValue) ? objITILServiceDesk_Tasks.EstimatedStart.Value.ToShortDateString() : "";
+            txtComplete.Text = (objITILServiceDesk_Tasks.EstimatedCompletion.HasValue) ? objITILServiceDesk_Tasks.EstimatedCompletion.Value.ToShortDateString() : "";
+            txtEstimate.Text = (objITILServiceDesk_Tasks.EstimatedHours.HasValue) ? objITILServiceDesk_Tasks.EstimatedHours.Value.ToString() : "";
 
-            ListItem TmpRoleListItem = ddlAssigned.Items.FindByValue(objServiceDesk_Tasks.AssignedRoleID.ToString());
+            ListItem TmpRoleListItem = ddlAssigned.Items.FindByValue(objITILServiceDesk_Tasks.AssignedRoleID.ToString());
             if (TmpRoleListItem == null)
             {
                 // Value was not found so add it
                 RoleController objRoleController = new RoleController();
-                RoleInfo objRoleInfo = objRoleController.GetRole(objServiceDesk_Tasks.AssignedRoleID, PortalId);
+                RoleInfo objRoleInfo = objRoleController.GetRole(objITILServiceDesk_Tasks.AssignedRoleID, PortalId);
 
                 if (objRoleInfo != null)
                 {
                     ListItem RoleListItem = new ListItem();
                     RoleListItem.Text = objRoleInfo.RoleName;
-                    RoleListItem.Value = objServiceDesk_Tasks.AssignedRoleID.ToString();
+                    RoleListItem.Value = objITILServiceDesk_Tasks.AssignedRoleID.ToString();
                     ddlAssigned.Items.Add(RoleListItem);
 
-                    ddlAssigned.SelectedValue = objServiceDesk_Tasks.AssignedRoleID.ToString();
+                    ddlAssigned.SelectedValue = objITILServiceDesk_Tasks.AssignedRoleID.ToString();
                 }
                 else
                 {
@@ -528,7 +528,7 @@ namespace ITIL.Modules.ServiceDesk
             else
             {
                 // The Value already exists so set it
-                ddlAssigned.SelectedValue = objServiceDesk_Tasks.AssignedRoleID.ToString();
+                ddlAssigned.SelectedValue = objITILServiceDesk_Tasks.AssignedRoleID.ToString();
             }
         }
         #endregion
@@ -641,69 +641,69 @@ namespace ITIL.Modules.ServiceDesk
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_Task objServiceDesk_Task = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                      where ServiceDesk_Tasks.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
-                                                      select ServiceDesk_Tasks).FirstOrDefault();
+            ITILServiceDesk_Task objITILServiceDesk_Task = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                      where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
+                                                      select ITILServiceDesk_Tasks).FirstOrDefault();
 
             // Save original Assigned Group
-            int intOriginalAssignedGroup = objServiceDesk_Task.AssignedRoleID;
+            int intOriginalAssignedGroup = objITILServiceDesk_Task.AssignedRoleID;
 
             // Save Task
-            objServiceDesk_Task.Status = ddlStatus.SelectedValue;
-            objServiceDesk_Task.Description = txtDescription.Text;
-            objServiceDesk_Task.PortalID = PortalId;
-            objServiceDesk_Task.Priority = ddlPriority.SelectedValue;
-            objServiceDesk_Task.RequesterPhone = txtPhone.Text;
-            objServiceDesk_Task.AssignedRoleID = Convert.ToInt32(ddlAssigned.SelectedValue);
+            objITILServiceDesk_Task.Status = ddlStatus.SelectedValue;
+            objITILServiceDesk_Task.Description = txtDescription.Text;
+            objITILServiceDesk_Task.PortalID = PortalId;
+            objITILServiceDesk_Task.Priority = ddlPriority.SelectedValue;
+            objITILServiceDesk_Task.RequesterPhone = txtPhone.Text;
+            objITILServiceDesk_Task.AssignedRoleID = Convert.ToInt32(ddlAssigned.SelectedValue);
 
             // Only validate Name and email if Ticket is not for a DNN user
             // lblName will be hidden if it is not a DNN user
             if (lblName.Visible == false)
             {
                 // not a DNN user
-                objServiceDesk_Task.RequesterEmail = txtEmail.Text;
-                objServiceDesk_Task.RequesterName = txtName.Text;
-                objServiceDesk_Task.RequesterUserID = -1;
+                objITILServiceDesk_Task.RequesterEmail = txtEmail.Text;
+                objITILServiceDesk_Task.RequesterName = txtName.Text;
+                objITILServiceDesk_Task.RequesterUserID = -1;
             }
 
             // DueDate
             if (txtDueDate.Text.Trim().Length > 1)
             {
-                objServiceDesk_Task.DueDate = Convert.ToDateTime(txtDueDate.Text.Trim());
+                objITILServiceDesk_Task.DueDate = Convert.ToDateTime(txtDueDate.Text.Trim());
             }
             else
             {
-                objServiceDesk_Task.DueDate = null;
+                objITILServiceDesk_Task.DueDate = null;
             }
 
             // EstimatedStart
             if (txtStart.Text.Trim().Length > 1)
             {
-                objServiceDesk_Task.EstimatedStart = Convert.ToDateTime(txtStart.Text.Trim());
+                objITILServiceDesk_Task.EstimatedStart = Convert.ToDateTime(txtStart.Text.Trim());
             }
             else
             {
-                objServiceDesk_Task.EstimatedStart = null;
+                objITILServiceDesk_Task.EstimatedStart = null;
             }
 
             // EstimatedCompletion
             if (txtComplete.Text.Trim().Length > 1)
             {
-                objServiceDesk_Task.EstimatedCompletion = Convert.ToDateTime(txtComplete.Text.Trim());
+                objITILServiceDesk_Task.EstimatedCompletion = Convert.ToDateTime(txtComplete.Text.Trim());
             }
             else
             {
-                objServiceDesk_Task.EstimatedCompletion = null;
+                objITILServiceDesk_Task.EstimatedCompletion = null;
             }
 
             // EstimatedHours
             if (txtEstimate.Text.Trim().Length > 0)
             {
-                objServiceDesk_Task.EstimatedHours = Convert.ToInt32(txtEstimate.Text.Trim());
+                objITILServiceDesk_Task.EstimatedHours = Convert.ToInt32(txtEstimate.Text.Trim());
             }
             else
             {
-                objServiceDesk_Task.EstimatedHours = null;
+                objITILServiceDesk_Task.EstimatedHours = null;
             }
 
             objServiceDeskDALDataContext.SubmitChanges();
@@ -713,7 +713,7 @@ namespace ITIL.Modules.ServiceDesk
             {
                 if (Status != "Resolved")
                 {
-                    NotifyRequesterTicketResolved(objServiceDesk_Task.TaskID.ToString());
+                    NotifyRequesterTicketResolved(objITILServiceDesk_Task.TaskID.ToString());
                     Status = ddlStatus.SelectedValue;
                 }
             }
@@ -725,15 +725,15 @@ namespace ITIL.Modules.ServiceDesk
                 // Only notify if Assigned group has changed
                 if (intOriginalAssignedGroup != Convert.ToInt32(ddlAssigned.SelectedValue))
                 {
-                    //NotifyAssignedGroupOfAssignment(objServiceDesk_Task.TaskID.ToString());
-                    NotifyGroupAssignTicket(objServiceDesk_Task.TaskID.ToString());
+                    //NotifyAssignedGroupOfAssignment(objITILServiceDesk_Task.TaskID.ToString());
+                    NotifyGroupAssignTicket(objITILServiceDesk_Task.TaskID.ToString());
                 }
             }
 
             // Insert Log
-            Log.InsertLog(objServiceDesk_Task.TaskID, UserId, String.Format(Localization.GetString("UpdatedTicket.Text", LocalResourceFile), UserInfo.DisplayName));
+            Log.InsertLog(objITILServiceDesk_Task.TaskID, UserId, String.Format(Localization.GetString("UpdatedTicket.Text", LocalResourceFile), UserInfo.DisplayName));
 
-            return objServiceDesk_Task.TaskID;
+            return objITILServiceDesk_Task.TaskID;
         }
         #endregion
 
@@ -742,14 +742,14 @@ namespace ITIL.Modules.ServiceDesk
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            var ExistingTaskCategories = from ServiceDesk_TaskCategories in objServiceDeskDALDataContext.ServiceDesk_TaskCategories
-                                         where ServiceDesk_TaskCategories.TaskID == intTaskID
-                                         select ServiceDesk_TaskCategories;
+            var ExistingTaskCategories = from ITILServiceDesk_TaskCategories in objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories
+                                         where ITILServiceDesk_TaskCategories.TaskID == intTaskID
+                                         select ITILServiceDesk_TaskCategories;
 
             // Delete all existing TaskCategories
             if (ExistingTaskCategories != null)
             {
-                objServiceDeskDALDataContext.ServiceDesk_TaskCategories.DeleteAllOnSubmit(ExistingTaskCategories);
+                objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories.DeleteAllOnSubmit(ExistingTaskCategories);
                 objServiceDeskDALDataContext.SubmitChanges();
             }
 
@@ -760,12 +760,12 @@ namespace ITIL.Modules.ServiceDesk
                 // Iterate through the CheckedNodes collection 
                 foreach (TreeNode node in objTreeView.CheckedNodes)
                 {
-                    ServiceDesk_TaskCategory objServiceDesk_TaskCategory = new ServiceDesk_TaskCategory();
+                    ITILServiceDesk_TaskCategory objITILServiceDesk_TaskCategory = new ITILServiceDesk_TaskCategory();
 
-                    objServiceDesk_TaskCategory.TaskID = intTaskID;
-                    objServiceDesk_TaskCategory.CategoryID = Convert.ToInt32(node.Value);
+                    objITILServiceDesk_TaskCategory.TaskID = intTaskID;
+                    objITILServiceDesk_TaskCategory.CategoryID = Convert.ToInt32(node.Value);
 
-                    objServiceDeskDALDataContext.ServiceDesk_TaskCategories.InsertOnSubmit(objServiceDesk_TaskCategory);
+                    objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories.InsertOnSubmit(objITILServiceDesk_TaskCategory);
                     objServiceDeskDALDataContext.SubmitChanges();
                 }
             }
@@ -864,24 +864,24 @@ namespace ITIL.Modules.ServiceDesk
 
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                       where ServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
-                                                       select ServiceDesk_Tasks).FirstOrDefault();
+            ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                       where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
+                                                       select ITILServiceDesk_Tasks).FirstOrDefault();
 
             string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
+            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
 
             string strSubject = String.Format(Localization.GetString("TicketIsResolved.Text", LocalResourceFile), TaskID);
-            string strEmail = objServiceDesk_Tasks.RequesterEmail;
+            string strEmail = objITILServiceDesk_Tasks.RequesterEmail;
 
             // If userId is not -1 then get the Email
-            if (objServiceDesk_Tasks.RequesterUserID > -1)
+            if (objITILServiceDesk_Tasks.RequesterUserID > -1)
             {
-                strEmail = UserController.GetUser(PortalId, objServiceDesk_Tasks.RequesterUserID, false).Email;
+                strEmail = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).Email;
             }
 
             string strBody = Localization.GetString("HTMLTicketEmailRequester.Text", LocalResourceFile);
-            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objServiceDesk_Tasks);
+            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
 
             DotNetNuke.Services.Mail.Mail.SendMail(PortalSettings.Email, strEmail, "", strSubject, strBody, "", "HTML", "", "", "", "");
 
@@ -894,12 +894,12 @@ namespace ITIL.Modules.ServiceDesk
         {
             // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                       where ServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
-                                                       select ServiceDesk_Tasks).FirstOrDefault();
+            ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                       where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
+                                                       select ITILServiceDesk_Tasks).FirstOrDefault();
 
             string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl); // ITIL Customization 
+            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl); // ITIL Customization 
 
             RoleController objRoleController = new RoleController();
             string strAssignedRole = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
@@ -925,12 +925,12 @@ namespace ITIL.Modules.ServiceDesk
         {
             // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            ServiceDesk_Task objServiceDesk_Tasks = (from ServiceDesk_Tasks in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                                                       where ServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
-                                                       select ServiceDesk_Tasks).FirstOrDefault();
+            ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                       where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
+                                                       select ITILServiceDesk_Tasks).FirstOrDefault();
 
             string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
+            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
             
             RoleController objRoleController = new RoleController();
             string strAssignedRole = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
@@ -938,7 +938,7 @@ namespace ITIL.Modules.ServiceDesk
 
             string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);
             string strBody = Localization.GetString("HTMLTicketEmailAssignee.Text", LocalResourceFile);
-            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objServiceDesk_Tasks);
+            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
             strBody = strBody + Environment.NewLine;
             strBody = strBody + String.Format(Localization.GetString("YouMaySeeStatusHere.Text", LocalResourceFile), strLinkUrl);
 

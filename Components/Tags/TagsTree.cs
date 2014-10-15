@@ -98,15 +98,15 @@ namespace ITIL.Modules.ServiceDesk
                           select ServiceDeskCategories;
 
             // Loop thru the top level
-            foreach (ServiceDesk_Category objServiceDesk_Category in results)
+            foreach (ITILServiceDesk_Category objITILServiceDesk_Category in results)
             {
                 // Create a top level item
                 ListItem objListItem = new ListItem();
-                objListItem.Text = objServiceDesk_Category.CategoryName;
-                objListItem.Value = objServiceDesk_Category.CategoryID.ToString();
+                objListItem.Text = objITILServiceDesk_Category.CategoryName;
+                objListItem.Value = objITILServiceDesk_Category.CategoryID.ToString();
                 objListItem.Attributes.Add("PortalId", _PortalID.ToString());
-                objListItem.Attributes.Add("Selectable", objServiceDesk_Category.Selectable.ToString());
-                objListItem.Attributes.Add("RequestorVisible", objServiceDesk_Category.RequestorVisible.ToString());
+                objListItem.Attributes.Add("Selectable", objITILServiceDesk_Category.Selectable.ToString());
+                objListItem.Attributes.Add("RequestorVisible", objITILServiceDesk_Category.RequestorVisible.ToString());
                 objListItem.Attributes.Add("RequestorCatagories", _RequestorCatagories.ToString());
 
                 // Add a top level item to the final collection
@@ -233,7 +233,7 @@ namespace ITIL.Modules.ServiceDesk
                 CatagoriesEnumerable children = new CatagoriesEnumerable();
 
                 // Loop thru each item
-                foreach (ServiceDesk_Category objCategory in ChildResults)
+                foreach (ITILServiceDesk_Category objCategory in ChildResults)
                 {
                     // Create a new list item to add to the collection
                     ListItem objChildListItem = new ListItem();

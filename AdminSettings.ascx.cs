@@ -140,13 +140,13 @@ namespace ITIL.Modules.ServiceDesk
         #region GetAdminRole
         private string GetAdminRole()
         {
-            List<ServiceDesk_Setting> objServiceDesk_Settings = GetSettings();
-            ServiceDesk_Setting objServiceDesk_Setting = objServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
+            List<ITILServiceDesk_Setting> objITILServiceDesk_Settings = GetSettings();
+            ITILServiceDesk_Setting objITILServiceDesk_Setting = objITILServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
 
             string strAdminRoleID = "Administrators";
-            if (objServiceDesk_Setting != null)
+            if (objITILServiceDesk_Setting != null)
             {
-                strAdminRoleID = objServiceDesk_Setting.SettingValue;
+                strAdminRoleID = objITILServiceDesk_Setting.SettingValue;
             }
 
             return strAdminRoleID;
@@ -154,67 +154,67 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region GetSettings
-        private List<ServiceDesk_Setting> GetSettings()
+        private List<ITILServiceDesk_Setting> GetSettings()
         {
             // Get Settings
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            List<ServiceDesk_Setting> colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                  where ServiceDesk_Settings.PortalID == PortalId
-                                                                  select ServiceDesk_Settings).ToList();
+            List<ITILServiceDesk_Setting> colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                  where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                  select ITILServiceDesk_Settings).ToList();
 
-            if (colServiceDesk_Setting.Count == 0)
+            if (colITILServiceDesk_Setting.Count == 0)
             {
                 // Create Default vaules
-                ServiceDesk_Setting objServiceDesk_Setting1 = new ServiceDesk_Setting();
+                ITILServiceDesk_Setting objITILServiceDesk_Setting1 = new ITILServiceDesk_Setting();
 
-                objServiceDesk_Setting1.PortalID = PortalId;
-                objServiceDesk_Setting1.SettingName = "AdminRole";
-                objServiceDesk_Setting1.SettingValue = "Administrators";
+                objITILServiceDesk_Setting1.PortalID = PortalId;
+                objITILServiceDesk_Setting1.SettingName = "AdminRole";
+                objITILServiceDesk_Setting1.SettingValue = "Administrators";
 
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting1);
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting1);
                 objServiceDeskDALDataContext.SubmitChanges();
 
-                ServiceDesk_Setting objServiceDesk_Setting2 = new ServiceDesk_Setting();
+                ITILServiceDesk_Setting objITILServiceDesk_Setting2 = new ITILServiceDesk_Setting();
 
-                objServiceDesk_Setting2.PortalID = PortalId;
-                objServiceDesk_Setting2.SettingName = "UploadefFilesPath";
-                objServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
+                objITILServiceDesk_Setting2.PortalID = PortalId;
+                objITILServiceDesk_Setting2.SettingName = "UploadefFilesPath";
+                objITILServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
 
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting2);
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting2);
                 objServiceDeskDALDataContext.SubmitChanges();
 
-                colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                           where ServiceDesk_Settings.PortalID == PortalId
-                                           select ServiceDesk_Settings).ToList();
+                colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                           where ITILServiceDesk_Settings.PortalID == PortalId
+                                           select ITILServiceDesk_Settings).ToList();
             }
 
             // Upload Permission
-            ServiceDesk_Setting UploadPermissionServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                         where ServiceDesk_Settings.PortalID == PortalId
-                                                                         where ServiceDesk_Settings.SettingName == "UploadPermission"
-                                                                         select ServiceDesk_Settings).FirstOrDefault();
+            ITILServiceDesk_Setting UploadPermissionITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                         where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                         where ITILServiceDesk_Settings.SettingName == "UploadPermission"
+                                                                         select ITILServiceDesk_Settings).FirstOrDefault();
 
-            if (UploadPermissionServiceDesk_Setting != null)
+            if (UploadPermissionITILServiceDesk_Setting != null)
             {
                 // Add to collection
-                colServiceDesk_Setting.Add(UploadPermissionServiceDesk_Setting);
+                colITILServiceDesk_Setting.Add(UploadPermissionITILServiceDesk_Setting);
             }
             else
             {
                 // Add Default value
-                ServiceDesk_Setting objServiceDesk_Setting = new ServiceDesk_Setting();
-                objServiceDesk_Setting.SettingName = "UploadPermission";
-                objServiceDesk_Setting.SettingValue = "All";
-                objServiceDesk_Setting.PortalID = PortalId;
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting);
+                ITILServiceDesk_Setting objITILServiceDesk_Setting = new ITILServiceDesk_Setting();
+                objITILServiceDesk_Setting.SettingName = "UploadPermission";
+                objITILServiceDesk_Setting.SettingValue = "All";
+                objITILServiceDesk_Setting.PortalID = PortalId;
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting);
                 objServiceDeskDALDataContext.SubmitChanges();
 
                 // Add to collection
-                colServiceDesk_Setting.Add(objServiceDesk_Setting);
+                colITILServiceDesk_Setting.Add(objITILServiceDesk_Setting);
             }
 
-            return colServiceDesk_Setting;
+            return colITILServiceDesk_Setting;
         }
         #endregion
 
@@ -289,20 +289,20 @@ namespace ITIL.Modules.ServiceDesk
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
             // Uploaded Files Path
-            ServiceDesk_Setting objServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                            where ServiceDesk_Settings.PortalID == PortalId
-                                                            where ServiceDesk_Settings.SettingName == "UploadefFilesPath"
-                                                            select ServiceDesk_Settings).FirstOrDefault();
+            ITILServiceDesk_Setting objITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                            where ITILServiceDesk_Settings.PortalID == PortalId
+                                                            where ITILServiceDesk_Settings.SettingName == "UploadefFilesPath"
+                                                            select ITILServiceDesk_Settings).FirstOrDefault();
 
-            txtUploadedFilesPath.Text = objServiceDesk_Setting.SettingValue;
+            txtUploadedFilesPath.Text = objITILServiceDesk_Setting.SettingValue;
 
             // Upload Permissions
-            ServiceDesk_Setting UploadPermissionServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                         where ServiceDesk_Settings.PortalID == PortalId
-                                                                         where ServiceDesk_Settings.SettingName == "UploadPermission"
-                                                                         select ServiceDesk_Settings).FirstOrDefault();
+            ITILServiceDesk_Setting UploadPermissionITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                         where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                         where ITILServiceDesk_Settings.SettingName == "UploadPermission"
+                                                                         select ITILServiceDesk_Settings).FirstOrDefault();
 
-            ddlUploadPermission.SelectedValue = UploadPermissionServiceDesk_Setting.SettingValue;
+            ddlUploadPermission.SelectedValue = UploadPermissionITILServiceDesk_Setting.SettingValue;
         }
         #endregion
 
@@ -320,13 +320,13 @@ namespace ITIL.Modules.ServiceDesk
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_Setting objServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                            where ServiceDesk_Settings.PortalID == PortalId
-                                                            where ServiceDesk_Settings.SettingName == "AdminRole"
-                                                            select ServiceDesk_Settings).FirstOrDefault();
+            ITILServiceDesk_Setting objITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                            where ITILServiceDesk_Settings.PortalID == PortalId
+                                                            where ITILServiceDesk_Settings.SettingName == "AdminRole"
+                                                            select ITILServiceDesk_Settings).FirstOrDefault();
 
 
-            objServiceDesk_Setting.SettingValue = ddlAdminRole.SelectedValue;
+            objITILServiceDesk_Setting.SettingValue = ddlAdminRole.SelectedValue;
             objServiceDeskDALDataContext.SubmitChanges();
 
             lblAdminRole.Text = Localization.GetString("Updated.Text", LocalResourceFile);
@@ -338,20 +338,20 @@ namespace ITIL.Modules.ServiceDesk
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            ServiceDesk_Setting UploadefFilesServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                      where ServiceDesk_Settings.PortalID == PortalId
-                                                                      where ServiceDesk_Settings.SettingName == "UploadefFilesPath"
-                                                                      select ServiceDesk_Settings).FirstOrDefault();
+            ITILServiceDesk_Setting UploadefFilesITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                      where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                      where ITILServiceDesk_Settings.SettingName == "UploadefFilesPath"
+                                                                      select ITILServiceDesk_Settings).FirstOrDefault();
 
-            UploadefFilesServiceDesk_Setting.SettingValue = txtUploadedFilesPath.Text.Trim();
+            UploadefFilesITILServiceDesk_Setting.SettingValue = txtUploadedFilesPath.Text.Trim();
             objServiceDeskDALDataContext.SubmitChanges();
 
-            ServiceDesk_Setting UploadPermissionServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                         where ServiceDesk_Settings.PortalID == PortalId
-                                                                         where ServiceDesk_Settings.SettingName == "UploadPermission"
-                                                                         select ServiceDesk_Settings).FirstOrDefault();
+            ITILServiceDesk_Setting UploadPermissionITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                         where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                         where ITILServiceDesk_Settings.SettingName == "UploadPermission"
+                                                                         select ITILServiceDesk_Settings).FirstOrDefault();
 
-            UploadPermissionServiceDesk_Setting.SettingValue = ddlUploadPermission.SelectedValue;
+            UploadPermissionITILServiceDesk_Setting.SettingValue = ddlUploadPermission.SelectedValue;
             objServiceDeskDALDataContext.SubmitChanges();
 
             lblUploadedFilesPath.Text = Localization.GetString("Updated.Text", LocalResourceFile);
@@ -455,9 +455,9 @@ namespace ITIL.Modules.ServiceDesk
 
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            var result = (from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                          where ServiceDesk_Categories.CategoryID == intCategoryID
-                          select ServiceDesk_Categories).FirstOrDefault();
+            var result = (from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                          where ITILServiceDesk_Categories.CategoryID == intCategoryID
+                          select ITILServiceDesk_Categories).FirstOrDefault();
 
             // Only build a node path if the current level is not the root
             if (result.Level > 1)
@@ -466,15 +466,15 @@ namespace ITIL.Modules.ServiceDesk
 
                 for (int i = 1; i < result.Level; i++)
                 {
-                    var CurrentCategory = (from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                                           where ServiceDesk_Categories.CategoryID == intCurrentCategoryID
-                                           select ServiceDesk_Categories).FirstOrDefault();
+                    var CurrentCategory = (from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                                           where ITILServiceDesk_Categories.CategoryID == intCurrentCategoryID
+                                           select ITILServiceDesk_Categories).FirstOrDefault();
 
                     strNodePath = CurrentCategory.ParentCategoryID.ToString() + @"/" + strNodePath;
 
-                    var ParentCategory = (from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                                          where ServiceDesk_Categories.CategoryID == CurrentCategory.ParentCategoryID
-                                          select ServiceDesk_Categories).FirstOrDefault();
+                    var ParentCategory = (from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                                          where ITILServiceDesk_Categories.CategoryID == CurrentCategory.ParentCategoryID
+                                          select ITILServiceDesk_Categories).FirstOrDefault();
 
                     intCurrentCategoryID = ParentCategory.CategoryID;
                 }
@@ -499,9 +499,9 @@ namespace ITIL.Modules.ServiceDesk
             {
                 if (tvCategories.SelectedNode.Value != "")
                 {
-                    var result = (from ServiceDesk_Categories in CategoriesTable.GetCategoriesTable(PortalId, false)
-                                  where ServiceDesk_Categories.CategoryID == Convert.ToInt32(tvCategories.SelectedNode.Value)
-                                  select ServiceDesk_Categories).FirstOrDefault();
+                    var result = (from ITILServiceDesk_Categories in CategoriesTable.GetCategoriesTable(PortalId, false)
+                                  where ITILServiceDesk_Categories.CategoryID == Convert.ToInt32(tvCategories.SelectedNode.Value)
+                                  select ITILServiceDesk_Categories).FirstOrDefault();
 
                     txtCategory.Text = result.CategoryName;
                     txtCategoryID.Text = result.CategoryID.ToString();
@@ -526,9 +526,9 @@ namespace ITIL.Modules.ServiceDesk
 
             if (btnUpdate.CommandName == "Update")
             {
-                var result = (from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                              where ServiceDesk_Categories.CategoryID == Convert.ToInt32(txtCategoryID.Text)
-                              select ServiceDesk_Categories).FirstOrDefault();
+                var result = (from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                              where ITILServiceDesk_Categories.CategoryID == Convert.ToInt32(txtCategoryID.Text)
+                              select ITILServiceDesk_Categories).FirstOrDefault();
 
                 result.CategoryName = txtCategory.Text.Trim();
 
@@ -549,20 +549,20 @@ namespace ITIL.Modules.ServiceDesk
             {
                 // This is a Save for a new Node                
 
-                ServiceDesk_Category objServiceDesk_Category = new ServiceDesk_Category();
-                objServiceDesk_Category.PortalID = PortalId;
-                objServiceDesk_Category.CategoryName = txtCategory.Text.Trim();
-                objServiceDesk_Category.ParentCategoryID = (GetParentCategoryID(ddlParentCategory.SelectedValue) == "0") ? (int?)null : Convert.ToInt32(ddlParentCategory.SelectedValue);
-                objServiceDesk_Category.Level = (ddlParentCategory.SelectedValue == "0") ? 1 : GetLevelOfParent(Convert.ToInt32(ddlParentCategory.SelectedValue)) + 1;
-                objServiceDesk_Category.RequestorVisible = chkRequesterVisible.Checked;
-                objServiceDesk_Category.Selectable = chkSelectable.Checked;
+                ITILServiceDesk_Category objITILServiceDesk_Category = new ITILServiceDesk_Category();
+                objITILServiceDesk_Category.PortalID = PortalId;
+                objITILServiceDesk_Category.CategoryName = txtCategory.Text.Trim();
+                objITILServiceDesk_Category.ParentCategoryID = (GetParentCategoryID(ddlParentCategory.SelectedValue) == "0") ? (int?)null : Convert.ToInt32(ddlParentCategory.SelectedValue);
+                objITILServiceDesk_Category.Level = (ddlParentCategory.SelectedValue == "0") ? 1 : GetLevelOfParent(Convert.ToInt32(ddlParentCategory.SelectedValue)) + 1;
+                objITILServiceDesk_Category.RequestorVisible = chkRequesterVisible.Checked;
+                objITILServiceDesk_Category.Selectable = chkSelectable.Checked;
 
-                objServiceDeskDALDataContext.ServiceDesk_Categories.InsertOnSubmit(objServiceDesk_Category);
+                objServiceDeskDALDataContext.ITILServiceDesk_Categories.InsertOnSubmit(objITILServiceDesk_Category);
                 objServiceDeskDALDataContext.SubmitChanges();
 
                 // Set the Hidden CategoryID
-                txtParentCategoryID.Text = (objServiceDesk_Category.ParentCategoryID == null) ? "" : ddlParentCategory.SelectedValue;
-                txtCategoryID.Text = objServiceDesk_Category.CategoryID.ToString();
+                txtParentCategoryID.Text = (objITILServiceDesk_Category.ParentCategoryID == null) ? "" : ddlParentCategory.SelectedValue;
+                txtCategoryID.Text = objITILServiceDesk_Category.CategoryID.ToString();
                 ResetForm();
             }
 
@@ -578,7 +578,7 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region UpdateLevelOfChildren
-        private void UpdateLevelOfChildren(ServiceDesk_Category result)
+        private void UpdateLevelOfChildren(ITILServiceDesk_Category result)
         {
             int? intStartingLevel = result.Level;
 
@@ -591,10 +591,10 @@ namespace ITIL.Modules.ServiceDesk
 
             // Get the children of the current item
             // This method may be called from the top level or recuresively by one of the child items
-            var CategoryChildren = from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                                   where ServiceDesk_Categories.ParentCategoryID == result.CategoryID
+            var CategoryChildren = from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                                   where ITILServiceDesk_Categories.ParentCategoryID == result.CategoryID
                                    where !colProcessedCategoryIDs.Contains(result.CategoryID)
-                                   select ServiceDesk_Categories;
+                                   select ITILServiceDesk_Categories;
 
             // Loop thru each item
             foreach (var objCategory in CategoryChildren)
@@ -615,9 +615,9 @@ namespace ITIL.Modules.ServiceDesk
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            var result = (from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                          where ServiceDesk_Categories.CategoryID == ParentCategoryID
-                          select ServiceDesk_Categories).FirstOrDefault();
+            var result = (from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                          where ITILServiceDesk_Categories.CategoryID == ParentCategoryID
+                          select ITILServiceDesk_Categories).FirstOrDefault();
 
             return (result == null) ? 0 : result.Level;
         }
@@ -635,9 +635,9 @@ namespace ITIL.Modules.ServiceDesk
 
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            var result = (from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                          where ServiceDesk_Categories.CategoryID == ParentCategoryID
-                          select ServiceDesk_Categories).FirstOrDefault();
+            var result = (from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                          where ITILServiceDesk_Categories.CategoryID == ParentCategoryID
+                          select ITILServiceDesk_Categories).FirstOrDefault();
 
             string strResultParentCategoryID = "0";
             if (result != null)
@@ -714,42 +714,42 @@ namespace ITIL.Modules.ServiceDesk
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
             // Get the node
-            var result = (from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                          where ServiceDesk_Categories.CategoryID == Convert.ToInt32(txtCategoryID.Text)
-                          select ServiceDesk_Categories).FirstOrDefault();
+            var result = (from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                          where ITILServiceDesk_Categories.CategoryID == Convert.ToInt32(txtCategoryID.Text)
+                          select ITILServiceDesk_Categories).FirstOrDefault();
 
             // Make a Temp object to use to update the child nodes
-            ServiceDesk_Category TmpServiceDesk_Category = new ServiceDesk_Category();
-            TmpServiceDesk_Category.CategoryID = result.CategoryID;
+            ITILServiceDesk_Category TmpITILServiceDesk_Category = new ITILServiceDesk_Category();
+            TmpITILServiceDesk_Category.CategoryID = result.CategoryID;
             if (result.ParentCategoryID == null)
             {
-                TmpServiceDesk_Category.Level = 0;
+                TmpITILServiceDesk_Category.Level = 0;
             }
             else
             {
-                TmpServiceDesk_Category.Level = GetLevelOfParent(result.ParentCategoryID);
+                TmpITILServiceDesk_Category.Level = GetLevelOfParent(result.ParentCategoryID);
             }
 
             // Get all TaskCategories that use the Node
-            var colTaskCategories = from ServiceDesk_TaskCategories in objServiceDeskDALDataContext.ServiceDesk_TaskCategories
-                                    where ServiceDesk_TaskCategories.CategoryID == Convert.ToInt32(txtCategoryID.Text)
-                                    select ServiceDesk_TaskCategories;
+            var colTaskCategories = from ITILServiceDesk_TaskCategories in objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories
+                                    where ITILServiceDesk_TaskCategories.CategoryID == Convert.ToInt32(txtCategoryID.Text)
+                                    select ITILServiceDesk_TaskCategories;
 
             // Delete them
-            objServiceDeskDALDataContext.ServiceDesk_TaskCategories.DeleteAllOnSubmit(colTaskCategories);
+            objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories.DeleteAllOnSubmit(colTaskCategories);
             objServiceDeskDALDataContext.SubmitChanges();
 
             // Delete the node
-            objServiceDeskDALDataContext.ServiceDesk_Categories.DeleteOnSubmit(result);
+            objServiceDeskDALDataContext.ITILServiceDesk_Categories.DeleteOnSubmit(result);
             objServiceDeskDALDataContext.SubmitChanges();
 
             // Update levels of all the Children            
-            UpdateLevelOfChildren(TmpServiceDesk_Category);
+            UpdateLevelOfChildren(TmpITILServiceDesk_Category);
 
             // Update all the children nodes to give them a new parent
-            var CategoryChildren = from ServiceDesk_Categories in objServiceDeskDALDataContext.ServiceDesk_Categories
-                                   where ServiceDesk_Categories.ParentCategoryID == result.CategoryID
-                                   select ServiceDesk_Categories;
+            var CategoryChildren = from ITILServiceDesk_Categories in objServiceDeskDALDataContext.ITILServiceDesk_Categories
+                                   where ITILServiceDesk_Categories.ParentCategoryID == result.CategoryID
+                                   select ITILServiceDesk_Categories;
 
             // Loop thru each item
             foreach (var objCategory in CategoryChildren)
@@ -759,11 +759,11 @@ namespace ITIL.Modules.ServiceDesk
             }
 
             // Delete the Catagory from any Ticket that uses it
-            var DeleteHelpDesk_TaskCategories = from ServiceDesk_TaskCategories in objServiceDeskDALDataContext.ServiceDesk_TaskCategories
-                                                where ServiceDesk_TaskCategories.CategoryID == TmpServiceDesk_Category.CategoryID
-                                                select ServiceDesk_TaskCategories;
+            var DeleteHelpDesk_TaskCategories = from ITILServiceDesk_TaskCategories in objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories
+                                                where ITILServiceDesk_TaskCategories.CategoryID == TmpITILServiceDesk_Category.CategoryID
+                                                select ITILServiceDesk_TaskCategories;
 
-            objServiceDeskDALDataContext.ServiceDesk_TaskCategories.DeleteAllOnSubmit(DeleteHelpDesk_TaskCategories);
+            objServiceDeskDALDataContext.ITILServiceDesk_TaskCategories.DeleteAllOnSubmit(DeleteHelpDesk_TaskCategories);
             objServiceDeskDALDataContext.SubmitChanges();
 
             RefreshCache();
@@ -852,22 +852,22 @@ namespace ITIL.Modules.ServiceDesk
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
             // See if Role already exists
-            ServiceDesk_Role colServiceDesk_Roles = (from ServiceDesk_Roles in objServiceDeskDALDataContext.ServiceDesk_Roles
-                                                       where ServiceDesk_Roles.PortalID == PortalId
-                                                       where ServiceDesk_Roles.RoleID == Convert.ToInt32(ddlRole.SelectedValue)
-                                                       select ServiceDesk_Roles).FirstOrDefault();
-            if (colServiceDesk_Roles != null)
+            ITILServiceDesk_Role colITILServiceDesk_Roles = (from ITILServiceDesk_Roles in objServiceDeskDALDataContext.ITILServiceDesk_Roles
+                                                       where ITILServiceDesk_Roles.PortalID == PortalId
+                                                       where ITILServiceDesk_Roles.RoleID == Convert.ToInt32(ddlRole.SelectedValue)
+                                                       select ITILServiceDesk_Roles).FirstOrDefault();
+            if (colITILServiceDesk_Roles != null)
             {
                 RoleController objRoleController = new RoleController();
                 lblRoleError.Text = String.Format(Localization.GetString("RoleAlreadyAdded.Text", LocalResourceFile), objRoleController.GetRole(Convert.ToInt32(ddlRole.SelectedValue), PortalId).RoleName);
             }
             else
             {
-                ServiceDesk_Role objServiceDesk_Role = new ServiceDesk_Role();
-                objServiceDesk_Role.PortalID = PortalId;
-                objServiceDesk_Role.RoleID = Convert.ToInt32(ddlRole.SelectedValue);
+                ITILServiceDesk_Role objITILServiceDesk_Role = new ITILServiceDesk_Role();
+                objITILServiceDesk_Role.PortalID = PortalId;
+                objITILServiceDesk_Role.RoleID = Convert.ToInt32(ddlRole.SelectedValue);
 
-                objServiceDeskDALDataContext.ServiceDesk_Roles.InsertOnSubmit(objServiceDesk_Role);
+                objServiceDeskDALDataContext.ITILServiceDesk_Roles.InsertOnSubmit(objITILServiceDesk_Role);
                 objServiceDeskDALDataContext.SubmitChanges();
 
                 lvRoles.DataBind();

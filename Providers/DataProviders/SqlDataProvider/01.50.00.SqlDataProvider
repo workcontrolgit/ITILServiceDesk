@@ -8,10 +8,10 @@
 /*****                                                  *****/
 /************************************************************/
 
-IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ServiceDesk_LastSearch' 
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ITILServiceDesk_LastSearch' 
 AND COLUMN_NAME = 'CurrentPage')
 BEGIN
-   ALTER TABLE ServiceDesk_LastSearch ADD [CurrentPage] [int] NULL
+   ALTER TABLE ITILServiceDesk_LastSearch ADD [CurrentPage] [int] NULL
 END
 
 /************************************************************/

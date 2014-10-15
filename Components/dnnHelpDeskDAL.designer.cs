@@ -30,36 +30,36 @@ namespace ITIL.Modules.ServiceDesk
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertServiceDesk_Log(ServiceDesk_Log instance);
-    partial void UpdateServiceDesk_Log(ServiceDesk_Log instance);
-    partial void DeleteServiceDesk_Log(ServiceDesk_Log instance);
-    partial void InsertServiceDesk_Setting(ServiceDesk_Setting instance);
-    partial void UpdateServiceDesk_Setting(ServiceDesk_Setting instance);
-    partial void DeleteServiceDesk_Setting(ServiceDesk_Setting instance);
-    partial void InsertServiceDesk_TaskAssociation(ServiceDesk_TaskAssociation instance);
-    partial void UpdateServiceDesk_TaskAssociation(ServiceDesk_TaskAssociation instance);
-    partial void DeleteServiceDesk_TaskAssociation(ServiceDesk_TaskAssociation instance);
-    partial void InsertServiceDesk_TaskCategory(ServiceDesk_TaskCategory instance);
-    partial void UpdateServiceDesk_TaskCategory(ServiceDesk_TaskCategory instance);
-    partial void DeleteServiceDesk_TaskCategory(ServiceDesk_TaskCategory instance);
-    partial void InsertServiceDesk_TaskDetail(ServiceDesk_TaskDetail instance);
-    partial void UpdateServiceDesk_TaskDetail(ServiceDesk_TaskDetail instance);
-    partial void DeleteServiceDesk_TaskDetail(ServiceDesk_TaskDetail instance);
-    partial void InsertServiceDesk_Category(ServiceDesk_Category instance);
-    partial void UpdateServiceDesk_Category(ServiceDesk_Category instance);
-    partial void DeleteServiceDesk_Category(ServiceDesk_Category instance);
-    partial void InsertServiceDesk_Attachment(ServiceDesk_Attachment instance);
-    partial void UpdateServiceDesk_Attachment(ServiceDesk_Attachment instance);
-    partial void DeleteServiceDesk_Attachment(ServiceDesk_Attachment instance);
-    partial void InsertServiceDesk_Task(ServiceDesk_Task instance);
-    partial void UpdateServiceDesk_Task(ServiceDesk_Task instance);
-    partial void DeleteServiceDesk_Task(ServiceDesk_Task instance);
-    partial void InsertServiceDesk_Role(ServiceDesk_Role instance);
-    partial void UpdateServiceDesk_Role(ServiceDesk_Role instance);
-    partial void DeleteServiceDesk_Role(ServiceDesk_Role instance);
-    partial void InsertServiceDesk_LastSearch(ServiceDesk_LastSearch instance);
-    partial void UpdateServiceDesk_LastSearch(ServiceDesk_LastSearch instance);
-    partial void DeleteServiceDesk_LastSearch(ServiceDesk_LastSearch instance);
+    partial void InsertITILServiceDesk_Log(ITILServiceDesk_Log instance);
+    partial void UpdateITILServiceDesk_Log(ITILServiceDesk_Log instance);
+    partial void DeleteITILServiceDesk_Log(ITILServiceDesk_Log instance);
+    partial void InsertITILServiceDesk_Setting(ITILServiceDesk_Setting instance);
+    partial void UpdateITILServiceDesk_Setting(ITILServiceDesk_Setting instance);
+    partial void DeleteITILServiceDesk_Setting(ITILServiceDesk_Setting instance);
+    partial void InsertITILServiceDesk_TaskAssociation(ITILServiceDesk_TaskAssociation instance);
+    partial void UpdateITILServiceDesk_TaskAssociation(ITILServiceDesk_TaskAssociation instance);
+    partial void DeleteITILServiceDesk_TaskAssociation(ITILServiceDesk_TaskAssociation instance);
+    partial void InsertITILServiceDesk_TaskCategory(ITILServiceDesk_TaskCategory instance);
+    partial void UpdateITILServiceDesk_TaskCategory(ITILServiceDesk_TaskCategory instance);
+    partial void DeleteITILServiceDesk_TaskCategory(ITILServiceDesk_TaskCategory instance);
+    partial void InsertITILServiceDesk_TaskDetail(ITILServiceDesk_TaskDetail instance);
+    partial void UpdateITILServiceDesk_TaskDetail(ITILServiceDesk_TaskDetail instance);
+    partial void DeleteITILServiceDesk_TaskDetail(ITILServiceDesk_TaskDetail instance);
+    partial void InsertITILServiceDesk_Category(ITILServiceDesk_Category instance);
+    partial void UpdateITILServiceDesk_Category(ITILServiceDesk_Category instance);
+    partial void DeleteITILServiceDesk_Category(ITILServiceDesk_Category instance);
+    partial void InsertITILServiceDesk_Attachment(ITILServiceDesk_Attachment instance);
+    partial void UpdateITILServiceDesk_Attachment(ITILServiceDesk_Attachment instance);
+    partial void DeleteITILServiceDesk_Attachment(ITILServiceDesk_Attachment instance);
+    partial void InsertITILServiceDesk_Task(ITILServiceDesk_Task instance);
+    partial void UpdateITILServiceDesk_Task(ITILServiceDesk_Task instance);
+    partial void DeleteITILServiceDesk_Task(ITILServiceDesk_Task instance);
+    partial void InsertITILServiceDesk_Role(ITILServiceDesk_Role instance);
+    partial void UpdateITILServiceDesk_Role(ITILServiceDesk_Role instance);
+    partial void DeleteITILServiceDesk_Role(ITILServiceDesk_Role instance);
+    partial void InsertITILServiceDesk_LastSearch(ITILServiceDesk_LastSearch instance);
+    partial void UpdateITILServiceDesk_LastSearch(ITILServiceDesk_LastSearch instance);
+    partial void DeleteITILServiceDesk_LastSearch(ITILServiceDesk_LastSearch instance);
     #endregion
 		
 		public ServiceDeskDALDataContext() : 
@@ -92,89 +92,89 @@ namespace ITIL.Modules.ServiceDesk
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_Log> ServiceDesk_Logs
+		public System.Data.Linq.Table<ITILServiceDesk_Log> ITILServiceDesk_Logs
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_Log>();
+				return this.GetTable<ITILServiceDesk_Log>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_Setting> ServiceDesk_Settings
+		public System.Data.Linq.Table<ITILServiceDesk_Setting> ITILServiceDesk_Settings
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_Setting>();
+				return this.GetTable<ITILServiceDesk_Setting>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_TaskAssociation> ServiceDesk_TaskAssociations
+		public System.Data.Linq.Table<ITILServiceDesk_TaskAssociation> ITILServiceDesk_TaskAssociations
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_TaskAssociation>();
+				return this.GetTable<ITILServiceDesk_TaskAssociation>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_TaskCategory> ServiceDesk_TaskCategories
+		public System.Data.Linq.Table<ITILServiceDesk_TaskCategory> ITILServiceDesk_TaskCategories
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_TaskCategory>();
+				return this.GetTable<ITILServiceDesk_TaskCategory>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_TaskDetail> ServiceDesk_TaskDetails
+		public System.Data.Linq.Table<ITILServiceDesk_TaskDetail> ITILServiceDesk_TaskDetails
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_TaskDetail>();
+				return this.GetTable<ITILServiceDesk_TaskDetail>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_Category> ServiceDesk_Categories
+		public System.Data.Linq.Table<ITILServiceDesk_Category> ITILServiceDesk_Categories
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_Category>();
+				return this.GetTable<ITILServiceDesk_Category>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_Attachment> ServiceDesk_Attachments
+		public System.Data.Linq.Table<ITILServiceDesk_Attachment> ITILServiceDesk_Attachments
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_Attachment>();
+				return this.GetTable<ITILServiceDesk_Attachment>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_Task> ServiceDesk_Tasks
+		public System.Data.Linq.Table<ITILServiceDesk_Task> ITILServiceDesk_Tasks
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_Task>();
+				return this.GetTable<ITILServiceDesk_Task>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_Role> ServiceDesk_Roles
+		public System.Data.Linq.Table<ITILServiceDesk_Role> ITILServiceDesk_Roles
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_Role>();
+				return this.GetTable<ITILServiceDesk_Role>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceDesk_LastSearch> ServiceDesk_LastSearches
+		public System.Data.Linq.Table<ITILServiceDesk_LastSearch> ITILServiceDesk_LastSearches
 		{
 			get
 			{
-				return this.GetTable<ServiceDesk_LastSearch>();
+				return this.GetTable<ITILServiceDesk_LastSearch>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_Log")]
-	public partial class ServiceDesk_Log : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_Log")]
+	public partial class ITILServiceDesk_Log : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -189,7 +189,7 @@ namespace ITIL.Modules.ServiceDesk
 		
 		private int _UserID;
 		
-		private EntityRef<ServiceDesk_Task> _ServiceDesk_Task;
+		private EntityRef<ITILServiceDesk_Task> _ITILServiceDesk_Task;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -207,9 +207,9 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnUserIDChanged();
     #endregion
 		
-		public ServiceDesk_Log()
+		public ITILServiceDesk_Log()
 		{
-			this._ServiceDesk_Task = default(EntityRef<ServiceDesk_Task>);
+			this._ITILServiceDesk_Task = default(EntityRef<ITILServiceDesk_Task>);
 			OnCreated();
 		}
 		
@@ -244,7 +244,7 @@ namespace ITIL.Modules.ServiceDesk
 			{
 				if ((this._TaskID != value))
 				{
-					if (this._ServiceDesk_Task.HasLoadedOrAssignedValue)
+					if (this._ITILServiceDesk_Task.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -317,36 +317,36 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Task_ServiceDesk_Log", Storage="_ServiceDesk_Task", ThisKey="TaskID", OtherKey="TaskID", IsForeignKey=true)]
-		public ServiceDesk_Task ServiceDesk_Task
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Task_ITILServiceDesk_Log", Storage="_ITILServiceDesk_Task", ThisKey="TaskID", OtherKey="TaskID", IsForeignKey=true)]
+		public ITILServiceDesk_Task ITILServiceDesk_Task
 		{
 			get
 			{
-				return this._ServiceDesk_Task.Entity;
+				return this._ITILServiceDesk_Task.Entity;
 			}
 			set
 			{
-				ServiceDesk_Task previousValue = this._ServiceDesk_Task.Entity;
+				ITILServiceDesk_Task previousValue = this._ITILServiceDesk_Task.Entity;
 				if (((previousValue != value) 
-							|| (this._ServiceDesk_Task.HasLoadedOrAssignedValue == false)))
+							|| (this._ITILServiceDesk_Task.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._ServiceDesk_Task.Entity = null;
-						previousValue.ServiceDesk_Logs.Remove(this);
+						this._ITILServiceDesk_Task.Entity = null;
+						previousValue.ITILServiceDesk_Logs.Remove(this);
 					}
-					this._ServiceDesk_Task.Entity = value;
+					this._ITILServiceDesk_Task.Entity = value;
 					if ((value != null))
 					{
-						value.ServiceDesk_Logs.Add(this);
+						value.ITILServiceDesk_Logs.Add(this);
 						this._TaskID = value.TaskID;
 					}
 					else
 					{
 						this._TaskID = default(int);
 					}
-					this.SendPropertyChanged("ServiceDesk_Task");
+					this.SendPropertyChanged("ITILServiceDesk_Task");
 				}
 			}
 		}
@@ -372,8 +372,8 @@ namespace ITIL.Modules.ServiceDesk
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_Settings")]
-	public partial class ServiceDesk_Setting : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_Settings")]
+	public partial class ITILServiceDesk_Setting : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -400,7 +400,7 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnSettingValueChanged();
     #endregion
 		
-		public ServiceDesk_Setting()
+		public ITILServiceDesk_Setting()
 		{
 			OnCreated();
 		}
@@ -506,8 +506,8 @@ namespace ITIL.Modules.ServiceDesk
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_TaskAssociations")]
-	public partial class ServiceDesk_TaskAssociation : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_TaskAssociations")]
+	public partial class ITILServiceDesk_TaskAssociation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -518,7 +518,7 @@ namespace ITIL.Modules.ServiceDesk
 		
 		private int _AssociatedID;
 		
-		private EntityRef<ServiceDesk_Task> _ServiceDesk_Task;
+		private EntityRef<ITILServiceDesk_Task> _ITILServiceDesk_Task;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -532,9 +532,9 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnAssociatedIDChanged();
     #endregion
 		
-		public ServiceDesk_TaskAssociation()
+		public ITILServiceDesk_TaskAssociation()
 		{
-			this._ServiceDesk_Task = default(EntityRef<ServiceDesk_Task>);
+			this._ITILServiceDesk_Task = default(EntityRef<ITILServiceDesk_Task>);
 			OnCreated();
 		}
 		
@@ -569,7 +569,7 @@ namespace ITIL.Modules.ServiceDesk
 			{
 				if ((this._TaskID != value))
 				{
-					if (this._ServiceDesk_Task.HasLoadedOrAssignedValue)
+					if (this._ITILServiceDesk_Task.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -602,36 +602,36 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Task_ServiceDesk_TaskAssociation", Storage="_ServiceDesk_Task", ThisKey="TaskID", OtherKey="TaskID", IsForeignKey=true)]
-		public ServiceDesk_Task ServiceDesk_Task
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Task_ITILServiceDesk_TaskAssociation", Storage="_ITILServiceDesk_Task", ThisKey="TaskID", OtherKey="TaskID", IsForeignKey=true)]
+		public ITILServiceDesk_Task ITILServiceDesk_Task
 		{
 			get
 			{
-				return this._ServiceDesk_Task.Entity;
+				return this._ITILServiceDesk_Task.Entity;
 			}
 			set
 			{
-				ServiceDesk_Task previousValue = this._ServiceDesk_Task.Entity;
+				ITILServiceDesk_Task previousValue = this._ITILServiceDesk_Task.Entity;
 				if (((previousValue != value) 
-							|| (this._ServiceDesk_Task.HasLoadedOrAssignedValue == false)))
+							|| (this._ITILServiceDesk_Task.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._ServiceDesk_Task.Entity = null;
-						previousValue.ServiceDesk_TaskAssociations.Remove(this);
+						this._ITILServiceDesk_Task.Entity = null;
+						previousValue.ITILServiceDesk_TaskAssociations.Remove(this);
 					}
-					this._ServiceDesk_Task.Entity = value;
+					this._ITILServiceDesk_Task.Entity = value;
 					if ((value != null))
 					{
-						value.ServiceDesk_TaskAssociations.Add(this);
+						value.ITILServiceDesk_TaskAssociations.Add(this);
 						this._TaskID = value.TaskID;
 					}
 					else
 					{
 						this._TaskID = default(int);
 					}
-					this.SendPropertyChanged("ServiceDesk_Task");
+					this.SendPropertyChanged("ITILServiceDesk_Task");
 				}
 			}
 		}
@@ -657,8 +657,8 @@ namespace ITIL.Modules.ServiceDesk
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_TaskCategories")]
-	public partial class ServiceDesk_TaskCategory : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_TaskCategories")]
+	public partial class ITILServiceDesk_TaskCategory : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -669,9 +669,9 @@ namespace ITIL.Modules.ServiceDesk
 		
 		private int _CategoryID;
 		
-		private EntityRef<ServiceDesk_Category> _ServiceDesk_Category;
+		private EntityRef<ITILServiceDesk_Category> _ITILServiceDesk_Category;
 		
-		private EntityRef<ServiceDesk_Task> _ServiceDesk_Task;
+		private EntityRef<ITILServiceDesk_Task> _ITILServiceDesk_Task;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -685,10 +685,10 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnCategoryIDChanged();
     #endregion
 		
-		public ServiceDesk_TaskCategory()
+		public ITILServiceDesk_TaskCategory()
 		{
-			this._ServiceDesk_Category = default(EntityRef<ServiceDesk_Category>);
-			this._ServiceDesk_Task = default(EntityRef<ServiceDesk_Task>);
+			this._ITILServiceDesk_Category = default(EntityRef<ITILServiceDesk_Category>);
+			this._ITILServiceDesk_Task = default(EntityRef<ITILServiceDesk_Task>);
 			OnCreated();
 		}
 		
@@ -723,7 +723,7 @@ namespace ITIL.Modules.ServiceDesk
 			{
 				if ((this._TaskID != value))
 				{
-					if (this._ServiceDesk_Task.HasLoadedOrAssignedValue)
+					if (this._ITILServiceDesk_Task.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -747,7 +747,7 @@ namespace ITIL.Modules.ServiceDesk
 			{
 				if ((this._CategoryID != value))
 				{
-					if (this._ServiceDesk_Category.HasLoadedOrAssignedValue)
+					if (this._ITILServiceDesk_Category.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -760,70 +760,70 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Category_ServiceDesk_TaskCategory", Storage="_ServiceDesk_Category", ThisKey="CategoryID", OtherKey="CategoryID", IsForeignKey=true)]
-		public ServiceDesk_Category ServiceDesk_Category
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Category_ITILServiceDesk_TaskCategory", Storage="_ITILServiceDesk_Category", ThisKey="CategoryID", OtherKey="CategoryID", IsForeignKey=true)]
+		public ITILServiceDesk_Category ITILServiceDesk_Category
 		{
 			get
 			{
-				return this._ServiceDesk_Category.Entity;
+				return this._ITILServiceDesk_Category.Entity;
 			}
 			set
 			{
-				ServiceDesk_Category previousValue = this._ServiceDesk_Category.Entity;
+				ITILServiceDesk_Category previousValue = this._ITILServiceDesk_Category.Entity;
 				if (((previousValue != value) 
-							|| (this._ServiceDesk_Category.HasLoadedOrAssignedValue == false)))
+							|| (this._ITILServiceDesk_Category.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._ServiceDesk_Category.Entity = null;
-						previousValue.ServiceDesk_TaskCategories.Remove(this);
+						this._ITILServiceDesk_Category.Entity = null;
+						previousValue.ITILServiceDesk_TaskCategories.Remove(this);
 					}
-					this._ServiceDesk_Category.Entity = value;
+					this._ITILServiceDesk_Category.Entity = value;
 					if ((value != null))
 					{
-						value.ServiceDesk_TaskCategories.Add(this);
+						value.ITILServiceDesk_TaskCategories.Add(this);
 						this._CategoryID = value.CategoryID;
 					}
 					else
 					{
 						this._CategoryID = default(int);
 					}
-					this.SendPropertyChanged("ServiceDesk_Category");
+					this.SendPropertyChanged("ITILServiceDesk_Category");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Task_ServiceDesk_TaskCategory", Storage="_ServiceDesk_Task", ThisKey="TaskID", OtherKey="TaskID", IsForeignKey=true)]
-		public ServiceDesk_Task ServiceDesk_Task
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Task_ITILServiceDesk_TaskCategory", Storage="_ITILServiceDesk_Task", ThisKey="TaskID", OtherKey="TaskID", IsForeignKey=true)]
+		public ITILServiceDesk_Task ITILServiceDesk_Task
 		{
 			get
 			{
-				return this._ServiceDesk_Task.Entity;
+				return this._ITILServiceDesk_Task.Entity;
 			}
 			set
 			{
-				ServiceDesk_Task previousValue = this._ServiceDesk_Task.Entity;
+				ITILServiceDesk_Task previousValue = this._ITILServiceDesk_Task.Entity;
 				if (((previousValue != value) 
-							|| (this._ServiceDesk_Task.HasLoadedOrAssignedValue == false)))
+							|| (this._ITILServiceDesk_Task.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._ServiceDesk_Task.Entity = null;
-						previousValue.ServiceDesk_TaskCategories.Remove(this);
+						this._ITILServiceDesk_Task.Entity = null;
+						previousValue.ITILServiceDesk_TaskCategories.Remove(this);
 					}
-					this._ServiceDesk_Task.Entity = value;
+					this._ITILServiceDesk_Task.Entity = value;
 					if ((value != null))
 					{
-						value.ServiceDesk_TaskCategories.Add(this);
+						value.ITILServiceDesk_TaskCategories.Add(this);
 						this._TaskID = value.TaskID;
 					}
 					else
 					{
 						this._TaskID = default(int);
 					}
-					this.SendPropertyChanged("ServiceDesk_Task");
+					this.SendPropertyChanged("ITILServiceDesk_Task");
 				}
 			}
 		}
@@ -849,8 +849,8 @@ namespace ITIL.Modules.ServiceDesk
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_TaskDetails")]
-	public partial class ServiceDesk_TaskDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_TaskDetails")]
+	public partial class ITILServiceDesk_TaskDetail : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -871,9 +871,9 @@ namespace ITIL.Modules.ServiceDesk
 		
 		private System.Nullable<System.DateTime> _StopTime;
 		
-		private EntitySet<ServiceDesk_Attachment> _ServiceDesk_Attachments;
+		private EntitySet<ITILServiceDesk_Attachment> _ITILServiceDesk_Attachments;
 		
-		private EntityRef<ServiceDesk_Task> _ServiceDesk_Task;
+		private EntityRef<ITILServiceDesk_Task> _ITILServiceDesk_Task;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -897,10 +897,10 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnStopTimeChanged();
     #endregion
 		
-		public ServiceDesk_TaskDetail()
+		public ITILServiceDesk_TaskDetail()
 		{
-			this._ServiceDesk_Attachments = new EntitySet<ServiceDesk_Attachment>(new Action<ServiceDesk_Attachment>(this.attach_ServiceDesk_Attachments), new Action<ServiceDesk_Attachment>(this.detach_ServiceDesk_Attachments));
-			this._ServiceDesk_Task = default(EntityRef<ServiceDesk_Task>);
+			this._ITILServiceDesk_Attachments = new EntitySet<ITILServiceDesk_Attachment>(new Action<ITILServiceDesk_Attachment>(this.attach_ITILServiceDesk_Attachments), new Action<ITILServiceDesk_Attachment>(this.detach_ITILServiceDesk_Attachments));
+			this._ITILServiceDesk_Task = default(EntityRef<ITILServiceDesk_Task>);
 			OnCreated();
 		}
 		
@@ -935,7 +935,7 @@ namespace ITIL.Modules.ServiceDesk
 			{
 				if ((this._TaskID != value))
 				{
-					if (this._ServiceDesk_Task.HasLoadedOrAssignedValue)
+					if (this._ITILServiceDesk_Task.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1068,49 +1068,49 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_TaskDetail_ServiceDesk_Attachment", Storage="_ServiceDesk_Attachments", ThisKey="DetailID", OtherKey="DetailID")]
-		public EntitySet<ServiceDesk_Attachment> ServiceDesk_Attachments
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_TaskDetail_ITILServiceDesk_Attachment", Storage="_ITILServiceDesk_Attachments", ThisKey="DetailID", OtherKey="DetailID")]
+		public EntitySet<ITILServiceDesk_Attachment> ITILServiceDesk_Attachments
 		{
 			get
 			{
-				return this._ServiceDesk_Attachments;
+				return this._ITILServiceDesk_Attachments;
 			}
 			set
 			{
-				this._ServiceDesk_Attachments.Assign(value);
+				this._ITILServiceDesk_Attachments.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Task_ServiceDesk_TaskDetail", Storage="_ServiceDesk_Task", ThisKey="TaskID", OtherKey="TaskID", IsForeignKey=true)]
-		public ServiceDesk_Task ServiceDesk_Task
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Task_ITILServiceDesk_TaskDetail", Storage="_ITILServiceDesk_Task", ThisKey="TaskID", OtherKey="TaskID", IsForeignKey=true)]
+		public ITILServiceDesk_Task ITILServiceDesk_Task
 		{
 			get
 			{
-				return this._ServiceDesk_Task.Entity;
+				return this._ITILServiceDesk_Task.Entity;
 			}
 			set
 			{
-				ServiceDesk_Task previousValue = this._ServiceDesk_Task.Entity;
+				ITILServiceDesk_Task previousValue = this._ITILServiceDesk_Task.Entity;
 				if (((previousValue != value) 
-							|| (this._ServiceDesk_Task.HasLoadedOrAssignedValue == false)))
+							|| (this._ITILServiceDesk_Task.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._ServiceDesk_Task.Entity = null;
-						previousValue.ServiceDesk_TaskDetails.Remove(this);
+						this._ITILServiceDesk_Task.Entity = null;
+						previousValue.ITILServiceDesk_TaskDetails.Remove(this);
 					}
-					this._ServiceDesk_Task.Entity = value;
+					this._ITILServiceDesk_Task.Entity = value;
 					if ((value != null))
 					{
-						value.ServiceDesk_TaskDetails.Add(this);
+						value.ITILServiceDesk_TaskDetails.Add(this);
 						this._TaskID = value.TaskID;
 					}
 					else
 					{
 						this._TaskID = default(int);
 					}
-					this.SendPropertyChanged("ServiceDesk_Task");
+					this.SendPropertyChanged("ITILServiceDesk_Task");
 				}
 			}
 		}
@@ -1135,21 +1135,21 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		private void attach_ServiceDesk_Attachments(ServiceDesk_Attachment entity)
+		private void attach_ITILServiceDesk_Attachments(ITILServiceDesk_Attachment entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_TaskDetail = this;
+			entity.ITILServiceDesk_TaskDetail = this;
 		}
 		
-		private void detach_ServiceDesk_Attachments(ServiceDesk_Attachment entity)
+		private void detach_ITILServiceDesk_Attachments(ITILServiceDesk_Attachment entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_TaskDetail = null;
+			entity.ITILServiceDesk_TaskDetail = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_Categories")]
-	public partial class ServiceDesk_Category : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_Categories")]
+	public partial class ITILServiceDesk_Category : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1168,7 +1168,7 @@ namespace ITIL.Modules.ServiceDesk
 		
 		private bool _Selectable;
 		
-		private EntitySet<ServiceDesk_TaskCategory> _ServiceDesk_TaskCategories;
+		private EntitySet<ITILServiceDesk_TaskCategory> _ITILServiceDesk_TaskCategories;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1190,9 +1190,9 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnSelectableChanged();
     #endregion
 		
-		public ServiceDesk_Category()
+		public ITILServiceDesk_Category()
 		{
-			this._ServiceDesk_TaskCategories = new EntitySet<ServiceDesk_TaskCategory>(new Action<ServiceDesk_TaskCategory>(this.attach_ServiceDesk_TaskCategories), new Action<ServiceDesk_TaskCategory>(this.detach_ServiceDesk_TaskCategories));
+			this._ITILServiceDesk_TaskCategories = new EntitySet<ITILServiceDesk_TaskCategory>(new Action<ITILServiceDesk_TaskCategory>(this.attach_ITILServiceDesk_TaskCategories), new Action<ITILServiceDesk_TaskCategory>(this.detach_ITILServiceDesk_TaskCategories));
 			OnCreated();
 		}
 		
@@ -1336,16 +1336,16 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Category_ServiceDesk_TaskCategory", Storage="_ServiceDesk_TaskCategories", ThisKey="CategoryID", OtherKey="CategoryID")]
-		public EntitySet<ServiceDesk_TaskCategory> ServiceDesk_TaskCategories
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Category_ITILServiceDesk_TaskCategory", Storage="_ITILServiceDesk_TaskCategories", ThisKey="CategoryID", OtherKey="CategoryID")]
+		public EntitySet<ITILServiceDesk_TaskCategory> ITILServiceDesk_TaskCategories
 		{
 			get
 			{
-				return this._ServiceDesk_TaskCategories;
+				return this._ITILServiceDesk_TaskCategories;
 			}
 			set
 			{
-				this._ServiceDesk_TaskCategories.Assign(value);
+				this._ITILServiceDesk_TaskCategories.Assign(value);
 			}
 		}
 		
@@ -1369,21 +1369,21 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		private void attach_ServiceDesk_TaskCategories(ServiceDesk_TaskCategory entity)
+		private void attach_ITILServiceDesk_TaskCategories(ITILServiceDesk_TaskCategory entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Category = this;
+			entity.ITILServiceDesk_Category = this;
 		}
 		
-		private void detach_ServiceDesk_TaskCategories(ServiceDesk_TaskCategory entity)
+		private void detach_ITILServiceDesk_TaskCategories(ITILServiceDesk_TaskCategory entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Category = null;
+			entity.ITILServiceDesk_Category = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_Attachments")]
-	public partial class ServiceDesk_Attachment : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_Attachments")]
+	public partial class ITILServiceDesk_Attachment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1400,7 +1400,7 @@ namespace ITIL.Modules.ServiceDesk
 		
 		private int _UserID;
 		
-		private EntityRef<ServiceDesk_TaskDetail> _ServiceDesk_TaskDetail;
+		private EntityRef<ITILServiceDesk_TaskDetail> _ITILServiceDesk_TaskDetail;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1420,9 +1420,9 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnUserIDChanged();
     #endregion
 		
-		public ServiceDesk_Attachment()
+		public ITILServiceDesk_Attachment()
 		{
-			this._ServiceDesk_TaskDetail = default(EntityRef<ServiceDesk_TaskDetail>);
+			this._ITILServiceDesk_TaskDetail = default(EntityRef<ITILServiceDesk_TaskDetail>);
 			OnCreated();
 		}
 		
@@ -1457,7 +1457,7 @@ namespace ITIL.Modules.ServiceDesk
 			{
 				if ((this._DetailID != value))
 				{
-					if (this._ServiceDesk_TaskDetail.HasLoadedOrAssignedValue)
+					if (this._ITILServiceDesk_TaskDetail.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1550,36 +1550,36 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_TaskDetail_ServiceDesk_Attachment", Storage="_ServiceDesk_TaskDetail", ThisKey="DetailID", OtherKey="DetailID", IsForeignKey=true)]
-		public ServiceDesk_TaskDetail ServiceDesk_TaskDetail
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_TaskDetail_ITILServiceDesk_Attachment", Storage="_ITILServiceDesk_TaskDetail", ThisKey="DetailID", OtherKey="DetailID", IsForeignKey=true)]
+		public ITILServiceDesk_TaskDetail ITILServiceDesk_TaskDetail
 		{
 			get
 			{
-				return this._ServiceDesk_TaskDetail.Entity;
+				return this._ITILServiceDesk_TaskDetail.Entity;
 			}
 			set
 			{
-				ServiceDesk_TaskDetail previousValue = this._ServiceDesk_TaskDetail.Entity;
+				ITILServiceDesk_TaskDetail previousValue = this._ITILServiceDesk_TaskDetail.Entity;
 				if (((previousValue != value) 
-							|| (this._ServiceDesk_TaskDetail.HasLoadedOrAssignedValue == false)))
+							|| (this._ITILServiceDesk_TaskDetail.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._ServiceDesk_TaskDetail.Entity = null;
-						previousValue.ServiceDesk_Attachments.Remove(this);
+						this._ITILServiceDesk_TaskDetail.Entity = null;
+						previousValue.ITILServiceDesk_Attachments.Remove(this);
 					}
-					this._ServiceDesk_TaskDetail.Entity = value;
+					this._ITILServiceDesk_TaskDetail.Entity = value;
 					if ((value != null))
 					{
-						value.ServiceDesk_Attachments.Add(this);
+						value.ITILServiceDesk_Attachments.Add(this);
 						this._DetailID = value.DetailID;
 					}
 					else
 					{
 						this._DetailID = default(int);
 					}
-					this.SendPropertyChanged("ServiceDesk_TaskDetail");
+					this.SendPropertyChanged("ITILServiceDesk_TaskDetail");
 				}
 			}
 		}
@@ -1605,8 +1605,8 @@ namespace ITIL.Modules.ServiceDesk
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_Tasks")]
-	public partial class ServiceDesk_Task : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_Tasks")]
+	public partial class ITILServiceDesk_Task : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1643,13 +1643,13 @@ namespace ITIL.Modules.ServiceDesk
 		
 		private System.Nullable<int> _EstimatedHours;
 		
-		private EntitySet<ServiceDesk_Log> _ServiceDesk_Logs;
+		private EntitySet<ITILServiceDesk_Log> _ITILServiceDesk_Logs;
 		
-		private EntitySet<ServiceDesk_TaskAssociation> _ServiceDesk_TaskAssociations;
+		private EntitySet<ITILServiceDesk_TaskAssociation> _ITILServiceDesk_TaskAssociations;
 		
-		private EntitySet<ServiceDesk_TaskCategory> _ServiceDesk_TaskCategories;
+		private EntitySet<ITILServiceDesk_TaskCategory> _ITILServiceDesk_TaskCategories;
 		
-		private EntitySet<ServiceDesk_TaskDetail> _ServiceDesk_TaskDetails;
+		private EntitySet<ITILServiceDesk_TaskDetail> _ITILServiceDesk_TaskDetails;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1689,12 +1689,12 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnEstimatedHoursChanged();
     #endregion
 		
-		public ServiceDesk_Task()
+		public ITILServiceDesk_Task()
 		{
-			this._ServiceDesk_Logs = new EntitySet<ServiceDesk_Log>(new Action<ServiceDesk_Log>(this.attach_ServiceDesk_Logs), new Action<ServiceDesk_Log>(this.detach_ServiceDesk_Logs));
-			this._ServiceDesk_TaskAssociations = new EntitySet<ServiceDesk_TaskAssociation>(new Action<ServiceDesk_TaskAssociation>(this.attach_ServiceDesk_TaskAssociations), new Action<ServiceDesk_TaskAssociation>(this.detach_ServiceDesk_TaskAssociations));
-			this._ServiceDesk_TaskCategories = new EntitySet<ServiceDesk_TaskCategory>(new Action<ServiceDesk_TaskCategory>(this.attach_ServiceDesk_TaskCategories), new Action<ServiceDesk_TaskCategory>(this.detach_ServiceDesk_TaskCategories));
-			this._ServiceDesk_TaskDetails = new EntitySet<ServiceDesk_TaskDetail>(new Action<ServiceDesk_TaskDetail>(this.attach_ServiceDesk_TaskDetails), new Action<ServiceDesk_TaskDetail>(this.detach_ServiceDesk_TaskDetails));
+			this._ITILServiceDesk_Logs = new EntitySet<ITILServiceDesk_Log>(new Action<ITILServiceDesk_Log>(this.attach_ITILServiceDesk_Logs), new Action<ITILServiceDesk_Log>(this.detach_ITILServiceDesk_Logs));
+			this._ITILServiceDesk_TaskAssociations = new EntitySet<ITILServiceDesk_TaskAssociation>(new Action<ITILServiceDesk_TaskAssociation>(this.attach_ITILServiceDesk_TaskAssociations), new Action<ITILServiceDesk_TaskAssociation>(this.detach_ITILServiceDesk_TaskAssociations));
+			this._ITILServiceDesk_TaskCategories = new EntitySet<ITILServiceDesk_TaskCategory>(new Action<ITILServiceDesk_TaskCategory>(this.attach_ITILServiceDesk_TaskCategories), new Action<ITILServiceDesk_TaskCategory>(this.detach_ITILServiceDesk_TaskCategories));
+			this._ITILServiceDesk_TaskDetails = new EntitySet<ITILServiceDesk_TaskDetail>(new Action<ITILServiceDesk_TaskDetail>(this.attach_ITILServiceDesk_TaskDetails), new Action<ITILServiceDesk_TaskDetail>(this.detach_ITILServiceDesk_TaskDetails));
 			OnCreated();
 		}
 		
@@ -2018,55 +2018,55 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Task_ServiceDesk_Log", Storage="_ServiceDesk_Logs", ThisKey="TaskID", OtherKey="TaskID")]
-		public EntitySet<ServiceDesk_Log> ServiceDesk_Logs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Task_ITILServiceDesk_Log", Storage="_ITILServiceDesk_Logs", ThisKey="TaskID", OtherKey="TaskID")]
+		public EntitySet<ITILServiceDesk_Log> ITILServiceDesk_Logs
 		{
 			get
 			{
-				return this._ServiceDesk_Logs;
+				return this._ITILServiceDesk_Logs;
 			}
 			set
 			{
-				this._ServiceDesk_Logs.Assign(value);
+				this._ITILServiceDesk_Logs.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Task_ServiceDesk_TaskAssociation", Storage="_ServiceDesk_TaskAssociations", ThisKey="TaskID", OtherKey="TaskID")]
-		public EntitySet<ServiceDesk_TaskAssociation> ServiceDesk_TaskAssociations
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Task_ITILServiceDesk_TaskAssociation", Storage="_ITILServiceDesk_TaskAssociations", ThisKey="TaskID", OtherKey="TaskID")]
+		public EntitySet<ITILServiceDesk_TaskAssociation> ITILServiceDesk_TaskAssociations
 		{
 			get
 			{
-				return this._ServiceDesk_TaskAssociations;
+				return this._ITILServiceDesk_TaskAssociations;
 			}
 			set
 			{
-				this._ServiceDesk_TaskAssociations.Assign(value);
+				this._ITILServiceDesk_TaskAssociations.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Task_ServiceDesk_TaskCategory", Storage="_ServiceDesk_TaskCategories", ThisKey="TaskID", OtherKey="TaskID")]
-		public EntitySet<ServiceDesk_TaskCategory> ServiceDesk_TaskCategories
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Task_ITILServiceDesk_TaskCategory", Storage="_ITILServiceDesk_TaskCategories", ThisKey="TaskID", OtherKey="TaskID")]
+		public EntitySet<ITILServiceDesk_TaskCategory> ITILServiceDesk_TaskCategories
 		{
 			get
 			{
-				return this._ServiceDesk_TaskCategories;
+				return this._ITILServiceDesk_TaskCategories;
 			}
 			set
 			{
-				this._ServiceDesk_TaskCategories.Assign(value);
+				this._ITILServiceDesk_TaskCategories.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceDesk_Task_ServiceDesk_TaskDetail", Storage="_ServiceDesk_TaskDetails", ThisKey="TaskID", OtherKey="TaskID")]
-		public EntitySet<ServiceDesk_TaskDetail> ServiceDesk_TaskDetails
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ITILServiceDesk_Task_ITILServiceDesk_TaskDetail", Storage="_ITILServiceDesk_TaskDetails", ThisKey="TaskID", OtherKey="TaskID")]
+		public EntitySet<ITILServiceDesk_TaskDetail> ITILServiceDesk_TaskDetails
 		{
 			get
 			{
-				return this._ServiceDesk_TaskDetails;
+				return this._ITILServiceDesk_TaskDetails;
 			}
 			set
 			{
-				this._ServiceDesk_TaskDetails.Assign(value);
+				this._ITILServiceDesk_TaskDetails.Assign(value);
 			}
 		}
 		
@@ -2090,57 +2090,57 @@ namespace ITIL.Modules.ServiceDesk
 			}
 		}
 		
-		private void attach_ServiceDesk_Logs(ServiceDesk_Log entity)
+		private void attach_ITILServiceDesk_Logs(ITILServiceDesk_Log entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Task = this;
+			entity.ITILServiceDesk_Task = this;
 		}
 		
-		private void detach_ServiceDesk_Logs(ServiceDesk_Log entity)
+		private void detach_ITILServiceDesk_Logs(ITILServiceDesk_Log entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Task = null;
+			entity.ITILServiceDesk_Task = null;
 		}
 		
-		private void attach_ServiceDesk_TaskAssociations(ServiceDesk_TaskAssociation entity)
+		private void attach_ITILServiceDesk_TaskAssociations(ITILServiceDesk_TaskAssociation entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Task = this;
+			entity.ITILServiceDesk_Task = this;
 		}
 		
-		private void detach_ServiceDesk_TaskAssociations(ServiceDesk_TaskAssociation entity)
+		private void detach_ITILServiceDesk_TaskAssociations(ITILServiceDesk_TaskAssociation entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Task = null;
+			entity.ITILServiceDesk_Task = null;
 		}
 		
-		private void attach_ServiceDesk_TaskCategories(ServiceDesk_TaskCategory entity)
+		private void attach_ITILServiceDesk_TaskCategories(ITILServiceDesk_TaskCategory entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Task = this;
+			entity.ITILServiceDesk_Task = this;
 		}
 		
-		private void detach_ServiceDesk_TaskCategories(ServiceDesk_TaskCategory entity)
+		private void detach_ITILServiceDesk_TaskCategories(ITILServiceDesk_TaskCategory entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Task = null;
+			entity.ITILServiceDesk_Task = null;
 		}
 		
-		private void attach_ServiceDesk_TaskDetails(ServiceDesk_TaskDetail entity)
+		private void attach_ITILServiceDesk_TaskDetails(ITILServiceDesk_TaskDetail entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Task = this;
+			entity.ITILServiceDesk_Task = this;
 		}
 		
-		private void detach_ServiceDesk_TaskDetails(ServiceDesk_TaskDetail entity)
+		private void detach_ITILServiceDesk_TaskDetails(ITILServiceDesk_TaskDetail entity)
 		{
 			this.SendPropertyChanging();
-			entity.ServiceDesk_Task = null;
+			entity.ITILServiceDesk_Task = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_Roles")]
-	public partial class ServiceDesk_Role : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_Roles")]
+	public partial class ITILServiceDesk_Role : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -2163,7 +2163,7 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnRoleIDChanged();
     #endregion
 		
-		public ServiceDesk_Role()
+		public ITILServiceDesk_Role()
 		{
 			OnCreated();
 		}
@@ -2249,8 +2249,8 @@ namespace ITIL.Modules.ServiceDesk
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceDesk_LastSearch")]
-	public partial class ServiceDesk_LastSearch : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ITILServiceDesk_LastSearch")]
+	public partial class ITILServiceDesk_LastSearch : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -2309,7 +2309,7 @@ namespace ITIL.Modules.ServiceDesk
     partial void OnPageSizeChanged();
     #endregion
 		
-		public ServiceDesk_LastSearch()
+		public ITILServiceDesk_LastSearch()
 		{
 			OnCreated();
 		}

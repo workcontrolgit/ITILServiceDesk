@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Logs.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.Controls.Logs" %>
 <asp:LinqDataSource ID="LDSLogs" runat="server" 
         ContextTypeName="ITIL.Modules.ServiceDesk.ServiceDeskDALDataContext" 
-        OrderBy="DateCreated desc" TableName="ServiceDesk_Logs" 
+        OrderBy="DateCreated desc" TableName="ITILServiceDesk_Logs" 
     onselecting="LDSLogs_Selecting">
     </asp:LinqDataSource>
     <asp:GridView ID="gvLogs" runat="server" AllowPaging="True" 

@@ -96,13 +96,13 @@ namespace ITIL.Modules.ServiceDesk
 
             // ITIL Customization - token replacement
         #region ReplaceTicketToken
-        public static string ReplaceTicketToken(string strBody, string strPasswordLinkUrl, ServiceDesk_Task objServiceDesk_Tasks)
+        public static string ReplaceTicketToken(string strBody, string strPasswordLinkUrl, ITILServiceDesk_Task objITILServiceDesk_Tasks)
         {
             DotNetNuke.Entities.Portals.PortalSettings objPortalSettings = DotNetNuke.Entities.Portals.PortalController.GetCurrentPortalSettings();
             //TaskID
             if (strBody.Contains("[TaskID]"))
             {
-                strBody = strBody.Replace("[TaskID]", objServiceDesk_Tasks.TaskID.ToString());
+                strBody = strBody.Replace("[TaskID]", objITILServiceDesk_Tasks.TaskID.ToString());
             }
             //PasswordLinkUrl
             if (strBody.Contains("[PasswordLinkUrl]"))
@@ -112,47 +112,47 @@ namespace ITIL.Modules.ServiceDesk
             //Description
             if (strBody.Contains("[Description]"))
             {
-                strBody = strBody.Replace("[Description]", objServiceDesk_Tasks.Description);
+                strBody = strBody.Replace("[Description]", objITILServiceDesk_Tasks.Description);
 
             }
             //Details
             if (strBody.Contains("[Details]"))
             {
-                strBody = strBody.Replace("[Details]", GetDetailsOfTicket(objServiceDesk_Tasks.TaskID));
+                strBody = strBody.Replace("[Details]", GetDetailsOfTicket(objITILServiceDesk_Tasks.TaskID));
             }
 
             //Comments
             if (strBody.Contains("[Comments]"))
             {
-                strBody = strBody.Replace("[Comments]", GetCommentsOfTicket(objServiceDesk_Tasks.TaskID));
+                strBody = strBody.Replace("[Comments]", GetCommentsOfTicket(objITILServiceDesk_Tasks.TaskID));
             }
             //Requestor
             if (strBody.Contains("[Requestor]"))
             {
-                strBody = strBody.Replace("[Requestor]", objServiceDesk_Tasks.RequesterName);
+                strBody = strBody.Replace("[Requestor]", objITILServiceDesk_Tasks.RequesterName);
             }
             //Priority Name
             if (strBody.Contains("[PriorityName]"))
             {
-                strBody = strBody.Replace("[PriorityName]", objServiceDesk_Tasks.Priority);
+                strBody = strBody.Replace("[PriorityName]", objITILServiceDesk_Tasks.Priority);
             }
             //Email
             if (strBody.Contains("[Email]"))
             {
-                strBody = strBody.Replace("[Email]", GetEmailOfRequestor(objServiceDesk_Tasks.RequesterUserID, objServiceDesk_Tasks.RequesterEmail));
+                strBody = strBody.Replace("[Email]", GetEmailOfRequestor(objITILServiceDesk_Tasks.RequesterUserID, objITILServiceDesk_Tasks.RequesterEmail));
             }
 
             //CreatedDate
             if (strBody.Contains("[CreatedDate]"))
             {
-                strBody = strBody.Replace("[CreatedDate]", objServiceDesk_Tasks.CreatedDate.ToShortDateString());
+                strBody = strBody.Replace("[CreatedDate]", objITILServiceDesk_Tasks.CreatedDate.ToShortDateString());
             }
             //DueDate
             if (strBody.Contains("[DueDate]"))
             {
-                if (objServiceDesk_Tasks.DueDate.HasValue)
+                if (objITILServiceDesk_Tasks.DueDate.HasValue)
                 {
-                    strBody = strBody.Replace("[DueDate]", objServiceDesk_Tasks.DueDate.Value.ToShortDateString());
+                    strBody = strBody.Replace("[DueDate]", objITILServiceDesk_Tasks.DueDate.Value.ToShortDateString());
                 }
                 else
                 {
@@ -163,25 +163,25 @@ namespace ITIL.Modules.ServiceDesk
             //Phone
             if (strBody.Contains("[Phone]"))
             {
-                strBody = strBody.Replace("[Phone]", objServiceDesk_Tasks.RequesterPhone);
+                strBody = strBody.Replace("[Phone]", objITILServiceDesk_Tasks.RequesterPhone);
             }
             //Assigned
             if (strBody.Contains("[Assigned]"))
             {
-                strBody = strBody.Replace("[Assigned]", GetGetAssignedRoleName(objServiceDesk_Tasks.AssignedRoleID));
+                strBody = strBody.Replace("[Assigned]", GetGetAssignedRoleName(objITILServiceDesk_Tasks.AssignedRoleID));
             }
             //StatusName
             if (strBody.Contains("[StatusName]"))
             {
-                strBody = strBody.Replace("[StatusName]", objServiceDesk_Tasks.Status);
+                strBody = strBody.Replace("[StatusName]", objITILServiceDesk_Tasks.Status);
             }
 
             //StartDate
             if (strBody.Contains("[StartDate]"))
             {
-                if (objServiceDesk_Tasks.EstimatedStart.HasValue)
+                if (objITILServiceDesk_Tasks.EstimatedStart.HasValue)
                 {
-                    strBody = strBody.Replace("[StartDate]", objServiceDesk_Tasks.EstimatedStart.Value.ToShortDateString());
+                    strBody = strBody.Replace("[StartDate]", objITILServiceDesk_Tasks.EstimatedStart.Value.ToShortDateString());
                 }
                 else  //blank out token
                 {
@@ -192,9 +192,9 @@ namespace ITIL.Modules.ServiceDesk
             //EstimatedHours
             if (strBody.Contains("[EstimatedHours]"))
             {
-                if (objServiceDesk_Tasks.EstimatedHours.HasValue)
+                if (objITILServiceDesk_Tasks.EstimatedHours.HasValue)
                 {
-                    strBody = strBody.Replace("[EstimatedHours]", objServiceDesk_Tasks.EstimatedHours.Value.ToString());
+                    strBody = strBody.Replace("[EstimatedHours]", objITILServiceDesk_Tasks.EstimatedHours.Value.ToString());
                 }
                 else  //blank out token
                 {
@@ -205,9 +205,9 @@ namespace ITIL.Modules.ServiceDesk
             //CompleteDate
             if (strBody.Contains("[CompleteDate]"))
             {
-                if (objServiceDesk_Tasks.EstimatedCompletion.HasValue)
+                if (objITILServiceDesk_Tasks.EstimatedCompletion.HasValue)
                 {
-                    strBody = strBody.Replace("[CompleteDate]", objServiceDesk_Tasks.EstimatedCompletion.Value.ToShortDateString());
+                    strBody = strBody.Replace("[CompleteDate]", objITILServiceDesk_Tasks.EstimatedCompletion.Value.ToShortDateString());
                 }
                 else  //blank out token
                 {
@@ -230,16 +230,16 @@ namespace ITIL.Modules.ServiceDesk
             string strDescription = "";
 
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            ServiceDesk_TaskDetail objServiceDesk_TaskDetail = (from ServiceDesk_TaskDetails in objServiceDeskDALDataContext.ServiceDesk_TaskDetails
-                                                                  where ServiceDesk_TaskDetails.TaskID == TaskId
-                                                                  where (ServiceDesk_TaskDetails.DetailType == "Comment" || ServiceDesk_TaskDetails.DetailType == "Comment-Visible")
-                                                                  orderby ServiceDesk_TaskDetails.DetailID
-                                                                  select ServiceDesk_TaskDetails).FirstOrDefault();
+            ITILServiceDesk_TaskDetail objITILServiceDesk_TaskDetail = (from ITILServiceDesk_TaskDetails in objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails
+                                                                  where ITILServiceDesk_TaskDetails.TaskID == TaskId
+                                                                  where (ITILServiceDesk_TaskDetails.DetailType == "Comment" || ITILServiceDesk_TaskDetails.DetailType == "Comment-Visible")
+                                                                  orderby ITILServiceDesk_TaskDetails.DetailID
+                                                                  select ITILServiceDesk_TaskDetails).FirstOrDefault();
 
 
-            if (objServiceDesk_TaskDetail != null)
+            if (objITILServiceDesk_TaskDetail != null)
             {
-                strDescription = objServiceDesk_TaskDetail.Description;
+                strDescription = objITILServiceDesk_TaskDetail.Description;
             }
 
             return strDescription;
@@ -253,16 +253,16 @@ namespace ITIL.Modules.ServiceDesk
             string strComments = "";
 
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            ServiceDesk_TaskDetail objServiceDesk_TaskDetail = (from ServiceDesk_TaskDetails in objServiceDeskDALDataContext.ServiceDesk_TaskDetails
-                                                                  where ServiceDesk_TaskDetails.TaskID == TaskId
-                                                                  where (ServiceDesk_TaskDetails.DetailType == "Comment" || ServiceDesk_TaskDetails.DetailType == "Comment-Visible")
-                                                                  orderby ServiceDesk_TaskDetails.DetailID descending
-                                                                  select ServiceDesk_TaskDetails).FirstOrDefault();
+            ITILServiceDesk_TaskDetail objITILServiceDesk_TaskDetail = (from ITILServiceDesk_TaskDetails in objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails
+                                                                  where ITILServiceDesk_TaskDetails.TaskID == TaskId
+                                                                  where (ITILServiceDesk_TaskDetails.DetailType == "Comment" || ITILServiceDesk_TaskDetails.DetailType == "Comment-Visible")
+                                                                  orderby ITILServiceDesk_TaskDetails.DetailID descending
+                                                                  select ITILServiceDesk_TaskDetails).FirstOrDefault();
 
 
-            if (objServiceDesk_TaskDetail != null)
+            if (objITILServiceDesk_TaskDetail != null)
             {
-                strComments = objServiceDesk_TaskDetail.Description;
+                strComments = objITILServiceDesk_TaskDetail.Description;
             }
 
             return strComments;

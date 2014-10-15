@@ -31,7 +31,7 @@ namespace ITIL.Modules.ServiceDesk
 {
     public class CategoriesDropDown
     {
-        private IQueryable<ServiceDesk_Category> EntireTable;
+        private IQueryable<ITILServiceDesk_Category> EntireTable;
 
         private int _PortalID;
         public int PortalID
@@ -74,7 +74,7 @@ namespace ITIL.Modules.ServiceDesk
             colListItemCollection.Add(objDefaultListItem);
 
             // Loop thru the top level
-            foreach (ServiceDesk_Category objServiceDeskCategories in results)
+            foreach (ITILServiceDesk_Category objServiceDeskCategories in results)
             {
                 // Create a top level item
                 ListItem objListItem = new ListItem();
@@ -93,18 +93,18 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region AddChildren
-        private void AddChildren(ListItemCollection colListItemCollection, ServiceDesk_Category objServiceDesk_Category, int BranchNotToShow)
+        private void AddChildren(ListItemCollection colListItemCollection, ITILServiceDesk_Category objITILServiceDesk_Category, int BranchNotToShow)
         {
 
             // Get the children of the current item
             // This method may be called from the top level or recuresively by one of the child items
             var ChildResults = from ServiceDeskCategories in EntireTable
-                               where ServiceDeskCategories.ParentCategoryID == objServiceDesk_Category.CategoryID
+                               where ServiceDeskCategories.ParentCategoryID == objITILServiceDesk_Category.CategoryID
                                where ServiceDeskCategories.CategoryID != BranchNotToShow
                                select ServiceDeskCategories;
 
             // Loop thru each item
-            foreach (ServiceDesk_Category objCategory in ChildResults)
+            foreach (ITILServiceDesk_Category objCategory in ChildResults)
             {
                 // Create a new list item to add to the collection
                 ListItem objChildListItem = new ListItem();

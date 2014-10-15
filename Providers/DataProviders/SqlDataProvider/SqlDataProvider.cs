@@ -36,7 +36,7 @@ namespace ServiceDesk.Data
         #region Private Members
 
         private const string ProviderType = "data";
-        private const string ModuleQualifier = "ServiceDesk_";
+        private const string ModuleQualifier = "ITILServiceDesk_";
 
         private readonly ProviderConfiguration _providerConfiguration = ProviderConfiguration.GetProviderConfiguration(ProviderType);
         private readonly string _connectionString;

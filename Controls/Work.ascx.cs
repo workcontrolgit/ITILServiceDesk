@@ -137,17 +137,17 @@ namespace ITIL.Modules.ServiceDesk.Controls
                 string strComment = txtComment.Text.Trim();
 
                 // Save Task Details
-                ServiceDesk_TaskDetail objServiceDesk_TaskDetail = new ServiceDesk_TaskDetail();
+                ITILServiceDesk_TaskDetail objITILServiceDesk_TaskDetail = new ITILServiceDesk_TaskDetail();
 
-                objServiceDesk_TaskDetail.TaskID = TaskID;
-                objServiceDesk_TaskDetail.Description = txtComment.Text.Trim();
-                objServiceDesk_TaskDetail.InsertDate = DateTime.Now;
-                objServiceDesk_TaskDetail.UserID = UserId;
-                objServiceDesk_TaskDetail.DetailType = "Work";
-                objServiceDesk_TaskDetail.StartTime = Convert.ToDateTime(String.Format("{0} {1}", txtStartDay.Text, txtStartTime.Text));
-                objServiceDesk_TaskDetail.StopTime = Convert.ToDateTime(String.Format("{0} {1}", txtStopDay.Text, txtStopTime.Text));
+                objITILServiceDesk_TaskDetail.TaskID = TaskID;
+                objITILServiceDesk_TaskDetail.Description = txtComment.Text.Trim();
+                objITILServiceDesk_TaskDetail.InsertDate = DateTime.Now;
+                objITILServiceDesk_TaskDetail.UserID = UserId;
+                objITILServiceDesk_TaskDetail.DetailType = "Work";
+                objITILServiceDesk_TaskDetail.StartTime = Convert.ToDateTime(String.Format("{0} {1}", txtStartDay.Text, txtStartTime.Text));
+                objITILServiceDesk_TaskDetail.StopTime = Convert.ToDateTime(String.Format("{0} {1}", txtStopDay.Text, txtStopTime.Text));
 
-                objServiceDeskDALDataContext.ServiceDesk_TaskDetails.InsertOnSubmit(objServiceDesk_TaskDetail);
+                objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails.InsertOnSubmit(objITILServiceDesk_TaskDetail);
                 objServiceDeskDALDataContext.SubmitChanges();
                 txtComment.Text = "";
 
@@ -167,10 +167,10 @@ namespace ITIL.Modules.ServiceDesk.Controls
         protected void LDSComments_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            var result = from ServiceDesk_TaskDetails in objServiceDeskDALDataContext.ServiceDesk_TaskDetails
-                         where ServiceDesk_TaskDetails.TaskID == TaskID
-                         where (ServiceDesk_TaskDetails.DetailType == "Work")
-                         select ServiceDesk_TaskDetails;
+            var result = from ITILServiceDesk_TaskDetails in objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails
+                         where ITILServiceDesk_TaskDetails.TaskID == TaskID
+                         where (ITILServiceDesk_TaskDetails.DetailType == "Work")
+                         select ITILServiceDesk_TaskDetails;
 
             e.Result = result;
         }
@@ -347,19 +347,19 @@ namespace ITIL.Modules.ServiceDesk.Controls
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            var objServiceDesk_TaskDetail = (from ServiceDesk_TaskDetails in objServiceDeskDALDataContext.ServiceDesk_TaskDetails
-                                              where ServiceDesk_TaskDetails.DetailID == Convert.ToInt32(lblDetailID.Text)
-                                              select ServiceDesk_TaskDetails).FirstOrDefault();
+            var objITILServiceDesk_TaskDetail = (from ITILServiceDesk_TaskDetails in objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails
+                                              where ITILServiceDesk_TaskDetails.DetailID == Convert.ToInt32(lblDetailID.Text)
+                                              select ITILServiceDesk_TaskDetails).FirstOrDefault();
 
-            if (objServiceDesk_TaskDetail != null)
+            if (objITILServiceDesk_TaskDetail != null)
             {
-                txtDescription.Text = objServiceDesk_TaskDetail.Description;
-                lblDisplayUser.Text = GetUserName(objServiceDesk_TaskDetail.UserID);
-                txtStartDayEdit.Text = objServiceDesk_TaskDetail.StartTime.Value.ToShortDateString();
-                txtStopDayEdit.Text = objServiceDesk_TaskDetail.StopTime.Value.ToShortDateString();
-                txtStartTimeEdit.Text = objServiceDesk_TaskDetail.StartTime.Value.ToShortTimeString();
-                txtStopTimeEdit.Text = objServiceDesk_TaskDetail.StopTime.Value.ToShortTimeString();
-                lblInsertDate.Text = String.Format("{0} {1}", objServiceDesk_TaskDetail.InsertDate.ToLongDateString(), objServiceDesk_TaskDetail.InsertDate.ToLongTimeString());
+                txtDescription.Text = objITILServiceDesk_TaskDetail.Description;
+                lblDisplayUser.Text = GetUserName(objITILServiceDesk_TaskDetail.UserID);
+                txtStartDayEdit.Text = objITILServiceDesk_TaskDetail.StartTime.Value.ToShortDateString();
+                txtStopDayEdit.Text = objITILServiceDesk_TaskDetail.StopTime.Value.ToShortDateString();
+                txtStartTimeEdit.Text = objITILServiceDesk_TaskDetail.StartTime.Value.ToShortTimeString();
+                txtStopTimeEdit.Text = objITILServiceDesk_TaskDetail.StopTime.Value.ToShortTimeString();
+                lblInsertDate.Text = String.Format("{0} {1}", objITILServiceDesk_TaskDetail.InsertDate.ToLongDateString(), objITILServiceDesk_TaskDetail.InsertDate.ToLongTimeString());
             }
         }
         #endregion
@@ -369,12 +369,12 @@ namespace ITIL.Modules.ServiceDesk.Controls
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            var objServiceDesk_TaskDetail = (from ServiceDesk_TaskDetails in objServiceDeskDALDataContext.ServiceDesk_TaskDetails
-                                              where ServiceDesk_TaskDetails.DetailID == Convert.ToInt32(lblDetailID.Text)
-                                              select ServiceDesk_TaskDetails).FirstOrDefault();
+            var objITILServiceDesk_TaskDetail = (from ITILServiceDesk_TaskDetails in objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails
+                                              where ITILServiceDesk_TaskDetails.DetailID == Convert.ToInt32(lblDetailID.Text)
+                                              select ITILServiceDesk_TaskDetails).FirstOrDefault();
 
             // Delete the Record
-            objServiceDeskDALDataContext.ServiceDesk_TaskDetails.DeleteOnSubmit(objServiceDesk_TaskDetail);
+            objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails.DeleteOnSubmit(objITILServiceDesk_TaskDetail);
             objServiceDeskDALDataContext.SubmitChanges();
 
             // Insert Log
@@ -414,19 +414,19 @@ namespace ITIL.Modules.ServiceDesk.Controls
                 string strComment = txtDescription.Text.Trim();
 
                 // Save Task Details
-                var objServiceDesk_TaskDetail = (from ServiceDesk_TaskDetails in objServiceDeskDALDataContext.ServiceDesk_TaskDetails
-                                                  where ServiceDesk_TaskDetails.DetailID == Convert.ToInt32(lblDetailID.Text)
-                                                  select ServiceDesk_TaskDetails).FirstOrDefault();
+                var objITILServiceDesk_TaskDetail = (from ITILServiceDesk_TaskDetails in objServiceDeskDALDataContext.ITILServiceDesk_TaskDetails
+                                                  where ITILServiceDesk_TaskDetails.DetailID == Convert.ToInt32(lblDetailID.Text)
+                                                  select ITILServiceDesk_TaskDetails).FirstOrDefault();
 
-                if (objServiceDesk_TaskDetail != null)
+                if (objITILServiceDesk_TaskDetail != null)
                 {
 
-                    objServiceDesk_TaskDetail.TaskID = TaskID;
-                    objServiceDesk_TaskDetail.Description = txtDescription.Text.Trim();
-                    objServiceDesk_TaskDetail.UserID = UserId;
-                    objServiceDesk_TaskDetail.DetailType = "Work";
-                    objServiceDesk_TaskDetail.StartTime = Convert.ToDateTime(String.Format("{0} {1}", txtStartDayEdit.Text, txtStartTimeEdit.Text));
-                    objServiceDesk_TaskDetail.StopTime = Convert.ToDateTime(String.Format("{0} {1}", txtStopDayEdit.Text, txtStopTimeEdit.Text));
+                    objITILServiceDesk_TaskDetail.TaskID = TaskID;
+                    objITILServiceDesk_TaskDetail.Description = txtDescription.Text.Trim();
+                    objITILServiceDesk_TaskDetail.UserID = UserId;
+                    objITILServiceDesk_TaskDetail.DetailType = "Work";
+                    objITILServiceDesk_TaskDetail.StartTime = Convert.ToDateTime(String.Format("{0} {1}", txtStartDayEdit.Text, txtStartTimeEdit.Text));
+                    objITILServiceDesk_TaskDetail.StopTime = Convert.ToDateTime(String.Format("{0} {1}", txtStopDayEdit.Text, txtStopTimeEdit.Text));
 
                     objServiceDeskDALDataContext.SubmitChanges();
                     txtDescription.Text = "";
@@ -453,9 +453,9 @@ namespace ITIL.Modules.ServiceDesk.Controls
             int intRole = -1;
 
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            var result = from ServiceDesk_TaskDetails in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                         where ServiceDesk_TaskDetails.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
-                         select ServiceDesk_TaskDetails;
+            var result = from ITILServiceDesk_TaskDetails in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                         where ITILServiceDesk_TaskDetails.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
+                         select ITILServiceDesk_TaskDetails;
 
             if (result != null)
             {
@@ -473,9 +473,9 @@ namespace ITIL.Modules.ServiceDesk.Controls
             int intTaskId = Convert.ToInt32(Request.QueryString["TaskID"]);
 
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            var result = (from ServiceDesk_TaskDetails in objServiceDeskDALDataContext.ServiceDesk_Tasks
-                          where ServiceDesk_TaskDetails.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
-                          select ServiceDesk_TaskDetails).FirstOrDefault();
+            var result = (from ITILServiceDesk_TaskDetails in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                          where ITILServiceDesk_TaskDetails.TaskID == Convert.ToInt32(Request.QueryString["TaskID"])
+                          select ITILServiceDesk_TaskDetails).FirstOrDefault();
 
             if (result != null)
             {
@@ -487,67 +487,67 @@ namespace ITIL.Modules.ServiceDesk.Controls
         #endregion
 
         #region GetSettings
-        private List<ServiceDesk_Setting> GetSettings()
+        private List<ITILServiceDesk_Setting> GetSettings()
         {
             // Get Settings
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            List<ServiceDesk_Setting> colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                  where ServiceDesk_Settings.PortalID == PortalId
-                                                                  select ServiceDesk_Settings).ToList();
+            List<ITILServiceDesk_Setting> colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                  where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                  select ITILServiceDesk_Settings).ToList();
 
-            if (colServiceDesk_Setting.Count == 0)
+            if (colITILServiceDesk_Setting.Count == 0)
             {
                 // Create Default vaules
-                ServiceDesk_Setting objServiceDesk_Setting1 = new ServiceDesk_Setting();
+                ITILServiceDesk_Setting objITILServiceDesk_Setting1 = new ITILServiceDesk_Setting();
 
-                objServiceDesk_Setting1.PortalID = PortalId;
-                objServiceDesk_Setting1.SettingName = "AdminRole";
-                objServiceDesk_Setting1.SettingValue = "Administrators";
+                objITILServiceDesk_Setting1.PortalID = PortalId;
+                objITILServiceDesk_Setting1.SettingName = "AdminRole";
+                objITILServiceDesk_Setting1.SettingValue = "Administrators";
 
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting1);
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting1);
                 objServiceDeskDALDataContext.SubmitChanges();
 
-                ServiceDesk_Setting objServiceDesk_Setting2 = new ServiceDesk_Setting();
+                ITILServiceDesk_Setting objITILServiceDesk_Setting2 = new ITILServiceDesk_Setting();
 
-                objServiceDesk_Setting2.PortalID = PortalId;
-                objServiceDesk_Setting2.SettingName = "UploadefFilesPath";
-                objServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
+                objITILServiceDesk_Setting2.PortalID = PortalId;
+                objITILServiceDesk_Setting2.SettingName = "UploadefFilesPath";
+                objITILServiceDesk_Setting2.SettingValue = Server.MapPath("~/DesktopModules/ServiceDesk/Upload");
 
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting2);
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting2);
                 objServiceDeskDALDataContext.SubmitChanges();
 
-                colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                           where ServiceDesk_Settings.PortalID == PortalId
-                                           select ServiceDesk_Settings).ToList();
+                colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                           where ITILServiceDesk_Settings.PortalID == PortalId
+                                           select ITILServiceDesk_Settings).ToList();
             }
 
             // Upload Permission
-            ServiceDesk_Setting UploadPermissionServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                         where ServiceDesk_Settings.PortalID == PortalId
-                                                                         where ServiceDesk_Settings.SettingName == "UploadPermission"
-                                                                         select ServiceDesk_Settings).FirstOrDefault();
+            ITILServiceDesk_Setting UploadPermissionITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                         where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                         where ITILServiceDesk_Settings.SettingName == "UploadPermission"
+                                                                         select ITILServiceDesk_Settings).FirstOrDefault();
 
-            if (UploadPermissionServiceDesk_Setting != null)
+            if (UploadPermissionITILServiceDesk_Setting != null)
             {
                 // Add to collection
-                colServiceDesk_Setting.Add(UploadPermissionServiceDesk_Setting);
+                colITILServiceDesk_Setting.Add(UploadPermissionITILServiceDesk_Setting);
             }
             else
             {
                 // Add Default value
-                ServiceDesk_Setting objServiceDesk_Setting = new ServiceDesk_Setting();
-                objServiceDesk_Setting.SettingName = "UploadPermission";
-                objServiceDesk_Setting.SettingValue = "All";
-                objServiceDesk_Setting.PortalID = PortalId;
-                objServiceDeskDALDataContext.ServiceDesk_Settings.InsertOnSubmit(objServiceDesk_Setting);
+                ITILServiceDesk_Setting objITILServiceDesk_Setting = new ITILServiceDesk_Setting();
+                objITILServiceDesk_Setting.SettingName = "UploadPermission";
+                objITILServiceDesk_Setting.SettingValue = "All";
+                objITILServiceDesk_Setting.PortalID = PortalId;
+                objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting);
                 objServiceDeskDALDataContext.SubmitChanges();
 
                 // Add to collection
-                colServiceDesk_Setting.Add(objServiceDesk_Setting);
+                colITILServiceDesk_Setting.Add(objITILServiceDesk_Setting);
             }
 
-            return colServiceDesk_Setting;
+            return colITILServiceDesk_Setting;
         }
         #endregion
 
@@ -556,16 +556,16 @@ namespace ITIL.Modules.ServiceDesk.Controls
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
-            List<ServiceDesk_Setting> colServiceDesk_Setting = (from ServiceDesk_Settings in objServiceDeskDALDataContext.ServiceDesk_Settings
-                                                                  where ServiceDesk_Settings.PortalID == PortalId
-                                                                  select ServiceDesk_Settings).ToList();
+            List<ITILServiceDesk_Setting> colITILServiceDesk_Setting = (from ITILServiceDesk_Settings in objServiceDeskDALDataContext.ITILServiceDesk_Settings
+                                                                  where ITILServiceDesk_Settings.PortalID == PortalId
+                                                                  select ITILServiceDesk_Settings).ToList();
 
-            ServiceDesk_Setting objServiceDesk_Setting = colServiceDesk_Setting.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
+            ITILServiceDesk_Setting objITILServiceDesk_Setting = colITILServiceDesk_Setting.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
 
             string strAdminRoleID = "Administrators";
-            if (objServiceDesk_Setting != null)
+            if (objITILServiceDesk_Setting != null)
             {
-                strAdminRoleID = objServiceDesk_Setting.SettingValue;
+                strAdminRoleID = objITILServiceDesk_Setting.SettingValue;
             }
 
             return strAdminRoleID;

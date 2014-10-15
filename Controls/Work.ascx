@@ -202,6 +202,6 @@
     </table>
 </asp:Panel>
 <asp:LinqDataSource ID="LDSComments" runat="server" ContextTypeName="ITIL.Modules.ServiceDesk.ServiceDeskDALDataContext"
-    OrderBy="InsertDate desc" TableName="ServiceDesk_TaskDetails" OnSelecting="LDSComments_Selecting">
+    OrderBy="InsertDate desc" TableName="ITILServiceDesk_TaskDetails" OnSelecting="LDSComments_Selecting">
 </asp:LinqDataSource>
 

@@ -317,7 +317,7 @@
 </asp:Panel>
 <asp:LinqDataSource ID="ldsRoles" runat="server" ContextTypeName="ITIL.Modules.ServiceDesk.ServiceDeskDALDataContext"
     EnableDelete="True" EnableInsert="True" EnableUpdate="True" OnSelecting="ldsRoles_Selecting"
-    TableName="ServiceDesk_Roles" Where="PortalID == @PortalID">
+    TableName="ITILServiceDesk_Roles" Where="PortalID == @PortalID">
     <WhereParameters>
         <asp:Parameter Name="PortalID" Type="Int32" />
     </WhereParameters>

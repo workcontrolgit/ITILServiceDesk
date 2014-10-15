@@ -8,14 +8,14 @@
 /*****                                                  *****/
 /************************************************************/
 
-IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[ServiceDesk_RIAUsers]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[ITILServiceDesk_RIAUsers]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
 BEGIN
-CREATE TABLE [dbo].[ServiceDesk_RIAUsers](
+CREATE TABLE [dbo].[ITILServiceDesk_RIAUsers](
 	[UserID] [int] NOT NULL,
 	[RIAPassword] [nvarchar](50) NOT NULL,
 	[IPAddress] [nvarchar](50) NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
- CONSTRAINT [PK_ServiceDesk_RIAUsers] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ITILServiceDesk_RIAUsers] PRIMARY KEY CLUSTERED 
 (
 	[UserID] ASC
 ) ON [PRIMARY]

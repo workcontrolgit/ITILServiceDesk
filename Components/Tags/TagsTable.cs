@@ -29,9 +29,9 @@ namespace ITIL.Modules.ServiceDesk
     public static class CategoriesTable
     {
         #region GetCategoriesTable
-        public static IQueryable<ServiceDesk_Category> GetCategoriesTable(int PortalID, bool RequestorCatagories)
+        public static IQueryable<ITILServiceDesk_Category> GetCategoriesTable(int PortalID, bool RequestorCatagories)
         {
-            IQueryable<ServiceDesk_Category> Categories;
+            IQueryable<ITILServiceDesk_Category> Categories;
             object objCategoriesTable;
  
             // Get Table out of Cache
@@ -65,7 +65,7 @@ namespace ITIL.Modules.ServiceDesk
             else
             {
                 // Use the cache version of the table
-                Categories = (IQueryable<ServiceDesk_Category>)objCategoriesTable;
+                Categories = (IQueryable<ITILServiceDesk_Category>)objCategoriesTable;
             }
 
             return Categories;
@@ -73,11 +73,11 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region GetEntireRequestorTable
-        private static IQueryable<ServiceDesk_Category> GetEntireRequestorTable(int PortalID)
+        private static IQueryable<ITILServiceDesk_Category> GetEntireRequestorTable(int PortalID)
         {
             ServiceDeskDALDataContext CategoryAdminDALDataContext = new ServiceDeskDALDataContext();
 
-            IQueryable<ServiceDesk_Category> EntireTable = (from ServiceDeskCategories in CategoryAdminDALDataContext.ServiceDesk_Categories
+            IQueryable<ITILServiceDesk_Category> EntireTable = (from ServiceDeskCategories in CategoryAdminDALDataContext.ITILServiceDesk_Categories
                                                             where ServiceDeskCategories.PortalID == PortalID
                                                             where ServiceDeskCategories.RequestorVisible == true
                                                             select ServiceDeskCategories).ToList().AsQueryable();
@@ -87,11 +87,11 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region GetEntireTable
-        private static IQueryable<ServiceDesk_Category> GetEntireTable(int PortalID)
+        private static IQueryable<ITILServiceDesk_Category> GetEntireTable(int PortalID)
         {
             ServiceDeskDALDataContext CategoryAdminDALDataContext = new ServiceDeskDALDataContext();
 
-            IQueryable<ServiceDesk_Category> EntireTable = (from ServiceDeskCategories in CategoryAdminDALDataContext.ServiceDesk_Categories
+            IQueryable<ITILServiceDesk_Category> EntireTable = (from ServiceDeskCategories in CategoryAdminDALDataContext.ITILServiceDesk_Categories
                                                             where ServiceDeskCategories.PortalID == PortalID
                                                             select ServiceDeskCategories).ToList().AsQueryable();
 

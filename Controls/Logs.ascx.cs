@@ -24,9 +24,9 @@ namespace ITIL.Modules.ServiceDesk.Controls
         protected void LDSLogs_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            var result = from ServiceDesk_Logs in objServiceDeskDALDataContext.ServiceDesk_Logs
-                         where ServiceDesk_Logs.TaskID == TaskID
-                         select ServiceDesk_Logs;
+            var result = from ITILServiceDesk_Logs in objServiceDeskDALDataContext.ITILServiceDesk_Logs
+                         where ITILServiceDesk_Logs.TaskID == TaskID
+                         select ITILServiceDesk_Logs;
 
             e.Result = result;
         }
