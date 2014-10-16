@@ -261,8 +261,8 @@
   </ProjectExtensions>
   <PropertyGroup>
     <Extension>zip</Extension>
-    <DNNFileName>ADefHelpDesk</DNNFileName>
-    <PackageName>ADefHelpDesk</PackageName>
+    <DNNFileName>ITIL_ITILServiceDesk</DNNFileName>
+    <PackageName>ITILServiceDesk</PackageName>
     <MSBuildCommunityTasksPath>$(SolutionDir)\packages\MSBuildTasks.1.4.0.78\tools</MSBuildCommunityTasksPath>
   </PropertyGroup>
   <Import Project="BuildScripts\ModulePackage.Targets" />
