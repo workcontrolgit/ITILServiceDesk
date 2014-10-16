@@ -1,6 +1,4 @@
-﻿//
-// www.adefhelpdesk.com
-// Copyright (c) 2009
+﻿// Copyright (c) 2009
 // by Michael Washington
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
