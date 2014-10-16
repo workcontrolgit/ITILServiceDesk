@@ -115,9 +115,6 @@ New version 14.03.01 - bootstrap</releaseNotes>
       <files>
         <basePath>DesktopModules\ITILServiceDesk</basePath>
         <file>
-          <name>ServiceDesk.dnn</name>
-        </file>
-        <file>
           <name>AdminSettings.ascx</name>
         </file>
         <file>
@@ -284,22 +281,7 @@ New version 14.03.01 - bootstrap</releaseNotes>
           <name>EditTask.ascx.resx</name>
         </file>
         <file>
-          <path>BuildScripts</path>
-          <name>ModulePackage.targets</name>
-        </file>
-        <file>
-          <path>BuildScripts</path>
-          <name>MSBuild.Community.Tasks.Targets</name>
-        </file>
-        <file>
           <name>ITIL_ITILServiceDesk.dnn</name>
-        </file>
-        <file>
-          <path>Packages</path>
-          <name>ITIL_ITILServiceDesk_14.04.01_Install.zip</name>
-        </file>
-        <file>
-          <name>packages.config</name>
         </file>
       </files>
     </component>

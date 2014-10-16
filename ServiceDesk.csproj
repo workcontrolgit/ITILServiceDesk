@@ -225,13 +225,7 @@
     <Content Include="App_LocalResources\EditTask.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BuildScripts\ModulePackage.targets" />
-    <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="ITIL_ITILServiceDesk.dnn" />
-    <Content Include="packages.config" />
-    <Content Include="AdefHelpDesk.dnn" />
     <None Include="Providers\DataProviders\SqlDataProvider\00.10.00.SqlDataProvider" />
     <None Include="Providers\DataProviders\SqlDataProvider\01.50.00.SqlDataProvider" />
     <None Include="Providers\DataProviders\SqlDataProvider\02.00.00.SqlDataProvider" />
