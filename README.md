@@ -19,3 +19,8 @@ This is not an upgrade to the original adefhelddesk module.  The installation do
 - database objects (table, procedures, etc.) prefixed with ITILServiceDesk are installed to the DNN database
 
 
+RESOURCES - 
+
+Free DNN Bootstrap SKin - http://www.christoc.com/Products/HammerFlex
+Bootstrap tutorial - http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
+Bootstrap Snippet Pack for Visual Studio - https://visualstudiogallery.msdn.microsoft.com/e82e7862-f731-4183-a27a-3a44b261bfe5
