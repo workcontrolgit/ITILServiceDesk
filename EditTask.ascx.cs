@@ -1,4 +1,5 @@
 ﻿//
+// ADefwebserver.com
 // Copyright (c) 2009
 // by Michael Washington
 //
@@ -16,11 +17,7 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 //
-// Silk icon set 1.3 by
-// Mark James
-// http://www.famfamfam.com/lab/icons/silk/
-// Creative Commons Attribution 2.5 License.
-// [ http://creativecommons.org/licenses/by/2.5/ ]
+//
 
 using System;
 using System.Linq;
