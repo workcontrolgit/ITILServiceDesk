@@ -896,7 +896,7 @@ namespace ITIL.Modules.ServiceDesk
             // If userId is not -1 then get the Email
             if (objITILServiceDesk_Tasks.RequesterUserID > -1)
             {
-                strEmail = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).Email;
+                strEmail = UserController.GetUserById(PortalId, objITILServiceDesk_Tasks.RequesterUserID).Email;
             }
 
             string strBody = Localization.GetString("HTMLTicketEmailRequester.Text", LocalResourceFile);
@@ -921,7 +921,7 @@ namespace ITIL.Modules.ServiceDesk
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl); // ITIL Customization 
 
             RoleController objRoleController = new RoleController();
-            string strAssignedRole = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
             string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
 
             string strSubject = "[" + Localization.GetString(String.Format("ddlStatusAdmin{0}.Text", ddlStatus.SelectedValue), LocalResourceFile) + "] " + String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, PortalSettings.PortalAlias.HTTPAlias, strAssignedRole);
@@ -930,7 +930,9 @@ namespace ITIL.Modules.ServiceDesk
             strBody = strBody + String.Format(Localization.GetString("YouMaySeeStatusHere.Text", LocalResourceFile), strLinkUrl);
 
             // Get all users in the AssignedRole Role
-            ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
+            //ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
+
+            IList<UserInfo> colAssignedRoleUsers = RoleController.Instance.GetUsersByRole(PortalId, strAssignedRole);
 
             foreach (UserInfo objUserInfo in colAssignedRoleUsers)
             {
@@ -952,7 +954,7 @@ namespace ITIL.Modules.ServiceDesk
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
             
             RoleController objRoleController = new RoleController();
-            string strAssignedRole = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
             string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
 
             string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);
@@ -962,7 +964,8 @@ namespace ITIL.Modules.ServiceDesk
             strBody = strBody + String.Format(Localization.GetString("YouMaySeeStatusHere.Text", LocalResourceFile), strLinkUrl);
 
             // Get all users in the AssignedRole Role
-            ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
+           // ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
+            IList<UserInfo> colAssignedRoleUsers = RoleController.Instance.GetUsersByRole(PortalId, strAssignedRole);
 
             foreach (UserInfo objUserInfo in colAssignedRoleUsers)
             {

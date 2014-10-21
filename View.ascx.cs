@@ -851,7 +851,7 @@ namespace ITIL.Modules.ServiceDesk
             {
                 // User logged in
                 objITILServiceDesk_Task.RequesterUserID = Convert.ToInt32(txtUserID.Text);
-                objITILServiceDesk_Task.RequesterName = UserController.GetUser(PortalId, Convert.ToInt32(txtUserID.Text), false).DisplayName;
+                objITILServiceDesk_Task.RequesterName = UserController.GetUserById(PortalId, Convert.ToInt32(txtUserID.Text)).DisplayName;
             }
 
             if (txtDueDate.Text.Trim().Length > 1)
