@@ -17,7 +17,7 @@ using DotNetNuke.Framework.Providers;
 
 using Microsoft.ApplicationBlocks.Data;
 
-namespace ServiceDesk.Data
+namespace ITIL.Modules.ServiceDesk.Data
 {
 
     /// -----------------------------------------------------------------------------
@@ -40,7 +40,7 @@ namespace ServiceDesk.Data
         {
             if (provider == null)
             {
-                const string assembly = "ServiceDesk.Data.SqlDataprovider,ServiceDesk";
+                const string assembly = "ITIL.Modules.ServiceDesk.Data.SqlDataprovider,ITIL.Modules.ServiceDesk";
                 Type objectType = Type.GetType(assembly, true, true);
 
                 provider = (DataProvider)Activator.CreateInstance(objectType);

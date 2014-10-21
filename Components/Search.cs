@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
-using ServiceDesk.Data;
+using ITIL.Modules.ServiceDesk.Data;
 using DotNetNuke.Entities.Users;
 
 namespace ITIL.Modules.ServiceDesk

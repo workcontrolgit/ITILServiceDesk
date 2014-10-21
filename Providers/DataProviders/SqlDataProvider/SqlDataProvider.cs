@@ -17,7 +17,7 @@ using DotNetNuke.Framework.Providers;
 using System.Data;
 using Microsoft.ApplicationBlocks.Data;
 
-namespace ServiceDesk.Data
+namespace ITIL.Modules.ServiceDesk.Data
 {
 
     /// -----------------------------------------------------------------------------
