@@ -256,10 +256,10 @@
     <value>Due</value>
   </data>
   <data name="lnkExistingTickets.Text" xml:space="preserve">
-    <value>Existing Tickets</value>
+    <value>&lt;i class="glyphicon glyphicon-list-alt"&gt;&lt;/i&gt; Existing Tickets</value>
   </data>
   <data name="lnkNewTicket.Text" xml:space="preserve">
-    <value>New Ticket</value>
+    <value>&lt;i class="glyphicon glyphicon-plus-sign"&gt;&lt;/i&gt; New Ticket</value>
   </data>
   <data name="lnkPriority.Text" xml:space="preserve">
     <value>Priority</value>
@@ -372,5 +372,8 @@
   </data>
   <data name="EmailFormatInvalid.Text" xml:space="preserve">
     <value>Email format is invalid</value>
+  </data>
+  <data name="lnkNewTicketToolTip.Text" xml:space="preserve">
+    <value>Enter New Ticket</value>
   </data>
 </root>

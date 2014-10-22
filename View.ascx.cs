@@ -166,6 +166,7 @@ namespace ITIL.Modules.ServiceDesk
                 // ITIL customization 
 
                 cmdStartCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtDueDate);
+                lnkNewTicket.ToolTip = Localization.GetString("lnkNewTicketToolTip", LocalResourceFile);
                 if (!Page.IsPostBack)
                 {
                     ShowAdministratorLinkAndFileUpload();
@@ -182,9 +183,6 @@ namespace ITIL.Modules.ServiceDesk
 
                         }
                     }
-                    // ITIL customization 
-                    //SearchList(int.Parse(Session["portalId"].ToString()));
-                    // the end
                 }
             }
             catch (Exception ex)
