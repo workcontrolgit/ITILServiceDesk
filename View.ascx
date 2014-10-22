@@ -4,13 +4,13 @@
 
 
 <div class="form-inline">
-    <asp:LinkButton ID="lnkNewTicket" runat="server" CssClass="btn btn-default"
+    <asp:LinkButton ID="lnkNewTicket" runat="server" CssClass="btn btn-link"
         OnClick="lnkNewTicket_Click" Text="New Ticket" resourcekey="lnkNewTicket"></asp:LinkButton>
-    <asp:LinkButton ID="lnkExistingTickets" runat="server" CssClass="btn btn-default" OnClick="lnkExistingTickets_Click"
+    <asp:LinkButton ID="lnkExistingTickets" runat="server" CssClass="btn btn-link" OnClick="lnkExistingTickets_Click"
         Text="Existing Tickets" resourcekey="lnkExistingTickets" Visible="False" />
-    <asp:LinkButton ID="lnkResetSearch" runat="server" CssClass="btn btn-default" OnClick="lnkResetSearch_Click"
+    <asp:LinkButton ID="lnkResetSearch" runat="server" CssClass="btn btn-link" OnClick="lnkResetSearch_Click"
         Text="Reset Search" resourcekey="lnkResetSearch" Visible="False" />
-    <asp:LinkButton ID="lnkAdministratorSettings" runat="server" CssClass="btn btn-default"
+    <asp:LinkButton ID="lnkAdministratorSettings" runat="server" CssClass="btn btn-link"
         OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
         resourcekey="lnkAdministratorSettings" Visible="False" />
 </div>
@@ -306,52 +306,52 @@
                             <tr id="Tr4" runat="server" class="active">
                                 <td runat="server" nowrap="nowrap">
                                     <asp:LinkButton ID="lnkTaskID" runat="server" CommandName="Sort" CommandArgument="TaskID"
-                                        Text="TaskID" Font-Underline="True" resourcekey="lnkTaskID" />
+                                        Text="TaskID" resourcekey="lnkTaskID" />
                                     <asp:ImageButton ID="TaskIDImage" CommandName="Sort" CommandArgument="TaskID" runat="server"
                                         ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkStatus" runat="server" CommandName="Sort" CommandArgument="Status"
-                                        Text="Status" Font-Underline="True" resourcekey="lnkStatus" />
+                                        Text="Status" resourcekey="lnkStatus" />
                                     <asp:ImageButton ID="StatusImage" CommandName="Sort" CommandArgument="Status" runat="server"
                                         ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkPriority" runat="server" CommandName="Sort" CommandArgument="Priority"
-                                        Text="Priority" Font-Underline="True" resourcekey="lnkPriority" /><asp:ImageButton
+                                        Text="Priority" resourcekey="lnkPriority" /><asp:ImageButton
                                             ID="PriorityImage" CommandName="Sort" CommandArgument="Priority" runat="server"
                                             ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkDueDate" runat="server" CommandName="Sort" CommandArgument="DueDate"
-                                        Text="Due" Font-Underline="True" resourcekey="lnkDueDate" /><asp:ImageButton ID="DueDateImage"
+                                        Text="Due" resourcekey="lnkDueDate" /><asp:ImageButton ID="DueDateImage"
                                             CommandName="Sort" CommandArgument="DueDate" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                             Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkCreatedDate" runat="server" CommandName="Sort" CommandArgument="CreatedDate"
-                                        Text="Created" Font-Underline="True" resourcekey="lnkCreatedDate" />
+                                        Text="Created" resourcekey="lnkCreatedDate" />
                                     <asp:ImageButton ID="CreatedDateImage" CommandName="Sort" CommandArgument="CreatedDate"
                                         runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                         Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkAssigned" runat="server" CommandName="Sort" CommandArgument="Assigned"
-                                        Text="Assigned" Font-Underline="True" resourcekey="lnkAssigned" />
+                                        Text="Assigned" resourcekey="lnkAssigned" />
                                     <asp:ImageButton ID="AssignedImage" CommandName="Sort" CommandArgument="Assigned"
                                         runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                         Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkDescription" runat="server" CommandName="Sort" CommandArgument="Description"
-                                        Text="Description" Font-Underline="True" resourcekey="lnkDescription" />
+                                        Text="Description" resourcekey="lnkDescription" />
                                     <asp:ImageButton ID="DescriptionImage" CommandName="Sort" CommandArgument="Description"
                                         runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                         Visible="false" />
                                 </td>
                                 <td runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkRequester" runat="server" CommandName="Sort" CommandArgument="Requester"
-                                        Text="Requester" Font-Underline="True" resourcekey="lnkRequester" />
+                                        Text="Requester" resourcekey="lnkRequester" />
                                     <asp:ImageButton ID="RequesterImage" CommandName="Sort" CommandArgument="Requester"
                                         runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
                                         Visible="false" />
@@ -366,7 +366,7 @@
                         <tr>
                             <%--<tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>--%>
                             <td align="center">
-                                <asp:HyperLink ID="lnkTaskID" runat="server" Text='<%# Eval("TaskID") %>' Font-Underline="True" />
+                                <asp:HyperLink ID="lnkTaskID" runat="server" Text='<%# Eval("TaskID") %>' />
                             </td>
                             <td align="left">
                                 <asp:Label ID="StatusLabel" runat="server" Text='<%# LocalizeStatusBinding(Eval("Status", "{0}")) %>' />
@@ -445,35 +445,35 @@
                             <tr id="Tr3" runat="server">
                                 <th id="Th10" runat="server" nowrap="nowrap">
                                     <asp:LinkButton ID="lnkTaskID" runat="server" CommandArgument="TaskID" Text="TaskID"
-                                        Font-Underline="True" resourcekey="lnkTaskID" />
+                                        resourcekey="lnkTaskID" />
                                 </th>
                                 <th id="Th11" runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkStatus" runat="server" CommandArgument="Status" Text="Status"
-                                        Font-Underline="True" resourcekey="lnkStatus" />
+                                        resourcekey="lnkStatus" />
                                 </th>
                                 <th id="Th12" runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkPriority" runat="server" CommandArgument="Priority" Text="Priority"
-                                        Font-Underline="True" resourcekey="lnkPriority" />
+                                        resourcekey="lnkPriority" />
                                 </th>
                                 <th id="Th13" runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkDueDate" runat="server" CommandArgument="DueDate" Text="Due"
-                                        Font-Underline="True" resourcekey="lnkDueDate" />
+                                        resourcekey="lnkDueDate" />
                                 </th>
                                 <th id="Th14" runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkCreatedDate" runat="server" CommandArgument="CreatedDate"
-                                        Text="Created" Font-Underline="True" resourcekey="lnkCreatedDate" />
+                                        Text="Created" resourcekey="lnkCreatedDate" />
                                 </th>
                                 <th id="Th15" runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkAssigned" runat="server" CommandArgument="Assigned" Text="Assigned"
-                                        Font-Underline="True" resourcekey="lnkAssigned" />
+                                        resourcekey="lnkAssigned" />
                                 </th>
                                 <th id="Th16" runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkDescription" runat="server" CommandArgument="Description"
-                                        Text="Description" Font-Underline="True" resourcekey="lnkDescription" />
+                                        Text="Description" resourcekey="lnkDescription" />
                                 </th>
                                 <th id="Th17" runat="server" nowrap="nowrap" align="left">
                                     <asp:LinkButton ID="lnkRequester" runat="server" CommandArgument="Requester" Text="Requester"
-                                        Font-Underline="True" resourcekey="lnkRequester" />
+                                        resourcekey="lnkRequester" />
                                 </th>
                             </tr>
                             <tr runat="server">
@@ -506,9 +506,9 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlPaging" runat="server">
-                                <asp:LinkButton ID="lnkFirst" runat="server" Font-Underline="True" OnClick="lnkFirst_Click"
+                                <asp:LinkButton ID="lnkFirst" runat="server" OnClick="lnkFirst_Click"
                                     Text="&lt;&lt;" Visible="False" />
-                                &nbsp;<asp:LinkButton ID="lnkPrevious" runat="server" Font-Underline="True" OnClick="lnkPrevious_Click"
+                                &nbsp;<asp:LinkButton ID="lnkPrevious" runat="server" OnClick="lnkPrevious_Click"
                                     Text="&lt;" />
                                 &nbsp;
                                 <asp:DataList ID="PagingDataList" runat="server" DataKeyField="PageNumber" RepeatColumns="20"
@@ -519,9 +519,9 @@
                                             runat="server" CommandArgument='<%# Eval("PageNumber") %>' OnClick="lnkPage_Click" />
                                     </ItemTemplate>
                                 </asp:DataList>
-                                &nbsp;<asp:LinkButton ID="lnkNext" runat="server" Font-Underline="True" OnClick="lnkNext_Click"
+                                &nbsp;<asp:LinkButton ID="lnkNext" runat="server" OnClick="lnkNext_Click"
                                     Text="&gt;" />
-                                &nbsp;<asp:LinkButton ID="lnkLast" runat="server" Font-Underline="True" OnClick="lnkLast_Click"
+                                &nbsp;<asp:LinkButton ID="lnkLast" runat="server" OnClick="lnkLast_Click"
                                     Text="&gt;&gt;" Visible="False" />&nbsp;
                             </asp:Panel>
                         </td>

@@ -94,6 +94,15 @@ namespace ITIL.Modules.ServiceDesk
             cmdtxtDueDateCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtDueDate);
             cmdtxtStartCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtStart);
             cmdtxtCompleteCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtComplete);
+            //memu tool tip localization
+            lnkNewTicket.ToolTip = Localization.GetString("lnkNewTicketToolTip", LocalResourceFile);
+            lnkExistingTickets.ToolTip = Localization.GetString("lnkExistingTicketsToolTip", LocalResourceFile);
+            lnkAdministratorSettings.ToolTip = Localization.GetString("lnkAdministratorSettingsToolTip", LocalResourceFile);
+
+            btnComments.ToolTip = Localization.GetString("btnCommentsToolTip", LocalResourceFile);
+            btnLogs.ToolTip = Localization.GetString("btnLogsToolTip", LocalResourceFile);
+            btnWorkItems.ToolTip = Localization.GetString("btnWorkItemsToolTip", LocalResourceFile);
+
             if (!Page.IsPostBack)
             {
                 
@@ -119,7 +128,11 @@ namespace ITIL.Modules.ServiceDesk
                         {
                             SetViewOnlyMode();
                         }
-
+                        else
+                        {
+                            btnComments.Font.Bold = true;
+                            btnComments.Font.Underline = true;
+                        }
                         // Insert Log
                         Log.InsertLog(Convert.ToInt32(lblTask.Text), UserId, String.Format("{0} viewed ticket.", (UserId == -1) ? "Requester" : UserInfo.DisplayName));
                     }
@@ -808,31 +821,19 @@ namespace ITIL.Modules.ServiceDesk
         #region DisableAllButtons
         private void DisableAllButtons()
         {
-            //btnComments.BorderStyle = BorderStyle.Outset;
-            //btnComments.BackColor = Color.WhiteSmoke;
-            //btnComments.Font.Bold = false;
-            //btnComments.ForeColor = Color.White;
+            btnComments.Font.Underline = false;
+            btnComments.Font.Bold = false;
             pnlComments.Visible = false;
 
-            //btnWorkItems.BorderStyle = BorderStyle.Outset;
-            //btnWorkItems.BackColor = Color.WhiteSmoke;
-            //btnWorkItems.Font.Bold = false;
-            //btnWorkItems.ForeColor = Color.White;
+            btnWorkItems.Font.Underline = false;
+            btnWorkItems.Font.Bold = false;
             pnlWorkItems.Visible = false;
 
-            //btnLogs.BorderStyle = BorderStyle.Outset;
-            //btnLogs.BackColor = Color.WhiteSmoke;
-            //btnLogs.Font.Bold = false;
-            //btnLogs.ForeColor = Color.White;
+            btnLogs.Font.Underline = false;
+            btnLogs.Font.Bold = false;
             pnlLogs.Visible = false;
 
-            btnComments.CssClass = "btn btn-default";
-            btnWorkItems.CssClass = "btn btn-default";
-            btnLogs.CssClass = "btn btn-default";
 
-            //btnComments.ForeColor = System.Drawing.Color.DodgerBlue;
-            //btnWorkItems.ForeColor = System.Drawing.Color.DodgerBlue;
-            //btnLogs.ForeColor = System.Drawing.Color.DodgerBlue;
         }
         #endregion
 
@@ -849,12 +850,10 @@ namespace ITIL.Modules.ServiceDesk
             }
 
             DisableAllButtons();
-            //btnComments.BorderStyle = BorderStyle.Inset;
-            //btnComments.BackColor = Color.LightGray;
-            //btnComments.Font.Bold = true;
-            //btnComments.ForeColor = Color.White;
+            btnComments.Font.Bold = true;
+            btnComments.Font.Underline = true;
+
             pnlComments.Visible = true;
-            btnComments.CssClass = "btn btn-info";
         }
         #endregion
 
@@ -864,12 +863,9 @@ namespace ITIL.Modules.ServiceDesk
         protected void btnWorkItems_Click(object sender, EventArgs e)
         {
             DisableAllButtons();
-            //btnWorkItems.BorderStyle = BorderStyle.Inset;
-            //btnWorkItems.BackColor = Color.LightGray;
-            //btnWorkItems.Font.Bold = true;
-            //btnWorkItems.ForeColor = Color.White;
+            btnWorkItems.Font.Bold = true;
+            btnWorkItems.Font.Underline = true;
             pnlWorkItems.Visible = true;
-            btnWorkItems.CssClass = "btn btn-info";
         }
         #endregion
 
@@ -988,7 +984,8 @@ namespace ITIL.Modules.ServiceDesk
             //btnLogs.Font.Bold = true;
             //btnLogs.ForeColor = Color.White;
             pnlLogs.Visible = true;
-            btnLogs.CssClass = "btn btn-info";
+            btnLogs.Font.Bold = true;
+            btnLogs.Font.Underline = true;
 
             LogsControl.RefreshLogs();
         }

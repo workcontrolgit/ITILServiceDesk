@@ -31,15 +31,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.LinkButton lnkBack;
         
         /// <summary>
-        /// Image1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
-        
-        /// <summary>
         /// lnkAdminRole control.
         /// </summary>
         /// <remarks>
@@ -47,15 +38,6 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkAdminRole;
-        
-        /// <summary>
-        /// Image4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image4;
         
         /// <summary>
         /// lnkUploadefFilesPath control.
@@ -67,15 +49,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.LinkButton lnkUploadefFilesPath;
         
         /// <summary>
-        /// Image5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image5;
-        
-        /// <summary>
         /// lnkRoles control.
         /// </summary>
         /// <remarks>
@@ -83,15 +56,6 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkRoles;
-        
-        /// <summary>
-        /// Image2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
         
         /// <summary>
         /// lnkTagsAdmin control.

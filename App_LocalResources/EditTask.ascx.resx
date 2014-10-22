@@ -178,13 +178,13 @@
     <value>Priority:</value>
   </data>
   <data name="lnkAdministratorSettings.Text" xml:space="preserve">
-    <value>Administrator Settings</value>
+    <value>&lt;i class="glyphicon glyphicon-wrench"&gt;&lt;/i&gt; Administrator Settings</value>
   </data>
   <data name="lnkExistingTickets.Text" xml:space="preserve">
-    <value>Existing Tickets</value>
+    <value>&lt;i class="glyphicon glyphicon-list-alt"&gt;&lt;/i&gt; Existing Tickets</value>
   </data>
   <data name="lnkNewTicket.Text" xml:space="preserve">
-    <value>New Ticket</value>
+    <value>&lt;i class="glyphicon glyphicon-plus-sign"&gt;&lt;/i&gt; New Ticket</value>
   </data>
   <data name="MustUseAValidDate.Text" xml:space="preserve">
     <value>Must use a valid date</value>
@@ -199,16 +199,16 @@
     <value>You may see the status here: {0}</value>
   </data>
   <data name="btnComments.Text" xml:space="preserve">
-    <value>Comments</value>
+    <value>&lt;i class="glyphicon glyphicon-edit"&gt;&lt;/i&gt; Comments</value>
   </data>
   <data name="btnLogs.Text" xml:space="preserve">
-    <value>Logs</value>
+    <value>&lt;i class="glyphicon glyphicon-dashboard"&gt;&lt;/i&gt; Logs</value>
   </data>
   <data name="btnSave.Text" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="btnWorkItems.Text" xml:space="preserve">
-    <value>Work</value>
+    <value>&lt;i class="glyphicon glyphicon-tasks"&gt;&lt;/i&gt; Work</value>
   </data>
   <data name="lblTicket.Text" xml:space="preserve">
     <value>Ticket:</value>
@@ -293,5 +293,23 @@
   </data>
   <data name="lblCreated.Text" xml:space="preserve">
     <value>Created:</value>
+  </data>
+  <data name="lnkAdministratorSettingsToolTip.Text" xml:space="preserve">
+    <value>View Administrator Settings</value>
+  </data>
+  <data name="lnkExistingTicketsToolTip.Text" xml:space="preserve">
+    <value>View Existing Tickets</value>
+  </data>
+  <data name="lnkNewTicketToolTip.Text" xml:space="preserve">
+    <value>Enter New Ticket</value>
+  </data>
+  <data name="btnCommentsToolTip.Text" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="btnLogsToolTip.Text" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="btnWorkItemsToolTip.Text" xml:space="preserve">
+    <value>Work</value>
   </data>
 </root>

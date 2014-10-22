@@ -11,9 +11,9 @@
 
 
         <div class="form-inline">
-                    <asp:LinkButton ID="lnkNewTicket" resourcekey="lnkNewTicket" runat="server" CssClass="btn btn-default" OnClick="lnkNewTicket_Click">New Ticket</asp:LinkButton>
-                    <asp:LinkButton ID="lnkExistingTickets" resourcekey="lnkExistingTickets" runat="server" CssClass="btn btn-default" OnClick="lnkExistingTickets_Click">Existing Tickets</asp:LinkButton>
-                    <asp:LinkButton ID="lnkAdministratorSettings" resourcekey="lnkAdministratorSettings" runat="server" CssClass="btn btn-default"
+                    <asp:LinkButton ID="lnkNewTicket" resourcekey="lnkNewTicket" runat="server" CssClass="btn btn-link" OnClick="lnkNewTicket_Click">New Ticket</asp:LinkButton>
+                    <asp:LinkButton ID="lnkExistingTickets" resourcekey="lnkExistingTickets" runat="server" CssClass="btn btn-link" OnClick="lnkExistingTickets_Click">Existing Tickets</asp:LinkButton>
+                    <asp:LinkButton ID="lnkAdministratorSettings" resourcekey="lnkAdministratorSettings" runat="server" CssClass="btn btn-link"
                         OnClick="lnkAdministratorSettings_Click">Administrator Settings</asp:LinkButton>
         </div>
 
@@ -164,11 +164,11 @@
                 <asp:Panel ID="pnlDetails" runat="server">
 
                     <div class="form-inline">
-                                <asp:Button ID="btnComments" runat="server" OnClick="btnComments_Click" Text="Comments"
-                                    CssClass="btn btn-info" resourcekey="btnComments" />
-                                <asp:Button ID="btnWorkItems" runat="server" CssClass="btn btn-default" 
+                                <asp:LinkButton ID="btnComments" runat="server" OnClick="btnComments_Click" Text="Comments"
+                                    CssClass="btn btn-link" resourcekey="btnComments" />
+                                <asp:LinkButton ID="btnWorkItems" runat="server" CssClass="btn btn-link" 
                                     OnClick="btnWorkItems_Click" Text="Work" resourcekey="btnWorkItems" />
-                                <asp:Button ID="btnLogs" runat="server" CssClass="btn btn-default" 
+                                <asp:LinkButton ID="btnLogs" runat="server" CssClass="btn btn-link" 
                                     OnClick="btnLogs_Click" Text="Logs" resourcekey="btnLogs" />
                     </div>
 

@@ -166,7 +166,11 @@ namespace ITIL.Modules.ServiceDesk
                 // ITIL customization 
 
                 cmdStartCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtDueDate);
+                //memu tool tip localization
                 lnkNewTicket.ToolTip = Localization.GetString("lnkNewTicketToolTip", LocalResourceFile);
+                lnkExistingTickets.ToolTip = Localization.GetString("lnkExistingTicketsToolTip", LocalResourceFile);
+                lnkResetSearch.ToolTip = Localization.GetString("lnkResetSearchToolTip", LocalResourceFile);
+                lnkAdministratorSettings.ToolTip = Localization.GetString("lnkAdministratorSettingsToolTip", LocalResourceFile);
                 if (!Page.IsPostBack)
                 {
                     ShowAdministratorLinkAndFileUpload();
@@ -489,7 +493,6 @@ namespace ITIL.Modules.ServiceDesk
         #region lnkAdministratorSettings_Click
         protected void lnkAdministratorSettings_Click(object sender, EventArgs e)
         {
-            //SetButtonDefault();
             Response.Redirect(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "AdminSettings", "mid=" + ModuleId.ToString()));
         }
         #endregion
@@ -609,7 +612,7 @@ namespace ITIL.Modules.ServiceDesk
 
         protected void lnkResetSearch_Click(object sender, EventArgs e)
         {
-            //SetButtonDefault();
+
             ResetSearch();
         }
         #endregion
@@ -622,22 +625,10 @@ namespace ITIL.Modules.ServiceDesk
         #endregion
 
         #region SetView
-        //private void SetButtonDefault()
-        //{
-        //    //lnkNewTicket.CssClass = "btn btn-default";
-        //    lnkExistingTickets.CssClass = "btn btn-default";
-        //    lnkResetSearch.CssClass = "btn btn-default";
-        //    lnkAdministratorSettings.CssClass = "btn btn-default";
 
-        //    //lnkNewTicket.ForeColor = System.Drawing.Color.Chocolate;
-        //    lnkExistingTickets.ForeColor = System.Drawing.Color.Chocolate;
-        //    lnkResetSearch.ForeColor = System.Drawing.Color.Chocolate;
-        //    lnkAdministratorSettings.ForeColor = System.Drawing.Color.Chocolate;
-        //}
 
         private void SetView(string ViewName)
         {
-            //SetButtonDefault();
 
             if (ViewName == "New Ticket")
             {
@@ -646,11 +637,11 @@ namespace ITIL.Modules.ServiceDesk
                 pnlConfirmAnonymousUserEntry.Visible = false;
                 //imgMagnifier.Visible = false;
                 lnkResetSearch.Visible = false;
-                lnkNewTicket.CssClass = "btn btn-info";
-                lnkExistingTickets.CssClass = "btn btn-default";
                 //lnkNewTicket.ForeColor = System.Drawing.Color.White;
-                //lnkNewTicket.Font.Bold = true;
+                lnkNewTicket.Font.Underline = true;
+                lnkNewTicket.Font.Bold = true;
                 //lnkNewTicket.BackColor = System.Drawing.Color.LightGray;
+                lnkExistingTickets.Font.Underline = false;
                 lnkExistingTickets.Font.Bold = false;
                 //lnkExistingTickets.BackColor = System.Drawing.Color.Transparent;
 
@@ -665,13 +656,13 @@ namespace ITIL.Modules.ServiceDesk
                 pnlConfirmAnonymousUserEntry.Visible = false;
                 //imgMagnifier.Visible = true;
                 lnkResetSearch.Visible = true;
-                lnkExistingTickets.CssClass = "btn btn-info";
-                lnkNewTicket.CssClass = "btn btn-default";
                 //lnkExistingTickets.ForeColor = System.Drawing.Color.White;
 
-                //lnkNewTicket.Font.Bold = false;
+                lnkNewTicket.Font.Underline = false;
+                lnkNewTicket.Font.Bold = false;
                 //lnkNewTicket.BackColor = System.Drawing.Color.Transparent;
-                //lnkExistingTickets.Font.Bold = true;
+                lnkExistingTickets.Font.Underline = true;
+                lnkExistingTickets.Font.Bold = true;
                 //lnkExistingTickets.BackColor = System.Drawing.Color.LightGray;
 
                 DisplayExistingTickets(SearchCriteria);

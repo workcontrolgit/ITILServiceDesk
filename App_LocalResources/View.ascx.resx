@@ -241,7 +241,7 @@
     <value>Priority:</value>
   </data>
   <data name="lnkAdministratorSettings.Text" xml:space="preserve">
-    <value>Administrator Settings</value>
+    <value>&lt;i class="glyphicon glyphicon-wrench"&gt;&lt;/i&gt; Administrator Settings</value>
   </data>
   <data name="lnkAssigned.Text" xml:space="preserve">
     <value>Assigned</value>
@@ -268,7 +268,7 @@
     <value>Requestor</value>
   </data>
   <data name="lnkResetSearch.Text" xml:space="preserve">
-    <value>Reset Search</value>
+    <value>&lt;i class="glyphicon glyphicon-refresh"&gt;&lt;/i&gt; Reset Search</value>
   </data>
   <data name="lnkStatus.Text" xml:space="preserve">
     <value>Status</value>
@@ -375,5 +375,14 @@
   </data>
   <data name="lnkNewTicketToolTip.Text" xml:space="preserve">
     <value>Enter New Ticket</value>
+  </data>
+  <data name="lnkAdministratorSettingsToolTip.Text" xml:space="preserve">
+    <value>View Administrator Settings</value>
+  </data>
+  <data name="lnkExistingTicketsToolTip.Text" xml:space="preserve">
+    <value>View Existing Tickets</value>
+  </data>
+  <data name="lnkResetSearchToolTip.Text" xml:space="preserve">
+    <value>Reset Search</value>
   </data>
 </root>

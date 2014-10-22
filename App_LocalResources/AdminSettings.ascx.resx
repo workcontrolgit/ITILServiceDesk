@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAddNew.Text" xml:space="preserve">
     <value>Add New</value>
@@ -175,19 +175,19 @@
     <value>File Upload Permission:</value>
   </data>
   <data name="lnkAdminRole.Text" xml:space="preserve">
-    <value>Administrator Role</value>
+    <value>&lt;i class="glyphicon glyphicon-user"&gt;&lt;/i&gt; Administrator Role</value>
   </data>
   <data name="lnkBack.Text" xml:space="preserve">
     <value>Back</value>
   </data>
   <data name="lnkRoles.Text" xml:space="preserve">
-    <value>Assignment Roles</value>
+    <value>&lt;i class="glyphicon glyphicon-eye-open"&gt;&lt;/i&gt; Assignment Roles</value>
   </data>
   <data name="lnkTagsAdmin.Text" xml:space="preserve">
-    <value>Tags Administration</value>
+    <value>&lt;i class="glyphicon glyphicon-tag"&gt;&lt;/i&gt; Tags Administration</value>
   </data>
   <data name="lnkUploadefFilesPath.Text" xml:space="preserve">
-    <value>File Upload Settings</value>
+    <value>&lt;i class="glyphicon glyphicon-cloud-upload"&gt;&lt;/i&gt; File Upload Settings</value>
   </data>
   <data name="RoleAlreadyAdded.Text" xml:space="preserve">
     <value>Role '{0}' is already added.</value>

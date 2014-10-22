@@ -110,13 +110,13 @@
         <tr>
             <td valign="top" nowrap="nowrap">
                 <asp:Image ID="Image3" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/application_side_contract.png" />
-                <asp:LinkButton ID="lnkBack" resourcekey="lnkBack" runat="server" Font-Underline="True" OnClick="lnkBack_Click" Text="Back" />&nbsp;<asp:Image
+                <asp:LinkButton ID="lnkBack" resourcekey="lnkBack" runat="server" OnClick="lnkBack_Click" Text="Back" />&nbsp;<asp:Image
                     ID="Image4" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/page_add.png" />
-                <asp:LinkButton ID="lnkUpdate" resourcekey="lnkUpdate" runat="server" Text="Update" Font-Underline="True"
+                <asp:LinkButton ID="lnkUpdate" resourcekey="lnkUpdate" runat="server" Text="Update"
                     OnClick="lnkUpdate_Click" />
                 &nbsp;<asp:Image ID="Image5" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/page_delete.png" />
                 <asp:LinkButton ID="lnkDelete" resourcekey="lnkDelete" runat="server" OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}'
-                    Text="Delete" Font-Underline="True" OnClick="lnkDelete_Click" />
+                    Text="Delete" OnClick="lnkDelete_Click" />
             </td>
             <td valign="top" align="right">
                 &nbsp;

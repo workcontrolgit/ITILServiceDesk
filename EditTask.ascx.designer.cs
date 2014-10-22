@@ -397,7 +397,7 @@ namespace ITIL.Modules.ServiceDesk {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnComments;
+        protected global::System.Web.UI.WebControls.LinkButton btnComments;
         
         /// <summary>
         /// btnWorkItems control.
@@ -406,7 +406,7 @@ namespace ITIL.Modules.ServiceDesk {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnWorkItems;
+        protected global::System.Web.UI.WebControls.LinkButton btnWorkItems;
         
         /// <summary>
         /// btnLogs control.
@@ -415,7 +415,7 @@ namespace ITIL.Modules.ServiceDesk {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogs;
+        protected global::System.Web.UI.WebControls.LinkButton btnLogs;
         
         /// <summary>
         /// pnlComments control.

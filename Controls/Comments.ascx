@@ -103,19 +103,19 @@
             <td valign="top" nowrap="nowrap">
                 <asp:Image ID="Image3" runat="server" 
                     ImageUrl="~/DesktopModules/ITILServiceDesk/images/application_side_contract.png" />
-                <asp:LinkButton ID="lnkBack" runat="server" Font-Underline="True" 
+                <asp:LinkButton ID="lnkBack" runat="server" 
                     onclick="lnkBack_Click" Text="Back" resourcekey="lnkBack" />&nbsp;<asp:Image ID="Image4" 
                     runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/page_add.png" />
                 <asp:LinkButton ID="lnkUpdate" runat="server" Text="Update" 
-                    Font-Underline="True" onclick="lnkUpdate_Click" resourcekey="lnkUpdate" />
+                    onclick="lnkUpdate_Click" resourcekey="lnkUpdate" />
                 <asp:Image ID="ImgEmailUser" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/user_suit.png" /><asp:LinkButton 
-                    ID="lnkUpdateRequestor" runat="server" Font-Underline="True" 
+                    ID="lnkUpdateRequestor" runat="server" 
                     onclick="lnkUpdateRequestor_Click" Text="Update and Email Requestor" resourcekey="lnkUpdateAndEmail" />
 &nbsp;<asp:Image ID="Image5" runat="server" 
                     ImageUrl="~/DesktopModules/ITILServiceDesk/images/page_delete.png" />
                 <asp:LinkButton ID="lnkDelete" runat="server" 
                     OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}' 
-                    Text="Delete" Font-Underline="True" onclick="lnkDelete_Click" resourcekey="lnkDelete" />
+                    Text="Delete" onclick="lnkDelete_Click" resourcekey="lnkDelete" />
             </td>
             <td valign="top" align="right">
                 <asp:CheckBox ID="chkCommentVisibleEdit" runat="server" Font-Size="Small" 
@@ -147,7 +147,7 @@
                           ToolTip="Delete Attachment" 
                           OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}' 
                           onclick="imgDelete_Click" />
-                      &nbsp;</span><asp:LinkButton ID="lnkFileAttachment" runat="server" Font-Underline="True" 
+                      &nbsp;</span><asp:LinkButton ID="lnkFileAttachment" runat="server" 
                           onclick="lnkFileAttachment_Click" 
                           ToolTip="Click here to download this file"></asp:LinkButton>
                       &nbsp;</asp:Panel>
