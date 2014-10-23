@@ -13,13 +13,13 @@ namespace ITIL.Modules.ServiceDesk.Controls {
     public partial class Work {
         
         /// <summary>
-        /// pnlInsertComment control.
+        /// pnlInsertWork control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlInsertComment;
+        protected global::System.Web.UI.WebControls.Panel pnlInsertWork;
         
         /// <summary>
         /// txtComment control.

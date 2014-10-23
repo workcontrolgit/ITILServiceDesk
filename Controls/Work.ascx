@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Work.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.Controls.Work" %>
 
 
-<asp:Panel ID="pnlInsertComment" runat="server" GroupingText="Insert New Work" 
+<asp:Panel ID="pnlInsertWork" runat="server" GroupingText="Insert New Work" 
       CssClass="panel panel-default">
 
     <div class="form-horizontal">
@@ -64,7 +64,7 @@
                 </table>
             </div>
             <div class="col-xs-6">
-                <asp:Button ID="btnInsertComment" resourcekey="btnInsertComment" runat="server" Font-Bold="True" OnClick="btnInsertComment_Click"
+                <asp:Button ID="btnInsertComment" resourcekey="btnInsertComment" runat="server" OnClick="btnInsertComment_Click"
                     Text="Insert" CssClass="btn btn-primary" />
             </div>
         </div>

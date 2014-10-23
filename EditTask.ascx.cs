@@ -862,6 +862,11 @@ namespace ITIL.Modules.ServiceDesk
         #region btnWorkItems_Click
         protected void btnWorkItems_Click(object sender, EventArgs e)
         {
+            if (pnlWorkItems.Visible == true)
+            {
+                WorkControl.SetView("Default");
+            }
+
             DisableAllButtons();
             btnWorkItems.Font.Bold = true;
             btnWorkItems.Font.Underline = true;

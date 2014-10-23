@@ -135,8 +135,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-12">
-                    <asp:Label ID="lblErrorEditComment" runat="server" EnableViewState="False"
-                        ForeColor="Red"></asp:Label>
+                    <asp:Label ID="lblErrorEditComment" runat="server" EnableViewState="False"  CssClass="label label-warning"></asp:Label>
                     <asp:Label ID="lblDetailID" runat="server" Visible="False"></asp:Label>
                 </div>
             </div>

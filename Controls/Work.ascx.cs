@@ -62,7 +62,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
                 cmdtxtStartCalendar3.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtStartDayEdit);
                 cmdtxtStartCalendar4.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtStopDayEdit);
 
-                pnlInsertComment.GroupingText = Localization.GetString("pnlInsertComment.Text", LocalResourceFile);
+                pnlInsertWork.GroupingText = Localization.GetString("pnlInsertWork.Text", LocalResourceFile);
 
                 if (!Page.IsPostBack)
                 {
@@ -91,7 +91,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
         {
             if (ViewMode == "Default")
             {
-                pnlInsertComment.Visible = true;
+                pnlInsertWork.Visible = true;
                 //pnlTableHeader.Visible = true;
                 pnlExistingComments.Visible = true;
                 pnlEditWork.Visible = false;
@@ -99,7 +99,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
 
             if (ViewMode == "Edit")
             {
-                pnlInsertComment.Visible = false;
+                pnlInsertWork.Visible = false;
                 //pnlTableHeader.Visible = false;
                 pnlExistingComments.Visible = false;
                 pnlEditWork.Visible = true;

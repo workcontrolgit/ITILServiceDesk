@@ -683,26 +683,16 @@ namespace ITIL.Modules.ServiceDesk.Controls
             // Validate file upload
             if (fuAttachment.HasFile)
             {
-                if (
-                    string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".gif", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".jpg", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".jpeg", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".doc", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".docx", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".xls", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".xlsx", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".pdf", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".txt", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".sql", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".rtf", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".zip", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".rar", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".cfm", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".html", true) != 0
-                    & string.Compare(Path.GetExtension(fuAttachment.FileName).ToLower(), ".sdf", true) != 0
-                    )
+                // ITIL Customization - use DNN host setting for file extension
+                string fileName = fuAttachment.PostedFile.FileName;
+
+                string extension = Path.GetExtension(fileName);
+
+                if (!Utility.IsAllowedExtension(fileName, extension))
                 {
-                    lblErrorEditComment.Text = "Only .gif, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf, .txt, .sql, .zip, .rar, .cfm, .html, .rtf files may be used.";
+                    //string ErrorMessage = String.Format(Localization.GetString("InvalidFileExtension.Text", LocalResourceFile), string.Join(",", Host.AllowedExtensionWhitelist), extension);
+                    string ErrorMessage = string.Format(Localization.GetExceptionMessage("AddFileExtensionNotAllowed", "The extension '{0}' is not allowed. The file has not been added."), extension);
+                    lblErrorEditComment.Text = ErrorMessage;
                     return;
                 }
             }
