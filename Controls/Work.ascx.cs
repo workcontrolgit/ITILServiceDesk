@@ -94,7 +94,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
                 pnlInsertComment.Visible = true;
                 //pnlTableHeader.Visible = true;
                 pnlExistingComments.Visible = true;
-                pnlEditComment.Visible = false;
+                pnlEditWork.Visible = false;
             }
 
             if (ViewMode == "Edit")
@@ -102,7 +102,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
                 pnlInsertComment.Visible = false;
                 //pnlTableHeader.Visible = false;
                 pnlExistingComments.Visible = false;
-                pnlEditComment.Visible = true;
+                pnlEditWork.Visible = true;
             }
         }
         #endregion
@@ -111,9 +111,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
         private void SetViewOnlyMode()
         {
             lnkDelete.Visible = false;
-            Image5.Visible = false;
             lnkUpdate.Visible = false;
-            Image4.Visible = false;
         }
         #endregion
 

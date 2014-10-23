@@ -31,24 +31,6 @@ namespace ITIL.Modules.ServiceDesk.Controls {
         protected global::System.Web.UI.WebControls.TextBox txtComment;
         
         /// <summary>
-        /// btnInsertComment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInsertComment;
-        
-        /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
-        
-        /// <summary>
         /// lblStart1 control.
         /// </summary>
         /// <remarks>
@@ -157,6 +139,24 @@ namespace ITIL.Modules.ServiceDesk.Controls {
         protected global::System.Web.UI.WebControls.TextBox txtStopTime;
         
         /// <summary>
+        /// btnInsertComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInsertComment;
+        
+        /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+        
+        /// <summary>
         /// pnlExistingComments control.
         /// </summary>
         /// <remarks>
@@ -175,67 +175,49 @@ namespace ITIL.Modules.ServiceDesk.Controls {
         protected global::System.Web.UI.WebControls.GridView gvComments;
         
         /// <summary>
-        /// pnlEditComment control.
+        /// pnlEditWork control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlEditComment;
+        protected global::System.Web.UI.WebControls.Panel pnlEditWork;
         
         /// <summary>
-        /// Image3 control.
+        /// lblUserFooter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image3;
+        protected global::System.Web.UI.WebControls.Label lblUserFooter;
         
         /// <summary>
-        /// lnkBack control.
+        /// lblDisplayUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBack;
+        protected global::System.Web.UI.WebControls.Label lblDisplayUser;
         
         /// <summary>
-        /// Image4 control.
+        /// lblInsertDateFooter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image4;
+        protected global::System.Web.UI.WebControls.Label lblInsertDateFooter;
         
         /// <summary>
-        /// lnkUpdate control.
+        /// lblInsertDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkUpdate;
-        
-        /// <summary>
-        /// Image5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image5;
-        
-        /// <summary>
-        /// lnkDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDelete;
+        protected global::System.Web.UI.WebControls.Label lblInsertDate;
         
         /// <summary>
         /// txtDescription control.
@@ -355,40 +337,31 @@ namespace ITIL.Modules.ServiceDesk.Controls {
         protected global::System.Web.UI.WebControls.TextBox txtStopTimeEdit;
         
         /// <summary>
-        /// lblUserFooter control.
+        /// lnkUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserFooter;
+        protected global::System.Web.UI.WebControls.LinkButton lnkUpdate;
         
         /// <summary>
-        /// lblDisplayUser control.
+        /// lnkBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDisplayUser;
+        protected global::System.Web.UI.WebControls.LinkButton lnkBack;
         
         /// <summary>
-        /// lblInsertDateFooter control.
+        /// lnkDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInsertDateFooter;
-        
-        /// <summary>
-        /// lblInsertDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInsertDate;
+        protected global::System.Web.UI.WebControls.LinkButton lnkDelete;
         
         /// <summary>
         /// lblErrorEditComment control.

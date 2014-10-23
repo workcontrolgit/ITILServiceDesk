@@ -2,7 +2,6 @@
 <%@ Register Src="Controls/Tags.ascx" TagName="Tags" TagPrefix="uc1" %>
 
 
-
 <div class="form-inline">
     <asp:LinkButton ID="lnkNewTicket" runat="server" CssClass="btn btn-link"
         OnClick="lnkNewTicket_Click" Text="New Ticket" resourcekey="lnkNewTicket"></asp:LinkButton>
@@ -84,7 +83,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-10">
-                            <asp:Label ID="lblError" runat="server" EnableViewState="False" Font-Bold="True" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="lblError" runat="server" EnableViewState="False" CssClass="label label-warning"></asp:Label>
                         </div>
                     </div>
 

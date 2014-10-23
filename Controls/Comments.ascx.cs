@@ -136,14 +136,11 @@ namespace ITIL.Modules.ServiceDesk.Controls
             chkCommentVisible.Visible = false;
             chkCommentVisibleEdit.Visible = false;
             lnkDelete.Visible = false;
-            Image5.Visible = false;
             lnkUpdate.Visible = false;
-            Image4.Visible = false;
             pnlDisplayFile.Visible = false;
             pnlAttachFile.Visible = false;
             imgDelete.Visible = false;
             lnkUpdateRequestor.Visible = false;
-            ImgEmailUser.Visible = false;
             btnInsertCommentAndEmail.Visible = false;
         }
         #endregion
@@ -451,7 +448,6 @@ namespace ITIL.Modules.ServiceDesk.Controls
 
                 if (!ViewOnly)
                 {
-                    ImgEmailUser.Visible = (objITILServiceDesk_TaskDetail.DetailType == "Comment") ? false : true;
                     lnkUpdateRequestor.Visible = (objITILServiceDesk_TaskDetail.DetailType == "Comment") ? false : true;
                 }
 
@@ -460,7 +456,6 @@ namespace ITIL.Modules.ServiceDesk.Controls
                 {
                     // Only Display Email to Requestor link if chkCommentVisibleEdit is checked
                     lnkUpdateRequestor.Visible = chkCommentVisibleEdit.Checked;
-                    ImgEmailUser.Visible = chkCommentVisibleEdit.Checked;
                 }
 
                 if (objITILServiceDesk_TaskDetail.ITILServiceDesk_Attachments.Count > 0)
@@ -923,7 +918,6 @@ namespace ITIL.Modules.ServiceDesk.Controls
         {
             // Only Display Email to Requestor link if chkCommentVisibleEdit is checked
             lnkUpdateRequestor.Visible = chkCommentVisibleEdit.Checked;
-            ImgEmailUser.Visible = chkCommentVisibleEdit.Checked;
         }
         #endregion
 

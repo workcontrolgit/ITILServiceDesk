@@ -2,43 +2,40 @@
 
 
 <asp:Panel ID="pnlInsertComment" runat="server" GroupingText="Insert New Work" 
-     BorderStyle="None" CssClass="panel panel-default">
-    <table>
-        <tr>
-            <td valign="top">
+      CssClass="panel panel-default">
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-12">
                 <asp:TextBox ID="txtComment" runat="server" Width="100%" Rows="4" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
-                &nbsp;
-                <asp:Button ID="btnInsertComment" resourcekey="btnInsertComment" runat="server" Font-Bold="True" OnClick="btnInsertComment_Click"
-                    Text="Insert" CssClass="btn btn-primary" />
-                &nbsp;<br />
-                <asp:Label ID="lblError" runat="server" EnableViewState="False" ForeColor="Red"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <table align="center">
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-6">
+                <table>
                     <tr>
                         <td rowspan="2">
                             <asp:Label ID="lblStart1" runat="server" Font-Bold="True" Text="Start" resourcekey="lblStart" />
                         </td>
                         <td align="center">
-                        <asp:Label ID="lblDate1" runat="server" Font-Bold="False" Text="Date" resourcekey="lblDate" />
+                            <asp:Label ID="lblDate1" runat="server" Font-Bold="False" Text="Date" resourcekey="lblDate" />
                         </td>
                         <td align="center">
-                        <asp:Label ID="lblTime1" runat="server" Font-Bold="False" Text="Time" resourcekey="lblTime" />
+                            <asp:Label ID="lblTime1" runat="server" Font-Bold="False" Text="Time" resourcekey="lblTime" />
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
                         </td>
                         <td rowspan="2">
-                        <asp:Label ID="lblStop1" runat="server" Font-Bold="True" Text="Stop" resourcekey="lblStop" />
-                        </td>
-                       <td align="center">
-                        <asp:Label ID="lblDate2" runat="server" Font-Bold="False" Text="Date" 
-                               resourcekey="lblDate" />
+                            <asp:Label ID="lblStop1" runat="server" Font-Bold="True" Text="Stop" resourcekey="lblStop" />
                         </td>
                         <td align="center">
-                        <asp:Label ID="lblTime2" runat="server" Font-Bold="False" Text="Time" 
+                            <asp:Label ID="lblDate2" runat="server" Font-Bold="False" Text="Date"
+                                resourcekey="lblDate" />
+                        </td>
+                        <td align="center">
+                            <asp:Label ID="lblTime2" runat="server" Font-Bold="False" Text="Time"
                                 resourcekey="lblTime" />
                         </td>
                     </tr>
@@ -52,8 +49,7 @@
                         <td>
                             <asp:TextBox ID="txtStartTime" runat="server" Columns="8"></asp:TextBox>
                         </td>
-                        <td>
-                            &nbsp;
+                        <td>&nbsp;
                         </td>
                         <td nowrap="nowrap">
                             <asp:TextBox ID="txtStopDay" runat="server" Columns="8"></asp:TextBox>
@@ -66,10 +62,19 @@
                         </td>
                     </tr>
                 </table>
-            </td>
+            </div>
+            <div class="col-xs-6">
+                <asp:Button ID="btnInsertComment" resourcekey="btnInsertComment" runat="server" Font-Bold="True" OnClick="btnInsertComment_Click"
+                    Text="Insert" CssClass="btn btn-primary" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <asp:Label ID="lblError" runat="server" EnableViewState="False" ForeColor="Red"></asp:Label>
+            </div>
+        </div>
+    </div>
 
-        </tr>
-    </table>
 </asp:Panel>
 
 <asp:Panel ID="pnlExistingComments" runat="server" Height="250px" ScrollBars="Vertical">
@@ -105,34 +110,28 @@
         </Columns>
     </asp:GridView>
 </asp:Panel>
-<asp:Panel ID="pnlEditComment" runat="server" Visible="False">
-    <table>
-        <tr>
-            <td valign="top" nowrap="nowrap">
-                <asp:Image ID="Image3" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/application_side_contract.png" />
-                <asp:LinkButton ID="lnkBack" resourcekey="lnkBack" runat="server" OnClick="lnkBack_Click" Text="Back" />&nbsp;<asp:Image
-                    ID="Image4" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/page_add.png" />
-                <asp:LinkButton ID="lnkUpdate" resourcekey="lnkUpdate" runat="server" Text="Update"
-                    OnClick="lnkUpdate_Click" />
-                &nbsp;<asp:Image ID="Image5" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/page_delete.png" />
-                <asp:LinkButton ID="lnkDelete" resourcekey="lnkDelete" runat="server" OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}'
-                    Text="Delete" OnClick="lnkDelete_Click" />
-            </td>
-            <td valign="top" align="right">
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" colspan="2" style="margin-left: 120px">
-                <asp:TextBox ID="txtDescription" runat="server" Columns="60" Rows="10" TextMode="MultiLine"
-                    Height="55px"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="margin-left: 120px" valign="top">
+<asp:Panel ID="pnlEditWork" runat="server" Visible="False">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-12">
+                &nbsp;<asp:Label ID="lblUserFooter" runat="server" Font-Bold="True" 
+                    Text="User:" resourcekey="lblUserFooter" />
+                &nbsp;<asp:Label ID="lblDisplayUser" runat="server"></asp:Label>
+                &nbsp;<asp:Label ID="lblInsertDateFooter" runat="server" Font-Bold="True" 
+                    Text="Insert Date:" resourcekey="lblInsertDateFooter" />&nbsp;<asp:Label ID="lblInsertDate" runat="server"></asp:Label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <asp:TextBox ID="txtDescription" runat="server" Rows="4" TextMode="MultiLine"
+                     CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-6">
                 <table align="center">
                     <tr>
-                        <td bgcolor="#CCCCCC" rowspan="2">
+                        <td rowspan="2">
                             <asp:Label ID="lblStart2" runat="server" Font-Bold="True" 
                                 resourcekey="lblStart" Text="Start" />
 &nbsp;</td>
@@ -147,7 +146,7 @@
                         <td>
                             &nbsp;
                         </td>
-                        <td bgcolor="#CCCCCC" rowspan="2">
+                        <td rowspan="2">
                             <asp:Label ID="lblStop2" runat="server" Font-Bold="True" resourcekey="lblStop" 
                                 Text="Stop" />
 &nbsp;</td>
@@ -184,22 +183,24 @@
                         </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                &nbsp;<asp:Label ID="lblUserFooter" runat="server" Font-Bold="True" 
-                    Text="User:" resourcekey="lblUserFooter" />
-                &nbsp;<asp:Label ID="lblDisplayUser" runat="server"></asp:Label>
-                &nbsp;<asp:Label ID="lblInsertDateFooter" runat="server" Font-Bold="True" 
-                    Text="Insert Date:" resourcekey="lblInsertDateFooter" />&nbsp;<asp:Label ID="lblInsertDate" runat="server"></asp:Label>
+            </div>
+            <div class="col-xs-6">
+                <asp:LinkButton ID="lnkUpdate" resourcekey="lnkUpdate" runat="server" Text="Update"
+                    OnClick="lnkUpdate_Click" CssClass="btn btn-primary" />
                 &nbsp;
-                <br />
+                <asp:LinkButton ID="lnkBack" resourcekey="lnkBack" runat="server" OnClick="lnkBack_Click" Text="Back" CssClass="btn btn-default" />&nbsp;
+                <asp:LinkButton ID="lnkDelete" resourcekey="lnkDelete" runat="server" OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}'
+                    Text="Delete" OnClick="lnkDelete_Click" CssClass="btn btn-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
                 <asp:Label ID="lblErrorEditComment" runat="server" EnableViewState="False" ForeColor="Red"></asp:Label>
                 <asp:Label ID="lblDetailID" runat="server" Visible="False"></asp:Label>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+
+     </div>
 </asp:Panel>
 <asp:LinqDataSource ID="LDSComments" runat="server" ContextTypeName="ITIL.Modules.ServiceDesk.ServiceDeskDALDataContext"
     OrderBy="InsertDate desc" TableName="ITILServiceDesk_TaskDetails" OnSelecting="LDSComments_Selecting">
