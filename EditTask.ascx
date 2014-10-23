@@ -140,7 +140,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-10">
-                             <asp:Label ID="lblError" runat="server" CssClass="label label-warning" />
+                             <asp:Label ID="lblError" runat="server" CssClass="label label-success" />
                         </div>
                     </div>
 
