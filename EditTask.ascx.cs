@@ -487,8 +487,8 @@ namespace ITIL.Modules.ServiceDesk
             {
                 txtEmail.Visible = true;
                 txtName.Visible = true;
-                lblEmail.Visible = false;
-                lblName.Visible = false;
+                //lblEmail.Visible = false;
+                //lblName.Visible = false;
                 txtEmail.Text = objITILServiceDesk_Tasks.RequesterEmail;
                 txtName.Text = objITILServiceDesk_Tasks.RequesterName;
 
@@ -498,25 +498,28 @@ namespace ITIL.Modules.ServiceDesk
             }
             else
             {
-                txtEmail.Visible = false;
-                txtName.Visible = false;
-                lblEmail.Visible = true;
-                lblName.Visible = true;
+                //txtEmail.Visible = false;
+                //txtName.Visible = false;
+                //lblEmail.Visible = true;
+                //lblName.Visible = true;
 
                 UserInfo objRequester = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false);
 
                 if (objRequester != null)
                 {
-                    lblEmail.Text = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).Email;
-                    lblName.Text = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).DisplayName;
+                    //lblEmail.Text = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).Email;
+                    //lblName.Text = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).DisplayName;
+
+                    txtEmail.Text = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).Email;
+                    txtName.Text = UserController.GetUser(PortalId, objITILServiceDesk_Tasks.RequesterUserID, false).DisplayName;
 
                     //ITIL Customization - assigning (lblEmail.Text to RequesterEmail) and (lblName.Text to RequesterName) in case user is anonymous
-                    RequesterEmail = lblEmail.Text;
-                    RequesterName = lblName.Text;
+                    RequesterEmail = txtEmail.Text;
+                    RequesterName = txtName.Text;
                 }
                 else
                 {
-                    lblName.Text = "[User Deleted]";
+                    txtName.Text = "[User Deleted]";
                 }
             }
 
@@ -593,8 +596,6 @@ namespace ITIL.Modules.ServiceDesk
 
             // Only validate Name and email if Ticket is not for a DNN user
             // lblName will be hidden if it is not a DNN user
-            if (lblName.Visible == false)
-            {
                 if (txtName.Text.Trim().Length < 1)
                 {
                     ColErrors.Add(Localization.GetString("NameIsRequired.Text", LocalResourceFile));
@@ -604,7 +605,6 @@ namespace ITIL.Modules.ServiceDesk
                 {
                     ColErrors.Add(Localization.GetString("EmailIsRequired.Text", LocalResourceFile));
                 }
-            }
 
             // Validate the date only if a date was entered
             if (txtDueDate.Text.Trim().Length > 1)
@@ -690,13 +690,10 @@ namespace ITIL.Modules.ServiceDesk
 
             // Only validate Name and email if Ticket is not for a DNN user
             // lblName will be hidden if it is not a DNN user
-            if (lblName.Visible == false)
-            {
                 // not a DNN user
                 objITILServiceDesk_Task.RequesterEmail = txtEmail.Text;
                 objITILServiceDesk_Task.RequesterName = txtName.Text;
-                objITILServiceDesk_Task.RequesterUserID = -1;
-            }
+                //objITILServiceDesk_Task.RequesterUserID = -1;
 
             // DueDate
             if (txtDueDate.Text.Trim().Length > 1)

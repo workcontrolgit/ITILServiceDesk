@@ -95,7 +95,7 @@
                             <asp:RequiredFieldValidator ID="nameRequired" runat="server" Display="Dynamic"
                             ControlToValidate="txtName" ErrorMessage="Please enter name" CssClass="text-danger" ValidationGroup="ticket"></asp:RequiredFieldValidator>
 
-                                <p class="form-control-static"><asp:Label ID="lblName" runat="server" Visible="False"></asp:Label></p>
+                                <%--<p class="form-control-static"><asp:Label ID="lblName" runat="server" Visible="False"></asp:Label></p>--%>
                         </div>
                         <asp:Label ID="lbltxtEmail" runat="server" resourcekey="lbltxtEmail" Text="Email:" CssClass="control-label col-xs-2" AssociatedControlID="txtEmail" />
                         <div class="col-xs-4">
@@ -110,7 +110,7 @@
                         <asp:RequiredFieldValidator ID="emailRequired" runat="server" Display="Dynamic"
                             ControlToValidate="txtEmail" ErrorMessage="Please enter an email" CssClass="text-danger" ValidationGroup="ticket"></asp:RequiredFieldValidator>
 
-                                <p class="form-control-static"><asp:Label ID="lblEmail" runat="server" Visible="False"></asp:Label></p>
+                                <%--<p class="form-control-static"><asp:Label ID="lblEmail" runat="server" Visible="False"></asp:Label></p>--%>
                         </div>
                     </div>
 
