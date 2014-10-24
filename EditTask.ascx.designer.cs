@@ -175,6 +175,15 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.HyperLink cmdtxtDueDateCalendar;
         
         /// <summary>
+        /// DueDatValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator DueDatValidator;
+        
+        /// <summary>
         /// lbltxtName control.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtName;
+        
+        /// <summary>
+        /// nameRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator nameRequired;
         
         /// <summary>
         /// lblName control.
@@ -218,6 +236,24 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        
+        /// <summary>
+        /// emailValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator emailValidator;
+        
+        /// <summary>
+        /// emailRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator emailRequired;
         
         /// <summary>
         /// lblEmail control.
@@ -265,6 +301,15 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.TextBox txtEstimate;
         
         /// <summary>
+        /// EstimateValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator EstimateValidator;
+        
+        /// <summary>
         /// lbltxtDescription control.
         /// </summary>
         /// <remarks>
@@ -281,6 +326,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        
+        /// <summary>
+        /// descriptionRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator descriptionRequired;
         
         /// <summary>
         /// lbltxtStart control.
@@ -310,6 +364,15 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.HyperLink cmdtxtStartCalendar;
         
         /// <summary>
+        /// StartValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator StartValidator;
+        
+        /// <summary>
         /// lbltxtComplete control.
         /// </summary>
         /// <remarks>
@@ -335,6 +398,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink cmdtxtCompleteCalendar;
+        
+        /// <summary>
+        /// CompleteValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompleteValidator;
         
         /// <summary>
         /// btnSave control.

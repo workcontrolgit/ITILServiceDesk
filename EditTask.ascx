@@ -78,6 +78,9 @@
                                 <span class="input-group-addon">
                                      <asp:HyperLink ID="cmdtxtDueDateCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
                             </div>
+                            <asp:CompareValidator id="DueDatValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueDate" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
+                            </asp:CompareValidator>
+
                         </div>
                     </div>
 
@@ -85,12 +88,28 @@
                    <div class="form-group">
                         <asp:Label ID="lbltxtName" runat="server" resourcekey="lbltxtName" Text="Name:" CssClass="control-label col-xs-2" AssociatedControlID="txtName" />
                         <div class="col-xs-4">
+                            <div class="input-group">
                                 <asp:TextBox ID="txtName" runat="server" MaxLength="350" CssClass="form-control"></asp:TextBox>
+                                <span class="input-group-addon"><span class="text-danger">*</span></span>
+                            </div>
+                            <asp:RequiredFieldValidator ID="nameRequired" runat="server" Display="Dynamic"
+                            ControlToValidate="txtName" ErrorMessage="Please enter name" CssClass="text-danger" ValidationGroup="ticket"></asp:RequiredFieldValidator>
+
                                 <p class="form-control-static"><asp:Label ID="lblName" runat="server" Visible="False"></asp:Label></p>
                         </div>
                         <asp:Label ID="lbltxtEmail" runat="server" resourcekey="lbltxtEmail" Text="Email:" CssClass="control-label col-xs-2" AssociatedControlID="txtEmail" />
                         <div class="col-xs-4">
-                       <asp:TextBox ID="txtEmail" runat="server" MaxLength="350" CssClass="form-control"></asp:TextBox>
+                            <div class="input-group">
+                               <asp:TextBox ID="txtEmail" runat="server" MaxLength="350" CssClass="form-control"></asp:TextBox>
+                                <span class="input-group-addon"><span class="text-danger">*</span></span>
+                            </div>
+                        <asp:RegularExpressionValidator ID="emailValidator" runat="server" Display="Dynamic" ErrorMessage="Please enter valid email address" ValidationExpression="^[\w\.\-]+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]{1,})*(\.[a-zA-Z]{2,3}){1,2}$"
+                            ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="ticket">
+                        </asp:RegularExpressionValidator>
+
+                        <asp:RequiredFieldValidator ID="emailRequired" runat="server" Display="Dynamic"
+                            ControlToValidate="txtEmail" ErrorMessage="Please enter an email" CssClass="text-danger" ValidationGroup="ticket"></asp:RequiredFieldValidator>
+
                                 <p class="form-control-static"><asp:Label ID="lblEmail" runat="server" Visible="False"></asp:Label></p>
                         </div>
                     </div>
@@ -102,15 +121,21 @@
                         </div>
                         <asp:Label ID="lbltxtEstimateHours" runat="server" resourcekey="lbltxtEstimateHours" Text="Estimate Hours:" CssClass="control-label col-xs-2" AssociatedControlID="txtEstimate" />
                         <div class="col-xs-4">
-                            <asp:TextBox ID="txtEstimate" runat="server" Width="80px" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtEstimate" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:CompareValidator ID="EstimateValidator" runat="server" Display="Dynamic" CssClass="text-danger" ControlToValidate="txtEstimate" Operator="DataTypeCheck" Type="Double" ErrorMessage="Value must be a number"  ValidationGroup="ticket" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <asp:Label ID="lbltxtDescription" runat="server" resourcekey="lbltxtDescription" Text="Description:" CssClass="control-label col-xs-2" AssociatedControlID="txtDescription" />
                         <div class="col-xs-10">
-                        <asp:TextBox ID="txtDescription" runat="server" MaxLength="50" Width="100%" TextMode="MultiLine" Wrap="true" Rows="3" CssClass="form-control"></asp:TextBox>
-                        </div>
+                            <div class="input-group">
+                                <asp:TextBox ID="txtDescription" runat="server" MaxLength="150" CssClass="form-control"></asp:TextBox>
+                                        <span class="input-group-addon"><span class="text-danger">*</span></span>
+                            </div>
+                        <asp:RequiredFieldValidator ID="descriptionRequired" runat="server" Display="Dynamic"
+                            ControlToValidate="txtDescription" ErrorMessage="Please enter description" CssClass="text-danger" ValidationGroup="ticket"></asp:RequiredFieldValidator>
+                </div>
                     </div>
                     <div class="form-group">
                         <asp:Label ID="lbltxtStart" runat="server" resourcekey="lbltxtStart" Text="Start:" CssClass="control-label col-xs-2" AssociatedControlID="txtStart" />
@@ -120,6 +145,9 @@
                                 <span class="input-group-addon">
                             <asp:HyperLink ID="cmdtxtStartCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
                                 </div>
+                            <asp:CompareValidator id="StartValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtStart" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
+                            </asp:CompareValidator>
+
                         </div>
                         <asp:Label ID="lbltxtComplete" runat="server" resourcekey="lbltxtComplete" Text="Complete:" CssClass="control-label col-xs-2" AssociatedControlID="txtComplete" />
                         <div class="col-xs-4">
@@ -128,13 +156,14 @@
                                 <span class="input-group-addon">
                             <asp:HyperLink ID="cmdtxtCompleteCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
                                 </div>
+                            <asp:CompareValidator id="CompleteValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtComplete" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
+                            </asp:CompareValidator>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-10">
-                             <asp:Button ID="btnSave" resourcekey="btnSave" runat="server" OnClick="btnSave_Click" Text="Save" CssClass="btn btn-primary"
-                                    Width="63px" />
+                             <asp:Button ID="btnSave" resourcekey="btnSave" runat="server" OnClick="btnSave_Click" Text="Save" CssClass="btn btn-primary" ValidationGroup="ticket" />
                         </div>
                     </div>
 

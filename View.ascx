@@ -128,7 +128,7 @@
                             Text="Description:" resourcekey="lbltxtDescription" CssClass="control-label col-xs-2" AssociatedControlID="txtDescription" />
                         <div class="col-xs-10">
                             <div class="input-group">
-                                <asp:TextBox ID="txtDescription" runat="server" Columns="42" MaxLength="150" TabIndex="4" Width="100%" CssClass="form-control" placeholder="<enter brief description>"></asp:TextBox>
+                                <asp:TextBox ID="txtDescription" runat="server" MaxLength="150" TabIndex="4" CssClass="form-control" placeholder="<enter brief description>"></asp:TextBox>
                                 <span class="input-group-addon"><span class="text-danger">*</span></span>
                             </div>
                         <asp:RequiredFieldValidator ID="descriptionRequired" runat="server" Display="Dynamic"
@@ -162,6 +162,8 @@
                                 <span class="input-group-addon">
                                     <asp:HyperLink ID="cmdStartCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png"></asp:HyperLink></span>
                             </div>
+                            <asp:CompareValidator id="DueDatValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueDate" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
+                            </asp:CompareValidator>
                         </div>
 
                         <asp:Label ID="lbltxtPriority" runat="server" Text="Priority:" resourcekey="lbltxtPriority" CssClass="control-label col-xs-2" AssociatedControlID="ddlPriority" />

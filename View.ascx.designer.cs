@@ -319,6 +319,15 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.HyperLink cmdStartCalendar;
         
         /// <summary>
+        /// DueDatValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator DueDatValidator;
+        
+        /// <summary>
         /// lbltxtPriority control.
         /// </summary>
         /// <remarks>
