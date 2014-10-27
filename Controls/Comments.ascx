@@ -14,11 +14,13 @@
         </div>
 
         <div class="form-group">
-            <div class="col-xs-6">
+            <div class="col-xs-12">
                 <asp:Label ID="lblAttachFile1" runat="server" Text="File:" resourcekey="lblAttachFile" AssociatedControlID="TicketFileUpload" CssClass="control-label" />
                 <asp:FileUpload ID="TicketFileUpload" runat="server" />
             </div>
-            <div class="col-xs-6">
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
                 <asp:Button ID="btnInsertComment" runat="server" OnClick="btnInsertComment_Click" Text="Insert" resourcekey="btnInsertComment" CssClass="btn btn-primary" />
                 <asp:Button ID="btnInsertCommentAndEmail" runat="server" OnClick="btnInsertCommentAndEmail_Click" Text="Insert and Email " resourcekey="btnInsertCommentAndEmail" CssClass="btn btn-warning" BackColor="LightGray" />
             </div>
@@ -99,7 +101,7 @@
                 </div>
             </div>
             <div class="form-group">
-            <div class="col-xs-6">
+            <div class="col-xs-12">
                   <asp:Panel ID="pnlDisplayFile" runat="server" Visible="False">
                           <asp:Label ID="lblAttachment" resourcekey="lblAttachment" runat="server" CssClass="control-label" AssociatedControlID="lnkFileAttachment"
                               Text="Attachment:" />
@@ -119,7 +121,10 @@
                         &nbsp;<asp:FileUpload ID="fuAttachment" runat="server" />
                     </asp:Panel>
             </div>
-            <div class="col-xs-6">
+        </div>
+        <div class="form-group">
+
+            <div class="col-xs-12">
                 <asp:LinkButton ID="lnkUpdate" runat="server" Text="Update"
                     OnClick="lnkUpdate_Click" resourcekey="lnkUpdate" CssClass="btn btn-primary" />
                     <asp:LinkButton

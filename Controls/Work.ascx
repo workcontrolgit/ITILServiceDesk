@@ -13,7 +13,7 @@
         </div>
 
         <div class="form-group">
-            <div class="col-xs-6">
+            <div class="col-xs-12">
                 <table>
                     <tr>
                         <td rowspan="2">
@@ -63,7 +63,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-xs-6">
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
                 <asp:Button ID="btnInsertComment" resourcekey="btnInsertComment" runat="server" OnClick="btnInsertComment_Click"
                     Text="Insert" CssClass="btn btn-primary" />
             </div>
@@ -128,8 +130,8 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-6">
-                <table align="center">
+            <div class="col-xs-12">
+                <table>
                     <tr>
                         <td rowspan="2">
                             <asp:Label ID="lblStart2" runat="server" Font-Bold="True" 
@@ -184,7 +186,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-xs-6">
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
                 <asp:LinkButton ID="lnkUpdate" resourcekey="lnkUpdate" runat="server" Text="Update"
                     OnClick="lnkUpdate_Click" CssClass="btn btn-primary" />
                 &nbsp;
