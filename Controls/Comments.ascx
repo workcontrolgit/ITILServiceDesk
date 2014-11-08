@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Comments.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.Controls.Comments" %>
-<asp:Panel ID="pnlInsertComment" runat="server" GroupingText="Insert New Comment">
+<asp:Panel ID="pnlInsertComment" runat="server" GroupingText="Add Comment">
 
     <div class="form-horizontal">
         <div class="form-group">

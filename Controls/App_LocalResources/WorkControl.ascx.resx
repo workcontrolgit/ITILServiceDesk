@@ -172,7 +172,7 @@
     <value>Must provide valid start and stop dates and times</value>
   </data>
   <data name="pnlInsertWork.Text" xml:space="preserve">
-    <value>Insert New Work</value>
+    <value>Add Work</value>
   </data>
   <data name="Requestor.Text" xml:space="preserve">
     <value>&lt;i&gt;Requestor&lt;/i&gt;</value>

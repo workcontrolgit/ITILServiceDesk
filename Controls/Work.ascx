@@ -2,7 +2,7 @@
 
 
 <asp:Panel ID="pnlInsertWork" runat="server" GroupingText="Insert New Work" 
-      CssClass="panel panel-default">
+      CssClass="panel panel-default" BorderWidth="0">
 
     <div class="form-horizontal">
         <div class="form-group">
