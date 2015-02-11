@@ -1,28 +1,25 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="View.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.View" %>
 <%@ Register Src="Controls/Tags.ascx" TagName="Tags" TagPrefix="uc1" %>
-
-
-<div class="form-inline">
-    <asp:LinkButton ID="lnkNewTicket" runat="server" CssClass="btn btn-link"
-        OnClick="lnkNewTicket_Click" Text="New Ticket" resourcekey="lnkNewTicket"></asp:LinkButton>
-    <asp:LinkButton ID="lnkExistingTickets" runat="server" CssClass="btn btn-link" OnClick="lnkExistingTickets_Click"
-        Text="Existing Tickets" resourcekey="lnkExistingTickets" Visible="False" />
-    <asp:LinkButton ID="lnkResetSearch" runat="server" CssClass="btn btn-link" OnClick="lnkResetSearch_Click"
-        Text="Reset Search" resourcekey="lnkResetSearch" Visible="False" />
-    <asp:LinkButton ID="lnkAdministratorSettings" runat="server" CssClass="btn btn-link"
-        OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
-        resourcekey="lnkAdministratorSettings" Visible="False" />
-</div>
-
+<p>
+	<ul class="nav nav-pills">
+        <li><asp:LinkButton ID="lnkNewTicket" runat="server"  OnClick="lnkNewTicket_Click" Text="New Ticket" resourcekey="lnkNewTicket"></asp:LinkButton></li>
+        <li><asp:LinkButton ID="lnkExistingTickets" runat="server" OnClick="lnkExistingTickets_Click"
+        Text="Existing Tickets" resourcekey="lnkExistingTickets" Visible="False" /></li>
+        <li><asp:LinkButton ID="lnkResetSearch" runat="server"  OnClick="lnkResetSearch_Click"
+        Text="Reset Search" resourcekey="lnkResetSearch" Visible="False" /></li>
+        <li><asp:LinkButton ID="lnkAdministratorSettings" runat="server" OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
+        resourcekey="lnkAdministratorSettings" Visible="False" /></li>
+    </ul>
+</p>
 
 <asp:Panel ID="pnlNewTicket" runat="server">
 
 
 
-    <asp:Panel ID="pnlAdminUserSelection" runat="server" GroupingText="Select User" Visible="False">
+    <asp:Panel ID="pnlAdminUserSelection" runat="server" Visible="False">
         <div class="form-inline">
             <div class="form-group">
-                <label class="control-label" for="ddlSearchForUserType">Search By</label>
+            <asp:TextBox ID="txtSearchForUser" runat="server" TabIndex="12" CssClass="form-control" placeholder="Enter criteria here"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:DropDownList ID="ddlSearchForUserType" runat="server" CssClass="form-control">
@@ -32,15 +29,12 @@
                 </asp:DropDownList>
             </div>
             <div class="form-group">
-            <asp:TextBox ID="txtSearchForUser" runat="server" TabIndex="12" CssClass="form-control" placeholder="enter criteria here"></asp:TextBox>
-            </div>
-            <div class="form-group">
             <asp:Button ID="btnSearchUser" runat="server" OnClick="btnSearchUser_Click" Text="Search" resourcekey="btnSearchUser" CssClass="btn btn-primary" />
             </div>
         </div>
 
         <div class="form-group">
-            <asp:Label ID="lblCurrentProcessorNotFound" runat="server" Text="User is not found" CssClass="form-control-static" Visible="False"></asp:Label>
+            <asp:Label ID="lblCurrentProcessorNotFound" runat="server" Text="No record found" CssClass="form-control-static" Visible="False"></asp:Label>
             <asp:GridView ID="gvCurrentProcessor" runat="server" AutoGenerateColumns="False"
                 DataKeyNames="UserID" GridLines="None" OnSelectedIndexChanged="gvCurrentProcessor_SelectedIndexChanged" OnPageIndexChanging="gvCurrentProcessor_PageIndexChanging"
                 ShowHeader="True" CssClass="table table-bordered" AllowPaging="True" PageSize="5">
@@ -398,8 +392,7 @@
                     </ItemTemplate>
 
                     <EmptyDataTemplate>
-                        <table id="EmptyDataTemplateTable" runat="server" cellspacing="0"
-                            style="border-style: none">
+                        <table id="EmptyDataTemplateTable" runat="server" class="table table-bordered table-hover">
                             <tr id="Tr2" runat="server">
                                 <th id="Th9" runat="server" nowrap="nowrap" colspan="6" style="border-style: none"></th>
                                 <th id="Th8" runat="server" nowrap="nowrap" align="right" colspan="2" style="border: 1px solid #989898;">
@@ -409,10 +402,10 @@
                             </tr>
                             <tr id="Tr1" runat="server">
                                 <th id="Th1" runat="server" style="border-style: none" nowrap="nowrap">
-                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CommandName="EmptyDataTemplateSearch" CssClass="btn btn-warning" />
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CommandName="EmptyDataTemplateSearch" CssClass="btn btn-primary" />
                                 </th>
                                 <th id="Th2" runat="server" nowrap="nowrap">
-                                    <asp:DropDownList ID="ddlStatus" runat="server" Width="80" class="warning">
+                                    <asp:DropDownList ID="ddlStatus" runat="server" Width="80" CssClass="form-control">
                                         <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
                                         <asp:ListItem resourcekey="ddlStatusAdminNew" Value="New" Text="New" />
                                         <asp:ListItem resourcekey="ddlStatusAdminActive" Value="Active" Text="Active" />
@@ -421,26 +414,26 @@
                                         <asp:ListItem resourcekey="ddlStatusAdminCancelled" Value="Cancelled" Text="Cancelled" />
                                     </asp:DropDownList>
                                 </th>
-                                <th id="Th3" runat="server" nowrap="nowrap" class="warning">
-                                    <asp:DropDownList ID="ddlPriority" runat="server" Width="80">
+                                <th id="Th3" runat="server" nowrap="nowrap">
+                                    <asp:DropDownList ID="ddlPriority" runat="server" Width="80" CssClass="form-control">
                                         <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
                                         <asp:ListItem resourcekey="ddlPriorityNormal" Value="Normal" Text="Normal" />
                                         <asp:ListItem resourcekey="ddlPriorityHigh" Value="High" Text="High" />
                                         <asp:ListItem resourcekey="ddlPriorityLow" Value="Low" Text="Low" />
                                     </asp:DropDownList>
                                 </th>
-                                <th id="Th4" runat="server" nowrap="nowrap" class="warning">
-                                    <asp:TextBox ID="txtDue" runat="server" Width="70" />
+                                <th id="Th4" runat="server" nowrap="nowrap">
+                                    <asp:TextBox ID="txtDue" runat="server" Width="70" CssClass="form-control" />
                                 </th>
-                                <th id="Th5" runat="server" nowrap="nowrap" class="warning">
-                                    <asp:TextBox ID="txtCreated" runat="server" Width="70" />
+                                <th id="Th5" runat="server" nowrap="nowrap">
+                                    <asp:TextBox ID="txtCreated" runat="server" Width="70" CssClass="form-control" />
                                 </th>
-                                <th id="Th6" runat="server" nowrap="nowrap" class="warning">
-                                    <asp:DropDownList ID="ddlAssigned" runat="server" Width="90" DataTextField="AssignedRoleID"
+                                <th id="Th6" runat="server" nowrap="nowrap">
+                                    <asp:DropDownList ID="ddlAssigned" runat="server" Width="90" DataTextField="AssignedRoleID"  CssClass="form-control"
                                         DataValueField="Key" />
                                 </th>
-                                <th id="Th7" runat="server" nowrap="nowrap" colspan="2" class="warning">
-                                    <asp:TextBox ID="txtSearch" runat="server" Width="200" />
+                                <th id="Th7" runat="server" nowrap="nowrap" colspan="2">
+                                    <asp:TextBox ID="txtSearch" runat="server" Width="200" CssClass="form-control" />
                                 </th>
                             </tr>
                             <tr id="Tr3" runat="server">

@@ -295,7 +295,7 @@
     <value>Unassigned</value>
   </data>
   <data name="UserIsNotFound.Text" xml:space="preserve">
-    <value>User is not found</value>
+    <value>No record found</value>
   </data>
   <data name="YouMaySeeStatusHere.Text" xml:space="preserve">
     <value>You may see the status here: {0}</value>

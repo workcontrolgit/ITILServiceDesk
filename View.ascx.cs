@@ -298,7 +298,7 @@ namespace ITIL.Modules.ServiceDesk
 
                 // Show the Administrator user selector and Ticket Status selectors
                 pnlAdminUserSelection.Visible = true;
-                pnlAdminUserSelection.GroupingText = Localization.GetString("AdminUserSelectionGrouping.Text", LocalResourceFile);
+                //pnlAdminUserSelection.GroupingText = Localization.GetString("AdminUserSelectionGrouping.Text", LocalResourceFile);
                 pnlAdminTicketStatus.Visible = true;
 
                 // Load the Roles dropdown

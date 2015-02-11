@@ -7,15 +7,14 @@
 <div class="table-responsive">
     <asp:Panel ID="pnlEditTask" runat="server" HorizontalAlign="Left">
 
+<p>
+	<ul class="nav nav-pills">
+        <li><asp:LinkButton ID="lnkNewTicket" resourcekey="lnkNewTicket" runat="server" OnClick="lnkNewTicket_Click">New Ticket</asp:LinkButton></li>
+        <li><asp:LinkButton ID="lnkExistingTickets" resourcekey="lnkExistingTickets" runat="server" OnClick="lnkExistingTickets_Click">Existing Tickets</asp:LinkButton></li>
+        <li><asp:LinkButton ID="lnkAdministratorSettings" resourcekey="lnkAdministratorSettings" runat="server" OnClick="lnkAdministratorSettings_Click">Administrator Settings</asp:LinkButton></li>
+    </ul>
+</p>
 
-
-
-        <div class="form-inline">
-                    <asp:LinkButton ID="lnkNewTicket" resourcekey="lnkNewTicket" runat="server" CssClass="btn btn-link" OnClick="lnkNewTicket_Click">New Ticket</asp:LinkButton>
-                    <asp:LinkButton ID="lnkExistingTickets" resourcekey="lnkExistingTickets" runat="server" CssClass="btn btn-link" OnClick="lnkExistingTickets_Click">Existing Tickets</asp:LinkButton>
-                    <asp:LinkButton ID="lnkAdministratorSettings" resourcekey="lnkAdministratorSettings" runat="server" CssClass="btn btn-link"
-                        OnClick="lnkAdministratorSettings_Click">Administrator Settings</asp:LinkButton>
-        </div>
 
         <div class="panel panel-default">
             <div class="panel-heading">

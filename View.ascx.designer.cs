@@ -67,15 +67,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.Panel pnlAdminUserSelection;
         
         /// <summary>
-        /// ddlSearchForUserType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchForUserType;
-        
-        /// <summary>
         /// txtSearchForUser control.
         /// </summary>
         /// <remarks>
@@ -83,6 +74,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchForUser;
+        
+        /// <summary>
+        /// ddlSearchForUserType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSearchForUserType;
         
         /// <summary>
         /// btnSearchUser control.
