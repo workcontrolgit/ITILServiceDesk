@@ -9,6 +9,16 @@
         Text="Reset Search" resourcekey="lnkResetSearch" Visible="False" /></li>
         <li><asp:LinkButton ID="lnkAdministratorSettings" runat="server" OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
         resourcekey="lnkAdministratorSettings" Visible="False" /></li>
+<%--        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Inbox</a></li>
+                <li><a href="#">Drafts</a></li>
+                <li><a href="#">Sent Items</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Trash</a></li>
+            </ul>
+        </li>--%>
     </ul>
 </p>
 
@@ -255,12 +265,12 @@
 
                     <LayoutTemplate>
                         <table id="itemPlaceholderContainer" runat="server" class="table table-bordered table-hover">
-                            <tr id="Tr3" runat="server">
-                                <th id="Th9" runat="server" nowrap="nowrap" colspan="6" style="border-style: none"></th>
+<%--                            <tr id="Tr3" runat="server">
+                                <th id="Th9" runat="server" nowrap="nowrap" colspan="6"></th>
                                 <th id="Th8" runat="server" nowrap="nowrap" align="center" colspan="2">
                                     <asp:Label ID="lblSearchText2" runat="server" resourcekey="lblSearchText2" Text="Ticket # or Search Text:" />
                                 </th>
-                            </tr>
+                            </tr>--%>
                             <tr id="Tr1" runat="server">
                                 <th id="Th1" runat="server" valign="baseline">
                                     <asp:Button ID="btnSearch" runat="server" Text="Search" resourcekey="btnSearch" CommandName="Search" CssClass="btn btn-primary" />
@@ -294,7 +304,7 @@
                                         DataValueField="Key" />
                                 </th>
                                 <th id="Th7" runat="server" nowrap="nowrap" colspan="2">
-                                    <asp:TextBox ID="txtSearch" runat="server" Width="200" CssClass="form-control" />
+                                    <asp:TextBox ID="txtSearch" runat="server" Width="200" CssClass="form-control" placeholder="search text here" />
                                 </th>
                             </tr>
 
@@ -393,15 +403,14 @@
 
                     <EmptyDataTemplate>
                         <table id="EmptyDataTemplateTable" runat="server" class="table table-bordered table-hover">
-                            <tr id="Tr2" runat="server">
+<%--                            <tr id="Tr2" runat="server">
                                 <th id="Th9" runat="server" nowrap="nowrap" colspan="6" style="border-style: none"></th>
-                                <th id="Th8" runat="server" nowrap="nowrap" align="right" colspan="2" style="border: 1px solid #989898;">
-                                    <asp:Label ID="lblSearchText1" runat="server" resourcekey="lblSearchText1" Text="Ticket # or Search Text:"
-                                        ForeColor="#333333" />
+                                <th id="Th8" runat="server" nowrap="nowrap" align="right" colspan="2">
+                                    <asp:Label ID="lblSearchText1" runat="server" resourcekey="lblSearchText1" Text="Ticket # or Search Text:" />
                                 </th>
-                            </tr>
+                            </tr>--%>
                             <tr id="Tr1" runat="server">
-                                <th id="Th1" runat="server" style="border-style: none" nowrap="nowrap">
+                                <th id="Th1" runat="server" nowrap="nowrap">
                                     <asp:Button ID="btnSearch" runat="server" Text="Search" CommandName="EmptyDataTemplateSearch" CssClass="btn btn-primary" />
                                 </th>
                                 <th id="Th2" runat="server" nowrap="nowrap">
@@ -433,7 +442,7 @@
                                         DataValueField="Key" />
                                 </th>
                                 <th id="Th7" runat="server" nowrap="nowrap" colspan="2">
-                                    <asp:TextBox ID="txtSearch" runat="server" Width="200" CssClass="form-control" />
+                                    <asp:TextBox ID="txtSearch" runat="server" Width="200" CssClass="form-control" placeholder="search text here" />
                                 </th>
                             </tr>
                             <tr id="Tr3" runat="server">
@@ -472,9 +481,7 @@
                             </tr>
                             <tr runat="server">
                                 <td colspan="8">
-                                    <asp:Label ID="lblNoRecords" runat="server" resourcekey="lblNoRecords" Text="No Records Returned"
-                                        ForeColor="#333333" /><br />
-                                    <br />
+                                    <asp:Label ID="lblNoRecords" runat="server" resourcekey="lblNoRecords" Text="No Records Returned" /><br />
                                 </td>
                             </tr>
                         </table>
