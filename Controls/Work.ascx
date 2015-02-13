@@ -1,8 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Work.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.Controls.Work" %>
 
 
-<asp:Panel ID="pnlInsertWork" runat="server" GroupingText="Insert New Work" 
-      CssClass="panel panel-default" BorderWidth="0">
+<asp:Panel ID="pnlInsertWork" runat="server" GroupingText="Insert New Work" BorderWidth="0">
 
     <div class="form-horizontal">
         <div class="form-group">
@@ -82,7 +81,7 @@
 <asp:Panel ID="pnlExistingComments" runat="server" Height="250px" ScrollBars="Vertical">
     <asp:GridView ID="gvComments" runat="server" AutoGenerateColumns="False" DataKeyNames="DetailID"
         DataSourceID="LDSComments" OnRowDataBound="gvComments_RowDataBound"
-        OnRowCommand="gvComments_RowCommand" Width="100%" CellPadding="2"  CssClass="table table-bordered"
+        OnRowCommand="gvComments_RowCommand" Width="100%" CellPadding="2"  CssClass="table table-bordered table-striped"
         CellSpacing="2" GridLines="None">
         <Columns>
             <asp:TemplateField ShowHeader="False">
@@ -91,7 +90,7 @@
                         CommandArgument='<%# Bind("DetailID") %>' CommandName="Select" Text="Select"  CssClass="btn btn-link"></asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Comment" SortExpression="Description" ItemStyle-Width="50%">
+            <asp:TemplateField HeaderText="Work" SortExpression="Description" ItemStyle-Width="50%">
                 <ItemTemplate>
                     <asp:Label ID="lblComment" Font-Size="Small" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                 </ItemTemplate>

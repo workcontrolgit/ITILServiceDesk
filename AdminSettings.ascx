@@ -14,21 +14,27 @@
     <table cellpadding="2">
         <tr>
             <td valign="top" align="left" nowrap="nowrap">
+                	<ul class="nav nav-pills nav-stacked">
+        <li><asp:LinkButton ID="lnkAdminRole" runat="server" OnClick="lnkAdminRole_Click" 
+                        resourcekey="lnkAdminRole" Text="Administrator Role" /></li>
+        <li><asp:LinkButton ID="lnkUploadefFilesPath" runat="server" OnClick="lnkUploadefFilesPath_Click"
+                        resourcekey="lnkUploadefFilesPath" Text="File Upload Settings" /></li>
+        <li><asp:LinkButton ID="lnkRoles" runat="server"  OnClick="lnkRoles_Click"
+                        resourcekey="lnkRoles" Text="Assignment Roles" /></li>
+                        <li><asp:LinkButton ID="lnkTagsAdmin" runat="server" OnClick="lnkTagsAdmin_Click"
+                        resourcekey="lnkTagsAdmin" Text="Tags Administration" /></li>
+	</ul>
                 <p>
-                    <asp:LinkButton ID="lnkAdminRole" runat="server" OnClick="lnkAdminRole_Click" CssClass="btn btn-link"
-                        resourcekey="lnkAdminRole" Text="Administrator Role" />
+                    
                 </p>
                 <p>
-                    <asp:LinkButton ID="lnkUploadefFilesPath" runat="server" OnClick="lnkUploadefFilesPath_Click" CssClass="btn btn-link"
-                        resourcekey="lnkUploadefFilesPath" Text="File Upload Settings" />
+                    
                 </p>
                 <p>
-                    <asp:LinkButton ID="lnkRoles" runat="server"  OnClick="lnkRoles_Click" CssClass="btn btn-link"
-                        resourcekey="lnkRoles" Text="Assignment Roles" />
+                    
                 </p>
                 <p>
-                    <asp:LinkButton ID="lnkTagsAdmin" runat="server" OnClick="lnkTagsAdmin_Click" CssClass="btn btn-link"
-                        resourcekey="lnkTagsAdmin" Text="Tags Administration" />
+                    
                 </p>
             </td>
             <td class="style1" valign="top">
@@ -58,12 +64,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="right">
-                                <asp:Button ID="btnUpdateAdminRole" runat="server" OnClick="btnUpdateAdminRole_Click"
-                                    Text="Update" resourcekey="btnUpdateAdminRole" CssClass="btn btn-primary" />
-                            </td>
                             <td>
                                 &nbsp;
+                            </td>
+                            <td>
+                                <asp:Button ID="btnUpdateAdminRole" runat="server" OnClick="btnUpdateAdminRole_Click"
+                                    Text="Update" resourcekey="btnUpdateAdminRole" CssClass="btn btn-primary" />
                             </td>
                         </tr>
                         <tr>
@@ -127,11 +133,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="right">
-                                <asp:Button ID="btnUploadedFiles" runat="server" Text="Update" resourcekey="btnUpdateAdminRole" OnClick="btnUploadedFiles_Click" CssClass="btn btn-primary" />
-                            </td>
                             <td>
                                 &nbsp;
+                            </td>
+                            <td>
+                                <asp:Button ID="btnUploadedFiles" runat="server" Text="Update" resourcekey="btnUpdateAdminRole" OnClick="btnUploadedFiles_Click" CssClass="btn btn-primary" />
                             </td>
                         </tr>
                         <tr>
@@ -179,39 +185,16 @@
                                             </tr>
                                         </table>
                                     </EmptyDataTemplate>
-                                    <LayoutTemplate>
-                                        <table id="Table2" runat="server">
-                                            <tr id="Tr1" runat="server">
-                                                <td id="Td1" runat="server">
-                                                    <table id="itemPlaceholderContainer" runat="server" border="0" style="">
-                                                        <tr id="Tr2" runat="server" style="">
-                                                            <th id="Th1" runat="server">
-                                                            </th>
-                                                            <th id="Th2" runat="server">
-                                                                <asp:Label ID="RoleLabel" resourcekey="RoleLabel" runat="server" Text="Role" />
-                                                            </th>
-                                                        </tr>
-                                                        <tr id="itemPlaceholder" runat="server">
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr id="Tr3" runat="server">
-                                                <td id="Td2" runat="server" style="">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </LayoutTemplate>
                                 </asp:ListView>
                             </td>
                         </tr>
                         <tr>
                             <td>
+                                <asp:Button ID="btnInsertRole" runat="server" resourcekey="btnInsertRole" OnClick="btnInsertRole_Click" CssClass="btn btn-primary"
+                                    Text="Insert" />
                             </td>
                             <td>
-                                &nbsp;<asp:Button ID="btnInsertRole" runat="server" resourcekey="btnInsertRole" OnClick="btnInsertRole_Click" CssClass="btn btn-primary"
-                                    Text="Insert" />
-                                &nbsp;<asp:DropDownList ID="ddlRole" runat="server" DataTextField="Text" DataValueField="Value" />
+                                <asp:DropDownList ID="ddlRole" runat="server" DataTextField="Text" DataValueField="Value" CssClass="form-control" />
                             </td>
                         </tr>
                         <tr>

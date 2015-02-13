@@ -5,8 +5,8 @@
     onselecting="LDSLogs_Selecting">
     </asp:LinqDataSource>
     <asp:GridView ID="gvLogs" runat="server" AllowPaging="True" 
-        AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="LDSLogs"  CssClass="table table-bordered"
-        Width="100%"  PageSize="6">
+        AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="LDSLogs"  CssClass="table table-bordered table-striped"
+        PageSize="6">
         <Columns>
             <asp:TemplateField HeaderText="Description" SortExpression="LogDescription">
                 <EditItemTemplate>
