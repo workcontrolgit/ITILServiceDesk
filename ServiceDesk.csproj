@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ITIL.Modules.ServiceDesk</RootNamespace>
     <AssemblyName>ITIL.Modules.ServiceDesk</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -232,6 +232,13 @@
     <None Include="Providers\DataProviders\SqlDataProvider\02.00.00.SqlDataProvider" />
     <None Include="Providers\DataProviders\SqlDataProvider\02.10.00.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\14.01.01.SqlDataProvider" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

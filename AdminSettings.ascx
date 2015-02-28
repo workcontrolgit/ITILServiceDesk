@@ -1,11 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdminSettings.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.AdminSettings" %>
 <asp:Panel ID="pnlAdminSettings" runat="server" align="left">
-    <%--<asp:Image ID="Image3" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/application_side_contract.png" />--%>
-    <style type="text/css">
-        .style1 {
-            width: 19px;
-        }
-    </style>
+
     <asp:LinkButton ID="lnkBack" runat="server" resourcekey="lnkBack" CssClass="btn btn-primary"
         OnClick="lnkBack_Click" Text="Back" />
     <br />
