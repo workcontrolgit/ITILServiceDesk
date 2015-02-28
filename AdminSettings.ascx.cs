@@ -53,7 +53,12 @@ namespace ITIL.Modules.ServiceDesk
                 DisplayAdminRoleDropDown();
 
                 btnAddNew.Text = Localization.GetString("btnAddNew.Text", LocalResourceFile);
-                btnUpdate.Text = Localization.GetString("btnUpdateAdminRole.Text", LocalResourceFile);
+                //btnUpdate.Text = Localization.GetString("btnUpdateAdminRole.Text", LocalResourceFile);
+                //Panel header
+                pnlAdministratorRole.GroupingText = Localization.GetString("lnkAdminRole.Text", LocalResourceFile);
+                pnlUploadefFilesPath.GroupingText = Localization.GetString("lnkUploadefFilesPath.Text", LocalResourceFile);
+                pnlRoles.GroupingText = Localization.GetString("lnkRoles.Text", LocalResourceFile);
+                pnlTagsAdmin.GroupingText = Localization.GetString("lnkTagsAdmin.Text", LocalResourceFile);
             }
         }
 

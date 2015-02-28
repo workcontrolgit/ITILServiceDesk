@@ -40,15 +40,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.LinkButton lnkAdminRole;
         
         /// <summary>
-        /// lnkUploadefFilesPath control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkUploadefFilesPath;
-        
-        /// <summary>
         /// lnkRoles control.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkTagsAdmin;
+        
+        /// <summary>
+        /// lnkUploadefFilesPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkUploadefFilesPath;
         
         /// <summary>
         /// pnlAdministratorRole control.
@@ -184,24 +184,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.Panel pnlRoles;
         
         /// <summary>
-        /// lbltxtAssignmentRoles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbltxtAssignmentRoles;
-        
-        /// <summary>
-        /// lvRoles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvRoles;
-        
-        /// <summary>
         /// btnInsertRole control.
         /// </summary>
         /// <remarks>
@@ -229,6 +211,15 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.Label lblRoleError;
         
         /// <summary>
+        /// lvRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvRoles;
+        
+        /// <summary>
         /// pnlTagsAdmin control.
         /// </summary>
         /// <remarks>
@@ -236,6 +227,24 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlTagsAdmin;
+        
+        /// <summary>
+        /// btnAddNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddNew;
+        
+        /// <summary>
+        /// tvCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TreeView tvCategories;
         
         /// <summary>
         /// lblTagError control.
@@ -247,13 +256,22 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.Label lblTagError;
         
         /// <summary>
-        /// tvCategories control.
+        /// txtCategoryID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView tvCategories;
+        protected global::System.Web.UI.WebControls.TextBox txtCategoryID;
+        
+        /// <summary>
+        /// txtParentCategoryID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtParentCategoryID;
         
         /// <summary>
         /// lblCategory control.
@@ -310,24 +328,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.CheckBox chkSelectable;
         
         /// <summary>
-        /// txtCategoryID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategoryID;
-        
-        /// <summary>
-        /// txtParentCategoryID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtParentCategoryID;
-        
-        /// <summary>
         /// btnUpdate control.
         /// </summary>
         /// <remarks>
@@ -335,15 +335,6 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdate;
-        
-        /// <summary>
-        /// btnAddNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNew;
         
         /// <summary>
         /// btnDelete control.

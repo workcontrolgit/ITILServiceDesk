@@ -166,7 +166,7 @@
     <value>Administrator Role:</value>
   </data>
   <data name="lbltxtAssignmentRoles.Text" xml:space="preserve">
-    <value>Assignment Roles:</value>
+    <value>Assigned Roles:</value>
   </data>
   <data name="lbltxtFileUploadPath.Text" xml:space="preserve">
     <value>File Upload Path:</value>
@@ -175,19 +175,19 @@
     <value>File Upload Permission:</value>
   </data>
   <data name="lnkAdminRole.Text" xml:space="preserve">
-    <value>&lt;i class="glyphicon glyphicon-user"&gt;&lt;/i&gt; Administrator Role</value>
+    <value>&lt;i class="glyphicon glyphicon-user"&gt;&lt;/i&gt; Admin Team</value>
   </data>
   <data name="lnkBack.Text" xml:space="preserve">
     <value>Back</value>
   </data>
   <data name="lnkRoles.Text" xml:space="preserve">
-    <value>&lt;i class="glyphicon glyphicon-eye-open"&gt;&lt;/i&gt; Assignment Roles</value>
+    <value>&lt;i class="glyphicon glyphicon-eye-open"&gt;&lt;/i&gt; Tech Teams</value>
   </data>
   <data name="lnkTagsAdmin.Text" xml:space="preserve">
-    <value>&lt;i class="glyphicon glyphicon-tag"&gt;&lt;/i&gt; Tags Administration</value>
+    <value>&lt;i class="glyphicon glyphicon-tag"&gt;&lt;/i&gt; Tags</value>
   </data>
   <data name="lnkUploadefFilesPath.Text" xml:space="preserve">
-    <value>&lt;i class="glyphicon glyphicon-cloud-upload"&gt;&lt;/i&gt; File Upload Settings</value>
+    <value>&lt;i class="glyphicon glyphicon-cloud-upload"&gt;&lt;/i&gt; Upload Settings</value>
   </data>
   <data name="RoleAlreadyAdded.Text" xml:space="preserve">
     <value>Role '{0}' is already added.</value>
