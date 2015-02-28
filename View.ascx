@@ -492,7 +492,7 @@
                 <table cellpadding="2">
                     <tr>
                         <td>Page Size:&nbsp;<asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="True"
-                            OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged">
+                            OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" CssClass="form-control">
                             <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem Selected="True">25</asp:ListItem>
@@ -507,9 +507,9 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlPaging" runat="server">
-                                <asp:LinkButton ID="lnkFirst" runat="server" OnClick="lnkFirst_Click"
+                                <asp:LinkButton ID="lnkFirst" runat="server"  CssClass="pagination" OnClick="lnkFirst_Click"
                                     Text="&lt;&lt;" Visible="False" />
-                                &nbsp;<asp:LinkButton ID="lnkPrevious" runat="server" OnClick="lnkPrevious_Click"
+                                &nbsp;<asp:LinkButton ID="lnkPrevious" runat="server"  CssClass="btn btn-link" OnClick="lnkPrevious_Click"
                                     Text="&lt;" />
                                 &nbsp;
                                 <asp:DataList ID="PagingDataList" runat="server" DataKeyField="PageNumber" RepeatColumns="20"
@@ -517,12 +517,12 @@
                                     RepeatLayout="Flow">
                                     <ItemTemplate>
                                         <asp:LinkButton Font-Size="Larger" ID="lnkPage" Text='<%# Eval("PageNumber") %>'
-                                            runat="server" CommandArgument='<%# Eval("PageNumber") %>' OnClick="lnkPage_Click" />
+                                            runat="server" CommandArgument='<%# Eval("PageNumber") %>' OnClick="lnkPage_Click" CssClass="btn btn-link" />
                                     </ItemTemplate>
                                 </asp:DataList>
-                                &nbsp;<asp:LinkButton ID="lnkNext" runat="server" OnClick="lnkNext_Click"
+                                &nbsp;<asp:LinkButton ID="lnkNext" runat="server"  CssClass="btn btn-link" OnClick="lnkNext_Click"
                                     Text="&gt;" />
-                                &nbsp;<asp:LinkButton ID="lnkLast" runat="server" OnClick="lnkLast_Click"
+                                &nbsp;<asp:LinkButton ID="lnkLast" runat="server"  CssClass="btn btn-link" OnClick="lnkLast_Click"
                                     Text="&gt;&gt;" Visible="False" />&nbsp;
                             </asp:Panel>
                         </td>

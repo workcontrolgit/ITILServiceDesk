@@ -1683,9 +1683,9 @@ namespace ITIL.Modules.ServiceDesk
             // Check the sort direction to set the image URL accordingly.
             string imgUrl;
             if (SortDirection == "ASC")
-                imgUrl = "~/DesktopModules/ServiceDesk/images/dt-arrow-up.png";
+                imgUrl = this.ControlPath + "images/dt-arrow-up.png";
             else
-                imgUrl = "~/DesktopModules/ServiceDesk/images/dt-arrow-dn.png";
+                imgUrl = this.ControlPath + "images/dt-arrow-dn.png";
 
             // Check which field is being sorted
             // to set the visibility of the image controls.
