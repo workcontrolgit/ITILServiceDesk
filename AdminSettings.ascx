@@ -124,7 +124,7 @@
                     </ItemTemplate>
                     <EmptyDataTemplate>
                         <div>
-                            No record found.
+                             <asp:Label ID="lblNoRecords" runat="server" resourcekey="lblNoRecords" Text="No Records Returned" CssClass="text-warning" />
                         </div>
                     </EmptyDataTemplate>
                 </asp:ListView>

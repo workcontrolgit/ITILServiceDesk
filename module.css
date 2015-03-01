@@ -1,4 +1,8 @@
-﻿/* table level rules */
+﻿  .bottom-align-text {
+vertical-align: top;
+  }
+
+/* table level rules */
 .yui-grid
 {
     font-family: arial;

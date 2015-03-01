@@ -201,4 +201,7 @@
   <data name="Updated.Text" xml:space="preserve">
     <value>Successful Updated</value>
   </data>
+  <data name="lblNoRecords.Text" xml:space="preserve">
+    <value>No Record Found</value>
+  </data>
 </root>

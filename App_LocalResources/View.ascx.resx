@@ -274,7 +274,7 @@
     <value>Status</value>
   </data>
   <data name="lnkTaskID.Text" xml:space="preserve">
-    <value>TaskID</value>
+    <value>Ticket</value>
   </data>
   <data name="lnlAnonymousContinue.Text" xml:space="preserve">
     <value>Click here to continue</value>
@@ -307,7 +307,7 @@
     <value>*All*</value>
   </data>
   <data name="lblNoRecords.Text" xml:space="preserve">
-    <value>No Records Returned</value>
+    <value>No Record Found</value>
   </data>
   <data name="HTMLTicketEmailAdmin.Text" xml:space="preserve">
     <value>&lt;p&gt;&lt;strong&gt;Attention IT Service Desk Admin,&lt;/strong&gt;&lt;/p&gt;
