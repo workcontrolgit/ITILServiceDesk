@@ -205,13 +205,7 @@
     <value>(*) Required Field</value>
   </data>
   <data name="lblSearchTags.Text" xml:space="preserve">
-    <value>Search Tags:</value>
-  </data>
-  <data name="lblSearchText.Text1" xml:space="preserve">
-    <value>Ticket # or Search Text:</value>
-  </data>
-  <data name="lblSearchText2.Text" xml:space="preserve">
-    <value>Ticket # or Search Text:</value>
+    <value>Search Tags</value>
   </data>
   <data name="lblStatus.Text" xml:space="preserve">
     <value>Status:</value>

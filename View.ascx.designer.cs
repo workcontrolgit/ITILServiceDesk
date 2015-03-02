@@ -91,7 +91,7 @@ namespace ITIL.Modules.ServiceDesk {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchUser;
+        protected global::System.Web.UI.WebControls.LinkButton btnSearchUser;
         
         /// <summary>
         /// lblCurrentProcessorNotFound control.
@@ -479,33 +479,6 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvTasks;
-        
-        /// <summary>
-        /// img2Tags control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img2Tags;
-        
-        /// <summary>
-        /// lblSearchTags control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchTags;
-        
-        /// <summary>
-        /// TagsTreeExistingTasks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::ITIL.Modules.ServiceDesk.Controls.Tags TagsTreeExistingTasks;
         
         /// <summary>
         /// ddlPageSize control.

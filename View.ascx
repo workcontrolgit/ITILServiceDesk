@@ -1,19 +1,19 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="View.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.View" %>
 <%@ Register Src="Controls/Tags.ascx" TagName="Tags" TagPrefix="ITIL" %>
-<p>
-    <ul class="nav nav-pills">
-        <li>
-            <asp:LinkButton ID="lnkNewTicket" runat="server" OnClick="lnkNewTicket_Click" Text="New Ticket" resourcekey="lnkNewTicket"></asp:LinkButton></li>
-        <li>
-            <asp:LinkButton ID="lnkExistingTickets" runat="server" OnClick="lnkExistingTickets_Click"
-                Text="Existing Tickets" resourcekey="lnkExistingTickets" Visible="False" /></li>
-        <li>
-            <asp:LinkButton ID="lnkResetSearch" runat="server" OnClick="lnkResetSearch_Click"
-                Text="Reset Search" resourcekey="lnkResetSearch" Visible="False" /></li>
-        <li>
-            <asp:LinkButton ID="lnkAdministratorSettings" runat="server" OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
-                resourcekey="lnkAdministratorSettings" Visible="False" /></li>
-        <%--        <li class="dropdown">
+
+<ul class="nav nav-pills">
+    <li>
+        <asp:LinkButton ID="lnkNewTicket" runat="server" OnClick="lnkNewTicket_Click" Text="New Ticket" resourcekey="lnkNewTicket"></asp:LinkButton></li>
+    <li>
+        <asp:LinkButton ID="lnkExistingTickets" runat="server" OnClick="lnkExistingTickets_Click"
+            Text="Existing Tickets" resourcekey="lnkExistingTickets" Visible="False" /></li>
+    <li>
+        <asp:LinkButton ID="lnkResetSearch" runat="server" OnClick="lnkResetSearch_Click"
+            Text="Reset Search" resourcekey="lnkResetSearch" Visible="False" /></li>
+    <li>
+        <asp:LinkButton ID="lnkAdministratorSettings" runat="server" OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
+            resourcekey="lnkAdministratorSettings" Visible="False" /></li>
+    <%--        <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li><a href="#">Inbox</a></li>
@@ -23,8 +23,8 @@
                 <li><a href="#">Trash</a></li>
             </ul>
         </li>--%>
-    </ul>
-</p>
+</ul>
+
 
 <asp:Panel ID="pnlNewTicket" runat="server">
 
@@ -33,7 +33,7 @@
     <asp:Panel ID="pnlAdminUserSelection" runat="server" Visible="False">
         <div class="form-inline">
             <div class="form-group">
-                <asp:TextBox ID="txtSearchForUser" runat="server" TabIndex="12" CssClass="form-control" placeholder="Enter criteria here"></asp:TextBox>
+                <asp:TextBox ID="txtSearchForUser" runat="server" CssClass="form-control" placeholder="Enter criteria here"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:DropDownList ID="ddlSearchForUserType" runat="server" CssClass="form-control">
@@ -43,7 +43,7 @@
                 </asp:DropDownList>
             </div>
             <div class="form-group">
-                <asp:Button ID="btnSearchUser" runat="server" OnClick="btnSearchUser_Click" Text="Search" resourcekey="btnSearchUser" CssClass="btn btn-primary" />
+                <asp:LinkButton ID="btnSearchUser" runat="server" OnClick="btnSearchUser_Click" ToolTip="Search User" Text="Search" resourcekey="btnSearchUser" CssClass="btn btn-primary" />
             </div>
         </div>
 
@@ -53,9 +53,6 @@
                 DataKeyNames="UserID" GridLines="None" OnSelectedIndexChanged="gvCurrentProcessor_SelectedIndexChanged" OnPageIndexChanging="gvCurrentProcessor_PageIndexChanging"
                 ShowHeader="True" CssClass="table table-bordered" AllowPaging="True" PageSize="5">
                 <Columns>
-                    <asp:BoundField HeaderText="Last" DataField="LastName"></asp:BoundField>
-                    <asp:BoundField HeaderText="First" DataField="FirstName"></asp:BoundField>
-                    <asp:BoundField HeaderText="Email" DataField="Email"></asp:BoundField>
                     <asp:TemplateField HeaderText="Display Name">
                         <ItemTemplate>
                             <asp:LinkButton ID="lnkDisplayName" runat="server" CausesValidation="False" CommandArgument='<%# Bind("UserID") %>'
@@ -63,6 +60,9 @@
                             &nbsp;
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:BoundField HeaderText="Last" DataField="LastName"></asp:BoundField>
+                    <asp:BoundField HeaderText="First" DataField="FirstName"></asp:BoundField>
+                    <asp:BoundField HeaderText="Email" DataField="Email"></asp:BoundField>
                 </Columns>
             </asp:GridView>
         </div>
@@ -259,171 +259,186 @@
 
 <asp:Panel ID="pnlExistingTickets" runat="server" Visible="False">
 
-    <table>
-        <tr>
-            <td valign="top">
-                <asp:ListView ID="lvTasks" runat="server" OnItemDataBound="lvTasks_ItemDataBound"
-                    OnSorting="lvTasks_Sorting" OnItemCommand="lvTasks_ItemCommand"
-                    OnDataBound="lvTasks_DataBound" Visible="False">
 
-                    <LayoutTemplate>
-                        <div class="table-responsive">
-                            <table id="itemPlaceholderContainer" runat="server" class="table table-bordered table-hover">
-                                <tr id="Tr1" runat="server">
-                                    <th id="Th1" runat="server" valign="baseline">
-                                        <asp:Button ID="btnSearch" runat="server" Text="Search" resourcekey="btnSearch" CommandName="Search" CssClass="btn btn-primary" />
-                                    </th>
-                                    <th id="Th2" runat="server" nowrap="nowrap">
-                                        <asp:DropDownList ID="ddlStatus" runat="server" Width="80" CssClass="form-control">
-                                            <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
-                                            <asp:ListItem resourcekey="ddlStatusAdminNew" Value="New" Text="New" />
-                                            <asp:ListItem resourcekey="ddlStatusAdminActive" Value="Active" Text="Active" />
-                                            <asp:ListItem resourcekey="ddlStatusAdminOnHold" Value="On Hold" Text="On Hold" />
-                                            <asp:ListItem resourcekey="ddlStatusAdminResolved" Value="Resolved" Text="Resolved" />
-                                            <asp:ListItem resourcekey="ddlStatusAdminCancelled" Value="Cancelled" Text="Cancelled" />
-                                        </asp:DropDownList>
-                                    </th>
-                                    <th id="Th3" runat="server" nowrap="nowrap">
-                                        <asp:DropDownList ID="ddlPriority" runat="server" Width="80" CssClass="form-control">
-                                            <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
-                                            <asp:ListItem resourcekey="ddlPriorityNormal" Value="Normal" Text="Normal" />
-                                            <asp:ListItem resourcekey="ddlPriorityHigh" Value="High" Text="High" />
-                                            <asp:ListItem resourcekey="ddlPriorityLow" Value="Low" Text="Low" />
-                                        </asp:DropDownList>
-                                    </th>
-                                    <th id="Th4" runat="server" nowrap="nowrap">
-                                        <asp:TextBox ID="txtDue" runat="server" Width="70" CssClass="form-control" />
-                                    </th>
-                                    <th id="Th5" runat="server" nowrap="nowrap">
-                                        <asp:TextBox ID="txtCreated" runat="server" Width="70" CssClass="form-control" />
-                                    </th>
-                                    <th id="Th6" runat="server" nowrap="nowrap">
-                                        <asp:DropDownList ID="ddlAssigned" runat="server" Width="90" DataTextField="AssignedRoleID" CssClass="form-control"
-                                            DataValueField="Key" />
-                                    </th>
-                                    <th id="Th7" runat="server" nowrap="nowrap" colspan="2">
-                                        <asp:TextBox ID="txtSearch" runat="server" Width="200" CssClass="form-control" placeholder="search text here" />
-                                    </th>
-                                </tr>
+    <asp:ListView ID="lvTasks" runat="server" OnItemDataBound="lvTasks_ItemDataBound"
+        OnSorting="lvTasks_Sorting" OnItemCommand="lvTasks_ItemCommand"
+        OnDataBound="lvTasks_DataBound" Visible="False">
 
-                                <tr id="Tr4" runat="server" class="active">
-                                    <td runat="server" nowrap="nowrap">
-                                        <asp:LinkButton ID="lnkTaskID" runat="server" CommandName="Sort" CommandArgument="TaskID"
-                                            Text="TaskID" resourcekey="lnkTaskID" />
-                                        <asp:ImageButton ID="TaskIDImage" CommandName="Sort" CommandArgument="TaskID" runat="server"
-                                            ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
-                                    </td>
-                                    <td runat="server" nowrap="nowrap" align="left">
-                                        <asp:LinkButton ID="lnkStatus" runat="server" CommandName="Sort" CommandArgument="Status"
-                                            Text="Status" resourcekey="lnkStatus" />
-                                        <asp:ImageButton ID="StatusImage" CommandName="Sort" CommandArgument="Status" runat="server"
-                                            ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
-                                    </td>
-                                    <td runat="server" nowrap="nowrap" align="left">
-                                        <asp:LinkButton ID="lnkPriority" runat="server" CommandName="Sort" CommandArgument="Priority"
-                                            Text="Priority" resourcekey="lnkPriority" /><asp:ImageButton
-                                                ID="PriorityImage" CommandName="Sort" CommandArgument="Priority" runat="server"
-                                                ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
-                                    </td>
-                                    <td runat="server" nowrap="nowrap" align="left">
-                                        <asp:LinkButton ID="lnkDueDate" runat="server" CommandName="Sort" CommandArgument="DueDate"
-                                            Text="Due" resourcekey="lnkDueDate" /><asp:ImageButton ID="DueDateImage"
-                                                CommandName="Sort" CommandArgument="DueDate" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
-                                                Visible="false" />
-                                    </td>
-                                    <td runat="server" nowrap="nowrap" align="left">
-                                        <asp:LinkButton ID="lnkCreatedDate" runat="server" CommandName="Sort" CommandArgument="CreatedDate"
-                                            Text="Created" resourcekey="lnkCreatedDate" />
-                                        <asp:ImageButton ID="CreatedDateImage" CommandName="Sort" CommandArgument="CreatedDate"
-                                            runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
-                                            Visible="false" />
-                                    </td>
-                                    <td runat="server" nowrap="nowrap" align="left">
-                                        <asp:LinkButton ID="lnkAssigned" runat="server" CommandName="Sort" CommandArgument="Assigned"
-                                            Text="Assigned" resourcekey="lnkAssigned" />
-                                        <asp:ImageButton ID="AssignedImage" CommandName="Sort" CommandArgument="Assigned"
-                                            runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
-                                            Visible="false" />
-                                    </td>
-                                    <td runat="server" nowrap="nowrap" align="left">
-                                        <asp:LinkButton ID="lnkDescription" runat="server" CommandName="Sort" CommandArgument="Description"
-                                            Text="Description" resourcekey="lnkDescription" />
-                                        <asp:ImageButton ID="DescriptionImage" CommandName="Sort" CommandArgument="Description"
-                                            runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
-                                            Visible="false" />
-                                    </td>
-                                    <td runat="server" nowrap="nowrap" align="left">
-                                        <asp:LinkButton ID="lnkRequester" runat="server" CommandName="Sort" CommandArgument="Requester"
-                                            Text="Requester" resourcekey="lnkRequester" />
-                                        <asp:ImageButton ID="RequesterImage" CommandName="Sort" CommandArgument="Requester"
-                                            runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
-                                            Visible="false" />
-                                    </td>
-                                </tr>
-                                <tr id="itemPlaceholder" runat="server">
-                                </tr>
-                            </table>
+        <LayoutTemplate>
+            <div class="containter">
+                <!-- Trigger Button HTML -->
+                <a href="#" class="btn btn-link" data-toggle="collapse" data-target="#toggleDemo">Ticket Search</a>
+
+                <!-- Collapsible Element HTML -->
+                <div id="toggleDemo" class="collapse">
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="ddlStatus" class="control-label col-xs-2">Status</label>
+                            <div class="col-xs-4">
+                                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
+                                    <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
+                                    <asp:ListItem resourcekey="ddlStatusAdminNew" Value="New" Text="New" />
+                                    <asp:ListItem resourcekey="ddlStatusAdminActive" Value="Active" Text="Active" />
+                                    <asp:ListItem resourcekey="ddlStatusAdminOnHold" Value="On Hold" Text="On Hold" />
+                                    <asp:ListItem resourcekey="ddlStatusAdminResolved" Value="Resolved" Text="Resolved" />
+                                    <asp:ListItem resourcekey="ddlStatusAdminCancelled" Value="Cancelled" Text="Cancelled" />
+                                </asp:DropDownList>
+                            </div>
+                            <label for="ddlPriority" class="control-label col-xs-2">Priority</label>
+                            <div class="col-xs-4">
+                                <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-control">
+                                    <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
+                                    <asp:ListItem resourcekey="ddlPriorityNormal" Value="Normal" Text="Normal" />
+                                    <asp:ListItem resourcekey="ddlPriorityHigh" Value="High" Text="High" />
+                                    <asp:ListItem resourcekey="ddlPriorityLow" Value="Low" Text="Low" />
+                                </asp:DropDownList>
+                            </div>
                         </div>
-                    </LayoutTemplate>
-
-                    <ItemTemplate>
-                        <tr>
-                            <td align="center">
-                                <asp:HyperLink ID="lnkTaskID" runat="server" Text='<%# Eval("TaskID") %>' />
-                            </td>
-                            <td align="left">
-                                <asp:Label ID="StatusLabel" runat="server" Text='<%# LocalizeStatusBinding(Eval("Status", "{0}")) %>' />
-                            </td>
-                            <td align="left">
-                                <asp:Label ID="PriorityLabel" runat="server" Text='<%# LocalizePriorityBinding(Eval("Priority", "{0}")) %>' />
-                            </td>
-                            <td align="left">
-                                <asp:Label ID="DueDateLabel" runat="server" Text='<%# Eval("DueDate") %>' />
-                            </td>
-                            <td align="left" nowrap="nowrap">
-                                <asp:Label ID="CreatedDateLabel" runat="server" Text='<%# Eval("CreatedDate") %>' />
-                            </td>
-                            <td align="left">
-                                <asp:Label ID="AssignedRoleIDLabel" runat="server" Text='<%# Eval("Assigned") %>' />
-                            </td>
-                            <td align="left" nowrap="nowrap">
-                                <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>'
-                                    ToolTip='<%# Eval("Description") %>' />
-                            </td>
-                            <td align="left" nowrap="nowrap">
-                                <asp:Label ID="RequesterUserIDLabel" runat="server" Text='<%# Eval("Requester") %>'
-                                    Visible="false" />
-                                <asp:Label ID="RequesterNameLabel" runat="server" Text='<%# Eval("RequesterName") %>'
-                                    ToolTip='<%# Eval("RequesterName") %>' />
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-
-                    <EmptyDataTemplate>
-                        <div>
-                            <asp:Label ID="lblNoRecords" runat="server" resourcekey="lblNoRecords" Text="No Records Returned" CssClass="text-warning" />
+                        <div class="form-group">
+                            <label for="txtDue" class="control-label col-xs-2">Due</label>
+                            <div class="col-xs-4">
+                                <asp:TextBox ID="txtDue" runat="server" CssClass="form-control" />
+                            </div>
+                            <label for="txtCreated" class="control-label col-xs-2">Created</label>
+                            <div class="col-xs-4">
+                                <asp:TextBox ID="txtCreated" runat="server" CssClass="form-control" />
+                            </div>
                         </div>
-                    </EmptyDataTemplate>
+                        <div class="form-group">
+                            <label for="ddlAssigned" class="control-label col-xs-2">Assigned</label>
+                            <div class="col-xs-4">
+                                <asp:DropDownList ID="ddlAssigned" runat="server" DataTextField="AssignedRoleID" CssClass="form-control"
+                                    DataValueField="Key" />
+                            </div>
+                            <label for="txtSearch" class="control-label col-xs-2">Key work search</label>
+                            <div class="col-xs-4">
+                                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="search text here" />
+                            </div>
+                        </div>
 
-                </asp:ListView>
+                        <div class="form-group">
+                            <asp:Label ID="lblSearchTags" resourcekey="lblSearchTags" runat="server" class="control-label col-xs-2"
+                                Text="Search Tags:" AssociatedControlID="TagsTreeExistingTasks" />
+                            <div class="col-xs-4">
+                                <ITIL:Tags ID="TagsTreeExistingTasks" runat="server" Visible="False" />
+                            </div>
+                            <div class="col-xs-2">
+                                <asp:LinkButton ID="btnSearch" runat="server" ToolTip="Search" Text="Search" resourcekey="btnSearch" CommandName="Search" CssClass="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
 
-            </td>
-            <td valign="top" nowrap="nowrap">
-                <asp:Image ID="img2Tags" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/tag_blue.png" />
-                &nbsp;<asp:Label ID="lblSearchTags" resourcekey="lblSearchTags" runat="server"
-                    Text="Search Tags:" Font-Bold="true" /><ITIL:Tags ID="TagsTreeExistingTasks" runat="server" Visible="False" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table id="itemPlaceholderContainer" runat="server" class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr id="Tr4" runat="server">
+                                <td runat="server" nowrap="nowrap">
+                                    <asp:LinkButton ID="lnkTaskID" runat="server" CommandName="Sort" CommandArgument="TaskID"
+                                        Text="TaskID" resourcekey="lnkTaskID" />
+                                    <asp:ImageButton ID="TaskIDImage" CommandName="Sort" CommandArgument="TaskID" runat="server"
+                                        ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
+                                </td>
+                                <td runat="server" nowrap="nowrap" align="left">
+                                    <asp:LinkButton ID="lnkStatus" runat="server" CommandName="Sort" CommandArgument="Status"
+                                        Text="Status" resourcekey="lnkStatus" />
+                                    <asp:ImageButton ID="StatusImage" CommandName="Sort" CommandArgument="Status" runat="server"
+                                        ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
+                                </td>
+                                <td runat="server" nowrap="nowrap" align="left">
+                                    <asp:LinkButton ID="lnkPriority" runat="server" CommandName="Sort" CommandArgument="Priority"
+                                        Text="Priority" resourcekey="lnkPriority" /><asp:ImageButton
+                                            ID="PriorityImage" CommandName="Sort" CommandArgument="Priority" runat="server"
+                                            ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png" Visible="false" />
+                                </td>
+                                <td runat="server" nowrap="nowrap" align="left">
+                                    <asp:LinkButton ID="lnkDueDate" runat="server" CommandName="Sort" CommandArgument="DueDate"
+                                        Text="Due" resourcekey="lnkDueDate" /><asp:ImageButton ID="DueDateImage"
+                                            CommandName="Sort" CommandArgument="DueDate" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
+                                            Visible="false" />
+                                </td>
+                                <td runat="server" nowrap="nowrap" align="left">
+                                    <asp:LinkButton ID="lnkCreatedDate" runat="server" CommandName="Sort" CommandArgument="CreatedDate"
+                                        Text="Created" resourcekey="lnkCreatedDate" />
+                                    <asp:ImageButton ID="CreatedDateImage" CommandName="Sort" CommandArgument="CreatedDate"
+                                        runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
+                                        Visible="false" />
+                                </td>
+                                <td runat="server" nowrap="nowrap" align="left">
+                                    <asp:LinkButton ID="lnkAssigned" runat="server" CommandName="Sort" CommandArgument="Assigned"
+                                        Text="Assigned" resourcekey="lnkAssigned" />
+                                    <asp:ImageButton ID="AssignedImage" CommandName="Sort" CommandArgument="Assigned"
+                                        runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
+                                        Visible="false" />
+                                </td>
+                                <td runat="server" nowrap="nowrap" align="left">
+                                    <asp:LinkButton ID="lnkDescription" runat="server" CommandName="Sort" CommandArgument="Description"
+                                        Text="Description" resourcekey="lnkDescription" />
+                                    <asp:ImageButton ID="DescriptionImage" CommandName="Sort" CommandArgument="Description"
+                                        runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
+                                        Visible="false" />
+                                </td>
+                                <td runat="server" nowrap="nowrap" align="left">
+                                    <asp:LinkButton ID="lnkRequester" runat="server" CommandName="Sort" CommandArgument="Requester"
+                                        Text="Requester" resourcekey="lnkRequester" />
+                                    <asp:ImageButton ID="RequesterImage" CommandName="Sort" CommandArgument="Requester"
+                                        runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/dt-arrow-dn.png"
+                                        Visible="false" />
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="itemPlaceholder" runat="server">
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </LayoutTemplate>
 
-            </td>
-        </tr>
+        <ItemTemplate>
+            <tr>
+                <td align="center">
+                    <asp:HyperLink ID="lnkTaskID" runat="server" Text='<%# Eval("TaskID") %>' />
+                </td>
+                <td align="left">
+                    <asp:Label ID="StatusLabel" runat="server" Text='<%# LocalizeStatusBinding(Eval("Status", "{0}")) %>' />
+                </td>
+                <td align="left">
+                    <asp:Label ID="PriorityLabel" runat="server" Text='<%# LocalizePriorityBinding(Eval("Priority", "{0}")) %>' />
+                </td>
+                <td align="left">
+                    <asp:Label ID="DueDateLabel" runat="server" Text='<%# Eval("DueDate") %>' />
+                </td>
+                <td align="left" nowrap="nowrap">
+                    <asp:Label ID="CreatedDateLabel" runat="server" Text='<%# Eval("CreatedDate") %>' />
+                </td>
+                <td align="left">
+                    <asp:Label ID="AssignedRoleIDLabel" runat="server" Text='<%# Eval("Assigned") %>' />
+                </td>
+                <td align="left" nowrap="nowrap">
+                    <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>'
+                        ToolTip='<%# Eval("Description") %>' />
+                </td>
+                <td align="left" nowrap="nowrap">
+                    <asp:Label ID="RequesterUserIDLabel" runat="server" Text='<%# Eval("Requester") %>'
+                        Visible="false" />
+                    <asp:Label ID="RequesterNameLabel" runat="server" Text='<%# Eval("RequesterName") %>'
+                        ToolTip='<%# Eval("RequesterName") %>' />
+                </td>
+            </tr>
+        </ItemTemplate>
 
-    </table>
+        <EmptyDataTemplate>
+            <div>
+                <asp:Label ID="lblNoRecords" runat="server" resourcekey="lblNoRecords" Text="No Records Returned" CssClass="text-warning" />
+            </div>
+        </EmptyDataTemplate>
 
-    <%--    <div class="row">
-        <div>
-        </div>
-        <div>
-        </div>
-    </div>--%>
+    </asp:ListView>
 
     <div class="form-inline">
         <div class="form-group">
@@ -463,9 +478,6 @@
             </asp:Panel>
         </div>
     </div>
-
-
-
 
 </asp:Panel>
 

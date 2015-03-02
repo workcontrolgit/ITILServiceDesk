@@ -38,7 +38,7 @@ using System.Web.UI;
 using Microsoft.VisualBasic;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Entities.Host;
-
+using ITIL.Modules.ServiceDesk.Controls;
 namespace ITIL.Modules.ServiceDesk
 {
     #region ExistingTasks
@@ -171,6 +171,7 @@ namespace ITIL.Modules.ServiceDesk
                 lnkExistingTickets.ToolTip = Localization.GetString("lnkExistingTicketsToolTip", LocalResourceFile);
                 lnkResetSearch.ToolTip = Localization.GetString("lnkResetSearchToolTip", LocalResourceFile);
                 lnkAdministratorSettings.ToolTip = Localization.GetString("lnkAdministratorSettingsToolTip", LocalResourceFile);
+
                 if (!Page.IsPostBack)
                 {
                     ShowAdministratorLinkAndFileUpload();
@@ -403,6 +404,8 @@ namespace ITIL.Modules.ServiceDesk
         #region DisplayCategoryTree
         private void DisplayCategoryTree()
         {
+            Tags TagsTreeExistingTasks = (Tags)lvTasks.FindControl("TagsTreeExistingTasks");
+
             if (UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
             {
                 TagsTree.Visible = true;
@@ -437,7 +440,6 @@ namespace ITIL.Modules.ServiceDesk
                     string[] ArrStrCategories = SearchCriteria.Categories.Split(delimiterChars);
                     // Convert the Categories selected from the Tags tree to an array of integers
                     int?[] ArrIntCatagories = Array.ConvertAll<string, int?>(ArrStrCategories, new Converter<string, int?>(ConvertStringToNullableInt));
-
                     TagsTreeExistingTasks.SelectedCategories = ArrIntCatagories;
                 }
             }
@@ -452,8 +454,11 @@ namespace ITIL.Modules.ServiceDesk
                                      select ServiceDeskCategories).Count();
 
             imgTags.Visible = (CountOfCatagories > 0);
-            img2Tags.Visible = (CountOfCatagories > 0);
+            //Image img2Tags = (Image)lvTasks.FindControl("img2Tags");
+            //img2Tags.Visible = (CountOfCatagories > 0);
             lblCheckTags.Visible = (CountOfCatagories > 0);
+
+            Label lblSearchTags = (Label)lvTasks.FindControl("lblSearchTags");
             lblSearchTags.Visible = (CountOfCatagories > 0);
         }
         #endregion
@@ -2068,6 +2073,7 @@ namespace ITIL.Modules.ServiceDesk
 
             try
             {
+                Tags TagsTreeExistingTasks = (Tags)lvTasks.FindControl("TagsTreeExistingTasks");
                 TreeView objTreeView = (TreeView)TagsTreeExistingTasks.FindControl("tvCategories");
                 if (objTreeView.CheckedNodes.Count > 0)
                 {
