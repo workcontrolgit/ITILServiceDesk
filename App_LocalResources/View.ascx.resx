@@ -193,13 +193,13 @@
     <value>A Help Desk Ticket #{0} at http://{1} has been assigned to {2}</value>
   </data>
   <data name="lblAssigned.Text" xml:space="preserve">
-    <value>Assigned:</value>
+    <value>Assigned</value>
   </data>
   <data name="lblAttachFile.Text" xml:space="preserve">
-    <value>Attach File:</value>
+    <value>Attach File</value>
   </data>
   <data name="lblCheckTags.Text" xml:space="preserve">
-    <value>Check all Tags that apply:</value>
+    <value>Check all Tags that apply</value>
   </data>
   <data name="lblRequiredfield.Text" xml:space="preserve">
     <value>(*) Required Field</value>
@@ -214,25 +214,25 @@
     <value>Your Ticket has been submitted.</value>
   </data>
   <data name="lbltxtDescription.Text" xml:space="preserve">
-    <value>Description:</value>
+    <value>Description</value>
   </data>
   <data name="lbltxtDetail.Text" xml:space="preserve">
-    <value>Detail:</value>
+    <value>Detail</value>
   </data>
   <data name="lbltxtDueDate.Text" xml:space="preserve">
-    <value>Due Date:</value>
+    <value>Due Date</value>
   </data>
   <data name="lbltxtEmail.Text" xml:space="preserve">
-    <value>Email:</value>
+    <value>Email</value>
   </data>
   <data name="lbltxtName.Text" xml:space="preserve">
-    <value>Name:</value>
+    <value>Name</value>
   </data>
   <data name="lbltxtPhone.Text" xml:space="preserve">
-    <value>Phone:</value>
+    <value>Phone</value>
   </data>
   <data name="lbltxtPriority.Text" xml:space="preserve">
-    <value>Priority:</value>
+    <value>Priority</value>
   </data>
   <data name="lnkAdministratorSettings.Text" xml:space="preserve">
     <value>&lt;i class="glyphicon glyphicon-wrench"&gt;&lt;/i&gt; Administrator Settings</value>
@@ -378,5 +378,8 @@
   </data>
   <data name="lnkResetSearchToolTip.Text" xml:space="preserve">
     <value>Reset Search</value>
+  </data>
+  <data name="lblServiceDeskTicket.Text" xml:space="preserve">
+    <value>Service Desk Ticket</value>
   </data>
 </root>

@@ -72,7 +72,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4>Service Desk Ticket</h4>
+            <h4><asp:Label ID="lblServiceDeskTicket" runat="server" Text="Service Desk Ticket" resourcekey="lblServiceDeskTicket" /></h4>
         </div>
         <div class="panel-body">
             <asp:Label ID="lblRequiredfield" runat="server" Text="(*) Required Field" CssClass="text-danger" resourcekey="lblRequiredfield" />
@@ -96,7 +96,7 @@
                     </div>
 
                     <div class="form-group">
-                        <asp:Label ID="lbltxtName" runat="server" Text="Name:" resourcekey="lbltxtName" CssClass="control-label col-xs-2" AssociatedControlID="txtName" />
+                        <asp:Label ID="lbltxtName" runat="server" Text="Name" resourcekey="lbltxtName" CssClass="control-label col-xs-2" AssociatedControlID="txtName" />
                         <div class="col-xs-10">
                             <div class="input-group">
                                 <asp:TextBox ID="txtName" runat="server" MaxLength="350" TabIndex="1" CssClass="form-control" placeholder="<enter last name, first name>"></asp:TextBox>
