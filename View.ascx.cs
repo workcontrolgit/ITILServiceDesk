@@ -404,7 +404,7 @@ namespace ITIL.Modules.ServiceDesk
         #region DisplayCategoryTree
         private void DisplayCategoryTree()
         {
-            Tags TagsTreeExistingTasks = (Tags)lvTasks.FindControl("TagsTreeExistingTasks");
+            //Tags TagsTreeExistingTasks = (Tags)lvTasks.FindControl("TagsTreeExistingTasks");
 
             if (UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
             {
@@ -458,7 +458,7 @@ namespace ITIL.Modules.ServiceDesk
             //img2Tags.Visible = (CountOfCatagories > 0);
             lblCheckTags.Visible = (CountOfCatagories > 0);
 
-            Label lblSearchTags = (Label)lvTasks.FindControl("lblSearchTags");
+            //Label lblSearchTags = (Label)lvTasks.FindControl("lblSearchTags");
             lblSearchTags.Visible = (CountOfCatagories > 0);
         }
         #endregion
@@ -1629,17 +1629,17 @@ namespace ITIL.Modules.ServiceDesk
                     RequesterNameLabel.Text = String.Format("[User Deleted]");
                 }
             }
-            if (RequesterNameLabel.Text.Length > 10)
+            if (RequesterNameLabel.Text.Length > 25)
             {
                 string lblRequesterNameLabel = RequesterNameLabel.Text;
-                RequesterNameLabel.Text = String.Format("{0} ...", lblRequesterNameLabel.Substring(0, 10));
+                RequesterNameLabel.Text = String.Format("{0} ...", lblRequesterNameLabel.Substring(0, 25));
             }
 
             // Format Description
-            if (DescriptionLabel.Text.Length > 10)
+            if (DescriptionLabel.Text.Length > 25)
             {
                 string lblDescriptionLabel = DescriptionLabel.Text;
-                DescriptionLabel.Text = String.Format("{0} ...", lblDescriptionLabel.Substring(0, 10));
+                DescriptionLabel.Text = String.Format("{0} ...", lblDescriptionLabel.Substring(0, 25));
 
             }
 
@@ -1649,7 +1649,7 @@ namespace ITIL.Modules.ServiceDesk
                 RoleController objRoleController = new RoleController();
                 try
                 {
-                    AssignedLabel.Text = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(AssignedLabel.Text), PortalId).RoleName);
+                    AssignedLabel.Text = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(AssignedLabel.Text), PortalId).RoleName);
                 }
                 catch
                 {
@@ -1759,97 +1759,6 @@ namespace ITIL.Modules.ServiceDesk
         }
         #endregion
 
-        #region lvTasks_ItemCommand
-        protected void lvTasks_ItemCommand(object sender, ListViewCommandEventArgs e)
-        {
-            #region Search
-            // Search
-            if (e.CommandName == "Search")
-            {
-                ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetValuesFromSearchForm();
-                // Save Search Criteria
-                SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
-                // Execute Search
-                DisplayExistingTickets(SearchCriteria);
-            }
-            #endregion
-
-            #region EmptyDataTemplateSearch
-            //EmptyDataTemplateSearch        
-            if (e.CommandName == "EmptyDataTemplateSearch")
-            {
-                TextBox txtSearch = (TextBox)e.Item.FindControl("txtSearch");
-                DropDownList ddlStatus = (DropDownList)e.Item.FindControl("ddlStatus");
-                DropDownList ddlPriority = (DropDownList)e.Item.FindControl("ddlPriority");
-                DropDownList ddlAssigned = (DropDownList)e.Item.FindControl("ddlAssigned");
-                TextBox txtDue = (TextBox)e.Item.FindControl("txtDue");
-                TextBox txtCreated = (TextBox)e.Item.FindControl("txtCreated");
-
-                // Use an ExistingTasks object to pass the values to the Search method
-                ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = new ITILServiceDesk_LastSearch();
-                objITILServiceDesk_LastSearch.SearchText = (txtSearch.Text.Trim().Length == 0) ? null : txtSearch.Text.Trim();
-                objITILServiceDesk_LastSearch.Status = (ddlStatus.SelectedValue == "*All*") ? null : ddlStatus.SelectedValue;
-                objITILServiceDesk_LastSearch.AssignedRoleID = (ddlAssigned.SelectedValue == "-2") ? null : (int?)Convert.ToInt32(ddlAssigned.SelectedValue);
-                objITILServiceDesk_LastSearch.Priority = (ddlPriority.SelectedValue == "*All*") ? null : ddlPriority.SelectedValue;
-
-                // Created Date
-                if (txtCreated.Text.Trim().Length > 4)
-                {
-                    try
-                    {
-                        DateTime dtCreated = Convert.ToDateTime(txtCreated.Text.Trim());
-                        objITILServiceDesk_LastSearch.CreatedDate = dtCreated.AddDays(-1);
-                    }
-                    catch
-                    {
-                        txtCreated.Text = "";
-                    }
-                }
-                else
-                {
-                    txtCreated.Text = "";
-                }
-
-                // Due Date
-                if (txtDue.Text.Trim().Length > 4)
-                {
-                    try
-                    {
-                        DateTime dtDue = Convert.ToDateTime(txtDue.Text.Trim());
-                        objITILServiceDesk_LastSearch.DueDate = dtDue.AddDays(-1);
-                    }
-                    catch
-                    {
-                        txtDue.Text = "";
-                    }
-                }
-                else
-                {
-                    txtDue.Text = "";
-                }
-
-                // Get Category Tags
-                string strCategories = GetTagsTreeExistingTasks();
-                if (strCategories.Length > 1)
-                {
-                    objITILServiceDesk_LastSearch.Categories = strCategories;
-                }
-
-                // Current Page
-                objITILServiceDesk_LastSearch.CurrentPage = GetCurrentPage();
-
-                // Page Size
-                objITILServiceDesk_LastSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
-
-                // Save Search Criteria
-                SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
-                // Execute Search
-                DisplayExistingTickets(SearchCriteria);
-            }
-            #endregion
-
-        }
-        #endregion
 
         // Set controls to the Last Search criteria
 
@@ -1858,37 +1767,37 @@ namespace ITIL.Modules.ServiceDesk
         {
             if (SearchCriteria != null)
             {
-                TextBox txtSearch = new TextBox();
-                DropDownList ddlStatus = new DropDownList();
-                DropDownList ddlPriority = new DropDownList();
-                DropDownList ddlAssigned = new DropDownList();
-                TextBox txtDue = new TextBox();
-                TextBox txtCreated = new TextBox();
+                //TextBox txtSearch = new TextBox();
+                //DropDownList ddlStatus = new DropDownList();
+                //DropDownList ddlPriority = new DropDownList();
+                //DropDownList ddlAssigned = new DropDownList();
+                //TextBox txtDue = new TextBox();
+                //TextBox txtCreated = new TextBox();
 
                 // Get an instance to the Search controls
-                if (lvTasks.Items.Count == 0)
-                {
-                    // Empty Data Template
-                    ListViewItem Ctrl0 = (ListViewItem)lvTasks.FindControl("Ctrl0");
-                    HtmlTable EmptyDataTemplateTable = (HtmlTable)Ctrl0.FindControl("EmptyDataTemplateTable");
+                //if (lvTasks.Items.Count == 0)
+                //{
+                //    // Empty Data Template
+                //    ListViewItem Ctrl0 = (ListViewItem)lvTasks.FindControl("Ctrl0");
+                //    HtmlTable EmptyDataTemplateTable = (HtmlTable)Ctrl0.FindControl("EmptyDataTemplateTable");
 
-                    txtSearch = (TextBox)EmptyDataTemplateTable.FindControl("txtSearch");
-                    ddlStatus = (DropDownList)EmptyDataTemplateTable.FindControl("ddlStatus");
-                    ddlPriority = (DropDownList)EmptyDataTemplateTable.FindControl("ddlPriority");
-                    txtDue = (TextBox)EmptyDataTemplateTable.FindControl("txtDue");
-                    txtCreated = (TextBox)EmptyDataTemplateTable.FindControl("txtCreated");
-                    ddlAssigned = (DropDownList)EmptyDataTemplateTable.FindControl("ddlAssigned");
-                }
-                else
-                {
-                    // Normal results template
-                    txtSearch = (TextBox)lvTasks.FindControl("txtSearch");
-                    ddlStatus = (DropDownList)lvTasks.FindControl("ddlStatus");
-                    ddlPriority = (DropDownList)lvTasks.FindControl("ddlPriority");
-                    txtDue = (TextBox)lvTasks.FindControl("txtDue");
-                    txtCreated = (TextBox)lvTasks.FindControl("txtCreated");
-                    ddlAssigned = (DropDownList)lvTasks.FindControl("ddlAssigned");
-                }
+                //    txtSearch = (TextBox)EmptyDataTemplateTable.FindControl("txtSearch");
+                //    ddlStatus = (DropDownList)EmptyDataTemplateTable.FindControl("ddlStatus");
+                //    ddlPriority = (DropDownList)EmptyDataTemplateTable.FindControl("ddlPriority");
+                //    txtDue = (TextBox)EmptyDataTemplateTable.FindControl("txtDue");
+                //    txtCreated = (TextBox)EmptyDataTemplateTable.FindControl("txtCreated");
+                //    ddlAssigned = (DropDownList)EmptyDataTemplateTable.FindControl("ddlAssigned");
+                //}
+                //else
+                //{
+                //    // Normal results template
+                //    txtSearch = (TextBox)lvTasks.FindControl("txtSearch");
+                //    ddlStatus = (DropDownList)lvTasks.FindControl("ddlStatus");
+                //    ddlPriority = (DropDownList)lvTasks.FindControl("ddlPriority");
+                //    txtDue = (TextBox)lvTasks.FindControl("txtDue");
+                //    txtCreated = (TextBox)lvTasks.FindControl("txtCreated");
+                //    ddlAssigned = (DropDownList)lvTasks.FindControl("ddlAssigned");
+                //}
 
                 ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = (ITILServiceDesk_LastSearch)SearchCriteria;
 
@@ -1899,22 +1808,22 @@ namespace ITIL.Modules.ServiceDesk
 
                 if (objITILServiceDesk_LastSearch.Status != null)
                 {
-                    ddlStatus.SelectedValue = objITILServiceDesk_LastSearch.Status;
+                    ddlStatusSearch.SelectedValue = objITILServiceDesk_LastSearch.Status;
                 }
 
                 if (objITILServiceDesk_LastSearch.Priority != null)
                 {
-                    ddlPriority.SelectedValue = objITILServiceDesk_LastSearch.Priority;
+                    ddlPrioritySearch.SelectedValue = objITILServiceDesk_LastSearch.Priority;
                 }
 
                 if (objITILServiceDesk_LastSearch.DueDate != null)
                 {
-                    txtDue.Text = objITILServiceDesk_LastSearch.DueDate.Value.AddDays(1).ToShortDateString();
+                    txtDueSearch.Text = objITILServiceDesk_LastSearch.DueDate.Value.AddDays(1).ToShortDateString();
                 }
 
                 if (objITILServiceDesk_LastSearch.CreatedDate != null)
                 {
-                    txtCreated.Text = objITILServiceDesk_LastSearch.CreatedDate.Value.AddDays(1).ToShortDateString();
+                    txtCreatedSearch.Text = objITILServiceDesk_LastSearch.CreatedDate.Value.AddDays(1).ToShortDateString();
                 }
 
                 // Page Size
@@ -1924,7 +1833,7 @@ namespace ITIL.Modules.ServiceDesk
                 }
 
                 // Load Dropdown
-                ddlAssigned.Items.Clear();
+                ddlAssignedSearch.Items.Clear();
 
                 RoleController objRoleController = new RoleController();
                 ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
@@ -1947,14 +1856,14 @@ namespace ITIL.Modules.ServiceDesk
                         AllRoleListItem.Selected = true;
                     }
                 }
-                ddlAssigned.Items.Add(AllRoleListItem);
+                ddlAssignedSearch.Items.Add(AllRoleListItem);
 
                 // Add the Roles to the List
                 foreach (ITILServiceDesk_Role objITILServiceDesk_Role in colITILServiceDesk_Roles)
                 {
                     try
                     {
-                        RoleInfo objRoleInfo = objRoleController.GetRole(Convert.ToInt32(objITILServiceDesk_Role.RoleID), PortalId);
+                        RoleInfo objRoleInfo = objRoleController.GetRoleById(Convert.ToInt32(objITILServiceDesk_Role.RoleID), PortalId);
 
                         ListItem RoleListItem = new ListItem();
                         RoleListItem.Text = objRoleInfo.RoleName;
@@ -1968,7 +1877,7 @@ namespace ITIL.Modules.ServiceDesk
                             }
                         }
 
-                        ddlAssigned.Items.Add(RoleListItem);
+                        ddlAssignedSearch.Items.Add(RoleListItem);
                     }
                     catch
                     {
@@ -1976,7 +1885,7 @@ namespace ITIL.Modules.ServiceDesk
                         ListItem RoleListItem = new ListItem();
                         RoleListItem.Text = Localization.GetString("DeletedRole.Text", LocalResourceFile);
                         RoleListItem.Value = objITILServiceDesk_Role.RoleID.ToString();
-                        ddlAssigned.Items.Add(RoleListItem);
+                        ddlAssignedSearch.Items.Add(RoleListItem);
                     }
                 }
 
@@ -1991,7 +1900,7 @@ namespace ITIL.Modules.ServiceDesk
                         UnassignedRoleListItem.Selected = true;
                     }
                 }
-                ddlAssigned.Items.Add(UnassignedRoleListItem);
+                ddlAssignedSearch.Items.Add(UnassignedRoleListItem);
             }
         }
         #endregion
@@ -1999,54 +1908,48 @@ namespace ITIL.Modules.ServiceDesk
         #region GetValuesFromSearchForm
         private ITILServiceDesk_LastSearch GetValuesFromSearchForm()
         {
-            TextBox txtSearch = (TextBox)lvTasks.FindControl("txtSearch");
-            DropDownList ddlStatus = (DropDownList)lvTasks.FindControl("ddlStatus");
-            DropDownList ddlPriority = (DropDownList)lvTasks.FindControl("ddlPriority");
-            DropDownList ddlAssigned = (DropDownList)lvTasks.FindControl("ddlAssigned");
-            TextBox txtDue = (TextBox)lvTasks.FindControl("txtDue");
-            TextBox txtCreated = (TextBox)lvTasks.FindControl("txtCreated");
 
             // Use an ExistingTasks object to pass the values to the Search method
             ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = new ITILServiceDesk_LastSearch();
             objITILServiceDesk_LastSearch.SearchText = (txtSearch.Text.Trim().Length == 0) ? null : txtSearch.Text.Trim();
-            objITILServiceDesk_LastSearch.Status = (ddlStatus.SelectedValue == "*All*") ? null : ddlStatus.SelectedValue;
-            objITILServiceDesk_LastSearch.AssignedRoleID = (ddlAssigned.SelectedValue == "-2") ? null : (int?)Convert.ToInt32(ddlAssigned.SelectedValue);
-            objITILServiceDesk_LastSearch.Priority = (ddlPriority.SelectedValue == "*All*") ? null : ddlPriority.SelectedValue;
+            objITILServiceDesk_LastSearch.Status = (ddlStatusSearch.SelectedValue == "*All*") ? null : ddlStatusSearch.SelectedValue;
+            objITILServiceDesk_LastSearch.AssignedRoleID = (ddlAssignedSearch.SelectedValue == "-2") ? null : (int?)Convert.ToInt32(ddlAssignedSearch.SelectedValue);
+            objITILServiceDesk_LastSearch.Priority = (ddlPrioritySearch.SelectedValue == "*All*") ? null : ddlPrioritySearch.SelectedValue;
 
             // Created Date
-            if (txtCreated.Text.Trim().Length > 4)
+            if (txtCreatedSearch.Text.Trim().Length > 4)
             {
                 try
                 {
-                    DateTime dtCreated = Convert.ToDateTime(txtCreated.Text.Trim());
+                    DateTime dtCreated = Convert.ToDateTime(txtCreatedSearch.Text.Trim());
                     objITILServiceDesk_LastSearch.CreatedDate = dtCreated.AddDays(-1);
                 }
                 catch
                 {
-                    txtCreated.Text = "";
+                    txtCreatedSearch.Text = "";
                 }
             }
             else
             {
-                txtCreated.Text = "";
+                txtCreatedSearch.Text = "";
             }
 
             // Due Date
-            if (txtDue.Text.Trim().Length > 4)
+            if (txtDueSearch.Text.Trim().Length > 4)
             {
                 try
                 {
-                    DateTime dtDue = Convert.ToDateTime(txtDue.Text.Trim());
+                    DateTime dtDue = Convert.ToDateTime(txtDueSearch.Text.Trim());
                     objITILServiceDesk_LastSearch.DueDate = dtDue.AddDays(-1);
                 }
                 catch
                 {
-                    txtDue.Text = "";
+                    txtDueSearch.Text = "";
                 }
             }
             else
             {
-                txtDue.Text = "";
+                txtDueSearch.Text = "";
             }
 
             // Get Category Tags
@@ -2073,7 +1976,7 @@ namespace ITIL.Modules.ServiceDesk
 
             try
             {
-                Tags TagsTreeExistingTasks = (Tags)lvTasks.FindControl("TagsTreeExistingTasks");
+
                 TreeView objTreeView = (TreeView)TagsTreeExistingTasks.FindControl("tvCategories");
                 if (objTreeView.CheckedNodes.Count > 0)
                 {
@@ -2087,7 +1990,7 @@ namespace ITIL.Modules.ServiceDesk
                 string[] arrSelectedCategories = colSelectedCategories.ToArray<string>();
                 string strSelectedCategories = String.Join(",", arrSelectedCategories);
 
-                return strSelectedCategories.Substring(0, 2000);
+                return strSelectedCategories;
             }
             catch
             {
@@ -2135,7 +2038,7 @@ namespace ITIL.Modules.ServiceDesk
             if (RoleID > -1)
             {
                 RoleController objRoleController = new RoleController();
-                strRoleName = objRoleController.GetRole(RoleID, PortalId).RoleName;
+                strRoleName = objRoleController.GetRoleById(RoleID, PortalId).RoleName;
             }
 
             return strRoleName;
@@ -2247,6 +2150,14 @@ namespace ITIL.Modules.ServiceDesk
 
         #endregion
 
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            ITILServiceDesk_LastSearch objITILServiceDesk_LastSearch = GetValuesFromSearchForm();
+            // Save Search Criteria
+            SaveLastSearchCriteria(objITILServiceDesk_LastSearch);
+            // Execute Search
+            DisplayExistingTickets(SearchCriteria);
+        }
 
     }
 }

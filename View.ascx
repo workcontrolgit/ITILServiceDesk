@@ -204,7 +204,7 @@
 
                 <asp:Panel ID="pnlAdminTicketStatus" runat="server" Visible="False">
                     <div class="form-group">
-                        <asp:Label ID="lblStatus" runat="server" Text="Status:" resourcekey="lblStatus" AssociatedControlID="ddlStatusAdmin" />
+                        <asp:Label ID="lblStatusAdmin" runat="server" Text="Status:" resourcekey="lblStatus" AssociatedControlID="ddlStatusAdmin" />
                         <asp:DropDownList ID="ddlStatusAdmin" runat="server" TabIndex="11" CssClass="form-control">
                             <asp:ListItem resourcekey="ddlStatusAdminNew" Value="New" Text="New" />
                             <asp:ListItem resourcekey="ddlStatusAdminActive" Value="Active" Text="Active" />
@@ -214,7 +214,7 @@
                         </asp:DropDownList>
                     </div>
                     <div class="form-group">
-                        <asp:Label ID="lblAssigned" runat="server" Text="Assigned:" resourcekey="lblAssigned" AssociatedControlID="ddlAssignedAdmin" />
+                        <asp:Label ID="lblAssignedAdmin" runat="server" Text="Assigned:" resourcekey="lblAssigned" AssociatedControlID="ddlAssignedAdmin" />
                         <asp:DropDownList ID="ddlAssignedAdmin" runat="server" TabIndex="10" CssClass="form-control"></asp:DropDownList>
                     </div>
                 </asp:Panel>
@@ -259,24 +259,18 @@
 
 <asp:Panel ID="pnlExistingTickets" runat="server" Visible="False">
 
-
-    <asp:ListView ID="lvTasks" runat="server" OnItemDataBound="lvTasks_ItemDataBound"
-        OnSorting="lvTasks_Sorting" OnItemCommand="lvTasks_ItemCommand"
-        OnDataBound="lvTasks_DataBound" Visible="False">
-
-        <LayoutTemplate>
-            <div class="containter">
+                <div class="containter">
                 <!-- Trigger Button HTML -->
-                <a href="#" class="btn btn-link" data-toggle="collapse" data-target="#toggleDemo">Ticket Search</a>
+                <asp:HyperLink href="#" class="btn btn-link" data-toggle="collapse" data-target="#toggleDemo">Ticket Filter</asp:HyperLink>
 
                 <!-- Collapsible Element HTML -->
                 <div id="toggleDemo" class="collapse">
 
                     <div class="form-horizontal">
                         <div class="form-group">
-                            <label for="ddlStatus" class="control-label col-xs-2">Status</label>
+                            <asp:Label ID="lblStatusSearch" runat="server" Text="Status:" resourcekey="lblStatus" CssClass="control-label col-xs-2" AssociatedControlID="ddlStatusSearch" />
                             <div class="col-xs-4">
-                                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
+                                <asp:DropDownList ID="ddlStatusSearch" runat="server" CssClass="form-control">
                                     <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
                                     <asp:ListItem resourcekey="ddlStatusAdminNew" Value="New" Text="New" />
                                     <asp:ListItem resourcekey="ddlStatusAdminActive" Value="Active" Text="Active" />
@@ -285,10 +279,10 @@
                                     <asp:ListItem resourcekey="ddlStatusAdminCancelled" Value="Cancelled" Text="Cancelled" />
                                 </asp:DropDownList>
                             </div>
-                            <label for="ddlPriority" class="control-label col-xs-2">Priority</label>
+                            <asp:Label ID="lblPrioritySearch" runat="server" Text="Priority:" resourcekey="lbltxtPriority" CssClass="control-label col-xs-2" AssociatedControlID="ddlPriority" />
                             <div class="col-xs-4">
-                                <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-control">
-                                    <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
+                                <asp:DropDownList ID="ddlPrioritySearch" runat="server" CssClass="form-control">
+                                    <asp:ListItem resourcekey="ddlPriorityAdminAll" Value="*All*" Text="*All*" />
                                     <asp:ListItem resourcekey="ddlPriorityNormal" Value="Normal" Text="Normal" />
                                     <asp:ListItem resourcekey="ddlPriorityHigh" Value="High" Text="High" />
                                     <asp:ListItem resourcekey="ddlPriorityLow" Value="Low" Text="Low" />
@@ -296,22 +290,27 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtDue" class="control-label col-xs-2">Due</label>
+                        <asp:Label ID="lblDueSearch" runat="server" Text="Date Due:" resourcekey="lbltxtDueDate" CssClass="control-label col-xs-2" AssociatedControlID="txtDueSearch" />
                             <div class="col-xs-4">
-                                <asp:TextBox ID="txtDue" runat="server" CssClass="form-control" />
+                                <asp:TextBox ID="txtDueSearch" runat="server" MaxLength="25" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
+                            <asp:CompareValidator ID="DueValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueSearch" ErrorMessage="Please enter a valid date.">
+                            </asp:CompareValidator>
                             </div>
-                            <label for="txtCreated" class="control-label col-xs-2">Created</label>
+                            <label for="txtCreatedSearch" class="control-label col-xs-2">Created</label>
                             <div class="col-xs-4">
-                                <asp:TextBox ID="txtCreated" runat="server" CssClass="form-control" />
+                                <asp:TextBox ID="txtCreatedSearch" runat="server" CssClass="form-control" />
+                            <asp:CompareValidator ID="CreatedValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtCreatedSearch" ErrorMessage="Please enter a valid date.">
+                            </asp:CompareValidator>
+
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="ddlAssigned" class="control-label col-xs-2">Assigned</label>
+                        <asp:Label ID="lblAssignedSearch" runat="server" Text="Assigned:" resourcekey="lblAssigned" CssClass="control-label col-xs-2" AssociatedControlID="ddlAssignedSearch" />
                             <div class="col-xs-4">
-                                <asp:DropDownList ID="ddlAssigned" runat="server" DataTextField="AssignedRoleID" CssClass="form-control"
+                                <asp:DropDownList ID="ddlAssignedSearch" runat="server" DataTextField="AssignedRoleID" CssClass="form-control"
                                     DataValueField="Key" />
                             </div>
-                            <label for="txtSearch" class="control-label col-xs-2">Key work search</label>
+                            <asp:Label ID="lblSearch" resourcekey="KeyWordSearch" runat="server" class="control-label col-xs-2" Text="Key word search" AssociatedControlID="txtSearch" />
                             <div class="col-xs-4">
                                 <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="search text here" />
                             </div>
@@ -324,13 +323,19 @@
                                 <ITIL:Tags ID="TagsTreeExistingTasks" runat="server" Visible="False" />
                             </div>
                             <div class="col-xs-2">
-                                <asp:LinkButton ID="btnSearch" runat="server" ToolTip="Search" Text="Search" resourcekey="btnSearch" CommandName="Search" CssClass="btn btn-primary" />
+                                <asp:LinkButton ID="btnSearch" runat="server" ToolTip="Search" Text="Search" resourcekey="btnSearch" CommandName="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
+    <asp:ListView ID="lvTasks" runat="server" OnItemDataBound="lvTasks_ItemDataBound"
+        OnSorting="lvTasks_Sorting" 
+        OnDataBound="lvTasks_DataBound" Visible="False">
+
+        <LayoutTemplate>
+
             <div class="row">
                 <div class="table-responsive">
                     <table id="itemPlaceholderContainer" runat="server" class="table table-bordered table-hover table-striped">

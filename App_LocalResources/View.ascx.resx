@@ -208,7 +208,7 @@
     <value>Search Tags</value>
   </data>
   <data name="lblStatus.Text" xml:space="preserve">
-    <value>Status:</value>
+    <value>Status</value>
   </data>
   <data name="lblTicketHasBeenSubmitted.Text" xml:space="preserve">
     <value>Your Ticket has been submitted.</value>
@@ -381,5 +381,11 @@
   </data>
   <data name="lblServiceDeskTicket.Text" xml:space="preserve">
     <value>Service Desk Ticket</value>
+  </data>
+  <data name="ddlPriorityAll.Text" xml:space="preserve">
+    <value>*All*</value>
+  </data>
+  <data name="KeyWordSearch.Text" xml:space="preserve">
+    <value>Key word search</value>
   </data>
 </root>
