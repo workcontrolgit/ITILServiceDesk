@@ -1,5 +1,5 @@
 ﻿<dotnetnuke type="Package" version="5.0">
-  <packages><package name="ITILServiceDesk" type="Module" version="15.1.2">
+  <packages><package name="ITILServiceDesk" type="Module" version="15.1.3">
   <friendlyName>ITILServiceDesk</friendlyName>
   <description>Service Desk tool </description>
   <iconFile />
@@ -16,9 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */</license>
   <releaseNotes>New version 14.01.01 in WAP
 
-Version 14.03.01 - bootstrap View and Edit screens
-
-Version 15.02.01 - bootstrap Administrator screen</releaseNotes>
+New version 14.03.01 - bootstrap</releaseNotes>
   <components>
     <component type="Script">
       <scripts>
@@ -46,7 +44,7 @@ Version 15.02.01 - bootstrap Administrator screen</releaseNotes>
         <script type="UnInstall">
           <path>Providers\DataProviders\SqlDataProvider</path>
           <name>Uninstall.SqlDataProvider</name>
-          <version>15.1.2</version>
+          <version>15.1.3</version>
         </script>
         <script type="Install">
           <path>Providers\DataProviders\SqlDataProvider</path>
@@ -116,12 +114,6 @@ Version 15.02.01 - bootstrap Administrator screen</releaseNotes>
     <component type="File">
       <files>
         <basePath>DesktopModules\ITILServiceDesk</basePath>
-        <file>
-          <name>web.Debug.config</name>
-        </file>
-        <file>
-          <name>web.Release.config</name>
-        </file>
         <file>
           <name>AdminSettings.ascx</name>
         </file>
