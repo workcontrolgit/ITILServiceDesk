@@ -919,7 +919,8 @@ namespace ITIL.Modules.ServiceDesk
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl); // ITIL Customization 
 
             RoleController objRoleController = new RoleController();
-            string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            //string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            string strAssignedRole = ddlAssigned.SelectedItem.Text;
             string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
 
             string strSubject = "[" + Localization.GetString(String.Format("ddlStatusAdmin{0}.Text", ddlStatus.SelectedValue), LocalResourceFile) + "] " + String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, PortalSettings.PortalAlias.HTTPAlias, strAssignedRole);
@@ -952,7 +953,8 @@ namespace ITIL.Modules.ServiceDesk
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
             
             RoleController objRoleController = new RoleController();
-            string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            //string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            string strAssignedRole = ddlAssigned.SelectedItem.Text;
             string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
 
             string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);

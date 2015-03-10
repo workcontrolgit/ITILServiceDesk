@@ -83,7 +83,7 @@
                                 <div class="input-group">
                                     <asp:TextBox ID="txtDueDate" runat="server" Columns="8" CssClass="form-control"></asp:TextBox>
                                     <span class="input-group-addon">
-                                        <asp:HyperLink ID="cmdtxtDueDateCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
+                                        <asp:HyperLink ID="cmdtxtDueDateCalendar" runat="server" ToolTip="calendar"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
                                 </div>
                                 <asp:CompareValidator ID="DueDatValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueDate" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
                                 </asp:CompareValidator>
@@ -150,7 +150,7 @@
                                 <div class="input-group">
                                     <asp:TextBox ID="txtStart" runat="server" Columns="8" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
                                     <span class="input-group-addon">
-                                        <asp:HyperLink ID="cmdtxtStartCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
+                                        <asp:HyperLink ID="cmdtxtStartCalendar" runat="server" ToolTip="calendar"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
                                 </div>
                                 <asp:CompareValidator ID="StartValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtStart" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
                                 </asp:CompareValidator>
@@ -161,7 +161,7 @@
                                 <div class="input-group">
                                     <asp:TextBox ID="txtComplete" runat="server" Columns="8" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
                                     <span class="input-group-addon">
-                                        <asp:HyperLink ID="cmdtxtCompleteCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png" ToolTip="calendar"></asp:HyperLink></span>
+                                        <asp:HyperLink ID="cmdtxtCompleteCalendar" runat="server" ToolTip="calendar"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
                                 </div>
                                 <asp:CompareValidator ID="CompleteValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtComplete" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
                                 </asp:CompareValidator>

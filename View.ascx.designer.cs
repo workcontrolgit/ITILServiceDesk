@@ -31,15 +31,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.LinkButton lnkExistingTickets;
         
         /// <summary>
-        /// lnkResetSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkResetSearch;
-        
-        /// <summary>
         /// lnkAdministratorSettings control.
         /// </summary>
         /// <remarks>
@@ -479,6 +470,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlExistingTickets;
+        
+        /// <summary>
+        /// lnkResetSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkResetSearch;
         
         /// <summary>
         /// lblStatusSearch control.
