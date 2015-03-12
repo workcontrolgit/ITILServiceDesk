@@ -1,5 +1,5 @@
 ﻿<dotnetnuke type="Package" version="5.0">
-  <packages><package name="ITILServiceDesk" type="Module" version="15.1.3">
+  <packages><package name="ITILServiceDesk" type="Module" version="15.1.4">
   <friendlyName>ITILServiceDesk</friendlyName>
   <description>Service Desk tool </description>
   <iconFile />
@@ -14,9 +14,9 @@
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
 */</license>
-  <releaseNotes>New version 14.01.01 in WAP
+  <releaseNotes>Version 14.01.01 convert WSP to WAP
 
-New version 14.03.01 - bootstrap</releaseNotes>
+Version 15.01.04 - bootstrap style</releaseNotes>
   <components>
     <component type="Script">
       <scripts>
@@ -44,7 +44,7 @@ New version 14.03.01 - bootstrap</releaseNotes>
         <script type="UnInstall">
           <path>Providers\DataProviders\SqlDataProvider</path>
           <name>Uninstall.SqlDataProvider</name>
-          <version>15.1.3</version>
+          <version>15.1.4</version>
         </script>
         <script type="Install">
           <path>Providers\DataProviders\SqlDataProvider</path>
@@ -67,9 +67,9 @@ New version 14.03.01 - bootstrap</releaseNotes>
             <moduleControls>
               <moduleControl>
                 <controlKey />
-                <controlSrc>DesktopModules/ITILServiceDesk/View.ascx</controlSrc>
+                <controlSrc>desktopmodules/itilservicedesk/View.ascx</controlSrc>
                 <supportsPartialRendering>False</supportsPartialRendering>
-                <controlTitle>ITILServiceDesk </controlTitle>
+                <controlTitle>Service Desk </controlTitle>
                 <controlType>View</controlType>
                 <iconFile />
                 <helpUrl />
@@ -89,9 +89,9 @@ New version 14.03.01 - bootstrap</releaseNotes>
               </moduleControl>
               <moduleControl>
                 <controlKey>EditTask</controlKey>
-                <controlSrc>DesktopModules/ITILServiceDesk/EditTask.ascx</controlSrc>
+                <controlSrc>desktopmodules/itilservicedesk/EditTask.ascx</controlSrc>
                 <supportsPartialRendering>False</supportsPartialRendering>
-                <controlTitle>Edit Task</controlTitle>
+                <controlTitle>Edit Ticket</controlTitle>
                 <controlType>View</controlType>
                 <iconFile />
                 <helpUrl />

@@ -535,6 +535,15 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.TextBox txtDueSearch;
         
         /// <summary>
+        /// cmdDueCalendar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink cmdDueCalendar;
+        
+        /// <summary>
         /// DueValidator control.
         /// </summary>
         /// <remarks>
@@ -544,6 +553,15 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.CompareValidator DueValidator;
         
         /// <summary>
+        /// lblCreated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreated;
+        
+        /// <summary>
         /// txtCreatedSearch control.
         /// </summary>
         /// <remarks>
@@ -551,6 +569,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCreatedSearch;
+        
+        /// <summary>
+        /// cmdCreatedCalendar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink cmdCreatedCalendar;
         
         /// <summary>
         /// CreatedValidator control.

@@ -165,6 +165,8 @@ namespace ITIL.Modules.ServiceDesk
             {
                 // ITIL customization 
 
+                cmdDueCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtDueSearch);
+                cmdCreatedCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtCreatedSearch);
                 cmdStartCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtDueDate);
                 //memu tool tip localization
                 lnkNewTicket.ToolTip = Localization.GetString("lnkNewTicketToolTip", LocalResourceFile);

@@ -388,4 +388,7 @@
   <data name="KeyWordSearch.Text" xml:space="preserve">
     <value>Key word search</value>
   </data>
+  <data name="lblCreated.Text" xml:space="preserve">
+    <value>Created</value>
+  </data>
 </root>

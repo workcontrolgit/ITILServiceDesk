@@ -10,16 +10,7 @@
     <li>
         <asp:LinkButton ID="lnkAdministratorSettings" runat="server" OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
             resourcekey="lnkAdministratorSettings" Visible="False" /></li>
-    <%--        <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Inbox</a></li>
-                <li><a href="#">Drafts</a></li>
-                <li><a href="#">Sent Items</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Trash</a></li>
-            </ul>
-        </li>--%>
+
 </ul>
 
 
@@ -166,9 +157,9 @@
                         <asp:Label ID="lbltxtDueDate" runat="server" Text="Date Due:" resourcekey="lbltxtDueDate" CssClass="control-label col-xs-2" AssociatedControlID="txtDueDate" />
                         <div class="col-xs-4">
                             <div class="input-group">
-                                <asp:TextBox ID="txtDueDate" runat="server" MaxLength="25" TabIndex="6" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtDueDate" runat="server" MaxLength="25" TabIndex="6" CssClass="form-control"></asp:TextBox>
                                 <span class="input-group-addon">
-                                    <asp:HyperLink ID="cmdStartCalendar" runat="server"></asp:HyperLink><span class="glyphicon glyphicon-calendar"></span></span>
+                                    <asp:HyperLink ID="cmdStartCalendar" runat="server"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
                             </div>
                             <asp:CompareValidator ID="DueDatValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueDate" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
                             </asp:CompareValidator>
@@ -297,13 +288,23 @@
                 <div class="form-group">
                     <asp:Label ID="lblDueSearch" runat="server" Text="Date Due:" resourcekey="lbltxtDueDate" CssClass="control-label col-xs-2" AssociatedControlID="txtDueSearch" />
                     <div class="col-xs-4">
-                        <asp:TextBox ID="txtDueSearch" runat="server" MaxLength="25" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
+
+                        <div class="input-group">
+                            <asp:TextBox ID="txtDueSearch" runat="server" MaxLength="25" CssClass="form-control"></asp:TextBox>
+                            <span class="input-group-addon">
+                                <asp:HyperLink ID="cmdDueCalendar" runat="server"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
+                        </div>
+
                         <asp:CompareValidator ID="DueValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueSearch" ErrorMessage="Please enter a valid date.">
                             </asp:CompareValidator>
                     </div>
-                    <label for="txtCreatedSearch" class="control-label col-xs-2">Created</label>
+                    <asp:Label ID="lblCreated" runat="server" for="txtCreatedSearch" resourcekey="lblCreated" class="control-label col-xs-2">Created</asp:Label>
                     <div class="col-xs-4">
-                        <asp:TextBox ID="txtCreatedSearch" runat="server" CssClass="form-control" />
+                        <div class="input-group">
+                            <asp:TextBox ID="txtCreatedSearch" runat="server" CssClass="form-control" />
+                            <span class="input-group-addon">
+                                <asp:HyperLink ID="cmdCreatedCalendar" runat="server"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
+                        </div>
                         <asp:CompareValidator ID="CreatedValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtCreatedSearch" ErrorMessage="Please enter a valid date.">
                             </asp:CompareValidator>
 
