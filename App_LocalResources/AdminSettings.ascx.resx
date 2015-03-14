@@ -175,7 +175,7 @@
     <value>File Upload Permission:</value>
   </data>
   <data name="lnkAdminRole.Text" xml:space="preserve">
-    <value>&lt;i class="glyphicon glyphicon-king"&gt;&lt;/i&gt; Admin Team</value>
+    <value>&lt;i class="glyphicon glyphicon-cog"&gt;&lt;/i&gt; Admin Team</value>
   </data>
   <data name="lnkBack.Text" xml:space="preserve">
     <value>Back</value>
