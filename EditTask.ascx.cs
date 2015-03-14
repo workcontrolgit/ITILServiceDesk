@@ -21,17 +21,11 @@
 
 using System;
 using System.Linq;
-using System.Web;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
-using DotNetNuke.Common;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Entities.Users;
-using System.Collections;
 using System.Drawing;
-using Microsoft.VisualBasic;
-using System.Text;
-using System.IO;
 using DotNetNuke.Services.Localization;
 
 namespace ITIL.Modules.ServiceDesk
@@ -245,7 +239,7 @@ namespace ITIL.Modules.ServiceDesk
             {
                 // Is user an Admin?
                 string strAdminRoleID = GetAdminRole();
-                if (UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
+                if (UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser)
                 {
                     boolPassedSecurity = true;
                     CommentsControl.ViewOnly = false;
@@ -316,12 +310,10 @@ namespace ITIL.Modules.ServiceDesk
             if (UserId > -1)
             {
                 lnkExistingTickets.Visible = true;
-                //imgExitingTickets.Visible = true;
             }
             else
             {
                 lnkExistingTickets.Visible = false;
-                //imgExitingTickets.Visible = false;
             }
         }
         #endregion
@@ -332,7 +324,7 @@ namespace ITIL.Modules.ServiceDesk
             // Get Admin Role
             string strAdminRoleID = GetAdminRole();
             // Show Admin link if user is an Administrator
-            if (UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
+            if (UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser)
             {
                 lnkAdministratorSettings.Visible = true;
                 //imgAdministrator.Visible = true;
@@ -351,7 +343,7 @@ namespace ITIL.Modules.ServiceDesk
             List<ITILServiceDesk_Setting> objITILServiceDesk_Settings = GetSettings();
             ITILServiceDesk_Setting objITILServiceDesk_Setting = objITILServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
 
-            string strAdminRoleID = "Administrators";
+            string strAdminRoleID = PortalSettings.AdministratorRoleName;
             if (objITILServiceDesk_Setting != null)
             {
                 strAdminRoleID = objITILServiceDesk_Setting.SettingValue;
@@ -378,7 +370,7 @@ namespace ITIL.Modules.ServiceDesk
 
                 objITILServiceDesk_Setting1.PortalID = PortalId;
                 objITILServiceDesk_Setting1.SettingName = "AdminRole";
-                objITILServiceDesk_Setting1.SettingValue = "Administrators";
+                objITILServiceDesk_Setting1.SettingValue = PortalSettings.AdministratorRoleName;
 
                 objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting1);
                 objServiceDeskDALDataContext.SubmitChanges();
@@ -425,12 +417,12 @@ namespace ITIL.Modules.ServiceDesk
                 }
             }
 
-            if (boolUserAssignedToTask || UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
+            if (boolUserAssignedToTask || UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser)
             {
                 // Show all Tags
                 TagsTreeExistingTasks.Visible = true;
                 TagsTreeExistingTasks.TagID = Convert.ToInt32(Request.QueryString["TaskID"]);
-                TagsTreeExistingTasks.DisplayType = "Administrator";
+                TagsTreeExistingTasks.DisplayType = Utility.DisplayTypeAdministrator;
                 TagsTreeExistingTasks.Expand = false;
             }
             else
@@ -438,7 +430,7 @@ namespace ITIL.Modules.ServiceDesk
                 // Show only Visible Tags
                 TagsTreeExistingTasks.Visible = true;
                 TagsTreeExistingTasks.TagID = Convert.ToInt32(Request.QueryString["TaskID"]);
-                TagsTreeExistingTasks.DisplayType = "Requestor";
+                TagsTreeExistingTasks.DisplayType = Utility.DisplayTypeRequestor;
                 TagsTreeExistingTasks.Expand = false;
             }
 
@@ -452,7 +444,7 @@ namespace ITIL.Modules.ServiceDesk
             }
 
             // Set visibility of Tags
-            bool RequestorCatagories = (TagsTreeExistingTasks.DisplayType == "Administrator") ? false : true;
+            bool RequestorCatagories = (TagsTreeExistingTasks.DisplayType == Utility.DisplayTypeAdministrator) ? false : true;
 
             int CountOfCatagories = (from ServiceDeskCategories in CategoriesTable.GetCategoriesTable(PortalId, RequestorCatagories)
                                      where ServiceDeskCategories.PortalID == PortalId

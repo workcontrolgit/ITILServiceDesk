@@ -1,5 +1,5 @@
 ﻿<dotnetnuke type="Package" version="5.0">
-  <packages><package name="ITILServiceDesk" type="Module" version="15.1.4">
+  <packages><package name="ITILServiceDesk" type="Module" version="15.1.5">
   <friendlyName>ITILServiceDesk</friendlyName>
   <description>Service Desk tool </description>
   <iconFile />
@@ -44,7 +44,7 @@ Version 15.01.04 - bootstrap style</releaseNotes>
         <script type="UnInstall">
           <path>Providers\DataProviders\SqlDataProvider</path>
           <name>Uninstall.SqlDataProvider</name>
-          <version>15.1.4</version>
+          <version>15.1.5</version>
         </script>
         <script type="Install">
           <path>Providers\DataProviders\SqlDataProvider</path>

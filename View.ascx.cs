@@ -408,28 +408,28 @@ namespace ITIL.Modules.ServiceDesk
         {
             //Tags TagsTreeExistingTasks = (Tags)lvTasks.FindControl("TagsTreeExistingTasks");
 
-            if (UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
+            if (UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser)
             {
                 TagsTree.Visible = true;
                 TagsTree.TagID = -1;
-                TagsTree.DisplayType = "Administrator";
+                TagsTree.DisplayType = Utility.DisplayTypeAdministrator;
                 TagsTree.Expand = false;
 
                 TagsTreeExistingTasks.Visible = true;
                 TagsTreeExistingTasks.TagID = -1;
-                TagsTreeExistingTasks.DisplayType = "Administrator";
+                TagsTreeExistingTasks.DisplayType = Utility.DisplayTypeAdministrator;
                 TagsTreeExistingTasks.Expand = false;
             }
             else
             {
                 TagsTree.Visible = true;
                 TagsTree.TagID = -1;
-                TagsTree.DisplayType = "Requestor";
+                TagsTree.DisplayType = Utility.DisplayTypeRequestor;
                 TagsTree.Expand = false;
 
                 TagsTreeExistingTasks.Visible = true;
                 TagsTreeExistingTasks.TagID = -1;
-                TagsTreeExistingTasks.DisplayType = "Requestor";
+                TagsTreeExistingTasks.DisplayType = Utility.DisplayTypeRequestor;
                 TagsTreeExistingTasks.Expand = false;
             }
 
@@ -447,7 +447,7 @@ namespace ITIL.Modules.ServiceDesk
             }
 
             // Set visibility of Tags
-            bool RequestorCatagories = (TagsTreeExistingTasks.DisplayType == "Administrator") ? false : true;
+            bool RequestorCatagories = (TagsTreeExistingTasks.DisplayType == Utility.DisplayTypeAdministrator) ? false : true;
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
             int CountOfCatagories = (from ServiceDeskCategories in CategoriesTable.GetCategoriesTable(PortalId, RequestorCatagories)
@@ -1631,17 +1631,17 @@ namespace ITIL.Modules.ServiceDesk
                     RequesterNameLabel.Text = String.Format("[User Deleted]");
                 }
             }
-            if (RequesterNameLabel.Text.Length > 10)
+            if (RequesterNameLabel.Text.Length > Utility.ColumnDisplayWidth)
             {
                 string lblRequesterNameLabel = RequesterNameLabel.Text;
-                RequesterNameLabel.Text = String.Format("{0} ...", lblRequesterNameLabel.Substring(0, 10));
+                RequesterNameLabel.Text = String.Format("{0} ...", lblRequesterNameLabel.Substring(0, Utility.ColumnDisplayWidth));
             }
 
             // Format Description
-            if (DescriptionLabel.Text.Length > 10)
+            if (DescriptionLabel.Text.Length > Utility.ColumnDisplayWidth)
             {
                 string lblDescriptionLabel = DescriptionLabel.Text;
-                DescriptionLabel.Text = String.Format("{0} ...", lblDescriptionLabel.Substring(0, 10));
+                DescriptionLabel.Text = String.Format("{0} ...", lblDescriptionLabel.Substring(0, Utility.ColumnDisplayWidth));
 
             }
 
@@ -1659,10 +1659,10 @@ namespace ITIL.Modules.ServiceDesk
                 }
                 AssignedLabel.ToolTip = AssignedLabel.Text;
 
-                if (AssignedLabel.Text.Length > 10)
+                if (AssignedLabel.Text.Length > Utility.ColumnDisplayWidth)
                 {
                     string lblAssignedLabel = AssignedLabel.Text;
-                    AssignedLabel.Text = String.Format("{0} ...", lblAssignedLabel.Substring(0, 10));
+                    AssignedLabel.Text = String.Format("{0} ...", lblAssignedLabel.Substring(0, Utility.ColumnDisplayWidth));
                 }
             }
             else

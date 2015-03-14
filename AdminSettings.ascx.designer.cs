@@ -13,6 +13,33 @@ namespace ITIL.Modules.ServiceDesk {
     public partial class AdminSettings {
         
         /// <summary>
+        /// lnkNewTicket control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkNewTicket;
+        
+        /// <summary>
+        /// lnkExistingTickets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkExistingTickets;
+        
+        /// <summary>
+        /// lnkAdministratorSettings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkAdministratorSettings;
+        
+        /// <summary>
         /// pnlAdminSettings control.
         /// </summary>
         /// <remarks>
@@ -20,51 +47,6 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlAdminSettings;
-        
-        /// <summary>
-        /// lnkBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBack;
-        
-        /// <summary>
-        /// lnkAdminRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkAdminRole;
-        
-        /// <summary>
-        /// lnkRoles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkRoles;
-        
-        /// <summary>
-        /// lnkTagsAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkTagsAdmin;
-        
-        /// <summary>
-        /// lnkUploadefFilesPath control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkUploadefFilesPath;
         
         /// <summary>
         /// pnlAdministratorRole control.
@@ -229,15 +211,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.Panel pnlTagsAdmin;
         
         /// <summary>
-        /// btnAddNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNew;
-        
-        /// <summary>
         /// tvCategories control.
         /// </summary>
         /// <remarks>
@@ -254,6 +227,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTagError;
+        
+        /// <summary>
+        /// btnAddNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddNew;
         
         /// <summary>
         /// txtCategoryID control.
@@ -344,6 +326,42 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
+        
+        /// <summary>
+        /// lnkAdminRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkAdminRole;
+        
+        /// <summary>
+        /// lnkRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkRoles;
+        
+        /// <summary>
+        /// lnkTagsAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkTagsAdmin;
+        
+        /// <summary>
+        /// lnkUploadefFilesPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkUploadefFilesPath;
         
         /// <summary>
         /// ldsRoles control.

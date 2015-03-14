@@ -43,7 +43,7 @@ namespace ITIL.Modules.ServiceDesk
                 // Get Admin Role
                 string strAdminRoleID = GetAdminRole();
                 // Only show if user is an Administrator
-                if (!(UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser))
+                if (!(UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser))
                 {
                     pnlAdminSettings.Visible = false;
                     Response.Redirect(Globals.NavigateURL());
@@ -135,10 +135,24 @@ namespace ITIL.Modules.ServiceDesk
         }
         #endregion
 
-        #region lnkBack_Click
-        protected void lnkBack_Click(object sender, EventArgs e)
+        #region lnkAdministratorSettings_Click
+        protected void lnkAdministratorSettings_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Globals.NavigateURL());
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "AdminSettings", "mid=" + ModuleId.ToString()));
+        }
+        #endregion
+
+        #region lnkNewTicket_Click
+        protected void lnkNewTicket_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL(null, "Ticket=new"));
+        }
+        #endregion
+
+        #region lnkExistingTickets_Click
+        protected void lnkExistingTickets_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL(), true);
         }
         #endregion
 
@@ -148,7 +162,7 @@ namespace ITIL.Modules.ServiceDesk
             List<ITILServiceDesk_Setting> objITILServiceDesk_Settings = GetSettings();
             ITILServiceDesk_Setting objITILServiceDesk_Setting = objITILServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
 
-            string strAdminRoleID = "Administrators";
+            string strAdminRoleID = PortalSettings.AdministratorRoleName;
             if (objITILServiceDesk_Setting != null)
             {
                 strAdminRoleID = objITILServiceDesk_Setting.SettingValue;
@@ -175,7 +189,7 @@ namespace ITIL.Modules.ServiceDesk
 
                 objITILServiceDesk_Setting1.PortalID = PortalId;
                 objITILServiceDesk_Setting1.SettingName = "AdminRole";
-                objITILServiceDesk_Setting1.SettingValue = "Administrators";
+                objITILServiceDesk_Setting1.SettingValue = PortalSettings.AdministratorRoleName;
 
                 objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting1);
                 objServiceDeskDALDataContext.SubmitChanges();

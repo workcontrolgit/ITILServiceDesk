@@ -1,30 +1,23 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdminSettings.ascx.cs" Inherits="ITIL.Modules.ServiceDesk.AdminSettings" %>
+
+<ul class="nav nav-pills">
+    <li>
+        <asp:LinkButton ID="lnkNewTicket" runat="server" OnClick="lnkNewTicket_Click" Text="New Ticket" resourcekey="lnkNewTicket"></asp:LinkButton></li>
+    <li>
+        <asp:LinkButton ID="lnkExistingTickets" runat="server" OnClick="lnkExistingTickets_Click"
+            Text="Existing Tickets" resourcekey="lnkExistingTickets" Visible="True" /></li>
+    <li>
+        <asp:LinkButton ID="lnkAdministratorSettings" runat="server" OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
+            resourcekey="lnkAdministratorSettings" Visible="True" /></li>
+
+</ul>
+
+
+
 <asp:Panel ID="pnlAdminSettings" runat="server" align="left">
-
-    <asp:LinkButton ID="lnkBack" runat="server" resourcekey="lnkBack" CssClass="btn btn-primary"
-        OnClick="lnkBack_Click" Text="Back" />
-    <br />
-    <br />
-
 
     <div class="row">
 
-        <div class="col-md-3">
-            <ul class="nav nav-pills nav-stacked">
-                <li>
-                    <asp:LinkButton ID="lnkAdminRole" runat="server" OnClick="lnkAdminRole_Click"
-                        resourcekey="lnkAdminRole" Text="Administrator Role" /></li>
-                <li>
-                    <asp:LinkButton ID="lnkRoles" runat="server" OnClick="lnkRoles_Click"
-                        resourcekey="lnkRoles" Text="Assignment Roles" /></li>
-                <li>
-                    <asp:LinkButton ID="lnkTagsAdmin" runat="server" OnClick="lnkTagsAdmin_Click"
-                        resourcekey="lnkTagsAdmin" Text="Tags Administration" /></li>
-                <li>
-                    <asp:LinkButton ID="lnkUploadefFilesPath" runat="server" OnClick="lnkUploadefFilesPath_Click"
-                        resourcekey="lnkUploadefFilesPath" Text="File Upload Settings" /></li>
-            </ul>
-        </div>
         <div class="col-md-9">
             <asp:Panel ID="pnlAdministratorRole" runat="server">
                 <div class="form-horizontal">
@@ -135,10 +128,6 @@
             <asp:Panel ID="pnlTagsAdmin" runat="server">
                 <div class="row">
                     <div class="col-xs-5">
-                        <p>
-                        <asp:Button ID="btnAddNew" runat="server" OnClick="btnAddNew_Click" CssClass="btn btn-success"
-                                                            Text="Add New" CommandName="AddNew" />
-                            </p>
                         <asp:TreeView ID="tvCategories" runat="server" ExpandDepth="0" OnSelectedNodeChanged="tvCategories_SelectedNodeChanged"
                              OnTreeNodeDataBound="tvCategories_TreeNodeDataBound">
                             <SelectedNodeStyle BackColor="#CCCCCC" Font-Bold="False" Font-Underline="False" />
@@ -151,6 +140,10 @@
                     </div>
                     <div class="col-xs-7">
                         <div class="form-horizontal">
+                        <p>
+                        <asp:Button ID="btnAddNew" runat="server" OnClick="btnAddNew_Click" CssClass="btn btn-success"
+                                                            Text="Add New" CommandName="AddNew" />
+                            </p>
                             <asp:TextBox ID="txtCategoryID" runat="server" Columns="1" Visible="False"></asp:TextBox>
                             <asp:TextBox ID="txtParentCategoryID" runat="server" Columns="1" Visible="False"></asp:TextBox>
                             <div class="form-group">
@@ -195,6 +188,24 @@
 
             </asp:Panel>
         </div>
+
+                <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <asp:LinkButton ID="lnkAdminRole" runat="server" OnClick="lnkAdminRole_Click"
+                        resourcekey="lnkAdminRole" Text="Administrator Role" /></li>
+                <li>
+                    <asp:LinkButton ID="lnkRoles" runat="server" OnClick="lnkRoles_Click"
+                        resourcekey="lnkRoles" Text="Assignment Roles" /></li>
+                <li>
+                    <asp:LinkButton ID="lnkTagsAdmin" runat="server" OnClick="lnkTagsAdmin_Click"
+                        resourcekey="lnkTagsAdmin" Text="Tags Administration" /></li>
+                <li>
+                    <asp:LinkButton ID="lnkUploadefFilesPath" runat="server" OnClick="lnkUploadefFilesPath_Click"
+                        resourcekey="lnkUploadefFilesPath" Text="File Upload Settings" /></li>
+            </ul>
+        </div>
+
     </div>
 
 

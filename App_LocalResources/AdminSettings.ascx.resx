@@ -204,4 +204,22 @@
   <data name="lblNoRecords.Text" xml:space="preserve">
     <value>No Record Found</value>
   </data>
+  <data name="lnkAdministratorSettings.Text" xml:space="preserve">
+    <value>&lt;i class="glyphicon glyphicon-wrench"&gt;&lt;/i&gt; Administrator Settings</value>
+  </data>
+  <data name="lnkAdministratorSettingsToolTip.Text" xml:space="preserve">
+    <value>View Administrator Settings</value>
+  </data>
+  <data name="lnkExistingTickets.Text" xml:space="preserve">
+    <value>&lt;i class="glyphicon glyphicon-list-alt"&gt;&lt;/i&gt; Existing Tickets</value>
+  </data>
+  <data name="lnkExistingTicketsToolTip.Text" xml:space="preserve">
+    <value>View Existing Tickets</value>
+  </data>
+  <data name="lnkNewTicket.Text" xml:space="preserve">
+    <value>&lt;i class="glyphicon glyphicon-plus-sign"&gt;&lt;/i&gt; New Ticket</value>
+  </data>
+  <data name="lnkNewTicketToolTip.Text" xml:space="preserve">
+    <value>Enter New Ticket</value>
+  </data>
 </root>

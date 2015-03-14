@@ -19,11 +19,6 @@
 
 using System;
 using System.Linq;
-using System.Web.UI;
-using System.Collections;
-using System.Web.UI.WebControls;
-using DotNetNuke.Entities.Portals;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using DotNetNuke.Entities.Host;
 
@@ -31,6 +26,10 @@ namespace ITIL.Modules.ServiceDesk
 {
     public static class Utility
     {
+        public static string DisplayTypeAdministrator = "Administrator";
+        public static string DisplayTypeRequestor = "Requestor";
+        public static int ColumnDisplayWidth = 25;
+        
         #region FixURLLink
         public static string FixURLLink(string strURL, string strHTTPAlias)
         {
