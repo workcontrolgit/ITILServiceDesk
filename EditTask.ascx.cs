@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Entities.Users;
 using System.Drawing;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.Services.Localization;
 
 namespace ITIL.Modules.ServiceDesk
@@ -92,6 +93,10 @@ namespace ITIL.Modules.ServiceDesk
             lnkNewTicket.ToolTip = Localization.GetString("lnkNewTicketToolTip", LocalResourceFile);
             lnkExistingTickets.ToolTip = Localization.GetString("lnkExistingTicketsToolTip", LocalResourceFile);
             lnkAdministratorSettings.ToolTip = Localization.GetString("lnkAdministratorSettingsToolTip", LocalResourceFile);
+
+            lnkExistingTickets.CssClass = "active";
+            //lnkAdministratorSettings.CssClass = Null.NullString;
+            //lnkNewTicket.CssClass = Null.NullString;
 
             btnComments.ToolTip = Localization.GetString("btnCommentsToolTip", LocalResourceFile);
             btnLogs.ToolTip = Localization.GetString("btnLogsToolTip", LocalResourceFile);

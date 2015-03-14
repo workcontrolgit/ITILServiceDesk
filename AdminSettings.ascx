@@ -18,6 +18,26 @@
 
     <div class="row">
 
+        <div class="col-md-3">
+            <asp:Panel ID="pnlSettings" runat="server" GroupingText="Settings">
+                <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <asp:LinkButton ID="lnkAdminRole" runat="server" OnClick="lnkAdminRole_Click"
+                            resourcekey="lnkAdminRole" Text="Administrator Role" /></li>
+                    <li>
+                        <asp:LinkButton ID="lnkRoles" runat="server" OnClick="lnkRoles_Click"
+                            resourcekey="lnkRoles" Text="Assignment Roles" /></li>
+                    <li>
+                        <asp:LinkButton ID="lnkTagsAdmin" runat="server" OnClick="lnkTagsAdmin_Click"
+                            resourcekey="lnkTagsAdmin" Text="Tags Administration" /></li>
+                    <li>
+                        <asp:LinkButton ID="lnkUploadefFilesPath" runat="server" OnClick="lnkUploadefFilesPath_Click"
+                            resourcekey="lnkUploadefFilesPath" Text="File Upload Settings" /></li>
+                </ul>
+            </asp:Panel>
+        </div>
+
+
         <div class="col-md-9">
             <asp:Panel ID="pnlAdministratorRole" runat="server">
                 <div class="form-horizontal">
@@ -104,20 +124,20 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <p>
-                        <div class="row">
-                            <div class="col-xs-2">
-                                <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" CssClass="btn btn-danger" resourcekey="DeleteButton" OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}' />
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" CssClass="btn btn-danger" resourcekey="DeleteButton" OnClientClick='if (!confirm("Are you sure you want to delete?") ){return false;}' />
+                                </div>
+                                <div class="col-xs-10">
+                                    <asp:Label ID="RoleIDLabel" runat="server" Text='<%# Eval("RoleID") %>' />
+                                </div>
                             </div>
-                            <div class="col-xs-10">
-                                <asp:Label ID="RoleIDLabel" runat="server" Text='<%# Eval("RoleID") %>' />
-                            </div>
-                        </div>
-                            </p>
+                        </p>
 
                     </ItemTemplate>
                     <EmptyDataTemplate>
                         <div>
-                             <asp:Label ID="lblNoRecords" runat="server" resourcekey="lblNoRecords" Text="No Records Returned" CssClass="text-warning" />
+                            <asp:Label ID="lblNoRecords" runat="server" resourcekey="lblNoRecords" Text="No Records Returned" CssClass="text-warning" />
                         </div>
                     </EmptyDataTemplate>
                 </asp:ListView>
@@ -127,22 +147,23 @@
             </asp:Panel>
             <asp:Panel ID="pnlTagsAdmin" runat="server">
                 <div class="row">
+
                     <div class="col-xs-5">
                         <asp:TreeView ID="tvCategories" runat="server" ExpandDepth="0" OnSelectedNodeChanged="tvCategories_SelectedNodeChanged"
-                             OnTreeNodeDataBound="tvCategories_TreeNodeDataBound">
+                            OnTreeNodeDataBound="tvCategories_TreeNodeDataBound">
                             <SelectedNodeStyle BackColor="#CCCCCC" Font-Bold="False" Font-Underline="False" />
                             <DataBindings>
                                 <asp:TreeNodeBinding DataMember="ITIL.Modules.ServiceDesk.Catagories" Depth="0"
                                     TextField="Value" ValueField="Value" />
                             </DataBindings>
                         </asp:TreeView>
-                        <asp:Label ID="lblTagError" runat="server" EnableViewState="False"  CssClass="label label-warning"></asp:Label>
+                        <asp:Label ID="lblTagError" runat="server" EnableViewState="False" CssClass="label label-warning"></asp:Label>
                     </div>
                     <div class="col-xs-7">
                         <div class="form-horizontal">
-                        <p>
-                        <asp:Button ID="btnAddNew" runat="server" OnClick="btnAddNew_Click" CssClass="btn btn-success"
-                                                            Text="Add New" CommandName="AddNew" />
+                            <p>
+                                <asp:Button ID="btnAddNew" runat="server" OnClick="btnAddNew_Click" CssClass="btn btn-success"
+                                    Text="Add New" CommandName="AddNew" />
                             </p>
                             <asp:TextBox ID="txtCategoryID" runat="server" Columns="1" Visible="False"></asp:TextBox>
                             <asp:TextBox ID="txtParentCategoryID" runat="server" Columns="1" Visible="False"></asp:TextBox>
@@ -165,8 +186,9 @@
                                     <asp:CheckBox ID="chkRequesterVisible" runat="server" Checked="True" resourcekey="chkRequesterVisible" Text="Requester Visible"
                                         ToolTip="This option will be visible to users making a ticket request" />
                                     &nbsp;
-                                                        <asp:CheckBox ID="chkSelectable" runat="server" Checked="True" Text="Selectable" resourcekey="chkSelectable"
-                                                            ToolTip="Is a user able to select this option or is it just used for grouping?" />
+                                                       
+                                    <asp:CheckBox ID="chkSelectable" runat="server" Checked="True" Text="Selectable" resourcekey="chkSelectable"
+                                        ToolTip="Is a user able to select this option or is it just used for grouping?" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -174,9 +196,10 @@
                                     <asp:Button ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" CssClass="btn btn-primary"
                                         Text="Update" CommandName="Update" />
                                     &nbsp;
-                                                        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger"
-                                                            OnClientClick="if (!confirm(&quot;Are you sure you want to delete?&quot;) ){return false;}"
-                                                            Text="Delete" resourcekey="btnDelete" />
+                                                       
+                                    <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger"
+                                        OnClientClick="if (!confirm(&quot;Are you sure you want to delete?&quot;) ){return false;}"
+                                        Text="Delete" resourcekey="btnDelete" />
                                 </div>
                             </div>
                         </div>
@@ -188,24 +211,6 @@
 
             </asp:Panel>
         </div>
-
-                <div class="col-md-3">
-            <ul class="nav nav-pills nav-stacked">
-                <li>
-                    <asp:LinkButton ID="lnkAdminRole" runat="server" OnClick="lnkAdminRole_Click"
-                        resourcekey="lnkAdminRole" Text="Administrator Role" /></li>
-                <li>
-                    <asp:LinkButton ID="lnkRoles" runat="server" OnClick="lnkRoles_Click"
-                        resourcekey="lnkRoles" Text="Assignment Roles" /></li>
-                <li>
-                    <asp:LinkButton ID="lnkTagsAdmin" runat="server" OnClick="lnkTagsAdmin_Click"
-                        resourcekey="lnkTagsAdmin" Text="Tags Administration" /></li>
-                <li>
-                    <asp:LinkButton ID="lnkUploadefFilesPath" runat="server" OnClick="lnkUploadefFilesPath_Click"
-                        resourcekey="lnkUploadefFilesPath" Text="File Upload Settings" /></li>
-            </ul>
-        </div>
-
     </div>
 
 

@@ -35,6 +35,7 @@ using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Security.Roles;
 using System.Web.UI.HtmlControls;
 using System.Web.UI;
+using DotNetNuke.Common.Utilities;
 using Microsoft.VisualBasic;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Entities.Host;
@@ -643,13 +644,13 @@ namespace ITIL.Modules.ServiceDesk
                 pnlExistingTickets.Visible = false;
                 pnlConfirmAnonymousUserEntry.Visible = false;
                 //imgMagnifier.Visible = false;
-                lnkResetSearch.Visible = false;
-                //lnkNewTicket.ForeColor = System.Drawing.Color.White;
-                lnkNewTicket.Font.Underline = true;
-                lnkNewTicket.Font.Bold = true;
+                //lnkResetSearch.Visible = false;
+                //lnkNewTicket.ForeColor = System.Drawing.Color.LightGray;
+                //lnkNewTicket.Font.Underline = true;
+                //lnkNewTicket.Font.Bold = true;
                 //lnkNewTicket.BackColor = System.Drawing.Color.LightGray;
-                lnkExistingTickets.Font.Underline = false;
-                lnkExistingTickets.Font.Bold = false;
+                //lnkExistingTickets.Font.Underline = false;
+                //lnkExistingTickets.Font.Bold = false;
                 //lnkExistingTickets.BackColor = System.Drawing.Color.Transparent;
 
                 DisplayNewTicketForm();
@@ -662,14 +663,14 @@ namespace ITIL.Modules.ServiceDesk
                 pnlExistingTickets.Visible = true;
                 pnlConfirmAnonymousUserEntry.Visible = false;
                 //imgMagnifier.Visible = true;
-                lnkResetSearch.Visible = true;
+                //lnkResetSearch.Visible = true;
                 //lnkExistingTickets.ForeColor = System.Drawing.Color.White;
 
-                lnkNewTicket.Font.Underline = false;
-                lnkNewTicket.Font.Bold = false;
+                //lnkNewTicket.Font.Underline = false;
+                //lnkNewTicket.Font.Bold = false;
                 //lnkNewTicket.BackColor = System.Drawing.Color.Transparent;
-                lnkExistingTickets.Font.Underline = true;
-                lnkExistingTickets.Font.Bold = true;
+                //lnkExistingTickets.Font.Underline = true;
+                //lnkExistingTickets.Font.Bold = true;
                 //lnkExistingTickets.BackColor = System.Drawing.Color.LightGray;
 
                 DisplayExistingTickets(SearchCriteria);
@@ -701,7 +702,7 @@ namespace ITIL.Modules.ServiceDesk
             txtPhone.Text = string.Empty;
 
             // Admin forms is set for anonymous user be default
-            txtUserID.Text = "-1";
+            txtUserID.Text = Null.NullInteger.ToString();
         }
         #endregion
 

@@ -62,7 +62,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4>
-                <asp:Label ID="lblServiceDeskTicket" runat="server" Text="Service Desk Ticket" resourcekey="lblServiceDeskTicket" /></h4>
+                <asp:Label ID="lblServiceDeskTicket" runat="server" Text="Ticket - New" resourcekey="lblServiceDeskTicket" /></h4>
         </div>
         <div class="panel-body">
             <asp:Label ID="lblRequiredfield" runat="server" Text="(*) Required Field" CssClass="text-danger" resourcekey="lblRequiredfield" />
@@ -257,7 +257,7 @@
             </li>
             <li>
                 <asp:LinkButton ID="lnkResetSearch" runat="server" CssClass="btn btn-link btn-sm" OnClick="lnkResetSearch_Click"
-                    Text="Reset Search" resourcekey="lnkResetSearch" Visible="False" /></li>
+                    Text="Reset Search" resourcekey="lnkResetSearch" Visible="True" /></li>
         </ul>
         <!-- Collapsible Element HTML -->
         <div id="toggleDemo" class="collapse">

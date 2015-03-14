@@ -29,6 +29,7 @@ using DotNetNuke.Security.Roles;
 using DotNetNuke.Entities.Users;
 using System.Collections;
 using System.Drawing;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.Services.Localization;
 
 namespace ITIL.Modules.ServiceDesk
@@ -59,6 +60,7 @@ namespace ITIL.Modules.ServiceDesk
                 pnlUploadefFilesPath.GroupingText = Localization.GetString("lnkUploadefFilesPath.Text", LocalResourceFile);
                 pnlRoles.GroupingText = Localization.GetString("lnkRoles.Text", LocalResourceFile);
                 pnlTagsAdmin.GroupingText = Localization.GetString("lnkTagsAdmin.Text", LocalResourceFile);
+                pnlSettings.GroupingText = Localization.GetString("pnlSettings.Text", LocalResourceFile);
             }
         }
 
@@ -71,15 +73,6 @@ namespace ITIL.Modules.ServiceDesk
                 pnlUploadefFilesPath.Visible = false;
                 pnlTagsAdmin.Visible = false;
                 pnlRoles.Visible = false;
-
-                lnkAdminRole.Font.Bold = true;
-                lnkAdminRole.BackColor = Color.LightGray;
-                lnkUploadefFilesPath.Font.Bold = false;
-                lnkUploadefFilesPath.BackColor = Color.Transparent;
-                lnkTagsAdmin.Font.Bold = false;
-                lnkTagsAdmin.BackColor = Color.Transparent;
-                lnkRoles.Font.Bold = false;
-                lnkRoles.BackColor = Color.Transparent;
             }
 
             if (ViewName == "UploadedFilesPath")
@@ -88,15 +81,6 @@ namespace ITIL.Modules.ServiceDesk
                 pnlUploadefFilesPath.Visible = true;
                 pnlTagsAdmin.Visible = false;
                 pnlRoles.Visible = false;
-
-                lnkAdminRole.Font.Bold = false;
-                lnkAdminRole.BackColor = Color.Transparent;
-                lnkUploadefFilesPath.Font.Bold = true;
-                lnkUploadefFilesPath.BackColor = Color.LightGray;
-                lnkTagsAdmin.Font.Bold = false;
-                lnkTagsAdmin.BackColor = Color.Transparent;
-                lnkRoles.Font.Bold = false;
-                lnkRoles.BackColor = Color.Transparent;
             }
 
             if (ViewName == "Roles")
@@ -106,14 +90,6 @@ namespace ITIL.Modules.ServiceDesk
                 pnlTagsAdmin.Visible = false;
                 pnlRoles.Visible = true;
 
-                lnkAdminRole.Font.Bold = false;
-                lnkAdminRole.BackColor = Color.Transparent;
-                lnkUploadefFilesPath.Font.Bold = false;
-                lnkUploadefFilesPath.BackColor = Color.Transparent;
-                lnkTagsAdmin.Font.Bold = false;
-                lnkTagsAdmin.BackColor = Color.Transparent;
-                lnkRoles.Font.Bold = true;
-                lnkRoles.BackColor = Color.LightGray;
             }
 
             if (ViewName == "TagsAdministration")
@@ -122,15 +98,6 @@ namespace ITIL.Modules.ServiceDesk
                 pnlUploadefFilesPath.Visible = false;
                 pnlTagsAdmin.Visible = true;
                 pnlRoles.Visible = false;
-
-                lnkAdminRole.Font.Bold = false;
-                lnkAdminRole.BackColor = Color.Transparent;
-                lnkUploadefFilesPath.Font.Bold = false;
-                lnkUploadefFilesPath.BackColor = Color.Transparent;
-                lnkTagsAdmin.Font.Bold = true;
-                lnkTagsAdmin.BackColor = Color.LightGray;
-                lnkRoles.Font.Bold = false;
-                lnkRoles.BackColor = Color.Transparent;
             }
         }
         #endregion

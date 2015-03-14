@@ -21,7 +21,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>Service Desk Ticket</h4>
+                <h4><asp:Label ID="lblServiceDeskTicket" runat="server" Text="Ticket - Edit" resourcekey="lblServiceDeskTicket" /></h4>
             </div>
             <div class="panel-body">
                 <asp:Label ID="lblRequiredfield" runat="server" Text="(*) Required Field" CssClass="text-danger" resourcekey="lblRequiredfield" />
