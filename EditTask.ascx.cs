@@ -33,6 +33,7 @@ using Microsoft.VisualBasic;
 using System.Text;
 using System.IO;
 using DotNetNuke.Services.Localization;
+using DotNetNuke.Services.Exceptions;
 
 namespace ITIL.Modules.ServiceDesk
 {
@@ -942,35 +943,46 @@ namespace ITIL.Modules.ServiceDesk
 
         private void NotifyGroupAssignTicket(string TaskID)
         {
-            // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
-            ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-            ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
-                                                       where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
-                                                       select ITILServiceDesk_Tasks).FirstOrDefault();
-
-            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
-            
-            RoleController objRoleController = new RoleController();
-            string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
-            string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
-
-            string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);
-            string strBody = Localization.GetString("HTMLTicketEmailAssignee.Text", LocalResourceFile);
-            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
-            strBody = strBody + Environment.NewLine;
-            strBody = strBody + String.Format(Localization.GetString("YouMaySeeStatusHere.Text", LocalResourceFile), strLinkUrl);
-
-            // Get all users in the AssignedRole Role
-           // ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
-            IList<UserInfo> colAssignedRoleUsers = RoleController.Instance.GetUsersByRole(PortalId, strAssignedRole);
-
-            foreach (UserInfo objUserInfo in colAssignedRoleUsers)
+            try
             {
-                DotNetNuke.Services.Mail.Mail.SendMail(PortalSettings.Email, objUserInfo.Email, "", strSubject, strBody, "", "HTML", "", "", "", "");
-            }
+                // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
+                ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
+                ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                                 where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
+                                                                 select ITILServiceDesk_Tasks).FirstOrDefault();
 
-            Log.InsertLog(Convert.ToInt32(TaskID), UserId, String.Format(Localization.GetString("AssignedTicketTo.Text", LocalResourceFile), UserInfo.DisplayName, strAssignedRole));
+                string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
+                string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
+
+                RoleController objRoleController = new RoleController();
+                RoleInfo objRoleInfo = objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId);
+                objRoleInfo = objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId);
+                string strAssignedRole = objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName;
+                string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
+
+                string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);
+                string strBody = Localization.GetString("HTMLTicketEmailAssignee.Text", LocalResourceFile);
+                strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
+                strBody = strBody + Environment.NewLine;
+                strBody = strBody + String.Format(Localization.GetString("YouMaySeeStatusHere.Text", LocalResourceFile), strLinkUrl);
+
+                // Get all users in the AssignedRole Role
+                // ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
+                IList<UserInfo> colAssignedRoleUsers = RoleController.Instance.GetUsersByRole(PortalId, strAssignedRole);
+
+                foreach (UserInfo objUserInfo in colAssignedRoleUsers)
+                {
+                    DotNetNuke.Services.Mail.Mail.SendMail(PortalSettings.Email, objUserInfo.Email, "", strSubject, strBody, "", "HTML", "", "", "", "");
+                }
+
+                Log.InsertLog(Convert.ToInt32(TaskID), UserId, String.Format(Localization.GetString("AssignedTicketTo.Text", LocalResourceFile), UserInfo.DisplayName, strAssignedRole));
+            }
+            catch (Exception ex)
+            {
+                Exceptions.ProcessModuleLoadException(this, ex);
+            }
+                
+
         }
 
         #endregion
