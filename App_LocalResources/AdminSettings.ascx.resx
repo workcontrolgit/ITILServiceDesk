@@ -175,13 +175,13 @@
     <value>File Upload Permission:</value>
   </data>
   <data name="lnkAdminRole.Text" xml:space="preserve">
-    <value>&lt;i class="glyphicon glyphicon-user"&gt;&lt;/i&gt; Admin Team</value>
+    <value>&lt;i class="glyphicon glyphicon-cog"&gt;&lt;/i&gt; Admin Team</value>
   </data>
   <data name="lnkBack.Text" xml:space="preserve">
     <value>Back</value>
   </data>
   <data name="lnkRoles.Text" xml:space="preserve">
-    <value>&lt;i class="glyphicon glyphicon-eye-open"&gt;&lt;/i&gt; Tech Teams</value>
+    <value>&lt;i class="glyphicon glyphicon-user"&gt;&lt;/i&gt; Tech Teams</value>
   </data>
   <data name="lnkTagsAdmin.Text" xml:space="preserve">
     <value>&lt;i class="glyphicon glyphicon-tag"&gt;&lt;/i&gt; Tags</value>
@@ -203,5 +203,26 @@
   </data>
   <data name="lblNoRecords.Text" xml:space="preserve">
     <value>No Record Found</value>
+  </data>
+  <data name="lnkAdministratorSettings.Text" xml:space="preserve">
+    <value>&lt;i class="glyphicon glyphicon-wrench"&gt;&lt;/i&gt; Administrator Settings</value>
+  </data>
+  <data name="lnkAdministratorSettingsToolTip.Text" xml:space="preserve">
+    <value>View Administrator Settings</value>
+  </data>
+  <data name="lnkExistingTickets.Text" xml:space="preserve">
+    <value>&lt;i class="glyphicon glyphicon-list-alt"&gt;&lt;/i&gt; Existing Tickets</value>
+  </data>
+  <data name="lnkExistingTicketsToolTip.Text" xml:space="preserve">
+    <value>View Existing Tickets</value>
+  </data>
+  <data name="lnkNewTicket.Text" xml:space="preserve">
+    <value>&lt;i class="glyphicon glyphicon-plus-sign"&gt;&lt;/i&gt; New Ticket</value>
+  </data>
+  <data name="lnkNewTicketToolTip.Text" xml:space="preserve">
+    <value>Enter New Ticket</value>
+  </data>
+  <data name="pnlSettings.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>

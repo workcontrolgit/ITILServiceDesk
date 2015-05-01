@@ -13,6 +13,33 @@ namespace ITIL.Modules.ServiceDesk {
     public partial class AdminSettings {
         
         /// <summary>
+        /// lnkNewTicket control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkNewTicket;
+        
+        /// <summary>
+        /// lnkExistingTickets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkExistingTickets;
+        
+        /// <summary>
+        /// lnkAdministratorSettings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkAdministratorSettings;
+        
+        /// <summary>
         /// pnlAdminSettings control.
         /// </summary>
         /// <remarks>
@@ -22,13 +49,13 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.Panel pnlAdminSettings;
         
         /// <summary>
-        /// lnkBack control.
+        /// pnlSettings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBack;
+        protected global::System.Web.UI.WebControls.Panel pnlSettings;
         
         /// <summary>
         /// lnkAdminRole control.
@@ -229,15 +256,6 @@ namespace ITIL.Modules.ServiceDesk {
         protected global::System.Web.UI.WebControls.Panel pnlTagsAdmin;
         
         /// <summary>
-        /// btnAddNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNew;
-        
-        /// <summary>
         /// tvCategories control.
         /// </summary>
         /// <remarks>
@@ -254,6 +272,15 @@ namespace ITIL.Modules.ServiceDesk {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTagError;
+        
+        /// <summary>
+        /// btnAddNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddNew;
         
         /// <summary>
         /// txtCategoryID control.

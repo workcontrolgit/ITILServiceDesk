@@ -68,7 +68,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
         #region DisplayCatagories
         private void DisplayCatagories()
         {
-            bool RequestorCatagories = (_DisplayType == "Administrator") ? false : true;
+            bool RequestorCatagories = (_DisplayType == Utility.DisplayTypeAdministrator) ? false : true;
             CatagoriesTree colCatagories = new CatagoriesTree(PortalId, RequestorCatagories);
             tvCategories.DataSource = colCatagories;
 
@@ -99,7 +99,7 @@ namespace ITIL.Modules.ServiceDesk.Controls
                 e.Node.ToolTip = e.Node.Text;
             }
 
-            if ((!Convert.ToBoolean(objListItem.Attributes["RequestorVisible"])) & ((_DisplayType != "Administrator")))
+            if ((!Convert.ToBoolean(objListItem.Attributes["RequestorVisible"])) & ((_DisplayType != Utility.DisplayTypeAdministrator)))
             {
                 e.Node.ImageUrl = "";
                 e.Node.Text = "";

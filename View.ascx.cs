@@ -35,6 +35,7 @@ using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Security.Roles;
 using System.Web.UI.HtmlControls;
 using System.Web.UI;
+using DotNetNuke.Common.Utilities;
 using Microsoft.VisualBasic;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Entities.Host;
@@ -165,6 +166,8 @@ namespace ITIL.Modules.ServiceDesk
             {
                 // ITIL customization 
 
+                cmdDueCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtDueSearch);
+                cmdCreatedCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtCreatedSearch);
                 cmdStartCalendar.NavigateUrl = DotNetNuke.Common.Utilities.Calendar.InvokePopupCal(txtDueDate);
                 //memu tool tip localization
                 lnkNewTicket.ToolTip = Localization.GetString("lnkNewTicketToolTip", LocalResourceFile);
@@ -406,28 +409,28 @@ namespace ITIL.Modules.ServiceDesk
         {
             //Tags TagsTreeExistingTasks = (Tags)lvTasks.FindControl("TagsTreeExistingTasks");
 
-            if (UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
+            if (UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser)
             {
                 TagsTree.Visible = true;
                 TagsTree.TagID = -1;
-                TagsTree.DisplayType = "Administrator";
+                TagsTree.DisplayType = Utility.DisplayTypeAdministrator;
                 TagsTree.Expand = false;
 
                 TagsTreeExistingTasks.Visible = true;
                 TagsTreeExistingTasks.TagID = -1;
-                TagsTreeExistingTasks.DisplayType = "Administrator";
+                TagsTreeExistingTasks.DisplayType = Utility.DisplayTypeAdministrator;
                 TagsTreeExistingTasks.Expand = false;
             }
             else
             {
                 TagsTree.Visible = true;
                 TagsTree.TagID = -1;
-                TagsTree.DisplayType = "Requestor";
+                TagsTree.DisplayType = Utility.DisplayTypeRequestor;
                 TagsTree.Expand = false;
 
                 TagsTreeExistingTasks.Visible = true;
                 TagsTreeExistingTasks.TagID = -1;
-                TagsTreeExistingTasks.DisplayType = "Requestor";
+                TagsTreeExistingTasks.DisplayType = Utility.DisplayTypeRequestor;
                 TagsTreeExistingTasks.Expand = false;
             }
 
@@ -445,7 +448,7 @@ namespace ITIL.Modules.ServiceDesk
             }
 
             // Set visibility of Tags
-            bool RequestorCatagories = (TagsTreeExistingTasks.DisplayType == "Administrator") ? false : true;
+            bool RequestorCatagories = (TagsTreeExistingTasks.DisplayType == Utility.DisplayTypeAdministrator) ? false : true;
             ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
 
             int CountOfCatagories = (from ServiceDeskCategories in CategoriesTable.GetCategoriesTable(PortalId, RequestorCatagories)
@@ -641,13 +644,13 @@ namespace ITIL.Modules.ServiceDesk
                 pnlExistingTickets.Visible = false;
                 pnlConfirmAnonymousUserEntry.Visible = false;
                 //imgMagnifier.Visible = false;
-                lnkResetSearch.Visible = false;
-                //lnkNewTicket.ForeColor = System.Drawing.Color.White;
-                lnkNewTicket.Font.Underline = true;
-                lnkNewTicket.Font.Bold = true;
+                //lnkResetSearch.Visible = false;
+                //lnkNewTicket.ForeColor = System.Drawing.Color.LightGray;
+                //lnkNewTicket.Font.Underline = true;
+                //lnkNewTicket.Font.Bold = true;
                 //lnkNewTicket.BackColor = System.Drawing.Color.LightGray;
-                lnkExistingTickets.Font.Underline = false;
-                lnkExistingTickets.Font.Bold = false;
+                //lnkExistingTickets.Font.Underline = false;
+                //lnkExistingTickets.Font.Bold = false;
                 //lnkExistingTickets.BackColor = System.Drawing.Color.Transparent;
 
                 DisplayNewTicketForm();
@@ -660,14 +663,14 @@ namespace ITIL.Modules.ServiceDesk
                 pnlExistingTickets.Visible = true;
                 pnlConfirmAnonymousUserEntry.Visible = false;
                 //imgMagnifier.Visible = true;
-                lnkResetSearch.Visible = true;
+                //lnkResetSearch.Visible = true;
                 //lnkExistingTickets.ForeColor = System.Drawing.Color.White;
 
-                lnkNewTicket.Font.Underline = false;
-                lnkNewTicket.Font.Bold = false;
+                //lnkNewTicket.Font.Underline = false;
+                //lnkNewTicket.Font.Bold = false;
                 //lnkNewTicket.BackColor = System.Drawing.Color.Transparent;
-                lnkExistingTickets.Font.Underline = true;
-                lnkExistingTickets.Font.Bold = true;
+                //lnkExistingTickets.Font.Underline = true;
+                //lnkExistingTickets.Font.Bold = true;
                 //lnkExistingTickets.BackColor = System.Drawing.Color.LightGray;
 
                 DisplayExistingTickets(SearchCriteria);
@@ -699,7 +702,7 @@ namespace ITIL.Modules.ServiceDesk
             txtPhone.Text = string.Empty;
 
             // Admin forms is set for anonymous user be default
-            txtUserID.Text = "-1";
+            txtUserID.Text = Null.NullInteger.ToString();
         }
         #endregion
 
@@ -1629,17 +1632,17 @@ namespace ITIL.Modules.ServiceDesk
                     RequesterNameLabel.Text = String.Format("[User Deleted]");
                 }
             }
-            if (RequesterNameLabel.Text.Length > 25)
+            if (RequesterNameLabel.Text.Length > Utility.ColumnDisplayWidth)
             {
                 string lblRequesterNameLabel = RequesterNameLabel.Text;
-                RequesterNameLabel.Text = String.Format("{0} ...", lblRequesterNameLabel.Substring(0, 25));
+                RequesterNameLabel.Text = String.Format("{0} ...", lblRequesterNameLabel.Substring(0, Utility.ColumnDisplayWidth));
             }
 
             // Format Description
-            if (DescriptionLabel.Text.Length > 25)
+            if (DescriptionLabel.Text.Length > Utility.ColumnDisplayWidth)
             {
                 string lblDescriptionLabel = DescriptionLabel.Text;
-                DescriptionLabel.Text = String.Format("{0} ...", lblDescriptionLabel.Substring(0, 25));
+                DescriptionLabel.Text = String.Format("{0} ...", lblDescriptionLabel.Substring(0, Utility.ColumnDisplayWidth));
 
             }
 
@@ -1649,7 +1652,7 @@ namespace ITIL.Modules.ServiceDesk
                 RoleController objRoleController = new RoleController();
                 try
                 {
-                    AssignedLabel.Text = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(AssignedLabel.Text), PortalId).RoleName);
+                    AssignedLabel.Text = String.Format("{0}", objRoleController.GetRole(Convert.ToInt32(AssignedLabel.Text), PortalId).RoleName);
                 }
                 catch
                 {
@@ -1657,10 +1660,10 @@ namespace ITIL.Modules.ServiceDesk
                 }
                 AssignedLabel.ToolTip = AssignedLabel.Text;
 
-                if (AssignedLabel.Text.Length > 10)
+                if (AssignedLabel.Text.Length > Utility.ColumnDisplayWidth)
                 {
                     string lblAssignedLabel = AssignedLabel.Text;
-                    AssignedLabel.Text = String.Format("{0} ...", lblAssignedLabel.Substring(0, 10));
+                    AssignedLabel.Text = String.Format("{0} ...", lblAssignedLabel.Substring(0, Utility.ColumnDisplayWidth));
                 }
             }
             else

@@ -380,12 +380,15 @@
     <value>Reset Search</value>
   </data>
   <data name="lblServiceDeskTicket.Text" xml:space="preserve">
-    <value>Service Desk Ticket</value>
+    <value>Ticket - New</value>
   </data>
   <data name="ddlPriorityAll.Text" xml:space="preserve">
     <value>*All*</value>
   </data>
   <data name="KeyWordSearch.Text" xml:space="preserve">
     <value>Key word search</value>
+  </data>
+  <data name="lblCreated.Text" xml:space="preserve">
+    <value>Created</value>
   </data>
 </root>

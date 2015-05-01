@@ -10,16 +10,7 @@
     <li>
         <asp:LinkButton ID="lnkAdministratorSettings" runat="server" OnClick="lnkAdministratorSettings_Click" Text="Administrator Settings"
             resourcekey="lnkAdministratorSettings" Visible="False" /></li>
-    <%--        <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Inbox</a></li>
-                <li><a href="#">Drafts</a></li>
-                <li><a href="#">Sent Items</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Trash</a></li>
-            </ul>
-        </li>--%>
+
 </ul>
 
 
@@ -55,6 +46,7 @@
                             <asp:LinkButton ID="lnkDisplayName" runat="server" CausesValidation="False" CommandArgument='<%# Bind("UserID") %>'
                                 CommandName="Select" Text='<%# Bind("DisplayName") %>'></asp:LinkButton>
                             &nbsp;
+                       
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="Last" DataField="LastName"></asp:BoundField>
@@ -70,7 +62,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4>
-                <asp:Label ID="lblServiceDeskTicket" runat="server" Text="Service Desk Ticket" resourcekey="lblServiceDeskTicket" /></h4>
+                <asp:Label ID="lblServiceDeskTicket" runat="server" Text="Ticket - New" resourcekey="lblServiceDeskTicket" /></h4>
         </div>
         <div class="panel-body">
             <asp:Label ID="lblRequiredfield" runat="server" Text="(*) Required Field" CssClass="text-danger" resourcekey="lblRequiredfield" />
@@ -165,9 +157,9 @@
                         <asp:Label ID="lbltxtDueDate" runat="server" Text="Date Due:" resourcekey="lbltxtDueDate" CssClass="control-label col-xs-2" AssociatedControlID="txtDueDate" />
                         <div class="col-xs-4">
                             <div class="input-group">
-                                <asp:TextBox ID="txtDueDate" runat="server" MaxLength="25" TabIndex="6" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtDueDate" runat="server" MaxLength="25" TabIndex="6" CssClass="form-control"></asp:TextBox>
                                 <span class="input-group-addon">
-                                    <asp:HyperLink ID="cmdStartCalendar" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/calendar.png"></asp:HyperLink></span>
+                                    <asp:HyperLink ID="cmdStartCalendar" runat="server"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
                             </div>
                             <asp:CompareValidator ID="DueDatValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueDate" ErrorMessage="Please enter a valid date." ValidationGroup="ticket">
                             </asp:CompareValidator>
@@ -221,8 +213,9 @@
                 <div class="form-group">
                     &nbsp;<asp:Image ID="imgTags" runat="server" ImageUrl="~/DesktopModules/ITILServiceDesk/images/tag_blue.png" />
                     &nbsp;
-                            <asp:Label ID="lblCheckTags" runat="server" Font-Bold="True" Text="Check all Tags that apply:"
-                                resourcekey="lblCheckTags" AssociatedControlID="TagsTree" />
+                           
+                    <asp:Label ID="lblCheckTags" runat="server" Font-Bold="True" Text="Check all Tags that apply:"
+                        resourcekey="lblCheckTags" AssociatedControlID="TagsTree" />
                     <ITIL:Tags ID="TagsTree" runat="server" EnableViewState="True" Visible="False" />
 
 
@@ -256,87 +249,95 @@
 </asp:Panel>
 
 <asp:Panel ID="pnlExistingTickets" runat="server" Visible="False">
-
     <div class="containter">
-
-            <ul class="nav nav-pills pull-right">
+        <ul class="nav nav-pills">
+            <li>
                 <!-- Trigger Button HTML -->
-                <li>
-                    <asp:HyperLink href="#" runat="server" class="btn btn-link btn-sm" data-toggle="collapse" data-target="#toggleDemo"><span class="glyphicon glyphicon-search"></span> Filter</asp:HyperLink></li>
-                <li>
-                    <asp:LinkButton ID="lnkResetSearch" runat="server" OnClick="lnkResetSearch_Click"
-                        Text="Reset Search" resourcekey="lnkResetSearch" Visible="False" class="btn btn-link btn-sm" /></li>
-
-            </ul>
-
-            <!-- Collapsible Element HTML -->
-            <div id="toggleDemo" class="collapse">
-                <hr />
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <asp:Label ID="lblStatusSearch" runat="server" Text="Status:" resourcekey="lblStatus" CssClass="control-label col-xs-2" AssociatedControlID="ddlStatusSearch" />
-                        <div class="col-xs-4">
-                            <asp:DropDownList ID="ddlStatusSearch" runat="server" CssClass="form-control">
-                                <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
-                                <asp:ListItem resourcekey="ddlStatusAdminNew" Value="New" Text="New" />
-                                <asp:ListItem resourcekey="ddlStatusAdminActive" Value="Active" Text="Active" />
-                                <asp:ListItem resourcekey="ddlStatusAdminOnHold" Value="On Hold" Text="On Hold" />
-                                <asp:ListItem resourcekey="ddlStatusAdminResolved" Value="Resolved" Text="Resolved" />
-                                <asp:ListItem resourcekey="ddlStatusAdminCancelled" Value="Cancelled" Text="Cancelled" />
-                            </asp:DropDownList>
-                        </div>
-                        <asp:Label ID="lblPrioritySearch" runat="server" Text="Priority:" resourcekey="lbltxtPriority" CssClass="control-label col-xs-2" AssociatedControlID="ddlPriority" />
-                        <div class="col-xs-4">
-                            <asp:DropDownList ID="ddlPrioritySearch" runat="server" CssClass="form-control">
-                                <asp:ListItem resourcekey="ddlPriorityAdminAll" Value="*All*" Text="*All*" />
-                                <asp:ListItem resourcekey="ddlPriorityNormal" Value="Normal" Text="Normal" />
-                                <asp:ListItem resourcekey="ddlPriorityHigh" Value="High" Text="High" />
-                                <asp:ListItem resourcekey="ddlPriorityLow" Value="Low" Text="Low" />
-                            </asp:DropDownList>
-                        </div>
+                <asp:HyperLink href="#" runat="server" CssClass="btn btn-link btn-sm" data-toggle="collapse" data-target="#toggleDemo"><span class="glyphicon glyphicon-filter"></span> Filter</asp:HyperLink>
+            </li>
+            <li>
+                <asp:LinkButton ID="lnkResetSearch" runat="server" CssClass="btn btn-link btn-sm" OnClick="lnkResetSearch_Click"
+                    Text="Reset Search" resourcekey="lnkResetSearch" Visible="True" /></li>
+        </ul>
+        <!-- Collapsible Element HTML -->
+        <div id="toggleDemo" class="collapse">
+            <hr />
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <asp:Label ID="lblStatusSearch" runat="server" Text="Status:" resourcekey="lblStatus" CssClass="control-label col-xs-2" AssociatedControlID="ddlStatusSearch" />
+                    <div class="col-xs-4">
+                        <asp:DropDownList ID="ddlStatusSearch" runat="server" CssClass="form-control">
+                            <asp:ListItem resourcekey="ddlStatusAdminAll" Value="*All*" Text="*All*" />
+                            <asp:ListItem resourcekey="ddlStatusAdminNew" Value="New" Text="New" />
+                            <asp:ListItem resourcekey="ddlStatusAdminActive" Value="Active" Text="Active" />
+                            <asp:ListItem resourcekey="ddlStatusAdminOnHold" Value="On Hold" Text="On Hold" />
+                            <asp:ListItem resourcekey="ddlStatusAdminResolved" Value="Resolved" Text="Resolved" />
+                            <asp:ListItem resourcekey="ddlStatusAdminCancelled" Value="Cancelled" Text="Cancelled" />
+                        </asp:DropDownList>
                     </div>
-                    <div class="form-group">
-                        <asp:Label ID="lblDueSearch" runat="server" Text="Date Due:" resourcekey="lbltxtDueDate" CssClass="control-label col-xs-2" AssociatedControlID="txtDueSearch" />
-                        <div class="col-xs-4">
-                            <asp:TextBox ID="txtDueSearch" runat="server" MaxLength="25" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
-                            <asp:CompareValidator ID="DueValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueSearch" ErrorMessage="Please enter a valid date.">
-                            </asp:CompareValidator>
+                    <asp:Label ID="lblPrioritySearch" runat="server" Text="Priority:" resourcekey="lbltxtPriority" CssClass="control-label col-xs-2" AssociatedControlID="ddlPriority" />
+                    <div class="col-xs-4">
+                        <asp:DropDownList ID="ddlPrioritySearch" runat="server" CssClass="form-control">
+                            <asp:ListItem resourcekey="ddlPriorityAdminAll" Value="*All*" Text="*All*" />
+                            <asp:ListItem resourcekey="ddlPriorityNormal" Value="Normal" Text="Normal" />
+                            <asp:ListItem resourcekey="ddlPriorityHigh" Value="High" Text="High" />
+                            <asp:ListItem resourcekey="ddlPriorityLow" Value="Low" Text="Low" />
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <asp:Label ID="lblDueSearch" runat="server" Text="Date Due:" resourcekey="lbltxtDueDate" CssClass="control-label col-xs-2" AssociatedControlID="txtDueSearch" />
+                    <div class="col-xs-4">
+
+                        <div class="input-group">
+                            <asp:TextBox ID="txtDueSearch" runat="server" MaxLength="25" CssClass="form-control"></asp:TextBox>
+                            <span class="input-group-addon">
+                                <asp:HyperLink ID="cmdDueCalendar" runat="server"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
                         </div>
-                        <label for="txtCreatedSearch" class="control-label col-xs-2">Created</label>
-                        <div class="col-xs-4">
+
+                        <asp:CompareValidator ID="DueValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtDueSearch" ErrorMessage="Please enter a valid date.">
+                            </asp:CompareValidator>
+                    </div>
+                    <asp:Label ID="lblCreated" runat="server" for="txtCreatedSearch" resourcekey="lblCreated" class="control-label col-xs-2">Created</asp:Label>
+                    <div class="col-xs-4">
+                        <div class="input-group">
                             <asp:TextBox ID="txtCreatedSearch" runat="server" CssClass="form-control" />
-                            <asp:CompareValidator ID="CreatedValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtCreatedSearch" ErrorMessage="Please enter a valid date.">
+                            <span class="input-group-addon">
+                                <asp:HyperLink ID="cmdCreatedCalendar" runat="server"><span class="glyphicon glyphicon-calendar"></span></asp:HyperLink></span>
+                        </div>
+                        <asp:CompareValidator ID="CreatedValidator" runat="server" Display="Dynamic" Type="Date" Operator="DataTypeCheck" CssClass="text-danger" ControlToValidate="txtCreatedSearch" ErrorMessage="Please enter a valid date.">
                             </asp:CompareValidator>
 
-                        </div>
                     </div>
-                    <div class="form-group">
-                        <asp:Label ID="lblAssignedSearch" runat="server" Text="Assigned:" resourcekey="lblAssigned" CssClass="control-label col-xs-2" AssociatedControlID="ddlAssignedSearch" />
-                        <div class="col-xs-4">
-                            <asp:DropDownList ID="ddlAssignedSearch" runat="server" DataTextField="AssignedRoleID" CssClass="form-control"
-                                DataValueField="Key" />
-                        </div>
-                        <asp:Label ID="lblSearch" resourcekey="KeyWordSearch" runat="server" class="control-label col-xs-2" Text="Key word search" AssociatedControlID="txtSearch" />
-                        <div class="col-xs-4">
-                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="search text here" />
-                        </div>
+                </div>
+                <div class="form-group">
+                    <asp:Label ID="lblAssignedSearch" runat="server" Text="Assigned:" resourcekey="lblAssigned" CssClass="control-label col-xs-2" AssociatedControlID="ddlAssignedSearch" />
+                    <div class="col-xs-4">
+                        <asp:DropDownList ID="ddlAssignedSearch" runat="server" DataTextField="AssignedRoleID" CssClass="form-control"
+                            DataValueField="Key" />
                     </div>
-
-                    <div class="form-group">
-                        <asp:Label ID="lblSearchTags" resourcekey="lblSearchTags" runat="server" class="control-label col-xs-2"
-                            Text="Search Tags:" AssociatedControlID="TagsTreeExistingTasks" />
-                        <div class="col-xs-4">
-                            <ITIL:Tags ID="TagsTreeExistingTasks" runat="server" Visible="False" />
-                        </div>
-                        <div class="col-xs-2">
-                            <asp:LinkButton ID="btnSearch" runat="server" ToolTip="Search" Text="Search" resourcekey="btnSearch" CommandName="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
-                        </div>
+                    <asp:Label ID="lblSearch" resourcekey="KeyWordSearch" runat="server" class="control-label col-xs-2" Text="Key word search" AssociatedControlID="txtSearch" />
+                    <div class="col-xs-4">
+                        <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="search text here" />
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <asp:Label ID="lblSearchTags" resourcekey="lblSearchTags" runat="server" class="control-label col-xs-2"
+                        Text="Search Tags:" AssociatedControlID="TagsTreeExistingTasks" />
+                    <div class="col-xs-4">
+                        <ITIL:Tags ID="TagsTreeExistingTasks" runat="server" Visible="False" />
+                    </div>
+                    <div class="col-xs-2">
+                        <asp:LinkButton ID="btnSearch" runat="server" ToolTip="Search" Text="Search" resourcekey="btnSearch" CommandName="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
+                    </div>
+                </div>
             </div>
 
+        </div>
     </div>
+
+
     <asp:ListView ID="lvTasks" runat="server" OnItemDataBound="lvTasks_ItemDataBound"
         OnSorting="lvTasks_Sorting"
         OnDataBound="lvTasks_DataBound" Visible="False">
@@ -475,18 +476,20 @@
                 &nbsp;<asp:LinkButton ID="lnkPrevious" runat="server" CssClass="btn btn-link" OnClick="lnkPrevious_Click"
                     Text="&lt;" />
                 &nbsp;
-                                <asp:DataList ID="PagingDataList" runat="server" DataKeyField="PageNumber" RepeatColumns="20"
-                                    RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" OnItemDataBound="PagingDataList_ItemDataBound"
-                                    RepeatLayout="Flow">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="lnkPage" Text='<%# Eval("PageNumber") %>'
-                                            runat="server" CommandArgument='<%# Eval("PageNumber") %>' OnClick="lnkPage_Click" CssClass="btn btn-link" />
-                                    </ItemTemplate>
-                                </asp:DataList>
+                               
+                <asp:DataList ID="PagingDataList" runat="server" DataKeyField="PageNumber" RepeatColumns="20"
+                    RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" OnItemDataBound="PagingDataList_ItemDataBound"
+                    RepeatLayout="Flow">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lnkPage" Text='<%# Eval("PageNumber") %>'
+                            runat="server" CommandArgument='<%# Eval("PageNumber") %>' OnClick="lnkPage_Click" CssClass="btn btn-link" />
+                    </ItemTemplate>
+                </asp:DataList>
                 &nbsp;<asp:LinkButton ID="lnkNext" runat="server" CssClass="btn btn-link" OnClick="lnkNext_Click"
                     Text="&gt;" />
                 &nbsp;<asp:LinkButton ID="lnkLast" runat="server" CssClass="btn btn-link" OnClick="lnkLast_Click"
                     Text="&gt;&gt;" Visible="False" />&nbsp;
+           
             </asp:Panel>
         </div>
     </div>

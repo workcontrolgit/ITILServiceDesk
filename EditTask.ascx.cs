@@ -21,19 +21,13 @@
 
 using System;
 using System.Linq;
-using System.Web;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
-using DotNetNuke.Common;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Entities.Users;
-using System.Collections;
 using System.Drawing;
-using Microsoft.VisualBasic;
-using System.Text;
-using System.IO;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.Services.Localization;
-using DotNetNuke.Services.Exceptions;
 
 namespace ITIL.Modules.ServiceDesk
 {
@@ -99,6 +93,10 @@ namespace ITIL.Modules.ServiceDesk
             lnkNewTicket.ToolTip = Localization.GetString("lnkNewTicketToolTip", LocalResourceFile);
             lnkExistingTickets.ToolTip = Localization.GetString("lnkExistingTicketsToolTip", LocalResourceFile);
             lnkAdministratorSettings.ToolTip = Localization.GetString("lnkAdministratorSettingsToolTip", LocalResourceFile);
+
+            lnkExistingTickets.CssClass = "active";
+            //lnkAdministratorSettings.CssClass = Null.NullString;
+            //lnkNewTicket.CssClass = Null.NullString;
 
             btnComments.ToolTip = Localization.GetString("btnCommentsToolTip", LocalResourceFile);
             btnLogs.ToolTip = Localization.GetString("btnLogsToolTip", LocalResourceFile);
@@ -246,7 +244,7 @@ namespace ITIL.Modules.ServiceDesk
             {
                 // Is user an Admin?
                 string strAdminRoleID = GetAdminRole();
-                if (UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
+                if (UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser)
                 {
                     boolPassedSecurity = true;
                     CommentsControl.ViewOnly = false;
@@ -317,12 +315,10 @@ namespace ITIL.Modules.ServiceDesk
             if (UserId > -1)
             {
                 lnkExistingTickets.Visible = true;
-                //imgExitingTickets.Visible = true;
             }
             else
             {
                 lnkExistingTickets.Visible = false;
-                //imgExitingTickets.Visible = false;
             }
         }
         #endregion
@@ -333,7 +329,7 @@ namespace ITIL.Modules.ServiceDesk
             // Get Admin Role
             string strAdminRoleID = GetAdminRole();
             // Show Admin link if user is an Administrator
-            if (UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
+            if (UserInfo.IsInRole(strAdminRoleID) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser)
             {
                 lnkAdministratorSettings.Visible = true;
                 //imgAdministrator.Visible = true;
@@ -352,7 +348,7 @@ namespace ITIL.Modules.ServiceDesk
             List<ITILServiceDesk_Setting> objITILServiceDesk_Settings = GetSettings();
             ITILServiceDesk_Setting objITILServiceDesk_Setting = objITILServiceDesk_Settings.Where(x => x.SettingName == "AdminRole").FirstOrDefault();
 
-            string strAdminRoleID = "Administrators";
+            string strAdminRoleID = PortalSettings.AdministratorRoleName;
             if (objITILServiceDesk_Setting != null)
             {
                 strAdminRoleID = objITILServiceDesk_Setting.SettingValue;
@@ -379,7 +375,7 @@ namespace ITIL.Modules.ServiceDesk
 
                 objITILServiceDesk_Setting1.PortalID = PortalId;
                 objITILServiceDesk_Setting1.SettingName = "AdminRole";
-                objITILServiceDesk_Setting1.SettingValue = "Administrators";
+                objITILServiceDesk_Setting1.SettingValue = PortalSettings.AdministratorRoleName;
 
                 objServiceDeskDALDataContext.ITILServiceDesk_Settings.InsertOnSubmit(objITILServiceDesk_Setting1);
                 objServiceDeskDALDataContext.SubmitChanges();
@@ -426,12 +422,12 @@ namespace ITIL.Modules.ServiceDesk
                 }
             }
 
-            if (boolUserAssignedToTask || UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole("Administrators") || UserInfo.IsSuperUser)
+            if (boolUserAssignedToTask || UserInfo.IsInRole(GetAdminRole()) || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || UserInfo.IsSuperUser)
             {
                 // Show all Tags
                 TagsTreeExistingTasks.Visible = true;
                 TagsTreeExistingTasks.TagID = Convert.ToInt32(Request.QueryString["TaskID"]);
-                TagsTreeExistingTasks.DisplayType = "Administrator";
+                TagsTreeExistingTasks.DisplayType = Utility.DisplayTypeAdministrator;
                 TagsTreeExistingTasks.Expand = false;
             }
             else
@@ -439,7 +435,7 @@ namespace ITIL.Modules.ServiceDesk
                 // Show only Visible Tags
                 TagsTreeExistingTasks.Visible = true;
                 TagsTreeExistingTasks.TagID = Convert.ToInt32(Request.QueryString["TaskID"]);
-                TagsTreeExistingTasks.DisplayType = "Requestor";
+                TagsTreeExistingTasks.DisplayType = Utility.DisplayTypeRequestor;
                 TagsTreeExistingTasks.Expand = false;
             }
 
@@ -453,7 +449,7 @@ namespace ITIL.Modules.ServiceDesk
             }
 
             // Set visibility of Tags
-            bool RequestorCatagories = (TagsTreeExistingTasks.DisplayType == "Administrator") ? false : true;
+            bool RequestorCatagories = (TagsTreeExistingTasks.DisplayType == Utility.DisplayTypeAdministrator) ? false : true;
 
             int CountOfCatagories = (from ServiceDeskCategories in CategoriesTable.GetCategoriesTable(PortalId, RequestorCatagories)
                                      where ServiceDeskCategories.PortalID == PortalId
@@ -920,7 +916,8 @@ namespace ITIL.Modules.ServiceDesk
             string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl); // ITIL Customization 
 
             RoleController objRoleController = new RoleController();
-            string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            //string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            string strAssignedRole = ddlAssigned.SelectedItem.Text;
             string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
 
             string strSubject = "[" + Localization.GetString(String.Format("ddlStatusAdmin{0}.Text", ddlStatus.SelectedValue), LocalResourceFile) + "] " + String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, PortalSettings.PortalAlias.HTTPAlias, strAssignedRole);
@@ -943,46 +940,36 @@ namespace ITIL.Modules.ServiceDesk
 
         private void NotifyGroupAssignTicket(string TaskID)
         {
-            try
+            // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
+            ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
+            ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
+                                                       where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
+                                                       select ITILServiceDesk_Tasks).FirstOrDefault();
+
+            string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
+            string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
+            
+            RoleController objRoleController = new RoleController();
+            //string strAssignedRole = String.Format("{0}", objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName);
+            string strAssignedRole = ddlAssigned.SelectedItem.Text;
+            string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
+
+            string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);
+            string strBody = Localization.GetString("HTMLTicketEmailAssignee.Text", LocalResourceFile);
+            strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
+            strBody = strBody + Environment.NewLine;
+            strBody = strBody + String.Format(Localization.GetString("YouMaySeeStatusHere.Text", LocalResourceFile), strLinkUrl);
+
+            // Get all users in the AssignedRole Role
+           // ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
+            IList<UserInfo> colAssignedRoleUsers = RoleController.Instance.GetUsersByRole(PortalId, strAssignedRole);
+
+            foreach (UserInfo objUserInfo in colAssignedRoleUsers)
             {
-                // ITIL Customization - email notifies the Admins of a new ticket and also includes the ticket details
-                ServiceDeskDALDataContext objServiceDeskDALDataContext = new ServiceDeskDALDataContext();
-                ITILServiceDesk_Task objITILServiceDesk_Tasks = (from ITILServiceDesk_Tasks in objServiceDeskDALDataContext.ITILServiceDesk_Tasks
-                                                                 where ITILServiceDesk_Tasks.TaskID == Convert.ToInt32(TaskID)
-                                                                 select ITILServiceDesk_Tasks).FirstOrDefault();
-
-                string strDomainServerUrl = DotNetNuke.Common.Globals.AddHTTP(Request.Url.Host);  // ITIL Customization - get DomainServerUrl for use in Utility.FixURLLink
-                string strPasswordLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}&TP={1}", TaskID, objITILServiceDesk_Tasks.TicketPassword)), strDomainServerUrl);
-
-                RoleController objRoleController = new RoleController();
-                RoleInfo objRoleInfo = objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId);
-                objRoleInfo = objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId);
-                string strAssignedRole = objRoleController.GetRoleById(Convert.ToInt32(ddlAssigned.SelectedValue), PortalId).RoleName;
-                string strLinkUrl = Utility.FixURLLink(DotNetNuke.Common.Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "EditTask", "mid=" + ModuleId.ToString(), String.Format(@"&TaskID={0}", TaskID)), PortalSettings.PortalAlias.HTTPAlias);
-
-                string strSubject = String.Format(Localization.GetString("HelpDeskTicketAtHasBeenAssigned.Text", LocalResourceFile), TaskID, strAssignedRole);
-                string strBody = Localization.GetString("HTMLTicketEmailAssignee.Text", LocalResourceFile);
-                strBody = Utility.ReplaceTicketToken(strBody, strPasswordLinkUrl, objITILServiceDesk_Tasks);
-                strBody = strBody + Environment.NewLine;
-                strBody = strBody + String.Format(Localization.GetString("YouMaySeeStatusHere.Text", LocalResourceFile), strLinkUrl);
-
-                // Get all users in the AssignedRole Role
-                // ArrayList colAssignedRoleUsers = objRoleController.GetUsersByRoleName(PortalId, strAssignedRole);
-                IList<UserInfo> colAssignedRoleUsers = RoleController.Instance.GetUsersByRole(PortalId, strAssignedRole);
-
-                foreach (UserInfo objUserInfo in colAssignedRoleUsers)
-                {
-                    DotNetNuke.Services.Mail.Mail.SendMail(PortalSettings.Email, objUserInfo.Email, "", strSubject, strBody, "", "HTML", "", "", "", "");
-                }
-
-                Log.InsertLog(Convert.ToInt32(TaskID), UserId, String.Format(Localization.GetString("AssignedTicketTo.Text", LocalResourceFile), UserInfo.DisplayName, strAssignedRole));
+                DotNetNuke.Services.Mail.Mail.SendMail(PortalSettings.Email, objUserInfo.Email, "", strSubject, strBody, "", "HTML", "", "", "", "");
             }
-            catch (Exception ex)
-            {
-                Exceptions.ProcessModuleLoadException(this, ex);
-            }
-                
 
+            Log.InsertLog(Convert.ToInt32(TaskID), UserId, String.Format(Localization.GetString("AssignedTicketTo.Text", LocalResourceFile), UserInfo.DisplayName, strAssignedRole));
         }
 
         #endregion
