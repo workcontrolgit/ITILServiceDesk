@@ -61,6 +61,11 @@ namespace ITIL.Modules.ServiceDesk
                 pnlRoles.GroupingText = Localization.GetString("lnkRoles.Text", LocalResourceFile);
                 pnlTagsAdmin.GroupingText = Localization.GetString("lnkTagsAdmin.Text", LocalResourceFile);
                 pnlSettings.GroupingText = Localization.GetString("pnlSettings.Text", LocalResourceFile);
+
+                //memu tool tip localization
+                lnkNewTicket.ToolTip = Localization.GetString("lnkNewTicketToolTip", LocalResourceFile);
+                lnkExistingTickets.ToolTip = Localization.GetString("lnkExistingTicketsToolTip", LocalResourceFile);
+                lnkAdministratorSettings.ToolTip = Localization.GetString("lnkAdministratorSettingsToolTip", LocalResourceFile);
             }
         }
 
