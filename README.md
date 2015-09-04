@@ -4,11 +4,14 @@ This program is a fork from www.adefhelpdesk.com.
 
 SUMMARY OF CHANGES - 
 
-The project format was converted from WSP to WAP model.  The user interface (UI) is styled with Bootstrap 3.0 to achieve Responsive design.  
+The Visual Studio project format was converted from WSP to WAP model.  The user interface (UI) is styled with Bootstrap 3.0 to achieve Responsive design.  
 
 REQUIREMENTS - 
 
-DotNetNuke 7+, DotNetNuke skin with Bootstrap 3.0 support.  
+DotNetNuke 7+, DotNetNuke skin with Bootstrap 3.0 support. 
+
+ONLINE DEMO -
+http://www.nguyentech.com/Online-Demo
 
 WARNING - 
 
